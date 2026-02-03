@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block title %}Demo Destination — WeddingCollab{% endblock %}
+
+{% block content %}
+<section class="dest-hero text-white">
+  <div class="container py-5">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <div class="badge text-bg-light text-dark mb-3">DEMO DESTINATION</div>
+        <h1 class="display-5 fw-bold mb-2">Francesca & Tommaso</h1>
+        <p class="lead text-white-50 mb-4">
+          Perfetta per matrimoni su più giorni: travel info, eventi, mappe, suggerimenti e agenda completa.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-light btn-lg" href="#agenda">Agenda</a>
+          <a class="btn btn-outline-light btn-lg" href="#travel">Travel</a>
+          <a class="btn btn-outline-light btn-lg" href="#tips">Tips</a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card rounded-4 border-0 shadow-lg">
+          <div class="card-body p-4">
+            <div class="fw-bold">Destination</div>
+            <div class="text-muted">Costiera / Lago / Toscana (placeholder)</div>
+            <hr>
+            <div class="small text-muted">Date</div>
+            <div class="fw-semibold">3–5 Settembre 2026</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container py-5">
+
+  <section id="agenda">
+    <h2 class="h3 fw-bold mb-3">Agenda eventi</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="badge text-bg-primary mb-2">Day 1</div>
+            <div class="fw-bold">Welcome dinner</div>
+            <div class="text-muted small">Cena informale (placeholder).</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="badge text-bg-primary mb-2">Day 2</div>
+            <div class="fw-bold">Wedding day</div>
+            <div class="text-muted small">Cerimonia + party (placeholder).</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="badge text-bg-primary mb-2">Day 3</div>
+            <div class="fw-bold">Brunch & goodbyes</div>
+            <div class="text-muted small">Saluti (placeholder).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="travel" class="mt-5">
+    <h2 class="h3 fw-bold mb-3">Travel</h2>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="p-4 rounded-4 border bg-light">
+          <div class="fw-bold mb-2">Aeroporto / stazione</div>
+          <div class="text-muted">
+            Inserisci qui: aeroporto consigliato, transfer, taxi, tempi di percorrenza (placeholder).
+          </div>
+        </div>
+
+        <div class="mt-4 p-4 rounded-4 border bg-light">
+          <div class="fw-bold mb-2">Mappa (placeholder)</div>
+          <div class="rounded-4 border bg-white p-4 text-muted">
+            Qui puoi inserire una mappa embed (Google Maps / Mapbox).
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="p-4 rounded-4 border">
+          <div class="fw-bold mb-2">Hotel consigliati</div>
+          <ul class="text-muted mb-0">
+            <li>Hotel 1 (placeholder)</li>
+            <li>Hotel 2 (placeholder)</li>
+            <li>Hotel 3 (placeholder)</li>
+          </ul>
+        </div>
+
+        <div class="mt-4 p-4 rounded-4 border">
+          <div class="fw-bold mb-2">Dress code</div>
+          <div class="text-muted small">Day 1 casual, Day 2 elegante, Day 3 comfy.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips" class="mt-5">
+    <h2 class="h3 fw-bold mb-3">Tips</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Cosa portare</div>
+          <div class="text-muted small">Scarpe comode, occhiali, giacca leggera (placeholder)</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Cosa vedere</div>
+          <div class="text-muted small">Mini guida alla zona (placeholder)</div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Emergency</div>
+          <div class="text-muted small">Numeri utili, contatto wedding planner (placeholder)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-5">
+    <a href="{% url 'demo_list' %}" class="btn btn-outline-primary">← Torna alle demo</a>
+  </div>
+</div>
+{% endblock %}

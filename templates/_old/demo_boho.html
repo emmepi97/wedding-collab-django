@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Demo Boho Chic — WeddingCollab{% endblock %}
+
+{% block content %}
+<section class="boho-hero">
+  <div class="container py-5">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-7">
+        <div class="badge text-bg-warning mb-3">DEMO BOHO CHIC</div>
+        <h1 class="display-5 fw-bold mb-2">Marta & Davide</h1>
+        <p class="lead text-muted mb-4">
+          Calda, naturale, piena di dettagli: perfetta per matrimoni in campagna e vibe “slow”.
+        </p>
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-primary btn-lg" href="#weekend">Weekend</a>
+          <a class="btn btn-outline-primary btn-lg" href="#travel">Travel</a>
+          <a class="btn btn-outline-primary btn-lg" href="#playlist">Playlist</a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="card rounded-4 shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="h5 fw-bold mb-3">Dettagli</h2>
+            <div class="text-muted small">
+              <div><span class="fw-semibold">Data:</span> 23 Agosto 2026</div>
+              <div><span class="fw-semibold">Location:</span> Masseria (placeholder)</div>
+              <div><span class="fw-semibold">Dress code:</span> Boho / comfy</div>
+            </div>
+            <hr>
+            <div class="text-muted small">
+              Extra: qui puoi inserire consigli meteo, scarpe comode, ecc.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-white">
+            <div class="fw-bold">Mood</div>
+            <div class="text-muted small">Terra, lino, fiori di campo</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-white">
+            <div class="fw-bold">Kids friendly</div>
+            <div class="text-muted small">Spazio giochi (placeholder)</div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="p-4 rounded-4 border bg-white">
+            <div class="fw-bold">Sunset</div>
+            <div class="text-muted small">Foto al tramonto (placeholder)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="container py-5">
+
+  <section id="weekend">
+    <h2 class="h3 fw-bold mb-3">Il weekend</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="badge text-bg-dark mb-2">Venerdì</div>
+            <div class="fw-bold">Welcome drink</div>
+            <div class="text-muted small">Un brindisi informale (placeholder).</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="badge text-bg-dark mb-2">Domenica</div>
+            <div class="fw-bold">Brunch</div>
+            <div class="text-muted small">Saluti finali (placeholder).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="travel" class="mt-5">
+    <h2 class="h3 fw-bold mb-3">Travel info</h2>
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="p-4 rounded-4 border bg-light">
+          <div class="fw-bold mb-2">Come arrivare</div>
+          <div class="text-muted">
+            Spiegazione testuale + link mappe. In un sito reale puoi mettere un embed maps.
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="p-4 rounded-4 border">
+          <div class="fw-bold mb-2">Alloggi</div>
+          <ul class="text-muted mb-0">
+            <li>B&amp;B 1 (placeholder)</li>
+            <li>Hotel 2 (placeholder)</li>
+            <li>Agriturismo 3 (placeholder)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="playlist" class="mt-5">
+    <h2 class="h3 fw-bold mb-3">Playlist</h2>
+    <div class="p-4 p-md-5 rounded-4 border bg-white">
+      <p class="text-muted mb-4">
+        Sezione “carina” per creare engagement: una playlist Spotify (demo).
+      </p>
+      <div class="rounded-4 border bg-light p-4 text-muted">
+        Embed Spotify placeholder
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-5">
+    <a href="{% url 'demo_list' %}" class="btn btn-outline-primary">← Torna alle demo</a>
+  </div>
+</div>
+{% endblock %}

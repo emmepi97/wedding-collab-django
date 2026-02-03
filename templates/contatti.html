@@ -1,0 +1,220 @@
+{% extends "base.html" %}
+{% block title %}Contatti — WeddingCollab{% endblock %}
+
+{% block content %}
+
+<!-- STILE INLINE (romantico, coerente con home & demo) -->
+<style>
+  :root{
+    --brand:#ff6e9e;
+    --brand2:#ff92b6;
+    --ink:#111827;
+    --muted:rgba(17,24,39,.70);
+    --line:rgba(0,0,0,.08);
+    --soft:rgba(255,110,158,.10);
+    --shadow:0 18px 60px rgba(17,24,39,.14);
+    --shadow2:0 10px 30px rgba(17,24,39,.12);
+    --radius:22px;
+  }
+
+  .wc-contact{
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    color:var(--ink);
+  }
+  .wc-contact h1,
+  .wc-contact h2,
+  .wc-contact h3{
+    font-family:"Playfair Display",Georgia,"Times New Roman",serif;
+  }
+
+  .wc-contact .text-muted{color:var(--muted)!important;}
+  .wc-contact .rounded-4{border-radius:var(--radius)!important;}
+  .wc-contact .border{border-color:var(--line)!important;}
+
+  /* Hero */
+  .contact-hero{
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,110,158,.35), transparent 40%),
+      radial-gradient(circle at 80% 30%, rgba(255,255,255,.06), transparent 45%),
+      linear-gradient(135deg, rgba(0,0,0,.90), rgba(255,110,158,.28));
+    border:1px solid rgba(255,255,255,.12);
+    color:#fff;
+  }
+.contact-hero h1{
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  margin-bottom: .6rem;
+}
+
+.contact-hero .btn{
+  padding: 10px 18px;
+  font-size: .95rem;
+}
+
+  
+  /* Cards */
+  .wc-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow2);
+  }
+
+  /* Buttons */
+  .wc-contact .btn-primary{
+    background:linear-gradient(135deg,var(--brand),var(--brand2));
+    border:none;
+    font-weight:800;
+    box-shadow:0 14px 30px rgba(255,110,158,.28);
+  }
+  .wc-contact .btn-primary:hover{
+    transform:translateY(-1px);
+    box-shadow:0 18px 38px rgba(255,110,158,.32);
+  }
+
+  .wc-contact .btn-outline-primary{
+    border-color:rgba(255,110,158,.45);
+    color:var(--brand);
+    background:rgba(255,110,158,.06);
+    font-weight:800;
+  }
+  .wc-contact .btn-outline-primary:hover{
+    background:rgba(255,110,158,.12);
+  }
+
+  /* Avatar */
+  .avatar{
+    width:48px;
+    height:48px;
+    border-radius:999px;
+    display:grid;
+    place-items:center;
+    background:rgba(255,110,158,.14);
+    color:var(--brand);
+    font-weight:900;
+    font-size:1.1rem;
+  }
+
+  /* Info pill */
+  .info-box{
+    background:rgba(255,110,158,.08);
+    border:1px solid rgba(255,110,158,.18);
+    border-radius:18px;
+    padding:16px;
+  }
+
+  /* CTA box */
+  .contact-cta{
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255,110,158,.30), transparent 38%),
+      linear-gradient(135deg, rgba(0,0,0,.92), rgba(255,110,158,.26));
+    color:#fff;
+    border-radius:var(--radius);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .contact-cta p{color:rgba(255,255,255,.82);}
+</style>
+
+<div class="wc-contact">
+
+  <!-- HERO -->
+
+
+  <div class="container">
+    <div class="row g-5">
+
+      <!-- INFO -->
+      <div class="col-lg-7">
+        <h2 class="h4 fw-bold mb-3">Contatti</h2>
+
+        <div class="wc-card p-4 mb-4">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="small text-muted">Email</div>
+              <div class="fw-semibold">weddingcoding@gmail.com</div>
+            </div>
+            <div class="col-md-6">
+              <div class="small text-muted">Collaborazioni</div>
+              <div class="fw-semibold">Wedding Planner & Studi creativi</div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="h5 fw-bold mb-2">Come funziona</h3>
+        <ol class="text-muted">
+          <li>Ci racconti come lavori e che tipo di clienti segui.</li>
+          <li>Definiamo un modello di collaborazione white-label.</li>
+          <li>Ti forniamo demo, materiali e supporto per vendere meglio.</li>
+          <li>Realizziamo il sito, tu gestisci il cliente.</li>
+        </ol>
+
+        <div class="info-box mt-4">
+          <strong>Obiettivo:</strong>
+          aumentare il valore del tuo servizio senza appesantire il tuo lavoro.
+        </div>
+      </div>
+
+<!-- TEAM -->
+<div class="col-lg-5">
+  <h2 class="h4 fw-bold mb-3">Il team</h2>
+
+  <div class="vstack gap-3">
+
+    <!-- Alessio -->
+    <div class="wc-card p-3 d-flex gap-3 align-items-center">
+      <img
+        src="/media/image/alessio.png"
+        alt="Alessio P. – Ingegnere informatico"
+        style="
+          width:100px;
+          height:100px;
+          border-radius:50%;
+          object-fit:cover;
+          border:2px solid rgba(255,110,158,.35);
+        "
+      >
+      <div>
+        <div class="fw-bold">Alessio P.</div>
+        <div class="text-muted small">Ingegnere informatico</div>
+      </div>
+    </div>
+
+    <!-- Matteo -->
+    <div class="wc-card p-3 d-flex gap-3 align-items-center">
+      <img
+        src="/media/image/matteo.png"
+        alt="Matteo P. – Marketing"
+        style="
+          width:100px;
+          height:100px;
+          border-radius:50%;
+          object-fit:cover;
+          border:2px solid rgba(255,110,158,.35);
+        "
+      >
+      <div>
+        <div class="fw-bold">Matteo P.</div>
+        <div class="text-muted small">Marketing</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+        <!-- CTA -->
+        <div class="contact-cta p-4 mt-4">
+          <h3 class="h5 fw-bold mb-2">Vuoi capire se fa per te?</h3>
+          <p class="mb-3">
+            Facciamo una call conoscitiva: zero impegno, solo chiarezza.
+          </p>
+          <a href="mailto:weddingcoding@gmail.com" class="btn btn-outline-light w-100">
+            Contattaci
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

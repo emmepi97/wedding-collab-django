@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}{{ demo.title }} — Demo{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+    <div>
+      <h1 class="h3 fw-bold mb-1">{{ demo.title }}</h1>
+      <p class="text-muted mb-0">{{ demo.subtitle }}</p>
+    </div>
+    <div class="d-flex gap-2">
+      <a class="btn btn-outline-primary" href="{% url 'demo_list' %}">← Tutte le demo</a>
+      <a class="btn btn-primary" href="{% url 'contatti' %}">Contattaci</a>
+    </div>
+  </div>
+
+  <div class="card rounded-4 shadow-sm overflow-hidden">
+    <div class="p-4 p-md-5 demo-hero">
+      <div class="badge text-bg-dark mb-3">DEMO</div>
+      <h2 class="display-6 fw-bold mb-3">Sito matrimonio: {{ demo.title }}</h2>
+      <p class="lead text-white-50 mb-4">
+        Questa è una demo “finta” ma già presentabile: qui potrai sostituire testi, foto e blocchi
+        in base al pacchetto che proponete alle coppie.
+      </p>
+      <div class="d-flex gap-2 flex-wrap">
+        <button class="btn btn-light btn-lg" disabled>RSVP (placeholder)</button>
+        <button class="btn btn-outline-light btn-lg" disabled>Gallery (placeholder)</button>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="row g-4">
+        <div class="col-md-7">
+          <h3 class="h5 fw-bold">La nostra storia</h3>
+          <p class="text-muted">
+            Racconto breve della coppia: come si sono conosciuti, la proposta, e cosa li rende speciali.
+            Qui puoi inserire immagini, citazioni e una timeline.
+          </p>
+
+          <h3 class="h5 fw-bold mt-4">Dettagli evento</h3>
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <div class="small text-muted">Data</div>
+              <div class="fw-semibold">12 Luglio 2026</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="small text-muted">Location</div>
+              <div class="fw-semibold">Villa (placeholder)</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="small text-muted">Dress code</div>
+              <div class="fw-semibold">Elegante</div>
+            </div>
+            <div class="col-sm-6">
+              <div class="small text-muted">Orario</div>
+              <div class="fw-semibold">17:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="card rounded-4 border bg-light">
+            <div class="card-body">
+              <h3 class="h6 fw-bold">Informazioni utili</h3>
+              <ul class="text-muted mb-0">
+                <li>Come arrivare (placeholder)</li>
+                <li>Hotel consigliati (placeholder)</li>
+                <li>FAQ & contatti (placeholder)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-4 card rounded-4 border">
+            <div class="card-body">
+              <h3 class="h6 fw-bold">Prossimi passi</h3>
+              <p class="text-muted small mb-0">
+                Per trasformare questa demo in un sito reale:
+                crea un template dedicato, collega immagini e testi e (se vuoi) aggiungi un form RSVP.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

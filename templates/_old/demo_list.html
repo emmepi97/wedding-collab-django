@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Demo — WeddingCollab{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Demo siti matrimonio</h1>
+      <p class="text-muted mb-0">Clicca una demo per aprirla.</p>
+    </div>
+    <a class="btn btn-outline-primary" href="{% url 'contatti' %}">Richiedi collaborazione</a>
+  </div>
+
+  <div class="row g-4">
+    {% for d in demos %}
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="{% url 'demo_detail' d.slug %}">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">{{ d.title }}</h2>
+            <p class="text-muted mb-0">{{ d.subtitle }}</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

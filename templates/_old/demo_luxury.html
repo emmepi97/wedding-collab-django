@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% block title %}Demo Luxury — WeddingCollab{% endblock %}
+
+{% block content %}
+<section class="lux-hero text-white">
+  <div class="container py-5">
+    <div class="row g-4 align-items-end">
+      <div class="col-lg-8">
+        <div class="badge text-bg-light text-dark mb-3">DEMO LUXURY</div>
+        <h1 class="display-4 fw-bold mb-2">Valentina & Riccardo</h1>
+        <p class="lead text-white-50 mb-4">
+          Design premium, look “editoriale”, dettagli raffinati. Perfetta per eventi di alto livello.
+        </p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="#vip" class="btn btn-light btn-lg">Area ospiti</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container py-5">
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card rounded-4 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="text-muted small">Data</div>
+          <div class="fw-bold">19 Giugno 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card rounded-4 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="text-muted small">Location</div>
+          <div class="fw-bold">Palazzo (placeholder)</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card rounded-4 shadow-sm h-100">
+        <div class="card-body p-4">
+          <div class="text-muted small">Dress code</div>
+          <div class="fw-bold">Black tie</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="mt-5">
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-7">
+        <h2 class="h3 fw-bold mb-3">Invito</h2>
+        <p class="text-muted">
+          Un testo più “editoriale”, con tono premium. Qui puoi inserire la lettera agli ospiti.
+        </p>
+
+        <div class="p-4 rounded-4 border bg-light">
+          <div class="fw-semibold">Gentili ospiti,</div>
+          <div class="text-muted mt-2">
+            siamo felici di accogliervi per celebrare insieme… (placeholder)
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card rounded-4 shadow-sm">
+          <div class="card-body p-4">
+            <h3 class="h5 fw-bold mb-2">Dress code details</h3>
+            <ul class="text-muted mb-0">
+              <li>Uomo: tuxedo / abito scuro</li>
+              <li>Donna: lungo / cocktail premium</li>
+              <li>No bianco/avorio</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="vip" class="mt-5">
+    <div class="card rounded-4 shadow-sm overflow-hidden">
+      <div class="p-4 p-md-5 bg-dark text-white">
+        <h2 class="h3 fw-bold mb-2">Area ospiti (demo)</h2>
+        <p class="text-white-50 mb-0">
+          In una versione reale qui puoi mettere: password per ospiti, menu, tavoli, info transfer.
+        </p>
+      </div>
+      <div class="card-body p-4 p-md-5">
+        <form class="row g-3">
+          <div class="col-md-8">
+            <label class="form-label">Codice invito</label>
+            <input class="form-control" placeholder="ES. VIP-1234" disabled>
+          </div>
+          <div class="col-md-4 d-grid">
+            <label class="form-label invisible">.</label>
+            <button class="btn btn-primary btn-lg" type="button" disabled>Entra (demo)</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <div class="mt-5">
+    <a href="{% url 'demo_list' %}" class="btn btn-outline-primary">← Torna alle demo</a>
+  </div>
+</div>
+{% endblock %}

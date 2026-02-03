@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: weddingcollab
+    env: python
+    plan: free
+    buildCommand: "./build.sh"
+    startCommand: "gunicorn weddingcollab.wsgi:application"
+    autoDeploy: true
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: "weddingcollab.settings"
+      - key: PYTHON_VERSION
+        value: "3.11.8"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: "False"
+      - key: ALLOWED_HOSTS
+        value: ".onrender.com"

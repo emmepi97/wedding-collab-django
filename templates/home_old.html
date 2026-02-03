@@ -1,0 +1,754 @@
+{% extends "base.html" %}
+{% block title %}WeddingCollab — Siti matrimonio white-label per Wedding Planner{% endblock %}
+
+{% block content %}
+
+<!-- Font (solo questa pagina) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --brand: #ff6e9e;   /* rosa romantico */
+    --brand2:#ff92b6;   /* rosa più chiaro */
+    --ink:#111827;
+    --muted: rgba(17,24,39,.70);
+    --line: rgba(0,0,0,.08);
+    --soft: rgba(255,110,158,.10);
+    --shadow: 0 18px 60px rgba(17,24,39,.14);
+    --shadow2: 0 10px 30px rgba(17,24,39,.12);
+    --radius: 22px;
+  }
+
+  /* Base typography */
+  .wc-home{
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    color: var(--ink);
+  }
+  .wc-home h1, .wc-home h2, .wc-home h3, .wc-home .wc-serif{
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    letter-spacing: .2px;
+  }
+
+  /* General polish */
+  .wc-home .text-muted{ color: var(--muted) !important; }
+  .wc-home .border{ border-color: var(--line) !important; }
+  .wc-home .rounded-4{ border-radius: var(--radius) !important; }
+  .wc-home .shadow-soft{ box-shadow: var(--shadow2); }
+  .wc-home .shadow-hero{ box-shadow: var(--shadow); }
+
+  /* Chips */
+  .wc-home .chip{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 8px 12px;
+    border:1px solid rgba(255,255,255,.18);
+    background: rgba(255,255,255,.10);
+    border-radius: 999px;
+    color:#fff;
+    backdrop-filter: blur(10px);
+    font-weight: 700;
+    font-size: .9rem;
+  }
+  .wc-home .chip-dot{
+    width: 8px; height: 8px; border-radius: 99px;
+    background: rgba(255,255,255,.92);
+  }
+
+  /* Links */
+  .wc-home .link-primary{
+    color: var(--brand) !important;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .wc-home .link-primary:hover{ text-decoration: underline; }
+
+  /* Buttons (romantic) */
+  .wc-home .btn{
+    border-radius: 14px;
+    transition: transform .12s ease, filter .12s ease, box-shadow .12s ease;
+  }
+  .wc-home .btn-primary{
+    background: linear-gradient(135deg, var(--brand), var(--brand2));
+    border: none;
+    box-shadow: 0 14px 30px rgba(255,110,158,.28);
+    font-weight: 800;
+  }
+  .wc-home .btn-primary:hover{
+    filter: brightness(.98);
+    transform: translateY(-1px);
+    box-shadow: 0 18px 38px rgba(255,110,158,.32);
+  }
+
+  .wc-home .btn-outline-primary{
+    border-color: rgba(255,110,158,.40);
+    color: var(--brand);
+    background: rgba(255,110,158,.06);
+    font-weight: 800;
+  }
+  .wc-home .btn-outline-primary:hover{
+    background: rgba(255,110,158,.12);
+    border-color: rgba(255,110,158,.58);
+    color: var(--brand);
+    transform: translateY(-1px);
+  }
+
+  /* HERO (match demo romantico) */
+  .wc-hero{
+    position: relative;
+    border: 1px solid rgba(255,255,255,.10);
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,110,158,.35), transparent 40%),
+      radial-gradient(circle at 80% 30%, rgba(255,255,255,.06), transparent 45%),
+      linear-gradient(135deg, rgba(0,0,0,.90), rgba(255,110,158,.28));
+    overflow: hidden;
+  }
+  .wc-hero:before{
+    content:"";
+    position:absolute; inset:-2px;
+    background:
+      radial-gradient(circle at 40% 70%, rgba(255,255,255,.08), transparent 45%),
+      radial-gradient(circle at 70% 20%, rgba(255,255,255,.06), transparent 40%);
+    pointer-events:none;
+  }
+  .wc-hero .wc-hero-card{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: var(--radius);
+    backdrop-filter: blur(10px);
+  }
+  .wc-hero .wc-hero-title{
+    color: #fff;
+    line-height: 1.05;
+  }
+  .wc-hero .wc-hero-lead{
+    color: rgba(255,255,255,.78);
+    font-size: 1.1rem;
+  }
+  .wc-hero .wc-kpi{
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px;
+    padding: 14px;
+  }
+  .wc-hero .wc-kpi .label{
+    color: rgba(255,255,255,.70);
+    font-size: .85rem;
+  }
+  .wc-hero .wc-kpi .value{
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.05rem;
+  }
+
+  /* Section headings */
+  .wc-section-title{
+    display:flex; align-items:end; justify-content:space-between; gap: 12px;
+    margin-bottom: 14px;
+  }
+  .wc-section-title h2{
+    margin: 0;
+    font-size: 1.6rem;
+  }
+  .wc-kicker{
+    display:inline-flex; align-items:center; gap: 10px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255,255,255,.70);
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .wc-kicker span{
+    width: 8px; height: 8px; border-radius: 99px;
+    background: var(--brand);
+  }
+
+  /* Cards */
+  .wc-card{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow2);
+    transition: transform .14s ease, box-shadow .14s ease;
+    background: #fff;
+  }
+  .wc-card:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 18px 50px rgba(17,24,39,.14);
+  }
+  .wc-icon{
+    width: 44px; height: 44px; border-radius: 14px;
+    display:grid; place-items:center;
+    background: rgba(255,110,158,.12);
+    color: var(--brand);
+    font-weight: 900;
+  }
+
+  /* Demo preview */
+  .wc-demo-thumb{
+    height: 220px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,110,158,.30), transparent 35%),
+      radial-gradient(circle at 70% 60%, rgba(0,0,0,.08), transparent 45%),
+      linear-gradient(135deg, rgba(0,0,0,.04), rgba(0,0,0,.02));
+    position: relative;
+    overflow: hidden;
+  }
+  .wc-demo-thumb:after{
+    content:"";
+    position:absolute; inset:0;
+    background: linear-gradient(180deg, transparent, rgba(0,0,0,.10));
+    pointer-events:none;
+  }
+  .wc-demo-pill{
+    position:absolute; top: 14px; left: 14px;
+    background: rgba(255,255,255,.88);
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 999px;
+    padding: 8px 12px;
+    font-weight: 900;
+    color: var(--ink);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Pricing */
+  .wc-price{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow2);
+    overflow: hidden;
+    background: #fff;
+  }
+  .wc-price .top{
+    padding: 18px 20px;
+    background: rgba(255,110,158,.08);
+    border-bottom: 1px solid var(--line);
+  }
+  .wc-price .price{
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+  }
+  .wc-price .tag{
+    display:inline-flex; align-items:center; gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(255,110,158,.12);
+    color: var(--brand);
+    font-weight: 900;
+  }
+  .wc-check{
+    width: 18px; height: 18px; border-radius: 99px;
+    display:inline-grid; place-items:center;
+    background: rgba(255,110,158,.16);
+    color: var(--brand);
+    font-weight: 900;
+    margin-right: 8px;
+  }
+
+  /* Testimonials */
+  .wc-quote{
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: rgba(255,255,255,.78);
+    box-shadow: var(--shadow2);
+  }
+  .wc-avatar{
+    width: 42px; height: 42px; border-radius: 99px;
+    display:grid; place-items:center;
+    background: rgba(255,110,158,.14);
+    color: var(--brand);
+    font-weight: 900;
+  }
+
+  /* CTA (match demo romantico) */
+  .wc-cta{
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255,110,158,.30), transparent 38%),
+      radial-gradient(circle at 80% 40%, rgba(255,255,255,.06), transparent 45%),
+      linear-gradient(135deg, rgba(0,0,0,.92), rgba(255,110,158,.26));
+    border: 1px solid rgba(255,255,255,.10);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .wc-cta p{ color: rgba(255,255,255,.80) !important; }
+
+  .wc-cta .btn-outline-light{
+    border-color: rgba(255,255,255,.35);
+    color: #fff;
+    background: rgba(255,255,255,.06);
+    font-weight: 900;
+  }
+  .wc-cta .btn-outline-light:hover{
+    background: rgba(255,255,255,.12);
+    border-color: rgba(255,255,255,.55);
+    transform: translateY(-1px);
+  }
+
+  /* Small footer note */
+  .wc-note{
+    font-size: .92rem;
+    color: rgba(17,24,39,.62);
+  }
+</style>
+
+
+<div class="wc-home">
+
+  <div class="container py-4">
+
+    <!-- HERO -->
+    <section class="wc-hero p-4 p-md-5 rounded-4 shadow-hero">
+      <div class="row align-items-center g-4 position-relative">
+        <div class="col-lg-7">
+          <div class="d-flex gap-2 flex-wrap mb-3">
+            <span class="chip"><span class="chip-dot"></span> Per Wedding Planner</span>
+            <span class="chip"><span class="chip-dot"></span> White-label</span>
+            <span class="chip"><span class="chip-dot"></span> Rivendibile</span>
+          </div>
+
+          <h1 class="wc-hero-title display-5 fw-bold mb-3 wc-serif">
+            Siti matrimonio premium <span style="color: rgba(255,255,255,.90);">pronti da rivendere</span>
+          </h1>
+
+          <p class="wc-hero-lead mb-4">
+            Tu gestisci la relazione con la coppia. Noi realizziamo un sito matrimonio elegante e veloce,
+            personalizzato sul tuo brief e consegnato in tempi rapidi.
+            <span class="fw-semibold">Più valore nel tuo pacchetto</span>, zero stress tecnico.
+          </p>
+
+          <div class="d-flex gap-2 flex-wrap">
+            <a class="btn btn-primary btn-lg" href="{% url 'demo_romantico' %}">Apri una demo completa</a>
+            <a class="btn btn-outline-primary btn-lg" href="{% url 'contatti' %}">Richiedi collaborazione</a>
+            
+          </div>
+
+          <div class="mt-4 row g-3">
+            <div class="col-sm-4">
+              <div class="wc-kpi">
+                <div class="label">Consegna</div>
+                <div class="value">Rapida</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="wc-kpi">
+                <div class="label">Branding</div>
+                <div class="value">White-label</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="wc-kpi">
+                <div class="label">Risultato</div>
+                <div class="value">Premium</div>
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div class="mt-4 small" style="color: rgba(255,255,255,.70);">
+            *Il sito può includere: story, programma, location/mappe, travel & alloggi, gallery, FAQ, RSVP (demo o reale).
+          </div>
+          <img
+              src="/media/image/matrimoniosito5.png"
+              alt="Sara e Andrea"
+              class="img-fluid"
+              loading="lazy"
+              style="width:60%;height:60%;"
+            >
+        </div>
+
+        <div class="col-lg-5">
+          <div class="wc-hero-card p-4 rounded-4">
+            <div class="d-flex align-items-center justify-content-between gap-2 mb-3">
+              
+              <div class="fw-bold text-white">Cosa ottieni</div>
+              <span class="badge text-bg-light text-dark">Pronto da vendere</span>
+            </div>
+
+            <ul class="mb-0" style="color: rgba(255,255,255,.78);">
+              <li class="mb-2">Sito completo pronto da condividere</li>
+              <li class="mb-2">Personalizzazione grafica + copy (da brief)</li>
+              <li class="mb-2">RSVP demo o reale (DB + email su richiesta)</li>
+              <li class="mb-2">Supporto + micro-revisioni incluse</li>
+              <li>Materiali demo per chiudere più facilmente</li>
+            </ul>
+
+            <hr style="border-color: rgba(255,255,255,.16);">
+
+            <div class="fw-bold text-white mb-2">Modello collaborazione</div>
+            <div style="color: rgba(255,255,255,.76);">
+              Tu lo proponi ai clienti con il tuo brand. Noi lo realizziamo “dietro le quinte”.
+              <span class="fw-semibold">Guadagniamo entrambi</span> sullo stesso progetto.
+            </div>
+          </div>
+
+          <div class="mt-3 p-4 rounded-4 border bg-white shadow-soft">
+            <div class="fw-bold mb-1">Ideale per</div>
+            <div class="text-muted">
+              Wedding Planner che vogliono aggiungere un servizio digitale premium senza assumere dev o designer.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- TRUST / LOGOS (placeholder) -->
+    <section class="mt-4">
+      <div class="p-3 p-md-4 rounded-4 border bg-white shadow-soft">
+        <div class="row g-3 align-items-center">
+          <div class="col-lg-4">
+            <div class="wc-kicker"><span></span> Perché funziona</div>
+            <div class="fw-bold mt-2">Un asset concreto che fa chiudere prima</div>
+            <div class="text-muted">Mostri una demo, il cliente capisce subito e decide più velocemente.</div>
+          </div>
+          <div class="col-lg-8">
+            <div class="row g-3">
+              <div class="col-md-4">
+                <div class="p-3 rounded-4 border bg-light h-100">
+                  <div class="fw-semibold">Demo pronta</div>
+                  <div class="text-muted small">Da mostrare in call o in appuntamento</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 rounded-4 border bg-light h-100">
+                  <div class="fw-semibold">Copy & materiali</div>
+                  <div class="text-muted small">Testi e struttura per vendere meglio</div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="p-3 rounded-4 border bg-light h-100">
+                  <div class="fw-semibold">Upsell facile</div>
+                  <div class="text-muted small">Extra: multilingua, password, RSVP reale…</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <!-- COME FUNZIONA -->
+    <section class="mt-5">
+      <div class="wc-section-title">
+        <h2 class="fw-bold">Come funziona (semplice)</h2>
+        <a class="link-primary" href="{% url 'contatti' %}">Parliamone →</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="wc-card h-100">
+            <div class="p-4">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <div class="wc-icon">1</div>
+                <div class="fw-bold">Tu vendi il servizio</div>
+              </div>
+              <p class="text-muted mb-0">
+                Lo inserisci nei pacchetti o come upgrade. Ti diamo demo e materiali pronti per presentarlo in modo chiaro.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="wc-card h-100">
+            <div class="p-4">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <div class="wc-icon">2</div>
+                <div class="fw-bold">Noi lo realizziamo</div>
+              </div>
+              <p class="text-muted mb-0">
+                Riceviamo brief e contenuti (anche minimi) e li trasformiamo in un sito curato, mobile-first e veloce.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="wc-card h-100">
+            <div class="p-4">
+              <div class="d-flex align-items-center gap-3 mb-2">
+                <div class="wc-icon">3</div>
+                <div class="fw-bold">Consegna + revisioni</div>
+              </div>
+              <p class="text-muted mb-0">
+                Consegniamo una prima bozza, poi una fase revisioni rapida. Pubblicazione finale e supporto essenziale.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-4 p-4 rounded-4 border bg-light">
+        <div class="fw-bold mb-1">Cosa ci serve per partire</div>
+        <div class="text-muted">
+          Nomi sposi, data, location, programma (anche provvisorio), palette / stile (se ce l’hai), e 5–10 foto.
+          Se manca qualcosa, ti guidiamo noi con una checklist.
+        </div>
+      </div>
+    </section>
+
+ 
+
+    <!-- BENEFITS + WHAT'S INSIDE -->
+    <section class="mt-5">
+      <div class="row g-4 align-items-stretch">
+        <div class="col-lg-6">
+          <div class="wc-card h-100">
+            <div class="p-4 p-md-5">
+              <div class="wc-kicker mb-3"><span></span> Vantaggi</div>
+              <h2 class="fw-bold mb-3">Perché conviene al Wedding Planner</h2>
+              <ul class="text-muted mb-0">
+                <li class="mb-2"><span class="fw-semibold">Aumenti il valore</span> del tuo pacchetto senza aumentare il carico operativo.</li>
+                <li class="mb-2">Hai un asset da far vedere e chiudere più facilmente (la demo fa metà del lavoro).</li>
+                <li class="mb-2">Offri un’esperienza digitale coerente con il tuo stile e brand.</li>
+                <li class="mb-2">Gestisci tu il cliente. Noi gestiamo design + sviluppo + setup.</li>
+                <li class="mb-0">Opzioni extra per upsell (multilingua, RSVP reale, password, gallery caricabile…).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div class="wc-card h-100">
+            <div class="p-4 p-md-5">
+              <div class="wc-kicker mb-3"><span></span> Contenuti</div>
+              <h2 class="fw-bold mb-3">Cosa include un sito “standard”</h2>
+
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">Story</div>
+                    <div class="text-muted small">Timeline, testo breve, dettagli</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">Programma</div>
+                    <div class="text-muted small">Orari + cards pulite</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">Location & mappe</div>
+                    <div class="text-muted small">OpenStreetMap + link Maps</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">Travel & alloggi</div>
+                    <div class="text-muted small">Come arrivare + consigli</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">Gallery</div>
+                    <div class="text-muted small">Griglia foto, mobile-first</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-3 rounded-4 border bg-light h-100">
+                    <div class="fw-semibold">RSVP</div>
+                    <div class="text-muted small">Demo o reale (DB + email)</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-3 wc-note">
+                Extra possibili: dominio dedicato, area password, multilingua, countdown dinamico, galleria caricabile, ecc.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEMO -->
+    <section class="mt-5">
+      <div class="wc-section-title">
+        <h2 class="fw-bold">Demo pronta da mostrare</h2>
+        <a href="{% url 'demo_romantico' %}" class="link-primary">Apri demo →</a>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-8">
+          <div class="wc-card overflow-hidden">
+            <div class="p-4 p-md-5">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-6">
+                  <div class="wc-demo-thumb">
+                    <div class="wc-demo-pill">Demo “Sara & Andrea”</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h3 class="h5 fw-bold mb-2">Una demo completa, già “vendibile”</h3>
+                  <p class="text-muted mb-3">
+                    Mostra al cliente come sarà il risultato finale: struttura chiara, design premium e sezione RSVP demo.
+                  </p>
+                  <div class="d-flex gap-2 flex-wrap">
+                    <a class="btn btn-primary" href="{% url 'demo_romantico' %}">Vedi demo completa</a>
+                    <a class="btn btn-outline-primary" href="{% url 'contatti' %}">Ricevi condizioni</a>
+                  </div>
+                  <div class="mt-3 small text-muted">
+                    Nel tuo lavoro: la demo riduce obiezioni e accelera la decisione.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4">
+          <div class="wc-card h-100">
+            <div class="p-4">
+              <div class="fw-bold mb-2">Kit per vendere meglio</div>
+              <ul class="text-muted mb-0">
+                <li class="mb-2"><span class="fw-semibold">Mini-deck</span> per presentazione</li>
+                <li class="mb-2">Checklist contenuti da chiedere agli sposi</li>
+                <li class="mb-2">Lista extra/upgrade per upsell</li>
+                <li class="mb-0">FAQ e obiezioni più comuni</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TESTIMONIANZE (placeholder) -->
+    <section class="mt-5">
+      <div class="wc-section-title">
+        <h2 class="fw-bold">Cosa dicono i Wedding Planner</h2>
+        <span class="wc-note">Placeholder demo (puoi sostituire con feedback reali)</span>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="wc-quote p-4 h-100">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="wc-avatar">LP</div>
+              <div>
+                <div class="fw-bold">Laura, WP</div>
+                <div class="text-muted small">Milano</div>
+              </div>
+            </div>
+            <div class="text-muted">
+              “Finalmente un servizio digitale che posso proporre senza impazzire con fornitori.
+              La demo chiude il 70% della vendita.”
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="wc-quote p-4 h-100">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="wc-avatar">GM</div>
+              <div>
+                <div class="fw-bold">Giulia, WP</div>
+                <div class="text-muted small">Roma</div>
+              </div>
+            </div>
+            <div class="text-muted">
+              “Il white-label è perfetto: i clienti vedono solo il mio brand. Design super curato e tempi rapidi.”
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="wc-quote p-4 h-100">
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="wc-avatar">FC</div>
+              <div>
+                <div class="fw-bold">Francesca, WP</div>
+                <div class="text-muted small">Torino</div>
+              </div>
+            </div>
+            <div class="text-muted">
+              “Ora ho un upgrade premium nel mio listino. E posso aggiungere upsell (RSVP reale, multilingua).”
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ + CTA -->
+    <section class="mt-5">
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <div class="wc-section-title">
+            <h2 class="fw-bold">FAQ (Wedding Planner)</h2>
+            <a class="link-primary" href="{% url 'contatti' %}">Fai una domanda →</a>
+          </div>
+
+          <div class="accordion" id="faqHome">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#h1">
+                  Il cliente vedrà il vostro brand o il mio?
+                </button>
+              </h2>
+              <div id="h1" class="accordion-collapse collapse show" data-bs-parent="#faqHome">
+                <div class="accordion-body text-muted">
+                  È un servizio <span class="fw-semibold">white-label</span>: il sito può essere presentato come tuo.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#h2">
+                  Quanto tempo serve per una consegna?
+                </button>
+              </h2>
+              <div id="h2" class="accordion-collapse collapse" data-bs-parent="#faqHome">
+                <div class="accordion-body text-muted">
+                  Dipende dalla personalizzazione e dai contenuti disponibili. Di solito: bozza → revisioni → pubblicazione.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#h3">
+                  L’RSVP può essere “reale” (salvataggio + email)?
+                </button>
+              </h2>
+              <div id="h3" class="accordion-collapse collapse" data-bs-parent="#faqHome">
+                <div class="accordion-body text-muted">
+                  Sì: possiamo integrare salvataggio su database e invio email di conferma (come extra o in piani specifici).
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="wc-cta rounded-4 p-4 p-md-5 shadow-hero">
+            <h2 class="fw-bold mb-2 wc-serif">Vuoi rivendere siti matrimonio ai tuoi clienti?</h2>
+            <p class="mb-4">
+              Scrivici: ti mandiamo modalità di collaborazione, listino e materiali demo. Nessun impegno.
+            </p>
+            <a class="btn btn-primary btn-lg w-100" href="{% url 'contatti' %}">Contattaci</a>
+
+            <div class="mt-3 d-flex gap-2 flex-wrap">
+              <a class="btn btn-outline-light w-100" href="{% url 'demo_romantico' %}">Vedi la demo prima</a>
+            </div>
+
+            <div class="small mt-3" style="color: rgba(255,255,255,.70);">
+              Facciamo una call rapida e capiamo se ha senso per il tuo brand.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

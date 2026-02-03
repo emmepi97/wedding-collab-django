@@ -1,0 +1,398 @@
+{% extends "base.html" %}
+{% block title %}Elena & Luca — Informazioni matrimonio{% endblock %}
+
+{% block content %}
+
+<!-- HERO MINIMAL -->
+<header class="minimal-hero">
+  <div class="container py-5">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <div class="badge text-bg-dark mb-3">DEMO MINIMAL • HOME MATRIMONIO</div>
+        <h1 class="display-5 fw-bold mb-2">Elena &amp; Luca</h1>
+        <p class="text-muted lead mb-4">
+          Benvenuti! Qui trovate tutte le informazioni essenziali: orari, location, travel, contatti e RSVP.
+        </p>
+
+        <div class="d-flex gap-2 flex-wrap">
+          <a class="btn btn-primary btn-lg" href="#info">Info</a>
+          <a class="btn btn-outline-primary btn-lg" href="#schedule">Schedule</a>
+          <a class="btn btn-outline-primary btn-lg" href="#location">Location</a>
+          <a class="btn btn-outline-primary btn-lg" href="#rsvp">RSVP</a>
+        </div>
+
+        <div class="mt-4 border-top pt-4">
+          <div class="small text-muted">Stile</div>
+          <div class="fw-semibold">Tanto spazio bianco • tipografia pulita • tutto in 1 pagina</div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card rounded-4 shadow-sm overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1523438097201-512ae7d59c55?auto=format&fit=crop&w=1400&q=70"
+            alt="Foto coppia"
+            class="img-fluid"
+          >
+          <div class="card-body p-4">
+            <div class="row g-3">
+              <div class="col-6">
+                <div class="small text-muted">Data</div>
+                <div class="fw-semibold">06 Settembre 2026</div>
+              </div>
+              <div class="col-6">
+                <div class="small text-muted">Ora</div>
+                <div class="fw-semibold">16:30</div>
+              </div>
+              <div class="col-12">
+                <div class="small text-muted">Location</div>
+                <div class="fw-semibold">Villa / Comune (placeholder)</div>
+              </div>
+            </div>
+            <hr>
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+              <div class="small text-muted">Countdown (demo)</div>
+              <div class="fw-bold">Mancano 210 giorni</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 text-muted small">
+          (Demo) In un sito reale: link indicazioni + calendario (.ics) da scaricare.
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="container py-5">
+
+  <!-- QUICK BLOCKS -->
+  <div class="row g-3">
+    <div class="col-md-3 col-6">
+      <a class="quick-link" href="#info">Info essenziali</a>
+    </div>
+    <div class="col-md-3 col-6">
+      <a class="quick-link" href="#schedule">Orari</a>
+    </div>
+    <div class="col-md-3 col-6">
+      <a class="quick-link" href="#travel">Travel</a>
+    </div>
+    <div class="col-md-3 col-6">
+      <a class="quick-link" href="#faq">FAQ</a>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <section id="info" class="mt-5">
+    <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+      <h2 class="h4 fw-bold mb-0">Info essenziali</h2>
+      <div class="text-muted small">Aggiornato: 01/06/2026 (demo)</div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Dress code</div>
+          <div class="text-muted small">Smart elegant. No bianco/avorio. Giacca leggera consigliata.</div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Regali</div>
+          <div class="text-muted small">
+            La vostra presenza è già un regalo. Se volete contribuire al viaggio: IBAN (placeholder).
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 border h-100">
+          <div class="fw-bold">Contatti</div>
+          <div class="text-muted small">
+            Elena: +39 000 000 0000 • Luca: +39 000 000 0000 (demo)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 p-4 rounded-4 border bg-light">
+      <div class="fw-bold mb-1">Nota</div>
+      <div class="text-muted">
+        Se avete intolleranze/allergie, indicatele nell’RSVP entro il <span class="fw-semibold">10 Agosto 2026</span> (demo).
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SCHEDULE -->
+  <section id="schedule" class="mt-5">
+    <h2 class="h4 fw-bold mb-3">Schedule</h2>
+
+    <div class="rounded-4 border overflow-hidden">
+      <div class="p-3 bg-light fw-semibold">Domenica 06 Settembre 2026</div>
+      <div class="p-4">
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <div class="fw-semibold">16:00</div>
+          <div class="text-muted">Arrivo ospiti (demo)</div>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <div class="fw-semibold">16:30</div>
+          <div class="text-muted">Cerimonia (demo)</div>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <div class="fw-semibold">18:00</div>
+          <div class="text-muted">Aperitivo & foto (demo)</div>
+        </div>
+        <div class="d-flex justify-content-between border-bottom py-2">
+          <div class="fw-semibold">19:30</div>
+          <div class="text-muted">Cena (demo)</div>
+        </div>
+        <div class="d-flex justify-content-between py-2">
+          <div class="fw-semibold">22:30</div>
+          <div class="text-muted">Party (demo)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3 text-muted small">
+      (Demo) In un sito reale puoi aggiungere “Aggiungi al calendario” e “Scarica invito”.
+    </div>
+  </section>
+
+
+  <!-- LOCATION + MAP -->
+  <section id="location" class="mt-5">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-5">
+        <h2 class="h4 fw-bold mb-3">Location</h2>
+        <p class="text-muted">
+          Villa / Comune (placeholder). Cerimonia e ricevimento nella stessa sede (demo).
+        </p>
+
+        <div class="row g-3">
+          <div class="col-12">
+            <div class="p-4 rounded-4 border">
+              <div class="fw-bold">Indirizzo</div>
+              <div class="text-muted small">Via Esempio 123, Città (demo)</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-4 rounded-4 border h-100">
+              <div class="fw-bold">Parcheggio</div>
+              <div class="text-muted small">Disponibile in struttura</div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="p-4 rounded-4 border h-100">
+              <div class="fw-bold">Accessibilità</div>
+              <div class="text-muted small">Accesso facilitato (demo)</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 d-flex gap-2 flex-wrap">
+          <a class="btn btn-primary" href="#travel">Travel info →</a>
+          <a class="btn btn-outline-primary" href="#rsvp">Vai a RSVP</a>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="card rounded-4 shadow-sm overflow-hidden">
+          <div class="ratio ratio-16x9">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=12.476%2C41.891%2C12.496%2C41.901&layer=mapnik"
+              style="border:0"
+              loading="lazy"
+              title="Mappa demo"
+            ></iframe>
+          </div>
+          <div class="card-body p-4">
+            <div class="text-muted small">
+              (Demo) Inserire qui link Google Maps e bottone “Indicazioni”.
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3 minimal-gallery">
+          <img src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1200&q=70" alt="Location 1">
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=1200&q=70" alt="Dettaglio 2">
+          <img src="https://images.unsplash.com/photo-1529516548873-9ce57c8f155e?auto=format&fit=crop&w=1200&q=70" alt="Dettaglio 3">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TRAVEL -->
+  <section id="travel" class="mt-5">
+    <h2 class="h4 fw-bold mb-3">Travel & alloggi</h2>
+
+    <div class="row g-4">
+      <div class="col-lg-7">
+        <div class="p-4 p-md-5 rounded-4 border bg-light h-100">
+          <div class="fw-bold mb-2">Come arrivare</div>
+          <ul class="text-muted mb-0">
+            <li><span class="fw-semibold">Auto:</span> uscita “Esempio” + 10 min (demo)</li>
+            <li><span class="fw-semibold">Treno:</span> stazione centrale + taxi 15 min (demo)</li>
+            <li><span class="fw-semibold">Aereo:</span> aeroporto + transfer 45 min (demo)</li>
+          </ul>
+
+          <div class="mt-4">
+            <div class="fw-bold mb-2">Navetta (demo)</div>
+            <div class="text-muted">
+              Disponibile navetta dal centro alle 15:30 e ritorno alle 01:00 (demo).
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="card rounded-4 shadow-sm h-100">
+          <div class="card-body p-4">
+            <div class="fw-bold mb-2">Hotel consigliati</div>
+            <div class="vstack gap-3">
+              <div class="p-3 rounded-4 border">
+                <div class="fw-semibold">Hotel Centro</div>
+                <div class="text-muted small">Navetta disponibile (demo)</div>
+              </div>
+              <div class="p-3 rounded-4 border">
+                <div class="fw-semibold">B&amp;B Verde</div>
+                <div class="text-muted small">10 min in auto (demo)</div>
+              </div>
+              <div class="p-3 rounded-4 border">
+                <div class="fw-semibold">Agriturismo Colline</div>
+                <div class="text-muted small">Per chi resta anche il giorno dopo (demo)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- PLAYLIST (minimal) -->
+  <section class="mt-5">
+    <h2 class="h4 fw-bold mb-3">Playlist (extra)</h2>
+    <div class="p-4 p-md-5 rounded-4 border">
+      <div class="text-muted mb-3">
+        Extra minimal: una piccola playlist “mood” (demo).
+      </div>
+      <div class="rounded-4 border bg-light p-4 text-muted">
+        Embed Spotify placeholder
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ -->
+  <section id="faq" class="mt-5">
+    <h2 class="h4 fw-bold mb-3">FAQ</h2>
+
+    <div class="accordion" id="faqMinimal">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#m1">
+            Posso parcheggiare in location?
+          </button>
+        </h2>
+        <div id="m1" class="accordion-collapse collapse show" data-bs-parent="#faqMinimal">
+          <div class="accordion-body text-muted">Sì, parcheggio interno disponibile (demo).</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#m2">
+            Ci sono alternative per intolleranze?
+          </button>
+        </h2>
+        <div id="m2" class="accordion-collapse collapse" data-bs-parent="#faqMinimal">
+          <div class="accordion-body text-muted">Sì, indicatele in RSVP entro la data limite (demo).</div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#m3">
+            A che ora finisce la festa?
+          </button>
+        </h2>
+        <div id="m3" class="accordion-collapse collapse" data-bs-parent="#faqMinimal">
+          <div class="accordion-body text-muted">Indicativamente 01:00 (demo).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- RSVP (semplice ma completo) -->
+  <section id="rsvp" class="mt-5">
+    <h2 class="h4 fw-bold mb-3">RSVP</h2>
+
+    <div class="p-4 p-md-5 rounded-4 border">
+      <div class="text-muted mb-4">
+        RSVP minimal: pochi campi, ma sufficienti per gestire presenza e preferenze (demo).
+      </div>
+
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Nome e Cognome</label>
+          <input class="form-control" placeholder="Es. Mario Rossi" disabled>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Email</label>
+          <input class="form-control" placeholder="esempio@email.it" disabled>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Partecipo</label>
+          <select class="form-select" disabled>
+            <option>Sì</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">N. persone</label>
+          <select class="form-select" disabled>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4+</option>
+          </select>
+        </div>
+
+        <div class="col-md-4">
+          <label class="form-label">Menu</label>
+          <select class="form-select" disabled>
+            <option>Standard</option>
+            <option>Vegetariano</option>
+            <option>Vegano</option>
+            <option>Senza glutine</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Note / Allergie</label>
+          <input class="form-control" placeholder="Scrivi qui..." disabled>
+        </div>
+
+        <div class="col-12">
+          <button class="btn btn-primary btn-lg" type="button" disabled>Invia RSVP (demo)</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+  <div class="mt-5">
+    <a href="{% url 'demo_list' %}" class="btn btn-outline-primary">← Torna alle demo</a>
+  </div>
+</div>
+
+{% endblock %}
