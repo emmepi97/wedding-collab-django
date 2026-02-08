@@ -338,31 +338,58 @@ nav .nav-cta{
       </div>
     </section>
  
-    <!-- TEMPLATE GALLERY -->
-    <section id="template" class="section">
-      <div class="container">
-        <p class="kicker script">Selezione</p>
-        <h2>Template pronti per l’uso</h2>
-        <div class="decor"><span class="dot"></span></div>
-        <p class="section-intro">Ogni template è personalizzabile su colori, font, sezioni e immagini. Possiamo anche partire da zero.</p>
- 
-        <div class="grid cols-3">
-  <div class="tpl reveal">
-<a href="{% url 'demo_romantico' %}">
-    <img src="media/image/matrimoniosito5.png" alt="Template matrimonio elegante">
-</a>
-    <div class="tpl-meta" > 
-      <strong>Cipria Oro</strong> · elegante & romantico
-    </div>
-  </div>
-</div>
 
- 
-        <div class="center" style="margin-top:16px">
-          <a href="{% url 'demo_romantico' %}"class="btn">Vedi demo live</a>
+
+    {% load static %}
+
+<!-- TEMPLATE GALLERY -->
+<section id="template" class="section">
+  <div class="container">
+
+    <p class="kicker script">Selezione</p>
+
+    <h2>Template pronti per l’uso</h2>
+
+    <div class="decor">
+      <span class="dot"></span>
+    </div>
+
+    <p class="section-intro">
+      Ogni template è personalizzabile su colori, font, sezioni e immagini.
+      Possiamo anche partire da zero.
+    </p>
+
+    <div class="grid cols-3">
+
+      <div class="tpl reveal">
+
+        <a href="{% url 'demo_romantico' %}">
+          <img
+            src="{% static 'img/matrimoniosito5.png' %}"
+            alt="Template matrimonio elegante"
+            class="img-fluid"
+          >
+        </a>
+
+        <div class="tpl-meta">
+          <strong>Cipria Oro</strong> · elegante & romantico
         </div>
+
       </div>
-    </section>
+
+    </div>
+
+    <div class="center" style="margin-top:16px">
+      <a href="{% url 'demo_romantico' %}" class="btn">
+        Vedi demo live
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
  
     <!-- ADD-ON PREMIUM -->
     <section id="addon" class="section">
