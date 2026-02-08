@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+
 {% load static %}
 
 {% block title %}Sara & Andrea — Il nostro matrimonio (Demo){% endblock %}
@@ -7,7 +7,9 @@
 
 <!-- Font romantico (solo per questa pagina) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -728,15 +730,8 @@
       </div>
     </section>
 
-    <!-- BACK + FOOTER -->
-    <div class="mt-5 d-flex gap-2 flex-wrap">
-      <a href="{% url 'home' %}" class="btn btn-outline-primary">← Torna al sito</a>
-      <a href="{% url 'contatti' %}" class="btn btn-primary">Vuoi un sito così? Contattaci</a>
-    </div>
 
-    <footer class="mt-5 pt-4 border-top text-muted small">
-      Demo WeddingCollab • Tutti i contenuti sono placeholder • Foto da Unsplash
-    </footer>
+
   </div>
 
   <!-- Countdown JS (demo) -->
