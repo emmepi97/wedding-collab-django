@@ -29,24 +29,8 @@
     img{max-width:100%;height:auto;display:block}
     .container{max-width:var(--container);margin:0 auto;padding:0 20px}
     .center{text-align:center}
- 
 
-    /* Nav */
-    nav{position:sticky;top:0;z-index:100;backdrop-filter:blur(10px) saturate(140%);background:rgba(251,249,246,.78);border-bottom:1px solid rgba(230,194,190,.35)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--ink);padding:12px 0}
-    .brand-title{font-family:var(--ff-title);font-weight:900;letter-spacing:.3px}
-    .brand-tag{font-family:var(--ff-script);color:#AF8D85}
-    .nav-links{list-style:none;display:flex;gap:14px;margin:0;padding:10px 0;flex-wrap:wrap}
-    .nav-links a{font-family:var(--ff-ui);font-weight:600;text-decoration:none;color:var(--ink);padding:8px 12px;border-radius:999px}
-    .nav-links a:hover{background:rgba(230,194,190,.18)}
-    .nav-cta{display:flex;gap:8px;flex-wrap:wrap}
 
-    .nav-inner{
-  max-width:1900px;
-  margin:0 auto;
-  padding:0 58px;
-}
 
 form label{
   display:flex;
@@ -136,7 +120,104 @@ form textarea{
     .accordion summary::marker,.accordion summary::-webkit-details-marker{display:none}
     .accordion summary:after{content:"+";float:right}
     .accordion details[open] summary:after{content:"–"}
- 
+
+
+/* =========================
+   NAVBAR (pulita e responsive)
+   ========================= */
+
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px) saturate(140%);
+  background: rgba(251,249,246,.78);
+  border-bottom: 1px solid rgba(230,194,190,.35);
+}
+
+/* contenitore interno: largo ma con “aria” ai lati */
+nav .nav-inner{
+  max-width: 1600px;                 /* <-- cambia qui: 1400 / 1600 / 1900 */
+  margin: 0 auto;
+  padding: 10px clamp(16px, 3vw, 64px); /* padding laterale dinamico */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* brand */
+nav .brand{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
+}
+nav .brand-title{
+  font-family: var(--ff-title);
+  font-weight: 900;
+  letter-spacing: .3px;
+}
+
+/* links */
+nav .nav-links{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+nav .nav-links a{
+  font-family: var(--ff-ui);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+nav .nav-links a:hover{
+  background: rgba(230,194,190,.18);
+}
+
+/* CTA */
+nav .nav-cta{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 900px){
+  nav .nav-inner{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav .brand{
+    width: 100%;
+    justify-content: center;
+  }
+
+  nav .nav-links{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav .nav-cta{
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+  }
+}
+
+
     /* Form */
     form{display:grid;gap:14px}
     label{display:block;font-family:var(--ff-ui);font-weight:700;font-size:14px;color:#4A4542}
@@ -152,38 +233,39 @@ form textarea{
     footer{border-top:1px solid rgba(230,194,190,.45);padding:40px 0;color:#7c7773}
   </style>
 </head>
+
+
+
 <body>
  
   <!-- NAV -->
-  <nav aria-label="Navigazione principale">
-    <div class="container nav-inner">
-      <a href="#home" class="brand" aria-label="Vai alla home">
-        <img src="assets/logo.svg" alt="" width="28" height="28" />
-        <div>
-          <div class="brand-title">Wedding Coding</div>
-    
-        </div>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#servizio">Servizio</a></li>
-        <li><a href="#template">Template</a></li>
-        <li><a href="#addon">Add‑on</a></li>
-        <li><a href="#pricing">Prezzi Planner</a></li>
-        <li><a href="#faq">FAQ</a></li>
-      </ul>
-      <div class="nav-cta">
-        <a href="#partner" class="btn ghost">Diventa Partner</a>
-        <a href="#demo" class="btn">Prenota demo</a>
-      </div>
+<nav aria-label="Navigazione principale">
+  <div class="nav-inner">
+    <a href="#home" class="brand" aria-label="Vai alla home">
+      <div class="brand-title">Wedding Coding</div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#servizio">Servizio</a></li>
+      <li><a href="#template">Template</a></li>
+      <li><a href="#demo">Contatti</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#partner" class="btn ghost">Diventa Partner</a>
+      <a href="#demo" class="btn">Prenota demo</a>
     </div>
-  </nav>
+  </div>
+</nav>
+
+
  
   <!-- HERO -->
   <header id="home" class="hero" role="banner" aria-label="Sezione di benvenuto">
     <div class="hero-content container">
       <p class="hero-script">White‑label per Wedding Planner</p>
-      <h1>Siti di matrimonio premium. Pronti in 72h.</h1>
-      <p class="hero-sub">Template eleganti e su misura, add‑on professionali (RSVP, gallery, QR kit, guestbook). Tu gestisci il cliente, noi realizziamo il sito dei loro sogni.</p>
+      <h1>Siti di matrimonio premium per il sogno d'amore dei tuoi clienti.</h1>
+      <p class="hero-sub">Template eleganti e su misura, add‑on professionali (RSVP, gallery, QR kit, guestbook). Tu gestisci il cliente, noi realizziamo il sito per il loro sogno d'amore.</p>
       <div class="hero-cta">
         <a href="#partner" class="btn">Scarica Kit Partner</a>
         <a href="#demo" class="btn">Prenota una demo</a>
@@ -210,7 +292,7 @@ form textarea{
           <div class="card reveal">
             <span class="pill">1 · Brief</span>
             <h3>Brief & Template</h3>
-            <p>Ci invii logo, palette, foto e scegli un template. Ti aiutiamo con copy e struttura.</p>
+            <p>Ci invii informazioni, palette, foto e scegli un design. Noi sviluppiamo il sito, copy e struttura.</p>
             <div class="features">
               <div class="feature"><div class="icon">🎨</div><div>Branding del Planner e del cliente</div></div>
               <div class="feature"><div class="icon">🧩</div><div>Sezioni modulari su misura</div></div>
@@ -266,8 +348,10 @@ form textarea{
  
         <div class="grid cols-3">
   <div class="tpl reveal">
+<a href="{% url 'demo_romantico' %}">
     <img src="media/image/matrimoniosito5.png" alt="Template matrimonio elegante">
-    <div class="tpl-meta">
+</a>
+    <div class="tpl-meta" > 
       <strong>Cipria Oro</strong> · elegante & romantico
     </div>
   </div>
@@ -275,8 +359,7 @@ form textarea{
 
  
         <div class="center" style="margin-top:16px">
-          <a href="#demo" class="btn">Vedi demo live</a>
-          <a href="#partner" class="btn ghost">Scarica catalogo PDF</a>
+          <a href="{% url 'demo_romantico' %}"class="btn">Vedi demo live</a>
         </div>
       </div>
     </section>
@@ -299,7 +382,7 @@ form textarea{
       </div>
     </section>
  
-    <!-- PORTFOLIO / CASE STUDY -->
+    <!-- PORTFOLIO / CASE STUDY 
     <section class="section">
       <div class="container">
         <p class="kicker script">Portfolio</p>
@@ -327,6 +410,7 @@ form textarea{
       </div>
     </section>
  
+    -->
     <!-- PERCHÉ NOI -->
     <section class="section">
       <div class="container">
@@ -336,7 +420,7 @@ form textarea{
  
         <div class="grid cols-3">
           <div class="card reveal"><strong>White‑label totale</strong><br/><span class="muted">Brand Planner in ogni touchpoint</span></div>
-          <div class="card reveal"><strong>Time‑to‑market</strong><br/><span class="muted">Consegna in 72h</span></div>
+          <div class="card reveal"><strong>Time‑to‑market</strong><br/><span class="muted">Consegna in 7 giorni</span></div>
           <div class="card reveal"><strong>Kit rivendita</strong><br/><span class="muted">Mockup, listini, schede</span></div>
           <div class="card reveal"><strong>Prezzi all’ingrosso</strong><br/><span class="muted">Margine per il Planner</span></div>
           <div class="card reveal"><strong>Supporto evento</strong><br/><span class="muted">Prioritario prima/dopo</span></div>
@@ -427,7 +511,7 @@ form textarea{
         <p class="kicker script">Lavora con noi</p>
         <h2>Diventa Partner</h2>
         <div class="decor"><span class="dot"></span></div>
-        <p class="section-intro">Richiedi il Kit Partner e una call conoscitiva. Ti invieremo listini, template e casi studio.</p>
+        <p class="section-intro">Richiedi il Kit Partner o una call conoscitiva. Ti invieremo listini, template e casi studio.</p>
  
         <div class="grid cols-2">
           <div class="card reveal">
@@ -442,8 +526,8 @@ form textarea{
     </label>
 
     <label>
-      Studio / Agenzia
-      <input name="company" required placeholder="Nome studio o brand">
+      Agenzia
+      <input name="company" required placeholder="Nome studio o agenzia">
     </label>
   </div>
 
@@ -498,15 +582,10 @@ form textarea{
             <h3>Cosa ricevi</h3>
             <ul class="list">
               <li>Catalogo template + demo link</li>
-              <li>Listini partner (Starter/Pro/Agency)</li>
               <li>Checklist di brief e onboarding</li>
               <li>Mockup per presentare ai clienti</li>
               <li>Schema di rivendita e margini</li>
             </ul>
-            <div style="margin-top:10px">
-              <a href="#demo" class="btn small">Prenota demo</a>
-              <a href="#template" class="btn ghost small">Guarda i template</a>
-            </div>
           </div>
         </div>
       </div>
@@ -518,8 +597,8 @@ form textarea{
         <p class="kicker script">Pronti a partire</p>
         <h2>Parliamone oggi</h2>
         <div class="decor"><span class="dot"></span></div>
-        <p class="section-intro">Scrivici su <strong>weddingcoding@gmail.com</strong> ed iniziamo a creare siti per matrimoni insieme.</p>
-        <a href=mailto: weddingcoding@gmail.com  class="btn">Scrivi ora</a>
+        <p class="section-intro">Scrivici su <strong>weddingcoding@libero.it</strong> ed iniziamo a creare siti per matrimoni insieme.</p>
+        <a href=mailto: weddingcoding@libero.it  class="btn">Scrivi ora</a>
       </div>
     </section>
   </main>
@@ -527,7 +606,7 @@ form textarea{
   <footer>
     <div class="container center">
       <p><strong>Wedding Coding</strong> · Siti web di matrimonio white‑label per Wedding Planner</p>
-      <p class="help">© 2026 · P.IVA 00000000000 · Privacy · Cookie · Terms</p>
+      <p class="help">© 2026 · weddingcoding@libero.it · Privacy · Cookie · Terms</p>
     </div>
   </footer>
  
@@ -547,4 +626,36 @@ form textarea{
     });
   </script>
 </body>
+<script>
+  // 1) evita che il browser ripristini lo scroll automaticamente
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // 2) se l'URL arriva con #qualcosa, lo rimuove e torna in alto
+  window.addEventListener('load', () => {
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+      window.scrollTo(0, 0);
+    }
+  });
+
+  // 3) intercetta click sui link #... e poi pulisce l'URL (così al refresh riparti dall'alto)
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (!id || id === '#') return;
+
+        e.preventDefault();
+        const el = document.querySelector(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+
+        // rimuove #... dalla barra
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      });
+    });
+  });
+</script>
+
 </html>
