@@ -289,37 +289,62 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
   </section>
  
   <!-- PROGRAMMA -->
-  <section id="programma" class="section" aria-label="Programma della giornata">
-    <div class="container">
-      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
-        <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Programma</h2>
-        <div class="text-muted" style="font-size:.95rem;">12 Luglio 2026 • Villa del Lago</div>
-      </div>
- 
-      <div class="program-grid">
-        {% for item in [
-          ('16:00','Arrivo ospiti','Benvenuto e sistemazione (demo).'),
-          ('17:00','Cerimonia','Inizio cerimonia nel giardino (demo).'),
-          ('18:00','Aperitivo','Brindisi, foto e musica (demo).'),
-          ('19:30','Cena','Cena servita (demo).'),
-          ('22:00','Taglio torta','Torta e brindisi (demo).'),
-          ('22:30','Party','Musica, balli e open bar (demo).')
-        ] %}
-        <article class="program-card">
-          <span class="time">{{ item.0 }}</span>
-          <div style="font-weight:800;">{{ item.1 }}</div>
-          <div class="text-muted" style="font-size:.95rem;">{{ item.2 }}</div>
-        </article>
-        {% endfor %}
-      </div>
- 
-      <div class="block" style="margin-top:16px;">
-        <div style="font-weight:700; margin-bottom:4px;">Nota</div>
-        <div class="text-muted">Se arrivate in ritardo, consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).</div>
-      </div>
+<!-- PROGRAMMA -->
+<section id="programma" class="section" aria-label="Programma della giornata">
+  <div class="container">
+    <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+      <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Programma</h2>
+      <div class="text-muted" style="font-size:.95rem;">12 Luglio 2026 • Villa del Lago</div>
     </div>
-  </section>
- 
+
+    <div class="program-grid">
+      <article class="program-card">
+        <span class="time">16:00</span>
+        <div style="font-weight:800;">Arrivo ospiti</div>
+        <div class="text-muted" style="font-size:.95rem;">Benvenuto e sistemazione (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="time">17:00</span>
+        <div style="font-weight:800;">Cerimonia</div>
+        <div class="text-muted" style="font-size:.95rem;">Inizio cerimonia nel giardino (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="time">18:00</span>
+        <div style="font-weight:800;">Aperitivo</div>
+        <div class="text-muted" style="font-size:.95rem;">Brindisi, foto e musica (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="time">19:30</span>
+        <div style="font-weight:800;">Cena</div>
+        <div class="text-muted" style="font-size:.95rem;">Cena servita (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="time">22:00</span>
+        <div style="font-weight:800;">Taglio torta</div>
+        <div class="text-muted" style="font-size:.95rem;">Torta e brindisi (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="time">22:30</span>
+        <div style="font-weight:800;">Party</div>
+        <div class="text-muted" style="font-size:.95rem;">Musica, balli e open bar (demo).</div>
+      </article>
+    </div>
+
+    <div class="block" style="margin-top:16px;">
+      <div style="font-weight:700; margin-bottom:4px;">Nota</div>
+      <div class="text-muted">Se arrivate in ritardo, consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).</div>
+    </div>
+  </div>
+</section>
+
+
+
+
   <!-- LOCATION + MAPPA -->
   <section id="location" class="section" aria-label="Location">
     <div class="container" style="display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(14px, 3vw, 28px);">
