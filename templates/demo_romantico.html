@@ -1,760 +1,609 @@
 {% extends "base.html" %}
 {% load static %}
-
-{% block title %}Sara & Andrea — Il nostro matrimonio (Demo){% endblock %}
-
+ 
+{% block title %}Sara & Andrea — Demo (Classic Nav){% endblock %}
+ 
 {% block content %}
-
-<!-- Font romantico (solo per questa pagina) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+<a href="#main" class="skip-link">Salta al contenuto</a>
+ 
 <style>
-  /* ===== Tema romantico inline (solo questa pagina) ===== */
-  :root{
-    --romantic: #ff6e9e;
-    --romantic-2: #ff8fb5;
-    --romantic-dark: #e55286;
-    --ink: #1f1f23;
+/* ===================== THEME: Porcelain, Ink & Blush ===================== */
+:root{
+  /* Palette */
+  --porcelain:#F6F4F1;
+  --ink:#11131B;
+  --muted:rgba(17,19,27,.72);
+  --line:rgba(0,0,0,.10);
+  --blush:#FF7CA3;
+  --blush-2:#FF98B7;
+  --gold:#E0B786;
+  --gold-2:#D7A76A;
+ 
+  /* Radius & shadows */
+  --r:22px; --r-lg:28px;
+  --sh:0 12px 28px rgba(17,19,27,.14);
+  --sh-lg:0 18px 46px rgba(17,19,27,.18);
+ 
+  /* Typography */
+  --serif:"Playfair Display", Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+ 
+  /* Heights */
+  --nav-h:70px; /* altezza navbar */
+}
+ 
+/* Base */
+html,body{height:100%}
+body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:var(--sans);}
+.serif{font-family:var(--serif); letter-spacing:.2px;}
+.text-muted{color:var(--muted)!important;}
+.rounded-4{border-radius:var(--r)}
+.rounded-5{border-radius:var(--r-lg)}
+.shadow-soft{box-shadow:var(--sh)}
+.shadow-strong{box-shadow:var(--sh-lg)}
+a{color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid rgba(255,124,163,.55); outline-offset:2px}
+ 
+/* Skip link */
+.skip-link{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;}
+.skip-link:focus{left:12px; top:12px; width:auto; height:auto; background:#fff; border:2px solid var(--blush); padding:.4rem .6rem; border-radius:8px; z-index:9999}
+ 
+/* Container */
+.container{width:min(1180px, 92vw); margin:0 auto}
+ 
+/* ===================== NAVBAR (CLASSIC) ===================== */
+.navbar{
+  position:sticky; top:0; z-index:1020;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+.navbar .inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.brand{
+  display:flex; align-items:center; gap:.6rem; text-decoration:none; font-weight:900; letter-spacing:.02em;
+}
+.brand-badge{
+  width:34px; height:34px; border-radius:999px;
+  background:linear-gradient(135deg,var(--blush),var(--gold));
+  display:grid; place-items:center; color:#fff; font-weight:900; font-size:.95rem; box-shadow:0 8px 18px rgba(255,124,163,.25);
+}
+.nav-links{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
+.nav-links a{
+  text-decoration:none; font-weight:800; color:#1f1f24;
+  border:1px solid var(--line); background:#fff; border-radius:999px; padding:.5rem .85rem;
+}
+.nav-links a:hover{background:var(--porcelain)}
+/* CTA nav */
+.nav-cta{
+  display:flex; align-items:center; gap:.4rem; flex-wrap:wrap;
+}
+.btn{display:inline-flex; align-items:center; justify-content:center; gap:.6rem; text-decoration:none; font-weight:800; padding:.7rem 1rem; border-radius:12px; border:1px solid transparent; cursor:pointer}
+.btn-ghost{background:rgba(255,124,163,.10); border-color:rgba(255,124,163,.35); color:#9a445f}
+.btn-ghost:hover{background:rgba(255,124,163,.16)}
+.btn-blush{background:linear-gradient(135deg,var(--blush),var(--blush-2)); color:#361726; box-shadow:0 14px 30px rgba(255,124,163,.26)}
+.btn-blush:hover{filter:brightness(.98); transform:translateY(-1px)}
+/* Hamburger mobile */
+.hamb{display:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:.45rem .6rem}
+.hamb span{display:block; width:22px; height:2px; background:#222; margin:4px 0; border-radius:2px}
+@media (max-width: 900px){
+  .nav-links{display:none}
+  .nav-cta{display:none}
+  .hamb{display:block}
+  .menu-panel{
+    position:fixed; top:calc(var(--nav-h) + 6px); left:0; right:0; z-index:1010;
+    background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); box-shadow:var(--sh);
+    padding:10px 0; display:none;
   }
-
-  /* forza font romantico su tutta la pagina demo */
-  .demo-romantico-wrap{
-    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    color: var(--ink);
-  }
-  .demo-romantico-wrap h1,
-  .demo-romantico-wrap h2,
-  .demo-romantico-wrap h3,
-  .demo-romantico-wrap .romantic-title{
-    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
-    letter-spacing: .2px;
-  }
-
-  /* bottoni: stessa tonalità dell’header */
-  .demo-romantico-wrap .btn-primary{
-    background: linear-gradient(135deg, var(--romantic), var(--romantic-2));
-    border: none;
-    box-shadow: 0 10px 24px rgba(255,110,158,.25);
-  }
-  .demo-romantico-wrap .btn-primary:hover{
-    filter: brightness(.98);
-    transform: translateY(-1px);
-  }
-  .demo-romantico-wrap .btn-outline-primary{
-    border-color: rgba(255,110,158,.55);
-    color: var(--romantic-dark);
-    background: rgba(255,110,158,.06);
-  }
-  .demo-romantico-wrap .btn-outline-primary:hover{
-    background: rgba(255,110,158,.12);
-    border-color: rgba(255,110,158,.75);
-    color: var(--romantic-dark);
-  }
-
-  /* quick links in pagina */
-  .demo-romantico-wrap .quick-link{
-    display:block;
-    text-decoration:none;
-    text-align:center;
-    padding: 14px 12px;
-    border-radius: 16px;
-    border: 1px solid rgba(255,110,158,.22);
-    background: rgba(255,110,158,.06);
-    color: var(--romantic-dark);
-    font-weight: 700;
-    transition: transform .12s ease, background .12s ease;
-  }
-  .demo-romantico-wrap .quick-link:hover{
-    background: rgba(255,110,158,.12);
-    transform: translateY(-1px);
-  }
-
-  /* pill */
-  .demo-romantico-wrap .pill{
-    background: rgba(255,255,255,.14);
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 999px;
-    padding: 10px 14px;
-    backdrop-filter: blur(6px);
-  }
-  .demo-romantico-wrap .pill-label{ font-size: 12px; opacity: .80; }
-  .demo-romantico-wrap .pill-value{ font-weight: 800; }
-
-  /* timeline */
-  .demo-romantico-wrap .timeline-2{
-    position: relative;
-    padding-left: 18px;
-  }
-  .demo-romantico-wrap .timeline-2:before{
-    content:"";
-    position:absolute;
-    left: 6px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: rgba(255,110,158,.25);
-  }
-  .demo-romantico-wrap .t2-item{ position: relative; padding: 0 0 18px 0; }
-  .demo-romantico-wrap .t2-dot{
-    position:absolute;
-    left: 0;
-    top: 4px;
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    background: rgba(255,110,158,.95);
-    box-shadow: 0 8px 16px rgba(255,110,158,.18);
-  }
-  .demo-romantico-wrap .t2-content{ margin-left: 22px; }
-
-  /* HERO */
-  .demo-romantico-wrap .romantic-hero-2{
-    position: relative;
-    background-image: url("https://images.unsplash.com/photo-1523438097201-512ae7d59c55?auto=format&fit=crop&w=1800&q=70");
-    background-size: cover;
-    background-position: center;
-  }
-  .demo-romantico-wrap .romantic-hero-overlay{
-    position:absolute;
-    inset:0;
-    background: linear-gradient(135deg, rgba(0,0,0,.70), rgba(255,110,158,.30));
-  }
-
-  /* sticky nav: tonalità romantica */
-  .demo-romantico-wrap .sticky-top{
-    backdrop-filter: blur(8px);
-  }
-  .demo-romantico-wrap .sticky-top .btn-outline-primary{
-    background: rgba(255,110,158,.05);
-  }
-  .demo-romantico-wrap .sticky-top .btn-primary{
-    padding-left: 14px;
-    padding-right: 14px;
-  }
-
-  /* badge pink for header, lasciando bootstrap */
-  .demo-romantico-wrap .badge.text-bg-primary{
-    background: linear-gradient(135deg, var(--romantic), var(--romantic-2)) !important;
-  }
-
-  /* gallery */
-  .demo-romantico-wrap .gallery-grid{
-    display:grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 12px;
-  }
-  .demo-romantico-wrap .gallery-grid img{
-    width:100%;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 16px;
-    border: 1px solid rgba(0,0,0,.08);
-  }
-  .demo-romantico-wrap .gallery-grid img:nth-child(1){ grid-column: span 7; height: 320px; }
-  .demo-romantico-wrap .gallery-grid img:nth-child(2){ grid-column: span 5; height: 320px; }
-  .demo-romantico-wrap .gallery-grid img:nth-child(3){ grid-column: span 4; }
-  .demo-romantico-wrap .gallery-grid img:nth-child(4){ grid-column: span 4; }
-  .demo-romantico-wrap .gallery-grid img:nth-child(5){ grid-column: span 4; }
-  .demo-romantico-wrap .gallery-grid img:nth-child(6){ grid-column: span 12; height: 260px; }
-
-  @media (max-width: 992px){
-    .demo-romantico-wrap .gallery-grid{ grid-template-columns: repeat(6, 1fr); }
-    .demo-romantico-wrap .gallery-grid img:nth-child(1),
-    .demo-romantico-wrap .gallery-grid img:nth-child(2),
-    .demo-romantico-wrap .gallery-grid img:nth-child(6){ grid-column: span 6; height: 240px; }
-    .demo-romantico-wrap .gallery-grid img:nth-child(3),
-    .demo-romantico-wrap .gallery-grid img:nth-child(4),
-    .demo-romantico-wrap .gallery-grid img:nth-child(5){ grid-column: span 3; height: 180px; }
-  }
-
-  /* rsvp head */
-  .demo-romantico-wrap .rsvp-head{
-    background: linear-gradient(135deg, rgba(0,0,0,.85), rgba(255,110,158,.35));
-  }
-
-  /* piccole rifiniture */
-  .demo-romantico-wrap a.link-primary{ color: var(--romantic-dark) !important; }
-  .demo-romantico-wrap .text-muted{ color: rgba(31,31,35,.70) !important; }
+  .menu-panel.open{display:block}
+  .menu-panel .container{display:grid; gap:8px}
+  .menu-panel a{display:block; text-decoration:none; font-weight:800; padding:.7rem .9rem; border-radius:12px; border:1px solid var(--line)}
+  .menu-panel .row-cta{display:flex; gap:.5rem; flex-wrap:wrap; padding:.2rem .3rem}
+}
+ 
+/* ===================== HERO ===================== */
+.hero{
+  position:relative; min-height: calc(100dvh - var(--nav-h)); overflow:hidden; background:var(--porcelain);
+  border-bottom:1px solid var(--line); display:grid; place-items:center;
+}
+.hero .bg{position:absolute; inset:0; z-index:0; overflow:hidden}
+.hero .bg img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(102%) contrast(103%) brightness(98%); transform:scale(1.02)}
+.hero .veil{
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(65% 60% at 20% 10%, rgba(255,124,163,.18), transparent 60%),
+    radial-gradient(60% 60% at 80% 0%, rgba(224,183,134,.18), transparent 60%),
+    linear-gradient(180deg, rgba(246,244,241,.75), rgba(246,244,241,.92));
+}
+.hero .inner{position:relative; z-index:2; width:100%; padding: clamp(18px, 4vw, 48px) 0}
+.kicker{display:inline-flex; gap:.5rem; align-items:center; font-weight:900; letter-spacing:.12em; text-transform:uppercase; color:#1f1f24; background:#fff; border:1px solid var(--line); border-radius:999px; padding:.35rem .75rem}
+.title{font-family:var(--serif); font-weight:700; font-size:clamp(2.8rem, 7.2vw, 5rem); line-height:1.04; margin:.6rem 0 .2rem}
+.amp{background:linear-gradient(135deg,var(--blush),var(--gold)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.lead{font-size:clamp(1rem,1.9vw,1.25rem); color:rgba(0,0,0,.72)}
+.hero .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
+.pills{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
+.pill{display:inline-flex; flex-direction:column; gap:.1rem; background:rgba(255,255,255,.75); border:1px solid var(--line); border-radius:999px; padding:10px 14px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px)}
+.pill .label{font-size:12px; opacity:.82}
+.pill .value{font-weight:900}
+ 
+/* Sections / offset */
+.section{padding: clamp(40px, 6vw, 90px) 0}
+section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
+ 
+/* Blocks */
+.block{background:#fff; border:1px solid var(--line); border-radius:var(--r); box-shadow:var(--sh); padding:22px}
+.block.dark{background:#12141A; color:#fff; border-color:rgba(255,255,255,.10)}
+.block .muted-on-dark{color:rgba(255,255,255,.78)}
+ 
+/* Programma */
+.program-grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px}
+.program-card{grid-column: span 12; background:#fff; border:1px solid var(--line); border-radius:var(--r); padding:20px; box-shadow:var(--sh)}
+.program-card .time{display:inline-block; background:#0f0f12; color:#f5d5a6; font-weight:900; border-radius:999px; padding:.25rem .6rem; margin-bottom:.35rem}
+@media (min-width: 800px){ .program-card{ grid-column: span 4 } }
+ 
+/* Mappa */
+.map-frame{position:relative; width:100%; border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--sh)}
+.map-frame .ratio{position:relative; width:100%; padding-top:56.25%}
+.map-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+ 
+/* Gallery */
+.gallery{display:grid; gap:12px; grid-template-columns: repeat(12, 1fr)}
+.gallery figure{border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--sh)}
+.gallery .wide{grid-column: span 12; aspect-ratio:16/9}
+.gallery .tall{grid-column: span 6; aspect-ratio:3/4}
+.gallery .square{grid-column: span 4; aspect-ratio:1/1}
+.gallery img{width:100%; height:100%; object-fit:cover; transition:transform .45s ease, filter .45s ease; filter:saturate(98%) contrast(102%)}
+.gallery figure:hover img{transform:scale(1.03)}
+@media (max-width: 992px){
+  .gallery{grid-template-columns: repeat(6,1fr)}
+  .gallery .wide{grid-column: span 6}
+  .gallery .tall{grid-column: span 3}
+  .gallery .square{grid-column: span 3}
+}
+ 
+/* Form dark */
+.form-dark .form-label{color:#fff; font-weight:700}
+.form-dark .form-control, .form-dark .form-select{
+  width:100%; background:rgba(255,255,255,.06); color:#fff; border:1px solid rgba(255,255,255,.22);
+  padding:.7rem .8rem; border-radius:12px
+}
+.form-dark .form-control::placeholder{color:rgba(255,255,255,.60)}
+.form-row{display:grid; grid-template-columns: 1fr; gap:12px}
+@media (min-width: 800px){ .form-row{ grid-template-columns: repeat(3, 1fr) } }
+ 
+/* Footer */
+.footer{border-top:1px solid var(--line); color:var(--muted); font-size:.95rem; padding:22px 0}
+ 
+/* Motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
+}
 </style>
-
-<div class="demo-romantico-wrap">
-
+ 
+<!-- NAVBAR -->
+<header class="navbar" role="navigation" aria-label="Menu principale">
+  <div class="container inner">
+    <a href="{% url 'home' %}" class="brand" aria-label="Home">
+      <span class="brand-badge">S&A</span>
+      <span>Sara &amp; Andrea</span>
+    </a>
+ 
+    <nav class="nav-links" aria-label="Sezioni">
+      <a href="#programma">Programma</a>
+      <a href="#location">Location</a>
+      <a href="#travel">Travel</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+ 
+    <div class="nav-cta">
+      <a href="#rsvp" class="btn btn-ghost">Conferma presenza</a>
+      <a href="{% url 'contatti' %}" class="btn btn-blush">Contattaci</a>
+    </div>
+ 
+    <!-- Hamburger (mobile) -->
+    <button class="hamb" id="hamb" aria-label="Apri/chiudi menu" aria-expanded="false" aria-controls="menu-panel">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+ 
+  <!-- Panel mobile -->
+  <div id="menu-panel" class="menu-panel" hidden>
+    <div class="container">
+      <a href="#programma">Programma</a>
+      <a href="#location">Location</a>
+      <a href="#travel">Travel</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#faq">FAQ</a>
+      <div class="row-cta">
+        <a href="#rsvp" class="btn btn-ghost" style="flex:1">Conferma presenza</a>
+        <a href="{% url 'contatti' %}" class="btn btn-blush" style="flex:1">Contattaci</a>
+      </div>
+    </div>
+  </div>
+</header>
+ 
+<main id="main">
   <!-- HERO -->
-  <header class="romantic-hero-2 text-white position-relative">
-    <div class="romantic-hero-overlay"></div>
-
-    <div class="container py-5 position-relative">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-7">
-          <div class="d-flex gap-2 flex-wrap mb-3">
-            <div class="badge text-bg-light text-dark">SITO MATRIMONIO</div>
-            <div class="badge text-bg-light text-dark">DEMO COMPLETA</div>
-            <div class="badge text-bg-primary">White-label</div>
+  <section class="hero" aria-label="Copertina">
+    <div class="bg" aria-hidden="true">
+      <picture>
+        <source srcset="{% static 'img/hero_best.avif' %}" type="image/avif">
+        <source srcset="{% static 'img/hero_best.webp' %}" type="image/webp">
+        <img src="{% static 'img/hero_best.jpg' %}" alt="" loading="eager" decoding="async">
+      </picture>
+    </div>
+    <div class="veil" aria-hidden="true"></div>
+ 
+    <div class="container inner">
+      <div style="display:grid; grid-template-columns: 1.15fr 1fr; gap: clamp(14px, 3vw, 28px); align-items:center;">
+        <div>
+          <span class="kicker">Demo • Classic Nav</span>
+          <h1 class="title serif">Sara <span class="amp">&amp;</span> Andrea</h1>
+          <p class="lead">Un invito digitale elegante: <strong>programma</strong>, <strong>location</strong>, <strong>travel</strong>, <strong>alloggi</strong>, <strong>gallery</strong> e <strong>RSVP</strong> — tutto in un’unica esperienza curata nei dettagli.</p>
+ 
+          <div class="cta">
+            <a href="#rsvp" class="btn btn-blush">Conferma presenza</a>
+            <a href="#programma" class="btn btn-ghost">Vedi programma</a>
+            <a href="#location" class="btn btn-ghost">Come arrivare</a>
           </div>
-
-          <h1 class="display-4 fw-bold mb-2 romantic-title">Sara &amp; Andrea</h1>
-          <p class="lead text-white-50 mb-4">
-            Ci sposiamo! Qui trovi tutte le info utili: programma, location, travel, alloggi, RSVP e gallery.
-          </p>
-
-          <div class="d-flex gap-2 flex-wrap">
-            <a href="#rsvp" class="btn btn-light btn-lg">Conferma presenza (RSVP)</a>
-            <a href="#programma" class="btn btn-outline-light btn-lg">Vedi programma</a>
-            <a href="#location" class="btn btn-outline-light btn-lg">Come arrivare</a>
+ 
+          <div class="pills" role="group" aria-label="Dettagli principali">
+            <div class="pill"><span class="label">Data</span><span class="value">12 Luglio 2026</span></div>
+            <div class="pill"><span class="label">Orario</span><span class="value">17:00</span></div>
+            <div class="pill"><span class="label">Location</span><span class="value">Villa del Lago</span></div>
           </div>
-
-          <div class="mt-4 d-flex gap-3 flex-wrap">
-            <div class="pill">
-              <div class="pill-label">Data</div>
-              <div class="pill-value">12 Luglio 2026</div>
-            </div>
-            <div class="pill">
-              <div class="pill-label">Orario</div>
-              <div class="pill-value">17:00</div>
-            </div>
-            <div class="pill">
-              <div class="pill-label">Location</div>
-              <div class="pill-value">Villa del Lago</div>
-            </div>
-          </div>
-
-          <div class="mt-4 small text-white-50">
-            <span class="fw-semibold">Nota demo:</span> testi, nomi e indirizzi sono di esempio.
-          </div>
+ 
+          <div class="text-muted" style="margin-top:10px;"><strong>Nota demo:</strong> testi, nomi e indirizzi sono di esempio.</div>
         </div>
-
-        <div class="col-lg-5">
-          <div class="card rounded-4 shadow-lg border-0 overflow-hidden">
-            <img
-              src="{% static 'img/matrimonioheaderdemo.png' %}"
-              alt="Sara e Andrea"
-              class="img-fluid"
-              loading="lazy"
-              style="width:100%;height:auto;"
-            >
-
-            <div class="card-body p-4">
-              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
-                <div>
-                  <div class="text-muted small">Countdown (demo)</div>
-                  <div class="h5 fw-bold mb-0" id="countdownText">Mancano 160 giorni</div>
-                </div>
-                <a href="#programma" class="btn btn-primary">Scorri le info ↓</a>
-              </div>
+ 
+        <div>
+          <div class="block rounded-5 shadow-strong" style="overflow:hidden;">
+            <picture>
+              <source srcset="{% static 'img/card_hero.avif' %}" type="image/avif">
+              <source srcset="{% static 'img/card_hero.webp' %}" type="image/webp">
+              <img src="{% static 'img/card_hero.jpg' %}" alt="Dettaglio invito" loading="lazy" decoding="async" style="width:100%; height:auto; display:block">
+            </picture>
+            <div style="padding:18px;">
+              <div class="text-muted" style="font-size:.9rem;">Countdown (demo)</div>
+              <div id="countdownText" class="serif" style="font-weight:700; font-size:1.2rem;">Mancano 160 giorni</div>
             </div>
           </div>
-
-          <div class="mt-3 small text-white-50">
-            (Demo) Nel sito reale: countdown dinamico, link WhatsApp, pulsanti “chiama/scrivi”.
-          </div>
+          <div class="text-muted" style="margin-top:10px;">(Demo) Nel sito reale: pulsanti WhatsApp, “Chiama” e “Scrivi”.</div>
         </div>
       </div>
     </div>
-  </header>
-
-  <!-- STICKY QUICK NAV -->
-  <nav class="sticky-top bg-white border-bottom" style="z-index: 1020;">
-    <div class="container py-2">
-      <div class="d-flex gap-2 flex-wrap align-items-center justify-content-between">
-        <div class="small text-muted">
-          <span class="fw-semibold">Sara &amp; Andrea</span> • 12 Luglio 2026
-        </div>
-        <div class="d-flex gap-2 flex-wrap">
-          <a class="btn btn-sm btn-outline-primary" href="#programma">Programma</a>
-          <a class="btn btn-sm btn-outline-primary" href="#location">Location</a>
-          <a class="btn btn-sm btn-outline-primary" href="#travel">Travel</a>
-          <a class="btn btn-sm btn-outline-primary" href="#gallery">Gallery</a>
-          <a class="btn btn-sm btn-primary" href="#rsvp">RSVP</a>
-        </div>
+  </section>
+ 
+  <!-- INTRO -->
+  <section class="section" aria-label="Intro">
+    <div class="container">
+      <div class="block">
+        <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Benvenuti ✨</h2>
+        <p class="text-muted" style="margin:0;">Qui trovi tutto ciò che serve: dal <em>programma</em> alla <em>mappa</em>, fino a <em>RSVP</em> e <em>gallery</em>. Usa il menu in alto per navigare velocemente.</p>
       </div>
     </div>
-  </nav>
-
-  <div class="container py-5">
-
-    <!-- QUICK NAV GRID -->
-    <div class="row g-3">
-      <div class="col-md-3 col-6"><a class="quick-link" href="#programma">Programma</a></div>
-      <div class="col-md-3 col-6"><a class="quick-link" href="#location">Location</a></div>
-      <div class="col-md-3 col-6"><a class="quick-link" href="#travel">Travel</a></div>
-      <div class="col-md-3 col-6"><a class="quick-link" href="#gallery">Gallery</a></div>
+  </section>
+ 
+  <!-- PROGRAMMA -->
+  <section id="programma" class="section" aria-label="Programma della giornata">
+    <div class="container">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+        <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Programma</h2>
+        <div class="text-muted" style="font-size:.95rem;">12 Luglio 2026 • Villa del Lago</div>
+      </div>
+ 
+      <div class="program-grid">
+        {% for item in [
+          ('16:00','Arrivo ospiti','Benvenuto e sistemazione (demo).'),
+          ('17:00','Cerimonia','Inizio cerimonia nel giardino (demo).'),
+          ('18:00','Aperitivo','Brindisi, foto e musica (demo).'),
+          ('19:30','Cena','Cena servita (demo).'),
+          ('22:00','Taglio torta','Torta e brindisi (demo).'),
+          ('22:30','Party','Musica, balli e open bar (demo).')
+        ] %}
+        <article class="program-card">
+          <span class="time">{{ item.0 }}</span>
+          <div style="font-weight:800;">{{ item.1 }}</div>
+          <div class="text-muted" style="font-size:.95rem;">{{ item.2 }}</div>
+        </article>
+        {% endfor %}
+      </div>
+ 
+      <div class="block" style="margin-top:16px;">
+        <div style="font-weight:700; margin-bottom:4px;">Nota</div>
+        <div class="text-muted">Se arrivate in ritardo, consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).</div>
+      </div>
     </div>
-
-    <!-- INTRO -->
-    <section class="mt-5">
-      <div class="row g-5 align-items-start">
-        <div class="col-lg-7">
-          <h2 class="h3 fw-bold mb-3 romantic-title">Benvenuti nel nostro matrimonio 💛</h2>
-          <p class="text-muted mb-4">
-            Abbiamo creato questo spazio per condividere con voi tutte le informazioni utili e qualche ricordo.
-            Qui troverete il programma completo, la mappa della location, i consigli per il viaggio e la sezione RSVP.
-          </p>
-
-          <div class="timeline-2">
-            <div class="t2-item">
-              <div class="t2-dot"></div>
-              <div class="t2-content">
-                <div class="fw-bold">2018 — Il primo incontro</div>
-                <div class="text-muted small">Una sera d’estate, una chiacchierata infinita, e da lì…</div>
-              </div>
-            </div>
-            <div class="t2-item">
-              <div class="t2-dot"></div>
-              <div class="t2-content">
-                <div class="fw-bold">2021 — Il viaggio che ci ha cambiato</div>
-                <div class="text-muted small">Abbiamo capito di voler costruire una vita insieme.</div>
-              </div>
-            </div>
-            <div class="t2-item">
-              <div class="t2-dot"></div>
-              <div class="t2-content">
-                <div class="fw-bold">2025 — La proposta</div>
-                <div class="text-muted small">Un momento semplice, perfetto. E un grande sì.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 p-4 rounded-4 border bg-light">
-            <div class="fw-bold mb-1">Hashtag</div>
-            <div class="text-muted">Condividete i momenti con <span class="fw-semibold">#SaraEAAndrea2026</span> (demo)</div>
-          </div>
+  </section>
+ 
+  <!-- LOCATION + MAPPA -->
+  <section id="location" class="section" aria-label="Location">
+    <div class="container" style="display:grid; grid-template-columns: 1.05fr 1fr; gap: clamp(14px, 3vw, 28px);">
+      <div>
+        <h2 class="serif" style="margin:0 0 10px; font-size:1.8rem; font-weight:700;">Location</h2>
+        <p class="text-muted">Villa del Lago (placeholder). Immersa nel verde con parcheggio interno e spazi al coperto.</p>
+ 
+        <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:12px;">
+          <div class="block"><div style="font-weight:700;">Indirizzo</div><div class="text-muted" style="font-size:.95rem;">Via Esempio 123, Città (demo)</div></div>
+          <div class="block"><div style="font-weight:700;">Parcheggio</div><div class="text-muted" style="font-size:.95rem;">Disponibile in struttura (demo)</div></div>
+          <div class="block"><div style="font-weight:700;">Accessibilità</div><div class="text-muted" style="font-size:.95rem;">Accesso facilitato (demo)</div></div>
+          <div class="block"><div style="font-weight:700;">Contatto</div><div class="text-muted" style="font-size:.95rem;">+39 000 000 0000 (demo)</div></div>
         </div>
-
-        <div class="col-lg-5">
-          <div class="card rounded-4 shadow-sm overflow-hidden">
-            <img
-              src="{% static 'img/matrimoniofedibiglietto.png' %}"
-              alt="Dettaglio matrimonio"
-              class="img-fluid"
-              loading="lazy"
-              style="width:100%;height:auto;"
-            >
-            <div class="card-body p-4">
-              <h3 class="h5 fw-bold mb-2 romantic-title">Info rapide</h3>
-              <ul class="text-muted mb-0">
-                <li>Parcheggio: disponibile in struttura (demo)</li>
-                <li>Bambini: benvenuti (demo)</li>
-                <li>Allergie: segnalatele in RSVP (demo)</li>
-                <li>Dress code: elegante (vedi sotto)</li>
-              </ul>
-            </div>
-          </div>
+ 
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:12px;">
+          <a href="#travel" class="btn btn-ghost">Vedi travel info →</a>
+          <a href="#rsvp" class="btn btn-blush">Vai a RSVP</a>
         </div>
       </div>
-    </section>
-
-    <!-- PROGRAMMA -->
-    <section id="programma" class="mt-5">
-      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
-        <h2 class="h3 fw-bold mb-0 romantic-title">Programma della giornata</h2>
-        <div class="text-muted small">12 Luglio 2026 • Villa del Lago</div>
+ 
+      <div>
+        <div class="map-frame">
+          <div class="ratio">
+            <iframe
+              src=https://www.openstreetmap.org/export/embed.html?bbox=12.476%2C41.891%2C12.496%2C41.901&layer=mapnik
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mappa demo">
+            </iframe>
+          </div>
+        </div>
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: mappa precisa + pulsanti Google/Apple Maps.</div>
       </div>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">16:00</div>
-              <div class="fw-bold">Arrivo ospiti</div>
-              <div class="text-muted small">Benvenuto e sistemazione (demo).</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">17:00</div>
-              <div class="fw-bold">Cerimonia</div>
-              <div class="text-muted small">Inizio cerimonia nel giardino (demo).</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">18:00</div>
-              <div class="fw-bold">Aperitivo</div>
-              <div class="text-muted small">Brindisi, foto e musica (demo).</div>
-            </div>
-          </div>
-        </div}
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">19:30</div>
-              <div class="fw-bold">Cena</div>
-              <div class="text-muted small">Cena servita (demo).</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">22:00</div>
-              <div class="fw-bold">Taglio torta</div>
-              <div class="text-muted small">Torta e brindisi (demo).</div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card rounded-4 h-100 shadow-sm">
-            <div class="card-body p-4">
-              <div class="badge text-bg-primary mb-2">22:30</div>
-              <div class="fw-bold">Party</div>
-              <div class="text-muted small">Musica, balli e open bar (demo).</div>
-            </div>
-          </div>
+    </div>
+  </section>
+ 
+  <!-- TRAVEL + ALLOGGI -->
+  <section id="travel" class="section" aria-label="Travel & Alloggi">
+    <div class="container" style="display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px, 3vw, 28px);">
+      <div class="block">
+        <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Come arrivare</h2>
+        <ul class="text-muted" style="margin:0 0 12px 1.1rem;">
+          <li><span style="font-weight:700;">In auto:</span> uscita autostrada “Esempio”, seguire indicazioni (demo).</li>
+          <li><span style="font-weight:700;">In treno:</span> stazione “Esempio Centrale” + taxi 15 min (demo).</li>
+          <li><span style="font-weight:700;">In aereo:</span> aeroporto “Esempio” + transfer 45 min (demo).</li>
+        </ul>
+        <h3 class="serif" style="margin:0 0 6px; font-size:1.2rem; font-weight:700;">Transfer (demo)</h3>
+        <div class="text-muted">Navetta dedicata per chi alloggia in centro alle 15:30 (demo).</div>
+        <div class="block" style="margin-top:12px;">
+          <div style="font-weight:700;">Orari navetta</div>
+          <div class="text-muted" style="font-size:.95rem;">Andata: 15:30 • Ritorno: 01:00 (demo)</div>
         </div>
       </div>
-
-      <div class="mt-4 p-4 rounded-4 border bg-light">
-        <div class="fw-bold mb-1">Nota</div>
-        <div class="text-muted">
-          Se arrivate in ritardo, vi consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).
+ 
+      <div class="block">
+        <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Alloggi consigliati</h2>
+        <div style="display:grid; gap:10px;">
+          <div class="block" style="margin:0;"><div style="font-weight:700;">Hotel Lago</div><div class="text-muted" style="font-size:.95rem;">10 min dalla location</div></div>
+          <div class="block" style="margin:0;"><div style="font-weight:700;">B&amp;B Centro Storico</div><div class="text-muted" style="font-size:.95rem;">Navetta disponibile</div></div>
+          <div class="block" style="margin:0;"><div style="font-weight:700;">Agriturismo Le Colline</div><div class="text-muted" style="font-size:.95rem;">Ideale per fermarsi il giorno dopo</div></div>
+        </div>
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: link diretti, filtri per distanza/prezzo.</div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- DRESS CODE + REGALO -->
+  <section class="section" aria-label="Dress code e Regalo">
+    <div class="container" style="display:grid; grid-template-columns: 1fr 1fr; gap: clamp(14px, 3vw, 28px);">
+      <div class="block rounded-5" style="overflow:hidden;">
+        <picture>
+          <source srcset="{% static 'img/dress.avif' %}" type="image/avif">
+          <source srcset="{% static 'img/dress.webp' %}" type="image/webp">
+          <img src="{% static 'img/dress.jpg' %}" alt="Dress code" loading="lazy" decoding="async" style="width:100%; height:auto; display:block">
+        </picture>
+        <div style="padding:18px;">
+          <h3 class="serif" style="margin:0 0 6px; font-size:1.3rem; font-weight:700;">Dress code</h3>
+          <p class="text-muted" style="margin:0;">Elegante. Toni pastello consigliati, evitare bianco/avorio. Portare una giacca leggera per la sera (demo).</p>
         </div>
       </div>
-    </section>
-
-    <!-- LOCATION + MAPPA -->
-    <section id="location" class="mt-5">
-      <div class="row g-5 align-items-start">
-        <div class="col-lg-6">
-          <h2 class="h3 fw-bold mb-3 romantic-title">Location</h2>
-          <p class="text-muted">
-            Villa del Lago (placeholder). Una location immersa nel verde con parcheggio interno e spazi al coperto.
-          </p>
-
-          <div class="row g-3">
-            <div class="col-sm-6">
-              <div class="p-4 rounded-4 border h-100">
-                <div class="fw-bold">Indirizzo</div>
-                <div class="text-muted small">Via Esempio 123, Città (demo)</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-4 rounded-4 border h-100">
-                <div class="fw-bold">Parcheggio</div>
-                <div class="text-muted small">Disponibile in struttura (demo)</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-4 rounded-4 border h-100">
-                <div class="fw-bold">Accessibilità</div>
-                <div class="text-muted small">Accesso facilitato (demo)</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="p-4 rounded-4 border h-100">
-                <div class="fw-bold">Contatto location</div>
-                <div class="text-muted small">+39 000 000 0000 (demo)</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4 d-flex gap-2 flex-wrap">
-            <a class="btn btn-primary" href="#travel">Vedi travel info →</a>
-            <a class="btn btn-outline-primary" href="#rsvp">Vai a RSVP</a>
-          </div>
+ 
+      <div class="block">
+        <h3 class="serif" style="margin:0 0 6px; font-size:1.3rem; font-weight:700;">Regalo / Lista nozze</h3>
+        <p class="text-muted" style="margin:0 0 8px;">La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:</p>
+        <div class="block" style="margin:0;">
+          <div class="text-muted" style="font-size:.9rem;">IBAN (demo)</div>
+          <div style="font-weight:700;">IT00 X000 0000 0000 0000 0000 000</div>
+          <div class="text-muted" style="font-size:.9rem; margin-top:6px;">Causale</div>
+          <div style="font-weight:700;">“Regalo matrimonio Sara &amp; Andrea”</div>
         </div>
-
-        <div class="col-lg-6">
-          <div class="card rounded-4 shadow-sm overflow-hidden">
-            <div class="ratio ratio-16x9">
-              <iframe
-                src="https://www.openstreetmap.org/export/embed.html?bbox=12.476%2C41.891%2C12.496%2C41.901&layer=mapnik"
-                style="border:0"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                title="Mappa demo"
-              ></iframe>
-            </div>
-            <div class="card-body p-4">
-              <div class="fw-bold mb-1">Mappa</div>
-              <div class="text-muted small">
-                Nel sito reale qui mettiamo la mappa precisa + bottone Google Maps/Apple Maps.
-              </div>
-            </div>
-          </div>
-        </div>
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">(Demo) Possibile lista nozze con link esterni.</div>
       </div>
-    </section>
-
-    <!-- TRAVEL + HOTEL -->
-    <section id="travel" class="mt-5">
-      <h2 class="h3 fw-bold mb-3 romantic-title">Travel &amp; Alloggi</h2>
-
-      <div class="row g-4">
-        <div class="col-lg-7">
-          <div class="card rounded-4 shadow-sm h-100">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="h5 fw-bold mb-3 romantic-title">Come arrivare</h3>
-              <ul class="text-muted mb-4">
-                <li><span class="fw-semibold">In auto:</span> uscita autostrada “Esempio”, seguire indicazioni (demo).</li>
-                <li><span class="fw-semibold">In treno:</span> stazione “Esempio Centrale” + taxi 15 min (demo).</li>
-                <li><span class="fw-semibold">In aereo:</span> aeroporto “Esempio” + transfer 45 min (demo).</li>
-              </ul>
-
-              <h3 class="h5 fw-bold mb-2 romantic-title">Transfer (demo)</h3>
-              <div class="text-muted">
-                Per chi alloggia in centro, sarà disponibile una navetta alle 15:30 (demo).
-              </div>
-
-              <div class="mt-4 p-3 rounded-4 border bg-light">
-                <div class="fw-bold">Orari navetta</div>
-                <div class="text-muted small">Andata: 15:30 • Ritorno: 01:00 (demo)</div>
-              </div>
-            </div>
+    </div>
+  </section>
+ 
+  <!-- GALLERY -->
+  <section id="gallery" class="section" aria-label="Gallery">
+    <div class="container">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+        <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Gallery</h2>
+        <div class="text-muted" style="font-size:.95rem;">Una selezione (demo)</div>
+      </div>
+ 
+      <div class="gallery">
+        <figure class="wide">
+          <picture>
+            <source srcset="{% static 'img/gal_1.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_1.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_1.jpg' %}" alt="Scatto 1" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+ 
+        <figure class="tall">
+          <picture>
+            <source srcset="{% static 'img/gal_2.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_2.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_2.jpg' %}" alt="Scatto 2" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+ 
+        <figure class="square">
+          <picture>
+            <source srcset="{% static 'img/gal_3.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_3.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_3.jpg' %}" alt="Scatto 3" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+ 
+        <figure class="square">
+          <picture>
+            <source srcset="{% static 'img/gal_4.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_4.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_4.jpg' %}" alt="Scatto 4" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+ 
+        <figure class="tall">
+          <picture>
+            <source srcset="{% static 'img/gal_5.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_5.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_5.jpg' %}" alt="Scatto 5" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+ 
+        <figure class="wide">
+          <picture>
+            <source srcset="{% static 'img/gal_6.avif' %}" type="image/avif">
+            <source srcset="{% static 'img/gal_6.webp' %}" type="image/webp">
+            <img src="{% static 'img/gal_6.jpg' %}" alt="Scatto 6" loading="lazy" decoding="async">
+          </picture>
+        </figure>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- RSVP -->
+  <section id="rsvp" class="section" aria-label="RSVP">
+    <div class="container">
+      <div class="block dark rounded-5">
+        <div style="display:grid; grid-template-columns: 1fr; gap:18px;">
+          <div>
+            <h2 class="serif" style="margin:0 0 6px; font-size:1.8rem; font-weight:700;">RSVP • Conferma presenza</h2>
+            <p class="muted-on-dark" style="margin:0;">Compila per farci sapere se parteciperai e se hai esigenze particolari (demo).</p>
           </div>
-        </div>
-
-        <div class="col-lg-5">
-          <div class="card rounded-4 shadow-sm">
-            <div class="card-body p-4">
-              <h3 class="h5 fw-bold mb-3 romantic-title">Alloggi consigliati</h3>
-
-              <div class="vstack gap-3">
-                <div class="p-3 rounded-4 border">
-                  <div class="fw-semibold">Hotel Lago</div>
-                  <div class="text-muted small">10 min dalla location • (demo)</div>
-                </div>
-                <div class="p-3 rounded-4 border">
-                  <div class="fw-semibold">B&amp;B Centro Storico</div>
-                  <div class="text-muted small">Navetta disponibile • (demo)</div>
-                </div>
-                <div class="p-3 rounded-4 border">
-                  <div class="fw-semibold">Agriturismo Le Colline</div>
-                  <div class="text-muted small">Perfetto se volete fermarvi anche il giorno dopo • (demo)</div>
-                </div>
+ 
+          <form class="form-dark" aria-label="Form RSVP demo">
+            <div class="form-row">
+              <div>
+                <label class="form-label" for="name">Nome e Cognome</label>
+                <input class="form-control" id="name" placeholder="Es. Mario Rossi" disabled>
               </div>
-
-              <div class="mt-4 small text-muted">
-                Nel sito reale: link diretti a maps/booking e filtri per distanza.
+              <div>
+                <label class="form-label" for="email">Email</label>
+                <input class="form-control" id="email" placeholder=esempio@email.it disabled>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DRESS CODE + REGALO -->
-    <section class="mt-5">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="card rounded-4 shadow-sm h-100 overflow-hidden">
-            <img src="{% static 'img/matrimoniodresscode2.png' %}" alt="Dress code" class="img-fluid" loading="lazy" style="width:100%;height:auto;">
-            <div class="card-body p-4">
-              <h3 class="h5 fw-bold mb-2 romantic-title">Dress code</h3>
-              <p class="text-muted mb-0">
-                Elegante. Suggeriamo colori pastello, no bianco/avorio. Portate una giacca leggera per la sera (demo).
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-6">
-          <div class="card rounded-4 shadow-sm h-100">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="h5 fw-bold mb-2 romantic-title">Regalo / Lista nozze</h3>
-              <p class="text-muted">
-                La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:
-              </p>
-
-              <div class="p-3 rounded-4 border bg-light">
-                <div class="small text-muted">IBAN (demo)</div>
-                <div class="fw-semibold">IT00 X000 0000 0000 0000 0000 000</div>
-                <div class="small text-muted mt-2">Causale</div>
-                <div class="fw-semibold">“Regalo matrimonio Sara &amp; Andrea”</div>
+              <div>
+                <label class="form-label" for="attend">Parteciperò</label>
+                <select class="form-select" id="attend" disabled>
+                  <option>Sì</option><option>No</option>
+                </select>
               </div>
-
-              <div class="mt-3 small text-muted">
-                (Demo) Qui si può aggiungere anche una “lista nozze” con link.
+              <div>
+                <label class="form-label" for="people">N. persone</label>
+                <select class="form-select" id="people" disabled>
+                  <option>1</option><option>2</option><option>3</option><option>4+</option>
+                </select>
+              </div>
+              <div>
+                <label class="form-label" for="menu">Menu</label>
+                <select class="form-select" id="menu" disabled>
+                  <option>Standard</option><option>Vegetariano</option><option>Vegano</option><option>Senza glutine</option>
+                </select>
+              </div>
+              <div style="grid-column:1 / -1;">
+                <label class="form-label" for="notes">Note / Allergie</label>
+                <input class="form-control" id="notes" placeholder="Scrivi qui..." disabled>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="mt-5">
-      <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
-        <h2 class="h3 fw-bold mb-0 romantic-title">Gallery</h2>
-        <div class="text-muted small">Una selezione di foto (demo)</div>
-      </div>
-
-      <div class="gallery-grid">
-        <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Foto 1" loading="lazy">
-        <img src="{% static 'img/matrimoniofedibiglietto.png' %}" alt="Foto 2" loading="lazy">
-        <img src="{% static 'img/matrimoniodresscode2.png' %}" alt="Foto 3" loading="lazy">
-        <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Foto 4" loading="lazy">
-        <img src="{% static 'img/matrimoniofedibiglietto.png' %}" alt="Foto 5" loading="lazy">
-        <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Foto 6" loading="lazy">
-      </div>
-
-      <div class="mt-3 small text-muted">
-        Nel sito reale: gallery completa + caricamento foto degli sposi.
-      </div>
-    </section>
-
-    <!-- RSVP -->
-    <section id="rsvp" class="mt-5">
-      <div class="card rounded-4 shadow-sm overflow-hidden">
-        <div class="p-4 p-md-5 rsvp-head text-white">
-          <h2 class="h3 fw-bold mb-2 romantic-title">RSVP • Conferma presenza</h2>
-          <p class="mb-0 text-white-50">
-            Compila per farci sapere se parteciperai e se hai esigenze particolari (demo).
-          </p>
-        </div>
-
-        <div class="card-body p-4 p-md-5">
-          <form class="row g-3">
-            <div class="col-md-6">
-              <label class="form-label">Nome e Cognome</label>
-              <input class="form-control" placeholder="Es. Mario Rossi" disabled>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Email</label>
-              <input class="form-control" placeholder="esempio@email.it" disabled>
-            </div>
-
-            <div class="col-md-4">
-              <label class="form-label">Parteciperò</label>
-              <select class="form-select" disabled>
-                <option>Sì</option>
-                <option>No</option>
-              </select>
-            </div>
-
-            <div class="col-md-4">
-              <label class="form-label">N. persone</label>
-              <select class="form-select" disabled>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4+</option>
-              </select>
-            </div>
-
-            <div class="col-md-4">
-              <label class="form-label">Menu</label>
-              <select class="form-select" disabled>
-                <option>Standard</option>
-                <option>Vegetariano</option>
-                <option>Vegano</option>
-                <option>Senza glutine</option>
-              </select>
-            </div>
-
-            <div class="col-12">
-              <label class="form-label">Note / Allergie</label>
-              <input class="form-control" placeholder="Scrivi qui..." disabled>
-            </div>
-
-            <div class="col-12">
-              <button class="btn btn-primary btn-lg" type="button" disabled>Invia RSVP (demo)</button>
-              <div class="text-muted small mt-2">
-                Nel sito reale questo form può salvare su database e inviare email di conferma.
-              </div>
+ 
+            <div style="margin-top:12px;">
+              <button class="btn btn-blush" type="button" disabled>Invia RSVP (demo)</button>
+              <div class="muted-on-dark" style="font-size:.9rem; margin-top:6px;">Nel sito reale: salvataggio su DB + email di conferma.</div>
             </div>
           </form>
+ 
+          <div class="muted-on-dark" style="font-size:.95rem;">Countdown (demo): <span id="countdownTextBottom" class="serif" style="font-weight:700;">Mancano 160 giorni</span></div>
         </div>
       </div>
-    </section>
-
-    <!-- FAQ + CONTATTI -->
-    <section class="mt-5">
-      <div class="row g-4 align-items-start">
-        <div class="col-lg-7">
-          <h2 class="h3 fw-bold mb-3 romantic-title">FAQ</h2>
-
-          <div class="accordion" id="faq">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#f1">
-                  È possibile parcheggiare?
-                </button>
-              </h2>
-              <div id="f1" class="accordion-collapse collapse show" data-bs-parent="#faq">
-                <div class="accordion-body text-muted">Sì, parcheggio interno disponibile (demo).</div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f2">
-                  I bambini sono invitati?
-                </button>
-              </h2>
-              <div id="f2" class="accordion-collapse collapse" data-bs-parent="#faq">
-                <div class="accordion-body text-muted">
-                  Certo! Indicaci in RSVP il numero di bambini (demo).
-                </div>
-              </div>
-            </div>
-
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#f3">
-                  Allergie o intolleranze?
-                </button>
-              </h2>
-              <div id="f3" class="accordion-collapse collapse" data-bs-parent="#faq">
-                <div class="accordion-body text-muted">
-                  Segnalale nel campo note dell’RSVP (demo).
-                </div>
-              </div>
-            </div>
-          </div>
+    </div>
+  </section>
+ 
+  <!-- FAQ + CONTATTI -->
+  <section id="faq" class="section" aria-label="FAQ e contatti">
+    <div class="container" style="display:grid; grid-template-columns: 1.1fr .9fr; gap: clamp(14px, 3vw, 28px);">
+      <div class="block">
+        <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">FAQ</h2>
+ 
+        <details open class="block" style="margin:0 0 8px;">
+          <summary style="font-weight:800; cursor:pointer;">È possibile parcheggiare?</summary>
+          <div class="text-muted" style="margin-top:6px;">Sì, parcheggio interno disponibile (demo).</div>
+        </details>
+ 
+        <details class="block" style="margin:0 0 8px;">
+          <summary style="font-weight:800; cursor:pointer;">I bambini sono invitati?</summary>
+          <div class="text-muted" style="margin-top:6px;">Certo! Indicaci in RSVP il numero di bambini (demo).</div>
+        </details>
+ 
+        <details class="block" style="margin:0;">
+          <summary style="font-weight:800; cursor:pointer;">Allergie o intolleranze?</summary>
+          <div class="text-muted" style="margin-top:6px;">Segnalale nel campo note dell’RSVP (demo).</div>
+        </details>
+      </div>
+ 
+      <div class="block">
+        <h3 class="serif" style="margin:0 0 10px; font-size:1.3rem; font-weight:700;">Contatto Wedding Planner</h3>
+        <p class="text-muted" style="margin:0 0 10px;">Per urgenze o dubbi (demo):</p>
+        <div class="block" style="margin:0;">
+          <div style="font-weight:700;">Laura • Wedding Planner</div>
+          <div class="text-muted" style="font-size:.95rem;">Telefono: +39 000 000 0000</div>
+          <div class="text-muted" style="font-size:.95rem;">Email: planner@email.it</div>
         </div>
-
-        <div class="col-lg-5">
-          <div class="card rounded-4 shadow-sm">
-            <div class="card-body p-4">
-              <h3 class="h5 fw-bold mb-2 romantic-title">Contatto Wedding Planner</h3>
-              <p class="text-muted mb-3">Per urgenze o dubbi dell’ultimo minuto (demo):</p>
-              <div class="p-3 rounded-4 border bg-light">
-                <div class="fw-semibold">Laura • Wedding Planner</div>
-                <div class="text-muted small">Telefono: +39 000 000 0000</div>
-                <div class="text-muted small">Email: planner@email.it</div>
-              </div>
-              <div class="mt-3 small text-muted">
-                Nel sito reale: link WhatsApp + pulsanti “chiama” e “scrivi”.
-              </div>
-            </div>
-          </div>
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: link WhatsApp e pulsanti “Chiama/Scrivi”.</div>
+ 
+        <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:12px;">
+          <a href="{% url 'home' %}" class="btn btn-ghost">← Torna al sito</a>
+          <a href=mailto:weddingcoding@gmail.com class="btn btn-blush">Vuoi un sito così? Contattaci</a>
         </div>
       </div>
-    </section>
-
-
-
-  </div>
-
-  <!-- Countdown JS (demo) -->
-  <script>
-    (function () {
-      const target = new Date("2026-07-12T17:00:00").getTime();
-      const el = document.getElementById("countdownText");
-      if (!el) return;
-
-      function tick() {
-        const now = Date.now();
-        const diff = target - now;
-        if (diff <= 0) {
-          el.textContent = "È oggi! 🎉";
-          return;
-        }
-        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-        el.textContent = "Mancano " + days + " giorni";
-        setTimeout(tick, 60 * 1000);
-      }
-      tick();
-    })();
-  </script>
-
-</div>
+    </div>
+  </section>
+ 
+  <footer class="footer">
+    <div class="container">Demo WeddingCollab • Tutti i contenuti sono placeholder • Foto da asset/stock (demo)</div>
+  </footer>
+</main>
+ 
+<!-- JS: hamburger + countdown -->
+<script>
+(() => {
+  // Hamburger toggler
+  const btn = document.getElementById('hamb');
+  const panel = document.getElementById('menu-panel');
+  if (btn && panel){
+    btn.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      panel.hidden = !open;
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Chiudi il menu quando clicchi un link
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      panel.classList.remove('open'); panel.hidden = true; btn.setAttribute('aria-expanded','false');
+    }));
+  }
+ 
+  // Countdown (demo)
+  const target = new Date("2026-07-12T17:00:00").getTime();
+  const els = [document.getElementById("countdownText"), document.getElementById("countdownTextBottom")].filter(Boolean);
+  function tick(){
+    const diff = target - Date.now();
+    if (!els.length) return;
+    if (diff <= 0){ els.forEach(e => e.textContent = "È oggi! 🎉"); return; }
+    const days = Math.ceil(diff / (1000*60*60*24));
+    els.forEach(e => e.textContent = "Mancano " + days + " giorni");
+    setTimeout(tick, 60*1000);
+  }
+  tick();
+})();
+</script>
 {% endblock %}
