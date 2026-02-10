@@ -1,28 +1,35 @@
 {% load static %}
-{% block content %}
 
-<a href="#main" class="skip-link">Salta al contenuto</a>
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Wedding • Sara & Andrea</title>
+</head>
 
-{% include "partials/demo/_styles.html" %}
+<body>
+  <a href="#main" class="skip-link">Salta al contenuto</a>
 
-<div class="demo-shell">
-  {% include "partials/demo/_navbar.html" %}
+  <div class="demo-shell">
+    {% include "partials/demo/_core.html" %}
 
-  <main id="main">
-    {% include "partials/demo/_hero.html" %}
-    {% include "partials/demo/_intro.html" %}
-    {% include "partials/demo/_programma.html" %}
-    {% include "partials/demo/_location.html" %}
-    {% include "partials/demo/_travel.html" %}
-    {% include "partials/demo/_dress_regalo.html" %}
-    {% include "partials/demo/_gallery.html" %}
-    {% include "partials/demo/_rsvp.html" %}
-    {% include "partials/demo/_faq.html" %}
-    {% include "partials/demo/_footer.html" %}
-  </main>
-</div>
+    {% include "partials/demo/_navbar.html" %}
 
-{% include "partials/demo/_scripts.html" %}
+    <main id="main">
+      {% include "partials/demo/_hero.html" %}
+      {% include "partials/demo/_intro.html" %}
+      {% include "partials/demo/_programma.html" %}
+      {% include "partials/demo/_location.html" %}
+      {% include "partials/demo/_travel.html" %}
+      {% include "partials/demo/_dress_regalo.html" %}
+      {% include "partials/demo/_gallery.html" %}
+      {% include "partials/demo/_rsvp.html" %}
+      {% include "partials/demo/_faq.html" %}
+      {% include "partials/demo/_footer.html" %}
+    </main>
 
-
-{% endblock %}
+    {% include "partials/demo/_scripts.html" %}
+  </div>
+</body>
+</html>

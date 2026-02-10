@@ -1,0 +1,54 @@
+<style>
+.faq-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 3vw, 28px);
+}
+@media (min-width: 980px){
+  .faq-grid{grid-template-columns: 1.1fr .9fr}
+}
+details.card summary{font-weight:900; cursor:pointer}
+</style>
+
+<section id="faq" class="section" aria-label="FAQ e contatti">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="card">
+        <h2 class="h2" style="margin-bottom:10px;">FAQ</h2>
+
+        <details open class="card" style="margin:0 0 10px;">
+          <summary>È possibile parcheggiare?</summary>
+          <div class="text-muted" style="margin-top:6px;">Sì, parcheggio interno disponibile (demo).</div>
+        </details>
+
+        <details class="card" style="margin:0 0 10px;">
+          <summary>I bambini sono invitati?</summary>
+          <div class="text-muted" style="margin-top:6px;">Certo! Indicaci in RSVP il numero di bambini (demo).</div>
+        </details>
+
+        <details class="card" style="margin:0;">
+          <summary>Allergie o intolleranze?</summary>
+          <div class="text-muted" style="margin-top:6px;">Segnalale nel campo note dell’RSVP (demo).</div>
+        </details>
+      </div>
+
+      <div class="card">
+        <h3 class="h3" style="margin-bottom:10px;">Contatto Wedding Planner</h3>
+        <p class="text-muted" style="margin:0 0 10px;">Per urgenze o dubbi (demo):</p>
+
+        <div class="card" style="margin:0;">
+          <div style="font-weight:900;">Laura • Wedding Planner</div>
+          <div class="text-muted" style="font-size:.95rem;">Telefono: +39 000 000 0000</div>
+          <div class="text-muted" style="font-size:.95rem;">Email: planner@email.it</div>
+        </div>
+
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: link WhatsApp e pulsanti “Chiama/Scrivi”.</div>
+
+        <div class="cta-row" style="margin-top:12px;">
+          <a href="{% url 'home' %}" class="btn btn-ghost">← Torna al sito</a>
+          <a href="mailto:weddingcoding@gmail.com" class="btn btn-blush">Vuoi un sito così? Contattaci</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

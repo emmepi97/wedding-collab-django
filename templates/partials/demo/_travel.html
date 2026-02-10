@@ -1,0 +1,55 @@
+<style>
+.travel-wrap{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 3vw, 28px);
+}
+@media (min-width: 980px){
+  .travel-wrap{grid-template-columns: 1.1fr .9fr}
+}
+</style>
+
+<section id="travel" class="section" aria-label="Travel & Alloggi">
+  <div class="container">
+    <div class="travel-wrap">
+      <div class="card">
+        <h2 class="h2" style="font-size:clamp(1.35rem,2.2vw,1.6rem); margin-bottom:10px;">Come arrivare</h2>
+        <ul class="text-muted" style="margin:0 0 12px 1.1rem;">
+          <li><strong>In auto:</strong> uscita autostrada “Esempio”, seguire indicazioni (demo).</li>
+          <li><strong>In treno:</strong> stazione “Esempio Centrale” + taxi 15 min (demo).</li>
+          <li><strong>In aereo:</strong> aeroporto “Esempio” + transfer 45 min (demo).</li>
+        </ul>
+
+        <h3 class="h3" style="margin-bottom:6px;">Transfer (demo)</h3>
+        <div class="text-muted">Navetta dedicata per chi alloggia in centro alle 15:30 (demo).</div>
+
+        <div class="card" style="margin-top:12px;">
+          <div style="font-weight:900;">Orari navetta</div>
+          <div class="text-muted" style="font-size:.95rem;">Andata: 15:30 • Ritorno: 01:00 (demo)</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h2" style="font-size:clamp(1.35rem,2.2vw,1.6rem); margin-bottom:10px;">Alloggi consigliati</h2>
+        <div style="display:grid; gap:10px;">
+          <div class="card" style="margin:0;">
+            <div style="font-weight:900;">Hotel Lago</div>
+            <div class="text-muted" style="font-size:.95rem;">10 min dalla location</div>
+          </div>
+          <div class="card" style="margin:0;">
+            <div style="font-weight:900;">B&amp;B Centro Storico</div>
+            <div class="text-muted" style="font-size:.95rem;">Navetta disponibile</div>
+          </div>
+          <div class="card" style="margin:0;">
+            <div style="font-weight:900;">Agriturismo Le Colline</div>
+            <div class="text-muted" style="font-size:.95rem;">Ideale per fermarsi il giorno dopo</div>
+          </div>
+        </div>
+
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">
+          Nel sito reale: link diretti, filtri per distanza/prezzo.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

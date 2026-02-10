@@ -1,0 +1,50 @@
+{% load static %}
+<style>
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap:12px;
+}
+.gallery figure{
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--sh);
+  background:#fff;
+}
+.gallery img{
+  width:100%; height:100%;
+  object-fit:cover;
+  transition:transform .45s ease, filter .45s ease;
+  filter:saturate(98%) contrast(102%);
+}
+.gallery figure:hover img{transform:scale(1.03)}
+.gallery .wide{grid-column: span 6; aspect-ratio:16/9}
+.gallery .tall{grid-column: span 3; aspect-ratio:3/4}
+.gallery .square{grid-column: span 3; aspect-ratio:1/1}
+@media (min-width: 992px){
+  .gallery{grid-template-columns: repeat(12, 1fr)}
+  .gallery .wide{grid-column: span 12}
+  .gallery .tall{grid-column: span 6}
+  .gallery .square{grid-column: span 4}
+}
+</style>
+
+<section id="gallery" class="section" aria-label="Gallery">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="h2">Gallery</h2>
+      <div class="small-muted">Una selezione (demo)</div>
+    </div>
+
+    <div class="gallery">
+      <figure class="wide"><img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async"></figure>
+      <figure class="tall"><img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 2" loading="lazy" decoding="async"></figure>
+      <figure class="square"><img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 3" loading="lazy" decoding="async"></figure>
+      <figure class="square"><img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 4" loading="lazy" decoding="async"></figure>
+      <figure class="tall"><img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 5" loading="lazy" decoding="async"></figure>
+      <figure class="wide"><img src="{% static 'img/matrimoniosito5.png' %}" alt="Scatto 6" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>

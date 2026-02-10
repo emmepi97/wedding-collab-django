@@ -1,0 +1,71 @@
+<style>
+.program-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (min-width: 800px){
+  .program-grid{grid-template-columns: repeat(3, 1fr)}
+}
+.program-card{
+  background:#fff; border:1px solid var(--line);
+  border-radius:var(--r); padding:20px; box-shadow:var(--sh);
+}
+.program-time{
+  display:inline-block;
+  background:#0f0f12; color:#f5d5a6; font-weight:900;
+  border-radius:999px; padding:.25rem .6rem; margin-bottom:.35rem;
+}
+</style>
+
+<section id="programma" class="section" aria-label="Programma della giornata">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="h2">Programma</h2>
+      <div class="small-muted">12 Luglio 2026 • Villa del Lago</div>
+    </div>
+
+    <div class="program-grid">
+      <article class="program-card">
+        <span class="program-time">16:00</span>
+        <div style="font-weight:800;">Arrivo ospiti</div>
+        <div class="text-muted" style="font-size:.95rem;">Benvenuto e sistemazione (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="program-time">17:00</span>
+        <div style="font-weight:800;">Cerimonia</div>
+        <div class="text-muted" style="font-size:.95rem;">Inizio cerimonia nel giardino (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="program-time">18:00</span>
+        <div style="font-weight:800;">Aperitivo</div>
+        <div class="text-muted" style="font-size:.95rem;">Brindisi, foto e musica (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="program-time">19:30</span>
+        <div style="font-weight:800;">Cena</div>
+        <div class="text-muted" style="font-size:.95rem;">Cena servita (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="program-time">22:00</span>
+        <div style="font-weight:800;">Taglio torta</div>
+        <div class="text-muted" style="font-size:.95rem;">Torta e brindisi (demo).</div>
+      </article>
+
+      <article class="program-card">
+        <span class="program-time">22:30</span>
+        <div style="font-weight:800;">Party</div>
+        <div class="text-muted" style="font-size:.95rem;">Musica, balli e open bar (demo).</div>
+      </article>
+    </div>
+
+    <div class="card" style="margin-top:16px;">
+      <div style="font-weight:900; margin-bottom:4px;">Nota</div>
+      <div class="text-muted">Se arrivate in ritardo, consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).</div>
+    </div>
+  </div>
+</section>

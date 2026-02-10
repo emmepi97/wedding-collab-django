@@ -1,3 +1,103 @@
+<style>
+/* Navbar scoped */
+.navbar{
+  position:sticky; top:0; z-index:1020;
+  height:var(--nav-h);
+  display:flex; align-items:center;
+  background:rgba(255,255,255,.92);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  padding-top: env(safe-area-inset-top, 0);
+}
+.navbar .bar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+}
+.brand{
+  display:flex; align-items:center; gap:.6rem;
+  text-decoration:none; font-weight:900; letter-spacing:.02em;
+  white-space:nowrap;
+}
+.brand-badge{
+  width:34px; height:34px; border-radius:999px;
+  background:linear-gradient(135deg,var(--blush),var(--gold));
+  display:grid; place-items:center;
+  color:#fff; font-weight:900; font-size:.95rem;
+  box-shadow:0 8px 18px rgba(255,124,163,.25);
+}
+
+/* Desktop nav hidden by default */
+.nav-links, .nav-cta{display:none}
+.nav-links a{
+  text-decoration:none; font-weight:800; color:#1f1f24;
+  border:1px solid var(--line); background:#fff; border-radius:999px;
+  padding:.5rem .85rem;
+}
+.nav-links a:hover{background:var(--porcelain)}
+.nav-cta{gap:.45rem; align-items:center}
+
+/* Hamburger */
+.hamb{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  width:44px; height:44px;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.hamb span{
+  display:block; width:22px; height:2px; background:#222;
+  margin:4px 0; border-radius:2px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.hamb[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamb[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamb[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* Mobile menu */
+.menu-panel{
+  position:fixed;
+  top:calc(var(--nav-h) + env(safe-area-inset-top, 0));
+  left:0; right:0;
+  z-index:1010;
+  background:#fff;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--sh);
+  padding:10px 0;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:max-height .35s ease, opacity .25s ease, transform .25s ease;
+  will-change:max-height, opacity, transform;
+}
+.menu-panel.open{
+  max-height:70vh;
+  opacity:1;
+  transform:translateY(0);
+}
+.menu-panel .menu{display:grid; gap:10px}
+.menu-panel a{
+  display:block;
+  text-decoration:none;
+  font-weight:850;
+  padding:14px 14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.menu-panel a:hover{background:var(--porcelain)}
+.menu-cta{display:flex; gap:.6rem; flex-wrap:wrap}
+
+/* Desktop breakpoint */
+@media (min-width: 900px){
+  .hamb{display:none}
+  .menu-panel{display:none}
+  .nav-links{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
+  .nav-cta{display:flex}
+}
+</style>
+
 <header class="navbar" role="navigation" aria-label="Menu principale">
   <div class="container bar">
     <a href="{% url 'home' %}" class="brand" aria-label="Home">

@@ -1,3 +1,75 @@
+{% load static %}
+<style>
+.hero{
+  position:relative;
+  min-height: calc(100dvh - var(--nav-h));
+  display:grid; place-items:center;
+  background:var(--porcelain);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.hero .bg{position:absolute; inset:0; z-index:0}
+.hero .bg img{
+  width:100%; height:100%;
+  object-fit:cover;
+  filter:saturate(102%) contrast(103%) brightness(98%);
+  transform:scale(1.02);
+}
+.hero .veil{
+  position:absolute; inset:0; z-index:1;
+  background:
+    radial-gradient(65% 60% at 20% 10%, rgba(255,124,163,.18), transparent 60%),
+    radial-gradient(60% 60% at 80% 0%, rgba(224,183,134,.18), transparent 60%),
+    linear-gradient(180deg, rgba(246,244,241,.75), rgba(246,244,241,.92));
+}
+.hero .inner{position:relative; z-index:2; width:100%; padding: clamp(18px, 4vw, 48px) 0}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 3vw, 28px);
+  align-items:center;
+}
+@media (min-width: 980px){
+  .hero-grid{grid-template-columns: 1.15fr 1fr}
+}
+
+.kicker{
+  display:inline-flex; gap:.5rem; align-items:center;
+  font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+  background:#fff; border:1px solid var(--line);
+  border-radius:999px; padding:.35rem .75rem;
+}
+.title{
+  font-family:var(--serif);
+  font-weight:700;
+  font-size:clamp(2.1rem, 7.2vw, 5rem);
+  line-height:1.04;
+  margin:.65rem 0 .25rem;
+}
+.amp{
+  background:linear-gradient(135deg,var(--blush),var(--gold));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.lead{
+  font-size:clamp(1rem, 1.9vw, 1.25rem);
+  color:rgba(0,0,0,.72);
+  margin:0;
+}
+.pills{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
+.pill{
+  display:inline-flex; flex-direction:column; gap:.1rem;
+  background:rgba(255,255,255,.78);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:10px 14px;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+}
+.pill .label{font-size:12px; opacity:.82}
+.pill .value{font-weight:900}
+.note{margin-top:10px}
+</style>
+
 <section class="hero" aria-label="Copertina">
   <div class="bg" aria-hidden="true">
     <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="" loading="eager" decoding="async">

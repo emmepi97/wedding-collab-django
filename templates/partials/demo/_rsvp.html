@@ -1,0 +1,81 @@
+<style>
+.rsvp-wrap{display:grid; gap:18px}
+.form-row{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (min-width: 800px){
+  .form-row{grid-template-columns: repeat(3, 1fr)}
+  .span-all{grid-column: 1 / -1}
+}
+.form label{font-weight:700; color:#fff}
+.input, .select{
+  width:100%;
+  border-radius:12px;
+  padding:.75rem .85rem;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+}
+.input::placeholder{color:rgba(255,255,255,.60)}
+</style>
+
+<section id="rsvp" class="section" aria-label="RSVP">
+  <div class="container">
+    <div class="card card--dark rounded-lg">
+      <div class="rsvp-wrap">
+        <div>
+          <h2 class="h2" style="color:#fff;">RSVP • Conferma presenza</h2>
+          <p class="muted-on-dark" style="margin:.35rem 0 0;">Compila per farci sapere se parteciperai e se hai esigenze particolari (demo).</p>
+        </div>
+
+        <form aria-label="Form RSVP demo">
+          <div class="form-row">
+            <div>
+              <label for="name">Nome e Cognome</label>
+              <input class="input" id="name" placeholder="Es. Mario Rossi" disabled>
+            </div>
+            <div>
+              <label for="email">Email</label>
+              <input class="input" id="email" placeholder="esempio@email.it" disabled>
+            </div>
+            <div>
+              <label for="attend">Parteciperò</label>
+              <select class="select" id="attend" disabled>
+                <option>Sì</option><option>No</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="people">N. persone</label>
+              <select class="select" id="people" disabled>
+                <option>1</option><option>2</option><option>3</option><option>4+</option>
+              </select>
+            </div>
+            <div>
+              <label for="menu">Menu</label>
+              <select class="select" id="menu" disabled>
+                <option>Standard</option><option>Vegetariano</option><option>Vegano</option><option>Senza glutine</option>
+              </select>
+            </div>
+
+            <div class="span-all">
+              <label for="notes">Note / Allergie</label>
+              <input class="input" id="notes" placeholder="Scrivi qui..." disabled>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <button class="btn btn-blush" type="button" disabled>Invia RSVP (demo)</button>
+            <div class="muted-on-dark" style="font-size:.9rem; margin-top:6px;">Nel sito reale: salvataggio su DB + email di conferma.</div>
+          </div>
+        </form>
+
+        <div class="muted-on-dark" style="font-size:.95rem;">
+          Countdown (demo): <span id="countdownTextBottom" class="serif" style="font-weight:900;">Mancano 160 giorni</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

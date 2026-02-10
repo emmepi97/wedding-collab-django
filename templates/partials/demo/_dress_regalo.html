@@ -1,0 +1,41 @@
+{% load static %}
+<style>
+.dress-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 3vw, 28px);
+}
+@media (min-width: 980px){
+  .dress-grid{grid-template-columns: 1fr 1fr}
+}
+</style>
+
+<section class="section" aria-label="Dress code e Regalo">
+  <div class="container">
+    <div class="dress-grid">
+      <div class="card rounded-lg" style="overflow:hidden; padding:0;">
+        <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Dress code" loading="lazy" decoding="async">
+        <div style="padding:18px;">
+          <h3 class="h3" style="margin-bottom:6px;">Dress code</h3>
+          <p class="text-muted" style="margin:0;">
+            Elegante. Toni pastello consigliati, evitare bianco/avorio. Portare una giacca leggera per la sera (demo).
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 class="h3" style="margin-bottom:6px;">Regalo / Lista nozze</h3>
+        <p class="text-muted" style="margin:0 0 10px;">La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:</p>
+
+        <div class="card" style="margin:0;">
+          <div class="text-muted" style="font-size:.9rem;">IBAN (demo)</div>
+          <div style="font-weight:900;">IT00 X000 0000 0000 0000 0000 000</div>
+          <div class="text-muted" style="font-size:.9rem; margin-top:6px;">Causale</div>
+          <div style="font-weight:900;">“Regalo matrimonio Sara &amp; Andrea”</div>
+        </div>
+
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">(Demo) Possibile lista nozze con link esterni.</div>
+      </div>
+    </div>
+  </div>
+</section>

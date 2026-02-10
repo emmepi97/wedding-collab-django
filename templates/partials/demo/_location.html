@@ -1,0 +1,63 @@
+<style>
+.map-frame{
+  border:1px solid var(--line);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  box-shadow:var(--sh);
+  background:#fff;
+}
+.ratio{position:relative; width:100%; padding-top:56.25%}
+.ratio iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+</style>
+
+<section id="location" class="section" aria-label="Location">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h2 class="h2" style="margin-bottom:10px;">Location</h2>
+        <p class="text-muted" style="margin:0 0 12px;">
+          Villa del Lago (placeholder). Immersa nel verde con parcheggio interno e spazi al coperto.
+        </p>
+
+        <div class="grid-2">
+          <div class="card">
+            <div style="font-weight:900;">Indirizzo</div>
+            <div class="text-muted" style="font-size:.95rem;">Via Esempio 123, Città (demo)</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:900;">Parcheggio</div>
+            <div class="text-muted" style="font-size:.95rem;">Disponibile in struttura (demo)</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:900;">Accessibilità</div>
+            <div class="text-muted" style="font-size:.95rem;">Accesso facilitato (demo)</div>
+          </div>
+          <div class="card">
+            <div style="font-weight:900;">Contatto</div>
+            <div class="text-muted" style="font-size:.95rem;">+39 000 000 0000 (demo)</div>
+          </div>
+        </div>
+
+        <div class="cta-row" style="margin-top:12px;">
+          <a href="#travel" class="btn btn-ghost">Vedi travel info →</a>
+          <a href="#rsvp" class="btn btn-blush">Vai a RSVP</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="map-frame">
+          <div class="ratio">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=12.476%2C41.891%2C12.496%2C41.901&layer=mapnik"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mappa demo"></iframe>
+          </div>
+        </div>
+        <div class="text-muted" style="font-size:.9rem; margin-top:8px;">
+          Nel sito reale: mappa precisa + pulsanti Google/Apple Maps.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
