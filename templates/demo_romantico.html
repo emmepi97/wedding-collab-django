@@ -1,27 +1,13 @@
 {% load static %}
-
 {% block content %}
 <a href="#main" class="skip-link">Salta al contenuto</a>
 
 <style>
-/* ==========================================================================
-   FULLSCREEN WRAPPER (override base.html)
-   ========================================================================== */
-.demo-shell{
-  width:100%;
-  max-width:none !important;
-  margin:0 !important;
-  padding:0 !important;
-}
-.demo-shell *{ box-sizing:border-box; }
-.demo-shell img{ max-width:100%; height:auto; display:block; }
-.demo-shell a{ color:inherit; }
-.demo-shell :focus-visible{ outline:3px solid rgba(255,124,163,.55); outline-offset:2px; }
-
-/* ==========================================================================
-   THEME: Porcelain, Ink & Blush
-   ========================================================================== */
+/* =========================================================
+   RESET + TOKENS
+   ========================================================= */
 :root{
+  --bg:#ffffff;
   --porcelain:#F6F4F1;
   --ink:#11131B;
   --muted:rgba(17,19,27,.72);
@@ -30,7 +16,8 @@
   --blush-2:#FF98B7;
   --gold:#E0B786;
 
-  --r:22px; --r-lg:28px;
+  --r:18px;
+  --r-lg:26px;
   --sh:0 12px 28px rgba(17,19,27,.14);
   --sh-lg:0 18px 46px rgba(17,19,27,.18);
 
@@ -38,39 +25,86 @@
   --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
   --nav-h:70px;
+
+  /* fluid spacing */
+  --pad-x:clamp(14px, 3.5vw, 28px);
+  --section-y:clamp(34px, 6vw, 90px);
 }
 
+*{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:var(--sans);}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.6;
+}
+img{max-width:100%; height:auto; display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid rgba(255,124,163,.55); outline-offset:2px}
 
 .serif{font-family:var(--serif); letter-spacing:.2px;}
-.text-muted{color:var(--muted)!important;}
-.rounded-4{border-radius:var(--r)}
-.rounded-5{border-radius:var(--r-lg)}
+.text-muted{color:var(--muted)!important}
 .shadow-soft{box-shadow:var(--sh)}
 .shadow-strong{box-shadow:var(--sh-lg)}
-.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+.rounded{border-radius:var(--r)}
+.rounded-lg{border-radius:var(--r-lg)}
+.visually-hidden{
+  position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;
+  overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important
+}
 
 /* Skip link */
 .skip-link{
   position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
 }
 .skip-link:focus{
-  left:12px; top:12px; width:auto; height:auto; background:#fff;
-  border:2px solid var(--blush); padding:.4rem .6rem; border-radius:8px; z-index:9999;
+  left:12px; top:12px; width:auto; height:auto;
+  background:#fff; border:2px solid var(--blush);
+  padding:.4rem .6rem; border-radius:10px; z-index:9999;
 }
 
-/* Fluid container (full width page, with safe side padding) */
+/* Container */
 .container{
   width:min(1180px, 100%);
   margin:0 auto;
-  padding-left: clamp(14px, 3.5vw, 28px);
-  padding-right: clamp(14px, 3.5vw, 28px);
+  padding-left:var(--pad-x);
+  padding-right:var(--pad-x);
 }
 
-/* ==========================================================================
-   NAVBAR (DESKTOP invariato) + MOBILE PRO
-   ========================================================================== */
+section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:.55rem;
+  text-decoration:none; font-weight:800;
+  border-radius:12px;
+  border:1px solid transparent;
+  padding:.78rem 1.05rem;
+  cursor:pointer;
+  transition:transform .15s ease, filter .15s ease, background .15s ease;
+  min-height:44px; /* touch target */
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-ghost{
+  background:rgba(255,124,163,.10);
+  border-color:rgba(255,124,163,.35);
+  color:#9a445f;
+}
+.btn-ghost:hover{background:rgba(255,124,163,.16)}
+.btn-blush{
+  background:linear-gradient(135deg,var(--blush),var(--blush-2));
+  color:#361726;
+  box-shadow:0 14px 30px rgba(255,124,163,.26);
+}
+.btn-blush:hover{filter:brightness(.98)}
+
+/* =========================================================
+   NAVBAR (mobile-first)
+   ========================================================= */
 .navbar{
   position:sticky; top:0; z-index:1020;
   height:var(--nav-h);
@@ -80,100 +114,113 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
   border-bottom:1px solid var(--line);
   padding-top: env(safe-area-inset-top, 0);
 }
-.navbar .inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.navbar .bar{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:12px;
+}
 .brand{
-  display:flex; align-items:center; gap:.6rem; text-decoration:none; font-weight:900; letter-spacing:.02em;
+  display:flex; align-items:center; gap:.6rem;
+  text-decoration:none; font-weight:900; letter-spacing:.02em;
+  white-space:nowrap;
 }
 .brand-badge{
   width:34px; height:34px; border-radius:999px;
   background:linear-gradient(135deg,var(--blush),var(--gold));
-  display:grid; place-items:center; color:#fff; font-weight:900; font-size:.95rem;
+  display:grid; place-items:center;
+  color:#fff; font-weight:900; font-size:.95rem;
   box-shadow:0 8px 18px rgba(255,124,163,.25);
 }
-.nav-links{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
+
+/* Desktop nav (hidden by default, shown >= 900px) */
+.nav-links, .nav-cta{display:none}
 .nav-links a{
   text-decoration:none; font-weight:800; color:#1f1f24;
   border:1px solid var(--line); background:#fff; border-radius:999px;
   padding:.5rem .85rem;
 }
 .nav-links a:hover{background:var(--porcelain)}
-.nav-cta{display:flex; align-items:center; gap:.4rem; flex-wrap:wrap}
+.nav-cta{gap:.45rem; align-items:center}
 
-.btn{
-  display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
-  text-decoration:none; font-weight:800; padding:.7rem 1rem;
-  border-radius:12px; border:1px solid transparent; cursor:pointer;
-  transition:transform .15s ease, filter .15s ease, background .15s ease;
-}
-.btn-ghost{background:rgba(255,124,163,.10); border-color:rgba(255,124,163,.35); color:#9a445f}
-.btn-ghost:hover{background:rgba(255,124,163,.16)}
-.btn-blush{
-  background:linear-gradient(135deg,var(--blush),var(--blush-2));
-  color:#361726; box-shadow:0 14px 30px rgba(255,124,163,.26);
-}
-.btn-blush:hover{filter:brightness(.98); transform:translateY(-1px)}
-
-/* Hamburger (mobile only) */
+/* Hamburger */
 .hamb{
-  display:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:.45rem .6rem;
-  width:44px; height:44px; display:none; align-items:center; justify-content:center;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:12px;
+  width:44px; height:44px;
+  display:inline-flex; align-items:center; justify-content:center;
 }
-.hamb span{display:block; width:22px; height:2px; background:#222; margin:4px 0; border-radius:2px; transition:transform .2s ease, opacity .2s ease}
-.hamb[aria-expanded="true"] span:nth-child(1){ transform:translateY(6px) rotate(45deg) }
-.hamb[aria-expanded="true"] span:nth-child(2){ opacity:0 }
-.hamb[aria-expanded="true"] span:nth-child(3){ transform:translateY(-6px) rotate(-45deg) }
+.hamb span{
+  display:block; width:22px; height:2px; background:#222;
+  margin:4px 0; border-radius:2px;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.hamb[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hamb[aria-expanded="true"] span:nth-child(2){opacity:0}
+.hamb[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
 
-@media (max-width: 900px){
-  .nav-links{display:none}
-  .nav-cta{display:none}
-  .hamb{display:inline-flex}
-
-  .menu-panel{
-    position:fixed;
-    top:calc(var(--nav-h) + env(safe-area-inset-top, 0));
-    left:0; right:0;
-    z-index:1010;
-    background:#fff;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    box-shadow:var(--sh);
-    padding:8px 0;
-    display:block;
-    max-height:0;
-    overflow:hidden;
-    opacity:0;
-    transform:translateY(-4px);
-    transition:max-height .35s ease, opacity .25s ease, transform .25s ease;
-    will-change:max-height, opacity, transform;
-  }
-  .menu-panel.open{
-    max-height:65vh;
-    opacity:1;
-    transform:translateY(0);
-  }
-  .menu-panel .container{display:grid; gap:8px}
-  .menu-panel a{
-    display:block; text-decoration:none; font-weight:800;
-    padding:14px 14px; border-radius:12px; border:1px solid var(--line);
-  }
-  .menu-panel .row-cta{display:flex; gap:.5rem; flex-wrap:wrap; padding:.2rem .3rem}
+/* Mobile menu panel */
+.menu-panel{
+  position:fixed;
+  top:calc(var(--nav-h) + env(safe-area-inset-top, 0));
+  left:0; right:0;
+  z-index:1010;
+  background:#fff;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  box-shadow:var(--sh);
+  padding:10px 0;
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transform:translateY(-6px);
+  transition:max-height .35s ease, opacity .25s ease, transform .25s ease;
+  will-change:max-height, opacity, transform;
+}
+.menu-panel.open{
+  max-height:70vh;
+  opacity:1;
+  transform:translateY(0);
+}
+.menu-panel .menu{
+  display:grid; gap:10px;
+}
+.menu-panel a{
+  display:block;
+  text-decoration:none;
+  font-weight:850;
+  padding:14px 14px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.menu-panel a:hover{background:var(--porcelain)}
+.menu-cta{
+  display:flex; gap:.6rem; flex-wrap:wrap;
 }
 
-/* Body scroll lock helper (applied via JS) */
-html.menu-open{ overflow:hidden; }
+/* Desktop breakpoint */
+@media (min-width: 900px){
+  .hamb{display:none}
+  .menu-panel{display:none}
+  .nav-links{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
+  .nav-cta{display:flex}
+}
 
-/* ==========================================================================
+/* Body scroll lock */
+html.menu-open{overflow:hidden}
+
+/* =========================================================
    HERO
-   ========================================================================== */
+   ========================================================= */
 .hero{
   position:relative;
   min-height: calc(100dvh - var(--nav-h));
-  overflow:hidden;
+  display:grid; place-items:center;
   background:var(--porcelain);
   border-bottom:1px solid var(--line);
-  display:grid; place-items:center;
+  overflow:hidden;
 }
-.hero .bg{position:absolute; inset:0; z-index:0; overflow:hidden}
+.hero .bg{position:absolute; inset:0; z-index:0}
 .hero .bg img{
   width:100%; height:100%;
   object-fit:cover;
@@ -187,39 +234,50 @@ html.menu-open{ overflow:hidden; }
     radial-gradient(60% 60% at 80% 0%, rgba(224,183,134,.18), transparent 60%),
     linear-gradient(180deg, rgba(246,244,241,.75), rgba(246,244,241,.92));
 }
-
 .hero .inner{
-  position:relative;
-  z-index:2;
+  position:relative; z-index:2;
   width:100%;
-  max-width:1180px;
-  margin:0 auto;
   padding: clamp(18px, 4vw, 48px) 0;
+}
+
+/* hero grid: mobile first (1 col) -> desktop (2 col) */
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: clamp(14px, 3vw, 28px);
+  align-items:center;
+}
+@media (min-width: 980px){
+  .hero-grid{grid-template-columns: 1.15fr 1fr}
 }
 
 .kicker{
   display:inline-flex; gap:.5rem; align-items:center;
   font-weight:900; letter-spacing:.12em; text-transform:uppercase;
-  color:#1f1f24; background:#fff; border:1px solid var(--line);
+  background:#fff; border:1px solid var(--line);
   border-radius:999px; padding:.35rem .75rem;
 }
 .title{
   font-family:var(--serif);
   font-weight:700;
-  font-size:clamp(2.2rem, 7.2vw, 5rem);
+  font-size:clamp(2.1rem, 7.2vw, 5rem);
   line-height:1.04;
-  margin:.6rem 0 .2rem;
+  margin:.65rem 0 .25rem;
 }
 .amp{
   background:linear-gradient(135deg,var(--blush),var(--gold));
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.lead{font-size:clamp(1rem,1.9vw,1.25rem); color:rgba(0,0,0,.72)}
-.hero .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
+.lead{
+  font-size:clamp(1rem, 1.9vw, 1.25rem);
+  color:rgba(0,0,0,.72);
+  margin:0;
+}
+.cta-row{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
 .pills{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
 .pill{
   display:inline-flex; flex-direction:column; gap:.1rem;
-  background:rgba(255,255,255,.75);
+  background:rgba(255,255,255,.78);
   border:1px solid var(--line);
   border-radius:999px;
   padding:10px 14px;
@@ -228,105 +286,157 @@ html.menu-open{ overflow:hidden; }
 .pill .label{font-size:12px; opacity:.82}
 .pill .value{font-weight:900}
 
-/* hero grid (desktop invariato) */
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.15fr 1fr;
-  gap: clamp(14px, 3vw, 28px);
-  align-items:center;
-}
-@media (max-width: 980px){
-  .hero-grid{grid-template-columns: 1fr;}
-  .hero .cta .btn{min-height:44px; padding:.8rem 1.1rem}
-  .pills{gap:.5rem}
-  .pill{padding:10px 14px}
-}
+/* =========================================================
+   SECTIONS + CARDS
+   ========================================================= */
+.section{padding: var(--section-y) 0}
 
-/* ==========================================================================
-   SECTIONS & BLOCKS
-   ========================================================================== */
-.section{padding: clamp(34px, 6vw, 90px) 0}
-section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
-
-/* Blocks */
-.block{
+.card{
   background:#fff;
   border:1px solid var(--line);
   border-radius:var(--r);
   box-shadow:var(--sh);
   padding: clamp(16px, 2.2vw, 22px);
 }
-.block.dark{background:#12141A; color:#fff; border-color:rgba(255,255,255,.10)}
-.block .muted-on-dark{color:rgba(255,255,255,.78)}
-
-/* Programma */
-.program-grid{display:grid; grid-template-columns: repeat(12, 1fr); gap:12px}
-.program-card{
-  grid-column: span 12;
-  background:#fff; border:1px solid var(--line);
-  border-radius:var(--r); padding:20px; box-shadow:var(--sh)
+.card--dark{
+  background:#12141A;
+  color:#fff;
+  border-color:rgba(255,255,255,.10);
 }
-.program-card .time{
-  display:inline-block; background:#0f0f12; color:#f5d5a6; font-weight:900;
-  border-radius:999px; padding:.25rem .6rem; margin-bottom:.35rem
-}
-@media (min-width: 800px){ .program-card{ grid-column: span 4 } }
+.muted-on-dark{color:rgba(255,255,255,.78)}
 
-/* Two columns */
+.h2{
+  font-family:var(--serif);
+  font-size:clamp(1.45rem, 2.6vw, 1.9rem);
+  font-weight:700;
+  margin:0;
+}
+.h3{
+  font-family:var(--serif);
+  font-size:clamp(1.15rem, 2vw, 1.35rem);
+  font-weight:700;
+  margin:0;
+}
+.section-head{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:12px; flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.small-muted{font-size:.95rem; color:var(--muted)}
+.note{margin-top:10px}
+
+/* Two columns: mobile 1 col */
 .two-col{
   display:grid;
-  grid-template-columns: 1.05fr 1fr;
+  grid-template-columns: 1fr;
   gap: clamp(14px, 3vw, 28px);
 }
-@media (max-width: 980px){
-  .two-col{grid-template-columns: 1fr;}
+@media (min-width: 980px){
+  .two-col{grid-template-columns: 1.05fr 1fr}
 }
 
-/* Mappa */
+/* Grid helpers */
+.grid-2{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (min-width: 700px){
+  .grid-2{grid-template-columns: repeat(2, 1fr)}
+}
+
+/* Programma */
+.program-grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (min-width: 800px){
+  .program-grid{grid-template-columns: repeat(3, 1fr)}
+}
+.program-card{
+  background:#fff; border:1px solid var(--line);
+  border-radius:var(--r); padding:20px; box-shadow:var(--sh);
+}
+.program-time{
+  display:inline-block;
+  background:#0f0f12; color:#f5d5a6; font-weight:900;
+  border-radius:999px; padding:.25rem .6rem; margin-bottom:.35rem;
+}
+
+/* Map */
 .map-frame{
-  position:relative; width:100%;
   border:1px solid var(--line);
   border-radius:var(--r-lg);
-  overflow:hidden; box-shadow:var(--sh);
+  overflow:hidden;
+  box-shadow:var(--sh);
+  background:#fff;
 }
-.map-frame .ratio{position:relative; width:100%; padding-top:56.25%}
-.map-frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0}
+.ratio{
+  position:relative; width:100%;
+  padding-top:56.25%;
+}
+.ratio iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:0;
+}
 
-/* Gallery */
-.gallery{display:grid; gap:12px; grid-template-columns: repeat(12, 1fr)}
-.gallery figure{border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--sh)}
-.gallery .wide{grid-column: span 12; aspect-ratio:16/9}
-.gallery .tall{grid-column: span 6; aspect-ratio:3/4}
-.gallery .square{grid-column: span 4; aspect-ratio:1/1}
+/* Gallery: mobile-first */
+.gallery{
+  display:grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap:12px;
+}
+.gallery figure{
+  margin:0;
+  border:1px solid var(--line);
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:var(--sh);
+  background:#fff;
+}
 .gallery img{
-  width:100%; height:100%; object-fit:cover;
+  width:100%; height:100%;
+  object-fit:cover;
   transition:transform .45s ease, filter .45s ease;
   filter:saturate(98%) contrast(102%);
 }
 .gallery figure:hover img{transform:scale(1.03)}
-@media (max-width: 992px){
-  .gallery{grid-template-columns: repeat(6,1fr)}
-  .gallery .wide{grid-column: span 6}
-  .gallery .tall{grid-column: span 3}
-  .gallery .square{grid-column: span 3}
+.gallery .wide{grid-column: span 6; aspect-ratio:16/9}
+.gallery .tall{grid-column: span 3; aspect-ratio:3/4}
+.gallery .square{grid-column: span 3; aspect-ratio:1/1}
+@media (min-width: 992px){
+  .gallery{grid-template-columns: repeat(12, 1fr)}
+  .gallery .wide{grid-column: span 12}
+  .gallery .tall{grid-column: span 6}
+  .gallery .square{grid-column: span 4}
 }
 
-/* Form dark */
-.form-dark .form-label{color:#fff; font-weight:700}
-.form-dark .form-control, .form-dark .form-select{
+/* RSVP form */
+.form{
+  display:grid;
+  gap:12px;
+}
+.form-row{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap:12px;
+}
+@media (min-width: 800px){
+  .form-row{grid-template-columns: repeat(3, 1fr)}
+  .span-all{grid-column: 1 / -1}
+}
+.form label{font-weight:700}
+.input, .select{
   width:100%;
+  border-radius:12px;
+  padding:.75rem .85rem;
+  border:1px solid rgba(255,255,255,.22);
   background:rgba(255,255,255,.06);
   color:#fff;
-  border:1px solid rgba(255,255,255,.22);
-  padding:.7rem .8rem;
-  border-radius:12px;
 }
-.form-dark .form-control::placeholder{color:rgba(255,255,255,.60)}
-.form-row{display:grid; grid-template-columns: 1fr; gap:12px}
-@media (min-width: 800px){ .form-row{ grid-template-columns: repeat(3, 1fr) } }
-@media (max-width: 799px){
-  .form-row > div[style*="grid-column"]{ grid-column:auto !important; }
-}
+.input::placeholder{color:rgba(255,255,255,.60)}
 
 /* Footer */
 .footer{
@@ -338,16 +448,16 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
 
 /* Motion respect */
 @media (prefers-reduced-motion: reduce){
-  *{transition:none !important; animation:none !important; scroll-behavior:auto !important}
+  *{transition:none!important; animation:none!important; scroll-behavior:auto!important}
 }
 </style>
 
 <div class="demo-shell">
-  <!-- =========================================================
+  <!-- =========================
        NAVBAR
-       ========================================================= -->
+       ========================= -->
   <header class="navbar" role="navigation" aria-label="Menu principale">
-    <div class="container inner">
+    <div class="container bar">
       <a href="{% url 'home' %}" class="brand" aria-label="Home">
         <span class="brand-badge">S&A</span>
         <span>Sara &amp; Andrea</span>
@@ -372,16 +482,16 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </button>
     </div>
 
-    <!-- Panel mobile -->
+    <!-- Mobile drawer -->
     <div id="menu-panel" class="menu-panel" hidden>
-      <div class="container" role="dialog" aria-modal="true" aria-label="Menu mobile">
+      <div class="container menu" role="dialog" aria-modal="true" aria-label="Menu mobile">
         <a href="#programma">Programma</a>
         <a href="#location">Location</a>
         <a href="#travel">Travel</a>
         <a href="#gallery">Gallery</a>
         <a href="#rsvp">RSVP</a>
         <a href="#faq">FAQ</a>
-        <div class="row-cta">
+        <div class="menu-cta">
           <a href="#rsvp" class="btn btn-ghost" style="flex:1">Conferma presenza</a>
           <a href="{% url 'contatti' %}" class="btn btn-blush" style="flex:1">Contattaci</a>
         </div>
@@ -390,14 +500,12 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
   </header>
 
   <main id="main">
-    <!-- =========================================================
+    <!-- =========================
          HERO
-         ========================================================= -->
+         ========================= -->
     <section class="hero" aria-label="Copertina">
       <div class="bg" aria-hidden="true">
-        <picture>
-          <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="" loading="eager" decoding="async">
-        </picture>
+        <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="" loading="eager" decoding="async">
       </div>
       <div class="veil" aria-hidden="true"></div>
 
@@ -411,7 +519,7 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
               <strong>alloggi</strong>, <strong>gallery</strong> e <strong>RSVP</strong> — tutto in un’unica esperienza curata nei dettagli.
             </p>
 
-            <div class="cta">
+            <div class="cta-row">
               <a href="#rsvp" class="btn btn-blush">Conferma presenza</a>
               <a href="#programma" class="btn btn-ghost">Vedi programma</a>
               <a href="#location" class="btn btn-ghost">Come arrivare</a>
@@ -423,11 +531,11 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
               <div class="pill"><span class="label">Location</span><span class="value">Villa del Lago</span></div>
             </div>
 
-            <div class="text-muted" style="margin-top:10px;"><strong>Nota demo:</strong> testi, nomi e indirizzi sono di esempio.</div>
+            <div class="text-muted note"><strong>Nota demo:</strong> testi, nomi e indirizzi sono di esempio.</div>
           </div>
 
           <div>
-            <div class="block rounded-5 shadow-strong" style="overflow:hidden;">
+            <div class="card rounded-lg shadow-strong" style="overflow:hidden; padding:0;">
               <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Dettaglio invito" loading="lazy" decoding="async">
               <div style="padding:18px;">
                 <div class="text-muted" style="font-size:.9rem;">Countdown (demo)</div>
@@ -440,14 +548,14 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          INTRO
-         ========================================================= -->
+         ========================= -->
     <section class="section" aria-label="Intro">
       <div class="container">
-        <div class="block">
-          <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Benvenuti ✨</h2>
-          <p class="text-muted" style="margin:0;">
+        <div class="card">
+          <h2 class="h2">Benvenuti ✨</h2>
+          <p class="text-muted" style="margin:.4rem 0 0;">
             Qui trovi tutto ciò che serve: dal <em>programma</em> alla <em>mappa</em>, fino a <em>RSVP</em> e <em>gallery</em>.
             Usa il menu in alto per navigare velocemente.
           </p>
@@ -455,79 +563,91 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          PROGRAMMA
-         ========================================================= -->
+         ========================= -->
     <section id="programma" class="section" aria-label="Programma della giornata">
       <div class="container">
-        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
-          <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Programma</h2>
-          <div class="text-muted" style="font-size:.95rem;">12 Luglio 2026 • Villa del Lago</div>
+        <div class="section-head">
+          <h2 class="h2">Programma</h2>
+          <div class="small-muted">12 Luglio 2026 • Villa del Lago</div>
         </div>
 
         <div class="program-grid">
           <article class="program-card">
-            <span class="time">16:00</span>
+            <span class="program-time">16:00</span>
             <div style="font-weight:800;">Arrivo ospiti</div>
             <div class="text-muted" style="font-size:.95rem;">Benvenuto e sistemazione (demo).</div>
           </article>
 
           <article class="program-card">
-            <span class="time">17:00</span>
+            <span class="program-time">17:00</span>
             <div style="font-weight:800;">Cerimonia</div>
             <div class="text-muted" style="font-size:.95rem;">Inizio cerimonia nel giardino (demo).</div>
           </article>
 
           <article class="program-card">
-            <span class="time">18:00</span>
+            <span class="program-time">18:00</span>
             <div style="font-weight:800;">Aperitivo</div>
             <div class="text-muted" style="font-size:.95rem;">Brindisi, foto e musica (demo).</div>
           </article>
 
           <article class="program-card">
-            <span class="time">19:30</span>
+            <span class="program-time">19:30</span>
             <div style="font-weight:800;">Cena</div>
             <div class="text-muted" style="font-size:.95rem;">Cena servita (demo).</div>
           </article>
 
           <article class="program-card">
-            <span class="time">22:00</span>
+            <span class="program-time">22:00</span>
             <div style="font-weight:800;">Taglio torta</div>
             <div class="text-muted" style="font-size:.95rem;">Torta e brindisi (demo).</div>
           </article>
 
           <article class="program-card">
-            <span class="time">22:30</span>
+            <span class="program-time">22:30</span>
             <div style="font-weight:800;">Party</div>
             <div class="text-muted" style="font-size:.95rem;">Musica, balli e open bar (demo).</div>
           </article>
         </div>
 
-        <div class="block" style="margin-top:16px;">
-          <div style="font-weight:700; margin-bottom:4px;">Nota</div>
+        <div class="card" style="margin-top:16px;">
+          <div style="font-weight:800; margin-bottom:4px;">Nota</div>
           <div class="text-muted">Se arrivate in ritardo, consigliamo di arrivare entro le 16:45 per accomodarvi con calma (demo).</div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          LOCATION + MAPPA
-         ========================================================= -->
+         ========================= -->
     <section id="location" class="section" aria-label="Location">
       <div class="container">
         <div class="two-col">
           <div>
-            <h2 class="serif" style="margin:0 0 10px; font-size:1.8rem; font-weight:700;">Location</h2>
-            <p class="text-muted">Villa del Lago (placeholder). Immersa nel verde con parcheggio interno e spazi al coperto.</p>
+            <h2 class="h2" style="margin-bottom:10px;">Location</h2>
+            <p class="text-muted" style="margin:0 0 12px;">Villa del Lago (placeholder). Immersa nel verde con parcheggio interno e spazi al coperto.</p>
 
-            <div style="display:grid; grid-template-columns: repeat(2,1fr); gap:12px;">
-              <div class="block"><div style="font-weight:700;">Indirizzo</div><div class="text-muted" style="font-size:.95rem;">Via Esempio 123, Città (demo)</div></div>
-              <div class="block"><div style="font-weight:700;">Parcheggio</div><div class="text-muted" style="font-size:.95rem;">Disponibile in struttura (demo)</div></div>
-              <div class="block"><div style="font-weight:700;">Accessibilità</div><div class="text-muted" style="font-size:.95rem;">Accesso facilitato (demo)</div></div>
-              <div class="block"><div style="font-weight:700;">Contatto</div><div class="text-muted" style="font-size:.95rem;">+39 000 000 0000 (demo)</div></div>
+            <div class="grid-2">
+              <div class="card">
+                <div style="font-weight:800;">Indirizzo</div>
+                <div class="text-muted" style="font-size:.95rem;">Via Esempio 123, Città (demo)</div>
+              </div>
+              <div class="card">
+                <div style="font-weight:800;">Parcheggio</div>
+                <div class="text-muted" style="font-size:.95rem;">Disponibile in struttura (demo)</div>
+              </div>
+              <div class="card">
+                <div style="font-weight:800;">Accessibilità</div>
+                <div class="text-muted" style="font-size:.95rem;">Accesso facilitato (demo)</div>
+              </div>
+              <div class="card">
+                <div style="font-weight:800;">Contatto</div>
+                <div class="text-muted" style="font-size:.95rem;">+39 000 000 0000 (demo)</div>
+              </div>
             </div>
 
-            <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:12px;">
+            <div class="cta-row" style="margin-top:12px;">
               <a href="#travel" class="btn btn-ghost">Vedi travel info →</a>
               <a href="#rsvp" class="btn btn-blush">Vai a RSVP</a>
             </div>
@@ -543,68 +663,85 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
                   title="Mappa demo"></iframe>
               </div>
             </div>
-            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: mappa precisa + pulsanti Google/Apple Maps.</div>
+            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">
+              Nel sito reale: mappa precisa + pulsanti Google/Apple Maps.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          TRAVEL + ALLOGGI
-         ========================================================= -->
+         ========================= -->
     <section id="travel" class="section" aria-label="Travel & Alloggi">
       <div class="container">
-        <div class="two-col" style="grid-template-columns: 1.1fr .9fr;">
-          <div class="block">
-            <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Come arrivare</h2>
+        <div class="two-col" style="grid-template-columns: 1fr;">
+          <div class="card">
+            <h2 class="h2" style="font-size:clamp(1.35rem,2.2vw,1.6rem); margin-bottom:10px;">Come arrivare</h2>
             <ul class="text-muted" style="margin:0 0 12px 1.1rem;">
-              <li><span style="font-weight:700;">In auto:</span> uscita autostrada “Esempio”, seguire indicazioni (demo).</li>
-              <li><span style="font-weight:700;">In treno:</span> stazione “Esempio Centrale” + taxi 15 min (demo).</li>
-              <li><span style="font-weight:700;">In aereo:</span> aeroporto “Esempio” + transfer 45 min (demo).</li>
+              <li><strong>In auto:</strong> uscita autostrada “Esempio”, seguire indicazioni (demo).</li>
+              <li><strong>In treno:</strong> stazione “Esempio Centrale” + taxi 15 min (demo).</li>
+              <li><strong>In aereo:</strong> aeroporto “Esempio” + transfer 45 min (demo).</li>
             </ul>
-            <h3 class="serif" style="margin:0 0 6px; font-size:1.2rem; font-weight:700;">Transfer (demo)</h3>
+
+            <h3 class="h3" style="margin-bottom:6px;">Transfer (demo)</h3>
             <div class="text-muted">Navetta dedicata per chi alloggia in centro alle 15:30 (demo).</div>
-            <div class="block" style="margin-top:12px;">
-              <div style="font-weight:700;">Orari navetta</div>
+
+            <div class="card" style="margin-top:12px;">
+              <div style="font-weight:800;">Orari navetta</div>
               <div class="text-muted" style="font-size:.95rem;">Andata: 15:30 • Ritorno: 01:00 (demo)</div>
             </div>
           </div>
 
-          <div class="block">
-            <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">Alloggi consigliati</h2>
+          <div class="card">
+            <h2 class="h2" style="font-size:clamp(1.35rem,2.2vw,1.6rem); margin-bottom:10px;">Alloggi consigliati</h2>
             <div style="display:grid; gap:10px;">
-              <div class="block" style="margin:0;"><div style="font-weight:700;">Hotel Lago</div><div class="text-muted" style="font-size:.95rem;">10 min dalla location</div></div>
-              <div class="block" style="margin:0;"><div style="font-weight:700;">B&amp;B Centro Storico</div><div class="text-muted" style="font-size:.95rem;">Navetta disponibile</div></div>
-              <div class="block" style="margin:0;"><div style="font-weight:700;">Agriturismo Le Colline</div><div class="text-muted" style="font-size:.95rem;">Ideale per fermarsi il giorno dopo</div></div>
+              <div class="card" style="margin:0;">
+                <div style="font-weight:800;">Hotel Lago</div>
+                <div class="text-muted" style="font-size:.95rem;">10 min dalla location</div>
+              </div>
+              <div class="card" style="margin:0;">
+                <div style="font-weight:800;">B&amp;B Centro Storico</div>
+                <div class="text-muted" style="font-size:.95rem;">Navetta disponibile</div>
+              </div>
+              <div class="card" style="margin:0;">
+                <div style="font-weight:800;">Agriturismo Le Colline</div>
+                <div class="text-muted" style="font-size:.95rem;">Ideale per fermarsi il giorno dopo</div>
+              </div>
             </div>
-            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: link diretti, filtri per distanza/prezzo.</div>
+            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">
+              Nel sito reale: link diretti, filtri per distanza/prezzo.
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          DRESS CODE + REGALO
-         ========================================================= -->
+         ========================= -->
     <section class="section" aria-label="Dress code e Regalo">
       <div class="container">
-        <div class="two-col" style="grid-template-columns: 1fr 1fr;">
-          <div class="block rounded-5" style="overflow:hidden; padding:0;">
+        <div class="two-col" style="grid-template-columns: 1fr;">
+          <div class="card rounded-lg" style="overflow:hidden; padding:0;">
             <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Dress code" loading="lazy" decoding="async">
             <div style="padding:18px;">
-              <h3 class="serif" style="margin:0 0 6px; font-size:1.3rem; font-weight:700;">Dress code</h3>
-              <p class="text-muted" style="margin:0;">Elegante. Toni pastello consigliati, evitare bianco/avorio. Portare una giacca leggera per la sera (demo).</p>
+              <h3 class="h3" style="margin-bottom:6px;">Dress code</h3>
+              <p class="text-muted" style="margin:0;">
+                Elegante. Toni pastello consigliati, evitare bianco/avorio. Portare una giacca leggera per la sera (demo).
+              </p>
             </div>
           </div>
 
-          <div class="block">
-            <h3 class="serif" style="margin:0 0 6px; font-size:1.3rem; font-weight:700;">Regalo / Lista nozze</h3>
-            <p class="text-muted" style="margin:0 0 8px;">La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:</p>
-            <div class="block" style="margin:0;">
+          <div class="card">
+            <h3 class="h3" style="margin-bottom:6px;">Regalo / Lista nozze</h3>
+            <p class="text-muted" style="margin:0 0 10px;">La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:</p>
+            <div class="card" style="margin:0;">
               <div class="text-muted" style="font-size:.9rem;">IBAN (demo)</div>
-              <div style="font-weight:700;">IT00 X000 0000 0000 0000 0000 000</div>
+              <div style="font-weight:800;">IT00 X000 0000 0000 0000 0000 000</div>
               <div class="text-muted" style="font-size:.9rem; margin-top:6px;">Causale</div>
-              <div style="font-weight:700;">“Regalo matrimonio Sara &amp; Andrea”</div>
+              <div style="font-weight:800;">“Regalo matrimonio Sara &amp; Andrea”</div>
             </div>
             <div class="text-muted" style="font-size:.9rem; margin-top:8px;">(Demo) Possibile lista nozze con link esterni.</div>
           </div>
@@ -612,14 +749,14 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          GALLERY
-         ========================================================= -->
+         ========================= -->
     <section id="gallery" class="section" aria-label="Gallery">
       <div class="container">
-        <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
-          <h2 class="serif" style="margin:0; font-size:1.8rem; font-weight:700;">Gallery</h2>
-          <div class="text-muted" style="font-size:.95rem;">Una selezione (demo)</div>
+        <div class="section-head">
+          <h2 class="h2">Gallery</h2>
+          <div class="small-muted">Una selezione (demo)</div>
         </div>
 
         <div class="gallery">
@@ -633,102 +770,110 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          RSVP
-         ========================================================= -->
+         ========================= -->
     <section id="rsvp" class="section" aria-label="RSVP">
       <div class="container">
-        <div class="block dark rounded-5">
-          <div style="display:grid; grid-template-columns: 1fr; gap:18px;">
+        <div class="card card--dark rounded-lg">
+          <div style="display:grid; gap:18px;">
             <div>
-              <h2 class="serif" style="margin:0 0 6px; font-size:1.8rem; font-weight:700;">RSVP • Conferma presenza</h2>
-              <p class="muted-on-dark" style="margin:0;">Compila per farci sapere se parteciperai e se hai esigenze particolari (demo).</p>
+              <h2 class="h2" style="color:#fff;">RSVP • Conferma presenza</h2>
+              <p class="muted-on-dark" style="margin:.35rem 0 0;">Compila per farci sapere se parteciperai e se hai esigenze particolari (demo).</p>
             </div>
 
-            <form class="form-dark" aria-label="Form RSVP demo">
+            <form class="form" aria-label="Form RSVP demo">
               <div class="form-row">
                 <div>
-                  <label class="form-label" for="name">Nome e Cognome</label>
-                  <input class="form-control" id="name" placeholder="Es. Mario Rossi" disabled>
+                  <label for="name">Nome e Cognome</label>
+                  <input class="input" id="name" placeholder="Es. Mario Rossi" disabled>
                 </div>
                 <div>
-                  <label class="form-label" for="email">Email</label>
-                  <input class="form-control" id="email" placeholder="esempio@email.it" disabled>
+                  <label for="email">Email</label>
+                  <input class="input" id="email" placeholder="esempio@email.it" disabled>
                 </div>
                 <div>
-                  <label class="form-label" for="attend">Parteciperò</label>
-                  <select class="form-select" id="attend" disabled>
+                  <label for="attend">Parteciperò</label>
+                  <select class="select" id="attend" disabled>
                     <option>Sì</option><option>No</option>
                   </select>
                 </div>
+
                 <div>
-                  <label class="form-label" for="people">N. persone</label>
-                  <select class="form-select" id="people" disabled>
+                  <label for="people">N. persone</label>
+                  <select class="select" id="people" disabled>
                     <option>1</option><option>2</option><option>3</option><option>4+</option>
                   </select>
                 </div>
                 <div>
-                  <label class="form-label" for="menu">Menu</label>
-                  <select class="form-select" id="menu" disabled>
+                  <label for="menu">Menu</label>
+                  <select class="select" id="menu" disabled>
                     <option>Standard</option><option>Vegetariano</option><option>Vegano</option><option>Senza glutine</option>
                   </select>
                 </div>
-                <div style="grid-column:1 / -1;">
-                  <label class="form-label" for="notes">Note / Allergie</label>
-                  <input class="form-control" id="notes" placeholder="Scrivi qui..." disabled>
+
+                <div class="span-all">
+                  <label for="notes">Note / Allergie</label>
+                  <input class="input" id="notes" placeholder="Scrivi qui..." disabled>
                 </div>
               </div>
 
-              <div style="margin-top:12px;">
+              <div>
                 <button class="btn btn-blush" type="button" disabled>Invia RSVP (demo)</button>
-                <div class="muted-on-dark" style="font-size:.9rem; margin-top:6px;">Nel sito reale: salvataggio su DB + email di conferma.</div>
+                <div class="muted-on-dark" style="font-size:.9rem; margin-top:6px;">
+                  Nel sito reale: salvataggio su DB + email di conferma.
+                </div>
               </div>
             </form>
 
             <div class="muted-on-dark" style="font-size:.95rem;">
-              Countdown (demo): <span id="countdownTextBottom" class="serif" style="font-weight:700;">Mancano 160 giorni</span>
+              Countdown (demo): <span id="countdownTextBottom" class="serif" style="font-weight:800;">Mancano 160 giorni</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================================================
+    <!-- =========================
          FAQ + CONTATTI
-         ========================================================= -->
+         ========================= -->
     <section id="faq" class="section" aria-label="FAQ e contatti">
       <div class="container">
-        <div class="two-col" style="grid-template-columns: 1.1fr .9fr;">
-          <div class="block">
-            <h2 class="serif" style="margin:0 0 10px; font-size:1.6rem; font-weight:700;">FAQ</h2>
+        <div class="two-col" style="grid-template-columns: 1fr;">
+          <div class="card">
+            <h2 class="h2" style="margin-bottom:10px;">FAQ</h2>
 
-            <details open class="block" style="margin:0 0 8px;">
-              <summary style="font-weight:800; cursor:pointer;">È possibile parcheggiare?</summary>
+            <details open class="card" style="margin:0 0 10px;">
+              <summary style="font-weight:900; cursor:pointer;">È possibile parcheggiare?</summary>
               <div class="text-muted" style="margin-top:6px;">Sì, parcheggio interno disponibile (demo).</div>
             </details>
 
-            <details class="block" style="margin:0 0 8px;">
-              <summary style="font-weight:800; cursor:pointer;">I bambini sono invitati?</summary>
+            <details class="card" style="margin:0 0 10px;">
+              <summary style="font-weight:900; cursor:pointer;">I bambini sono invitati?</summary>
               <div class="text-muted" style="margin-top:6px;">Certo! Indicaci in RSVP il numero di bambini (demo).</div>
             </details>
 
-            <details class="block" style="margin:0;">
-              <summary style="font-weight:800; cursor:pointer;">Allergie o intolleranze?</summary>
+            <details class="card" style="margin:0;">
+              <summary style="font-weight:900; cursor:pointer;">Allergie o intolleranze?</summary>
               <div class="text-muted" style="margin-top:6px;">Segnalale nel campo note dell’RSVP (demo).</div>
             </details>
           </div>
 
-          <div class="block">
-            <h3 class="serif" style="margin:0 0 10px; font-size:1.3rem; font-weight:700;">Contatto Wedding Planner</h3>
+          <div class="card">
+            <h3 class="h3" style="margin-bottom:10px;">Contatto Wedding Planner</h3>
             <p class="text-muted" style="margin:0 0 10px;">Per urgenze o dubbi (demo):</p>
-            <div class="block" style="margin:0;">
-              <div style="font-weight:700;">Laura • Wedding Planner</div>
+
+            <div class="card" style="margin:0;">
+              <div style="font-weight:900;">Laura • Wedding Planner</div>
               <div class="text-muted" style="font-size:.95rem;">Telefono: +39 000 000 0000</div>
               <div class="text-muted" style="font-size:.95rem;">Email: planner@email.it</div>
             </div>
-            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">Nel sito reale: link WhatsApp e pulsanti “Chiama/Scrivi”.</div>
 
-            <div style="display:flex; gap:.6rem; flex-wrap:wrap; margin-top:12px;">
+            <div class="text-muted" style="font-size:.9rem; margin-top:8px;">
+              Nel sito reale: link WhatsApp e pulsanti “Chiama/Scrivi”.
+            </div>
+
+            <div class="cta-row" style="margin-top:12px;">
               <a href="{% url 'home' %}" class="btn btn-ghost">← Torna al sito</a>
               <a href="mailto:weddingcoding@gmail.com" class="btn btn-blush">Vuoi un sito così? Contattaci</a>
             </div>
@@ -737,9 +882,6 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       </div>
     </section>
 
-    <!-- =========================================================
-         FOOTER
-         ========================================================= -->
     <footer class="footer">
       <div class="container">Demo WeddingCollab • Tutti i contenuti sono placeholder • Foto da asset/stock (demo)</div>
     </footer>
@@ -748,56 +890,45 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
 
 <script>
 (() => {
-  // Elements
   const btn = document.getElementById('hamb');
   const panel = document.getElementById('menu-panel');
   const panelContainer = panel ? panel.querySelector('.container') : null;
-  const focusable = () => panelContainer ? panelContainer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])') : [];
-  const firstFocusable = () => focusable()[0];
-  const lastFocusable = () => focusable()[focusable().length - 1];
 
-  // Helpers
+  const focusable = () => panelContainer
+    ? panelContainer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')
+    : [];
+
   const openMenu = () => {
-    if (!panel) return;
-    panel.classList.add('open');
+    if (!panel || !btn) return;
     panel.hidden = false;
+    panel.classList.add('open');
     btn.setAttribute('aria-expanded', 'true');
-    document.documentElement.classList.add('menu-open'); // lock scroll
-    // Move focus to first link for accessibility
-    const first = firstFocusable();
+    document.documentElement.classList.add('menu-open');
+    const first = focusable()[0];
     if (first) first.focus({ preventScroll: true });
   };
 
   const closeMenu = () => {
-    if (!panel) return;
+    if (!panel || !btn) return;
     panel.classList.remove('open');
-    // Use a tiny timeout to allow CSS transition to kick in before hiding
-    setTimeout(() => { panel.hidden = true; }, 220);
     btn.setAttribute('aria-expanded', 'false');
-    document.documentElement.classList.remove('menu-open'); // unlock scroll
+    document.documentElement.classList.remove('menu-open');
+    setTimeout(() => { panel.hidden = true; }, 220);
     btn.focus({ preventScroll: true });
   };
 
-  // Toggle
   if (btn && panel){
     btn.addEventListener('click', () => {
-      const isOpen = panel.classList.contains('open');
-      isOpen ? closeMenu() : openMenu();
+      panel.classList.contains('open') ? closeMenu() : openMenu();
     });
 
-    // Close on link click
-    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      closeMenu();
-    }));
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
-    // Close on ESC
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && panel.classList.contains('open')) {
-        e.preventDefault();
-        closeMenu();
+        e.preventDefault(); closeMenu();
       }
-      // Focus trap (Tab)
-      if (panel.classList.contains('open') && (e.key === 'Tab')) {
+      if (panel.classList.contains('open') && e.key === 'Tab') {
         const f = focusable();
         if (!f.length) return;
         const first = f[0];
@@ -810,22 +941,27 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
       }
     });
 
-    // Close if resizing to desktop
-    const onResize = () => {
-      if (window.matchMedia('(min-width: 901px)').matches && panel.classList.contains('open')) {
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 900px)').matches && panel.classList.contains('open')) {
         closeMenu();
       }
-    };
-    window.addEventListener('resize', onResize);
+    });
   }
 
   // Countdown (demo)
   const target = new Date("2026-07-12T17:00:00").getTime();
-  const els = [document.getElementById("countdownText"), document.getElementById("countdownTextBottom")].filter(Boolean);
+  const els = [
+    document.getElementById("countdownText"),
+    document.getElementById("countdownTextBottom")
+  ].filter(Boolean);
+
   function tick(){
     if (!els.length) return;
     const diff = target - Date.now();
-    if (diff <= 0){ els.forEach(e => e.textContent = "È oggi! 🎉"); return; }
+    if (diff <= 0){
+      els.forEach(e => e.textContent = "È oggi! 🎉");
+      return;
+    }
     const days = Math.ceil(diff / (1000*60*60*24));
     els.forEach(e => e.textContent = "Mancano " + days + " giorni");
     setTimeout(tick, 60*1000);
