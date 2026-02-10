@@ -1,6 +1,5 @@
 {% load static %}
 
-
 {% block content %}
 <a href="#main" class="skip-link">Salta al contenuto</a>
 
@@ -35,10 +34,17 @@
   --sans:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 
   --nav-h:70px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
 }
 
 html,body{height:100%}
-body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:var(--sans);}
+body{
+  margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:var(--sans);
+  overflow-x:hidden; /* evita micro scroll orizzontali */
+}
 
 .serif{font-family:var(--serif); letter-spacing:.2px;}
 .text-muted{color:var(--muted)!important;}
@@ -52,7 +58,7 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
   position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
 }
 .skip-link:focus{
-  left:12px; top:12px; width:auto; height:auto; background:#fff;
+  left:12px; top:calc(12px + var(--safe-top)); width:auto; height:auto; background:#fff;
   border:2px solid var(--blush); padding:.4rem .6rem; border-radius:8px; z-index:9999;
 }
 
@@ -64,18 +70,34 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
   padding-right: clamp(14px, 3.5vw, 28px);
 }
 
-/* ===================== NAVBAR (CLASSIC) ===================== */
+/* Prevent iOS zoom on inputs (non essenziale qui, ma utile se poi attivi form reali) */
+input, select, textarea{ font-size:16px; }
+
+/* ===================== NAVBAR (RESPONSIVE) ===================== */
 .navbar{
   position:sticky; top:0; z-index:1020;
-  height:var(--nav-h);
-  display:flex; align-items:center;
+  height:calc(var(--nav-h) + var(--safe-top));
+  display:flex; align-items:stretch;
   background:rgba(255,255,255,.92);
   -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
-.navbar .inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.navbar .inner{
+  height:var(--nav-h);
+  padding-top:var(--safe-top);
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+}
+
+/* Brand */
 .brand{
   display:flex; align-items:center; gap:.6rem; text-decoration:none; font-weight:900; letter-spacing:.02em;
+  min-width:0;
+}
+.brand span:last-child{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width: 42vw; /* su mobile evita che spinga tutto fuori */
 }
 .brand-badge{
   width:34px; height:34px; border-radius:999px;
@@ -83,6 +105,8 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
   display:grid; place-items:center; color:#fff; font-weight:900; font-size:.95rem;
   box-shadow:0 8px 18px rgba(255,124,163,.25);
 }
+
+/* Desktop nav */
 .nav-links{display:flex; align-items:center; gap:.35rem; flex-wrap:wrap}
 .nav-links a{
   text-decoration:none; font-weight:800; color:#1f1f24;
@@ -92,6 +116,7 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
 .nav-links a:hover{background:var(--porcelain)}
 .nav-cta{display:flex; align-items:center; gap:.4rem; flex-wrap:wrap}
 
+/* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
   text-decoration:none; font-weight:800; padding:.7rem 1rem;
@@ -107,32 +132,91 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
 .btn-blush:hover{filter:brightness(.98); transform:translateY(-1px)}
 
 /* Hamburger */
-.hamb{display:none; background:#fff; border:1px solid var(--line); border-radius:10px; padding:.45rem .6rem}
+.hamb{
+  display:none;
+  background:#fff; border:1px solid var(--line);
+  border-radius:12px;
+  padding:.55rem .7rem;
+  -webkit-tap-highlight-color:transparent;
+}
 .hamb span{display:block; width:22px; height:2px; background:#222; margin:4px 0; border-radius:2px}
 
-@media (max-width: 900px){
+/* ===================== MOBILE DRAWER MENU ===================== */
+.nav-overlay{
+  position:fixed; inset:0;
+  background:rgba(17,19,27,.48);
+  backdrop-filter: blur(2px);
+  z-index:2000;
+  opacity:0; pointer-events:none;
+  transition:opacity .18s ease;
+}
+.nav-drawer{
+  position:fixed;
+  top:0; right:0;
+  width:min(420px, 86vw);
+  height:100dvh;
+  background:#fff;
+  border-left:1px solid var(--line);
+  box-shadow:var(--sh-lg);
+  z-index:2001;
+  transform:translateX(102%);
+  transition:transform .22s ease;
+  padding: calc(12px + var(--safe-top)) calc(12px + var(--safe-right)) calc(12px + var(--safe-bottom)) calc(12px + var(--safe-left));
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+body.menu-open .nav-overlay{opacity:1; pointer-events:auto;}
+body.menu-open .nav-drawer{transform:translateX(0);}
+body.menu-open{overflow:hidden;} /* blocca scroll sotto */
+
+.drawer-top{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:6px 4px 10px;
+  border-bottom:1px solid var(--line);
+}
+.drawer-title{
+  display:flex; align-items:center; gap:.6rem; font-weight:900;
+}
+.drawer-close{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:12px;
+  padding:.55rem .7rem;
+  cursor:pointer;
+}
+
+.drawer-links{
+  display:grid;
+  gap:8px;
+  padding:10px 4px;
+}
+.drawer-links a{
+  display:block;
+  text-decoration:none;
+  font-weight:900;
+  padding:.85rem .95rem;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+}
+.drawer-links a:active{transform:scale(.99)}
+.drawer-links a:hover{background:var(--porcelain)}
+
+.drawer-cta{
+  margin-top:auto;
+  display:grid;
+  gap:10px;
+  padding:10px 4px 0;
+}
+.drawer-cta .btn{width:100%}
+
+/* breakpoint: tablet/mobile */
+@media (max-width: 980px){
   .nav-links{display:none}
   .nav-cta{display:none}
-  .hamb{display:block}
-  .menu-panel{
-    position:fixed;
-    top:var(--nav-h);
-    left:0; right:0;
-    z-index:1010;
-    background:#fff;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-    box-shadow:var(--sh);
-    padding:10px 0;
-    display:none;
-  }
-  .menu-panel.open{display:block}
-  .menu-panel .container{display:grid; gap:8px}
-  .menu-panel a{
-    display:block; text-decoration:none; font-weight:800;
-    padding:.7rem .9rem; border-radius:12px; border:1px solid var(--line);
-  }
-  .menu-panel .row-cta{display:flex; gap:.5rem; flex-wrap:wrap; padding:.2rem .3rem}
+  .hamb{display:inline-flex}
 }
 
 /* ===================== HERO ===================== */
@@ -158,18 +242,14 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
     radial-gradient(60% 60% at 80% 0%, rgba(224,183,134,.18), transparent 60%),
     linear-gradient(180deg, rgba(246,244,241,.75), rgba(246,244,241,.92));
 }
-
 .hero .inner{
   position:relative;
   z-index:2;
   width:100%;
-  max-width:1180px;        /* ✅ centra e limita la larghezza del contenuto */
-  margin:0 auto;           /* ✅ centra davvero */
+  max-width:1180px;
+  margin:0 auto;
   padding: clamp(18px, 4vw, 48px) 0;
 }
-
-
-
 .kicker{
   display:inline-flex; gap:.5rem; align-items:center;
   font-weight:900; letter-spacing:.12em; text-transform:uppercase;
@@ -179,7 +259,7 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
 .title{
   font-family:var(--serif);
   font-weight:700;
-  font-size:clamp(2.2rem, 7.2vw, 5rem);
+  font-size:clamp(2.1rem, 8vw, 5rem);
   line-height:1.04;
   margin:.6rem 0 .2rem;
 }
@@ -187,7 +267,7 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
   background:linear-gradient(135deg,var(--blush),var(--gold));
   -webkit-background-clip:text; background-clip:text; color:transparent;
 }
-.lead{font-size:clamp(1rem,1.9vw,1.25rem); color:rgba(0,0,0,.72)}
+.lead{font-size:clamp(1rem,2.1vw,1.25rem); color:rgba(0,0,0,.72)}
 .hero .cta{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
 .pills{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem}
 .pill{
@@ -213,8 +293,8 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
 }
 
 /* Sections / offset */
-.section{padding: clamp(34px, 6vw, 90px) 0}
-section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
+.section{padding: clamp(30px, 6vw, 90px) 0}
+section[id]{scroll-margin-top: calc(var(--nav-h) + 16px)}
 
 /* Blocks */
 .block{
@@ -333,27 +413,38 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
         <a href="{% url 'contatti' %}" class="btn btn-blush">Contattaci</a>
       </div>
 
-      <button class="hamb" id="hamb" aria-label="Apri/chiudi menu" aria-expanded="false" aria-controls="menu-panel">
+      <button class="hamb" id="hamb" aria-label="Apri menu" aria-expanded="false" aria-controls="nav-drawer">
         <span></span><span></span><span></span>
       </button>
     </div>
-
-    <!-- Panel mobile -->
-    <div id="menu-panel" class="menu-panel" hidden>
-      <div class="container">
-        <a href="#programma">Programma</a>
-        <a href="#location">Location</a>
-        <a href="#travel">Travel</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#rsvp">RSVP</a>
-        <a href="#faq">FAQ</a>
-        <div class="row-cta">
-          <a href="#rsvp" class="btn btn-ghost" style="flex:1">Conferma presenza</a>
-          <a href="{% url 'contatti' %}" class="btn btn-blush" style="flex:1">Contattaci</a>
-        </div>
-      </div>
-    </div>
   </header>
+
+  <!-- Overlay + Drawer mobile -->
+  <div class="nav-overlay" id="nav-overlay" hidden></div>
+
+  <aside class="nav-drawer" id="nav-drawer" aria-label="Menu mobile" hidden>
+    <div class="drawer-top">
+      <div class="drawer-title">
+        <span class="brand-badge" aria-hidden="true">S&A</span>
+        <span>Sara &amp; Andrea</span>
+      </div>
+      <button class="drawer-close" id="drawer-close" aria-label="Chiudi menu">✕</button>
+    </div>
+
+    <nav class="drawer-links" aria-label="Sezioni (mobile)">
+      <a href="#programma">Programma</a>
+      <a href="#location">Location</a>
+      <a href="#travel">Travel</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#rsvp">RSVP</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <div class="drawer-cta">
+      <a href="#rsvp" class="btn btn-ghost">Conferma presenza</a>
+      <a href="{% url 'contatti' %}" class="btn btn-blush">Contattaci</a>
+    </div>
+  </aside>
 
   <main id="main">
     <!-- HERO -->
@@ -556,7 +647,7 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
             <p class="text-muted" style="margin:0 0 8px;">La vostra presenza è già un regalo. Se desiderate contribuire al nostro viaggio:</p>
             <div class="block" style="margin:0;">
               <div class="text-muted" style="font-size:.9rem;">IBAN (demo)</div>
-              <div style="font-weight:700;">IT00 X000 0000 0000 0000 0000 000</div>
+              <div style="font-weight:700; word-break:break-word;">IT00 X000 0000 0000 0000 0000 000</div>
               <div class="text-muted" style="font-size:.9rem; margin-top:6px;">Causale</div>
               <div style="font-weight:700;">“Regalo matrimonio Sara &amp; Andrea”</div>
             </div>
@@ -693,25 +784,67 @@ section[id]{scroll-margin-top: calc(var(--nav-h) + 12px)}
 
 <script>
 (() => {
-  // Hamburger toggler
   const btn = document.getElementById('hamb');
-  const panel = document.getElementById('menu-panel');
-  if (btn && panel){
-    btn.addEventListener('click', () => {
-      const open = panel.classList.toggle('open');
-      panel.hidden = !open;
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const overlay = document.getElementById('nav-overlay');
+  const drawer = document.getElementById('nav-drawer');
+  const closeBtn = document.getElementById('drawer-close');
+
+  function openMenu(){
+    document.body.classList.add('menu-open');
+    overlay.hidden = false;
+    drawer.hidden = false;
+    btn?.setAttribute('aria-expanded','true');
+    btn?.setAttribute('aria-label','Chiudi menu');
+
+    // focus sul primo link (accessibilità)
+    const firstLink = drawer.querySelector('a');
+    firstLink && firstLink.focus({preventScroll:true});
+  }
+
+  function closeMenu(){
+    document.body.classList.remove('menu-open');
+    btn?.setAttribute('aria-expanded','false');
+    btn?.setAttribute('aria-label','Apri menu');
+
+    // lascia finire l'animazione prima di hidden
+    window.setTimeout(() => {
+      if (!document.body.classList.contains('menu-open')){
+        overlay.hidden = true;
+        drawer.hidden = true;
+      }
+    }, 220);
+
+    // ritorno focus al bottone
+    btn && btn.focus({preventScroll:true});
+  }
+
+  function toggleMenu(){
+    if (document.body.classList.contains('menu-open')) closeMenu();
+    else openMenu();
+  }
+
+  if (btn && overlay && drawer){
+    btn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', closeMenu);
+    closeBtn && closeBtn.addEventListener('click', closeMenu);
+
+    // chiudi su click link
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    // chiudi con ESC
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && document.body.classList.contains('menu-open')) closeMenu();
     });
-    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      panel.classList.remove('open');
-      panel.hidden = true;
-      btn.setAttribute('aria-expanded','false');
-    }));
+
+    // se passi a desktop, chiudi menu per evitare stati strani
+    const mq = window.matchMedia('(min-width: 981px)');
+    mq.addEventListener?.('change', () => { if (mq.matches) closeMenu(); });
   }
 
   // Countdown (demo)
   const target = new Date("2026-07-12T17:00:00").getTime();
   const els = [document.getElementById("countdownText"), document.getElementById("countdownTextBottom")].filter(Boolean);
+
   function tick(){
     if (!els.length) return;
     const diff = target - Date.now();
