@@ -109,3 +109,5 @@ if not DEBUG and ALLOWED_HOSTS:
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
+
+

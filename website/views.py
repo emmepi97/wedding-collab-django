@@ -76,3 +76,5 @@ from django.shortcuts import render
 
 def demo_romantico(request):
     return render(request, "demo_romantico.html")
+
+

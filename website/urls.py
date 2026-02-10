@@ -17,3 +17,6 @@ urlpatterns = [
     # dettaglio demo via slug (se lo usi)
     path("demo/<slug:slug>/", views.demo_detail, name="demo_detail"),
 ]
+
+
+

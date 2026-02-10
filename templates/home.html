@@ -544,7 +544,11 @@ nav .nav-cta{
           <div class="card reveal">
             <!-- Collega l'action a Tally/Formspree/HubSpot -->
 
-            <form id="leadForm" action="" method="post" novalidate>
+
+
+                <form id="leadForm" action="https://formspree.io/f/xaqdqoey" method="POST">
+
+ 
 
   <div class="form-row cols-2">
     <label>
@@ -645,12 +649,13 @@ nav .nav-cta{
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
  
     // Lead form (placeholder)
-    document.getElementById('leadForm')?.addEventListener('submit', (e)=>{
-      if(!e.target.checkValidity()){ return; }
-      e.preventDefault();
-      alert('Grazie! Ti invieremo il Kit Partner entro 24 ore.');
-      e.target.reset();
-    });
+     // document.getElementById('leadForm')?.addEventListener('submit', (e)=>{
+      //  if(!e.target.checkValidity()){ return; }
+      //  e.preventDefault();
+      //  alert('Grazie! Ti invieremo il Kit Partner entro 24 ore.');
+      //  e.target.reset();
+    //  });
+
   </script>
 </body>
 <script>
