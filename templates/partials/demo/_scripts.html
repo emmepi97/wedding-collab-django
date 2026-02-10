@@ -1,0 +1,81 @@
+<script>
+(() => {
+  const btn = document.getElementById('hamb');
+  const panel = document.getElementById('menu-panel');
+  const panelContainer = panel ? panel.querySelector('.container') : null;
+
+  const focusable = () => panelContainer
+    ? panelContainer.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])')
+    : [];
+
+  const openMenu = () => {
+    if (!panel || !btn) return;
+    panel.hidden = false;
+    panel.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+    document.documentElement.classList.add('menu-open');
+    const first = focusable()[0];
+    if (first) first.focus({ preventScroll: true });
+  };
+
+  const closeMenu = () => {
+    if (!panel || !btn) return;
+    panel.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+    document.documentElement.classList.remove('menu-open');
+    setTimeout(() => { panel.hidden = true; }, 220);
+    btn.focus({ preventScroll: true });
+  };
+
+  if (btn && panel){
+    btn.addEventListener('click', () => {
+      panel.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && panel.classList.contains('open')) {
+        e.preventDefault(); closeMenu();
+      }
+      if (panel.classList.contains('open') && e.key === 'Tab') {
+        const f = focusable();
+        if (!f.length) return;
+        const first = f[0];
+        const last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault(); last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault(); first.focus();
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.matchMedia('(min-width: 900px)').matches && panel.classList.contains('open')) {
+        closeMenu();
+      }
+    });
+  }
+
+  // Countdown (demo)
+  const target = new Date("2026-07-12T17:00:00").getTime();
+  const els = [
+    document.getElementById("countdownText"),
+    document.getElementById("countdownTextBottom")
+  ].filter(Boolean);
+
+  function tick(){
+    if (!els.length) return;
+    const diff = target - Date.now();
+    if (diff <= 0){
+      els.forEach(e => e.textContent = "È oggi! 🎉");
+      return;
+    }
+    const days = Math.ceil(diff / (1000*60*60*24));
+    els.forEach(e => e.textContent = "Mancano " + days + " giorni");
+    setTimeout(tick, 60*1000);
+  }
+  tick();
+})();
+</script>

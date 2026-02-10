@@ -1,0 +1,44 @@
+<section class="hero" aria-label="Copertina">
+  <div class="bg" aria-hidden="true">
+    <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="" loading="eager" decoding="async">
+  </div>
+  <div class="veil" aria-hidden="true"></div>
+
+  <div class="container inner">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Demo • Classic Nav</span>
+        <h1 class="title serif">Sara <span class="amp">&amp;</span> Andrea</h1>
+        <p class="lead">
+          Un invito digitale elegante: <strong>programma</strong>, <strong>location</strong>, <strong>travel</strong>,
+          <strong>alloggi</strong>, <strong>gallery</strong> e <strong>RSVP</strong> — tutto in un’unica esperienza curata nei dettagli.
+        </p>
+
+        <div class="cta-row">
+          <a href="#rsvp" class="btn btn-blush">Conferma presenza</a>
+          <a href="#programma" class="btn btn-ghost">Vedi programma</a>
+          <a href="#location" class="btn btn-ghost">Come arrivare</a>
+        </div>
+
+        <div class="pills" role="group" aria-label="Dettagli principali">
+          <div class="pill"><span class="label">Data</span><span class="value">12 Luglio 2026</span></div>
+          <div class="pill"><span class="label">Orario</span><span class="value">17:00</span></div>
+          <div class="pill"><span class="label">Location</span><span class="value">Villa del Lago</span></div>
+        </div>
+
+        <div class="text-muted note"><strong>Nota demo:</strong> testi, nomi e indirizzi sono di esempio.</div>
+      </div>
+
+      <div>
+        <div class="card rounded-lg shadow-strong" style="overflow:hidden; padding:0;">
+          <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Dettaglio invito" loading="lazy" decoding="async">
+          <div style="padding:18px;">
+            <div class="text-muted" style="font-size:.9rem;">Countdown (demo)</div>
+            <div id="countdownText" class="serif" style="font-weight:700; font-size:1.2rem;">Mancano 160 giorni</div>
+          </div>
+        </div>
+        <div class="text-muted" style="margin-top:10px;">(Demo) Nel sito reale: pulsanti WhatsApp, “Chiama” e “Scrivi”.</div>
+      </div>
+    </div>
+  </div>
+</section>
