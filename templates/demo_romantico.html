@@ -158,7 +158,17 @@ body{margin:0; color:var(--ink); background:#fff; line-height:1.6; font-family:v
     radial-gradient(60% 60% at 80% 0%, rgba(224,183,134,.18), transparent 60%),
     linear-gradient(180deg, rgba(246,244,241,.75), rgba(246,244,241,.92));
 }
-.hero .inner{position:relative; z-index:2; width:100%; padding: clamp(18px, 4vw, 48px) 0}
+
+.hero .inner{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:1180px;        /* ✅ centra e limita la larghezza del contenuto */
+  margin:0 auto;           /* ✅ centra davvero */
+  padding: clamp(18px, 4vw, 48px) 0;
+}
+
+
 
 .kicker{
   display:inline-flex; gap:.5rem; align-items:center;
