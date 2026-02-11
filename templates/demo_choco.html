@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choco Weddings</title>
+
+  <!-- Fonts (simili allo stile delle foto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #ffffff;
+      --ink: #151515;
+      --muted: #6b6b6b;
+      --line: rgba(0,0,0,.08);
+
+      --pink: #f7e3df;     /* fondini rosa/acquerello */
+      --pink2:#f2d4ce;     /* più intenso */
+      --btn: rgba(0,0,0,.00);
+
+      --serif: "Playfair Display", serif;
+      --sans:  "Poppins", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+      --wrap: 1200px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a{ color: inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+
+    .wrap{
+      width: min(var(--wrap), calc(100% - 56px));
+      margin: 0 auto;
+    }
+
+    /* ============ NAVBAR ============ */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav{
+      height: 84px;
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    /* left lang */
+    .lang{
+      font-size: 13px;
+      letter-spacing:.06em;
+      color: var(--ink);
+      display:flex;
+      gap:10px;
+      align-items:center;
+      white-space:nowrap;
+    }
+    .lang a{ opacity:.85; }
+    .lang a:hover{ opacity:1; }
+    .lang .sep{ opacity:.35; }
+
+    /* center menu */
+    .menu{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap: 34px;
+      flex: 1;
+      font-size: 14px;
+      color: #2a2a2a;
+    }
+    .menu a{
+      padding: 8px 2px;
+      opacity: .85;
+      transition: .2s ease;
+    }
+    .menu a:hover{ opacity: 1; }
+
+    /* right icons */
+    .nav-right{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      white-space:nowrap;
+    }
+    .icon-btn{
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.8);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+    }
+    .icon-btn svg{ width:18px; height:18px; opacity:.9; }
+
+    .brand-mini{
+      position:absolute;
+      left: 20px;
+      top: 16px;
+      display:none;
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+
+    @media (max-width: 980px){
+      .menu{ display:none; }
+      .brand-mini{ display:block; }
+    }
+
+    /* ============ HERO 1 (foto full) ============ */
+    .hero-full{
+      height: calc(100vh - 84px);
+      min-height: 640px;
+      position: relative;
+      overflow:hidden;
+      background:
+        linear-gradient(to bottom, rgba(255,255,255,.12), rgba(0,0,0,.20)),
+        url("https://images.unsplash.com/photo-1523438097201-512ae7d59a90?auto=format&fit=crop&w=2200&q=70") center/cover no-repeat;
+    }
+    .hero-full .logo-center{
+      position:absolute;
+      top: 86px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 240px;
+      max-width: 58vw;
+      opacity: .95;
+      filter: drop-shadow(0 10px 22px rgba(0,0,0,.25));
+      user-select:none;
+      pointer-events:none;
+    }
+    /* se non hai il logo PNG, usa questo testo al posto dell'immagine */
+    .hero-full .logo-text{
+      position:absolute;
+      top: 94px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--serif);
+      font-size: 46px;
+      letter-spacing:.02em;
+      color: rgba(0,0,0,.72);
+      text-shadow: 0 10px 22px rgba(0,0,0,.25);
+      display:none;
+    }
+
+    .scroll-down{
+      position:absolute;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.55);
+      background: rgba(255,255,255,.25);
+      backdrop-filter: blur(6px);
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .scroll-down:hover{ transform: translateX(-50%) translateY(-2px); }
+    .scroll-down svg{ width: 18px; height: 18px; opacity:.9; }
+
+    /* ============ HERO 2 (collage) ============ */
+    .collage{
+      position: relative;
+      padding: 72px 0 76px;
+      overflow:hidden;
+      background:
+        radial-gradient(800px 420px at 15% 65%, rgba(247,227,223,.65), transparent 60%),
+        radial-gradient(700px 420px at 85% 65%, rgba(247,227,223,.65), transparent 60%),
+        #fff;
+    }
+    .collage .center{
+      text-align:center;
+      max-width: 720px;
+      margin: 0 auto;
+      position:relative;
+      z-index:2;
+    }
+    .collage .brand{
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 500;
+      margin-bottom: 12px;
+      opacity:.95;
+    }
+    .collage h1{
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.02;
+      font-size: clamp(44px, 6.1vw, 78px);
+      margin: 0 0 14px;
+    }
+    .collage .sub{
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+      margin: 0 0 22px;
+    }
+
+    .btn-outline{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: 1px solid rgba(231,171,160,.55);
+      background: rgba(255,255,255,.7);
+      font-size: 12px;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      transition: .2s ease;
+    }
+    .btn-outline:hover{
+      transform: translateY(-1px);
+      border-color: rgba(231,171,160,.85);
+    }
+
+    /* blocchi immagini ai lati (collage) */
+    .collage-grid{
+      position:absolute;
+      inset: 0;
+      pointer-events:none;
+      z-index:1;
+    }
+    .pile{
+      position:absolute;
+      width: 420px;
+      max-width: 42vw;
+      top: 88px;
+    }
+    .pile.left{ left: 90px; }
+    .pile.right{ right: 90px; }
+
+    .shot{
+      position:absolute;
+      border: 10px solid #fff;
+      box-shadow: 0 18px 50px rgba(0,0,0,.10);
+      background:#ddd;
+    }
+    .shot img{ width:100%; height:100%; object-fit:cover; }
+
+    /* left shots */
+    .pile.left .a{ width: 320px; height: 360px; left: 0; top: 0; }
+    .pile.left .b{ width: 190px; height: 150px; left: 220px; top: 160px; }
+    .pile.left .c{ width: 190px; height: 150px; left: 80px; top: 340px; }
+
+    /* right shots */
+    .pile.right .a{ width: 330px; height: 220px; right: 0; top: 40px; }
+    .pile.right .b{ width: 250px; height: 170px; right: 70px; top: 190px; }
+    .pile.right .c{ width: 200px; height: 220px; right: 160px; top: 310px; }
+
+    /* botanical stickers */
+    .sticker{
+      position:absolute;
+      width: 120px;
+      opacity: .95;
+      filter: drop-shadow(0 18px 26px rgba(0,0,0,.08));
+    }
+    .sticker.s1{ left: 120px; top: 30px; width: 86px; }
+    .sticker.s2{ right: 120px; top: 80px; width: 92px; }
+    .sticker.s3{ left: 170px; bottom: 30px; width: 110px; }
+    .sticker.s4{ right: 210px; bottom: 34px; width: 110px; }
+
+    @media (max-width: 1100px){
+      .pile.left{ left: 24px; }
+      .pile.right{ right: 24px; }
+    }
+    @media (max-width: 980px){
+      .pile{ display:none; }
+      .sticker{ display:none; }
+      .collage{ padding: 64px 0 64px; }
+    }
+
+    /* ============ SECTION HEADINGS ============ */
+    .section{
+      padding: 86px 0 64px;
+      position: relative;
+    }
+    .eyebrow{
+      text-align:center;
+      font-size: 12px;
+      letter-spacing: .22em;
+      color: rgba(0,0,0,.22);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .title{
+      text-align:center;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4.2vw, 58px);
+      margin: 0 0 14px;
+      font-weight: 600;
+    }
+    .lead{
+      text-align:center;
+      max-width: 720px;
+      margin: 0 auto;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    /* ============ DESTINATIONS ============ */
+    .destinations{
+      padding-top: 64px;
+    }
+    .dest-grid{
+      margin-top: 46px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 46px;
+      align-items:end;
+    }
+    .dest-card img{
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      background:#ddd;
+    }
+    .dest-card .label{
+      font-family: var(--serif);
+      font-size: 18px;
+      margin-top: 14px;
+      text-align:left;
+      font-weight: 600;
+    }
+
+    .deco-flower{
+      position:absolute;
+      width: 170px;
+      opacity:.95;
+      filter: drop-shadow(0 18px 26px rgba(0,0,0,.08));
+      pointer-events:none;
+    }
+    .deco-flower.left{ left: 70px; top: 210px; width: 80px; }
+    .deco-flower.right{ right: 70px; top: 220px; width: 150px; }
+
+    @media (max-width: 980px){
+      .dest-grid{ grid-template-columns: 1fr; gap: 26px; }
+      .deco-flower{ display:none; }
+    }
+
+    /* ============ SERVICES (cerchi rosa) ============ */
+    .services{
+      padding-top: 64px;
+    }
+    .service-row{
+      margin-top: 58px;
+      display:grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 22px;
+      align-items:center;
+      text-align:center;
+    }
+    .bubble{
+      width: 96px;
+      height: 96px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.55), rgba(0,0,0,0)),
+                  var(--pink);
+      margin: 0 auto 16px;
+      border: 1px solid rgba(0,0,0,.04);
+    }
+    .service-row .name{
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.15;
+    }
+    .service-cta{
+      text-align:center;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 1100px){
+      .service-row{ grid-template-columns: repeat(2, 1fr); row-gap: 34px; }
+    }
+
+    /* ============ FULLWIDTH BANNER ============ */
+    .banner{
+      height: 520px;
+      position: relative;
+      overflow:hidden;
+      margin: 40px 0 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=2400&q=70") center/cover no-repeat;
+    }
+    .banner .inner{
+      height: 100%;
+      display:grid;
+      place-items:center;
+      text-align:center;
+      padding: 0 18px;
+    }
+    .banner h2{
+      font-family: var(--serif);
+      color:#fff;
+      font-size: clamp(34px, 4.4vw, 64px);
+      margin: 0 0 10px;
+      font-weight: 600;
+    }
+    .banner p{
+      color: rgba(255,255,255,.82);
+      margin: 0 auto 22px;
+      max-width: 720px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .banner .btn-outline{
+      border-color: rgba(255,255,255,.40);
+      color:#fff;
+      background: rgba(255,255,255,.08);
+    }
+    .banner .btn-outline:hover{
+      border-color: rgba(255,255,255,.68);
+    }
+
+    /* ============ ABOUT (titolo grande + img + testo + box rosa stats) ============ */
+    .about{
+      padding: 86px 0 110px;
+      position: relative;
+    }
+    .about-grid{
+      margin-top: 46px;
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 54px;
+      align-items:start;
+      position: relative;
+    }
+    .about-photo{
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      background:#ddd;
+    }
+    .about p{
+      color: var(--muted);
+      line-height: 1.95;
+      font-size: 14px;
+      margin: 0 0 16px;
+    }
+    .stats{
+      position:absolute;
+      right: 0;
+      bottom: -46px;
+      width: 520px;
+      max-width: 92%;
+      background: var(--pink2);
+      padding: 24px 26px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .stat .k{
+      font-family: var(--serif);
+      font-size: 56px;
+      color: rgba(255,255,255,.92);
+      line-height: 1;
+      text-align:center;
+      font-weight: 600;
+    }
+    .stat .t{
+      text-align:center;
+      color: rgba(0,0,0,.65);
+      font-size: 12px;
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
+    .leaf{
+      position:absolute;
+      width: 140px;
+      opacity:.95;
+      filter: drop-shadow(0 18px 26px rgba(0,0,0,.08));
+      pointer-events:none;
+    }
+    .leaf.l1{ left: 56px; top: 210px; width: 120px;}
+    .leaf.l2{ right: 56px; top: 190px; width: 110px;}
+
+    @media (max-width: 980px){
+      .about-grid{ grid-template-columns: 1fr; gap: 22px; }
+      .stats{ position: static; margin-top: 18px; width: 100%; }
+      .leaf{ display:none; }
+    }
+
+    /* tiny helper */
+    .spacer{ height: 8px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="topbar">
+    <div class="brand-mini">Choco Weddings</div>
+    <div class="wrap">
+      <div class="nav">
+        <div class="lang">
+          <a href="#">EN</a>
+          <span class="sep">|</span>
+          <a href="#">IT</a>
+        </div>
+
+        <nav class="menu" aria-label="Main navigation">
+          <a href="#services">Wedding services</a>
+          <a href="#destinations">Locations</a>
+          <a href="#couples">Our couples</a>
+          <a href="#shop">Shop</a>
+          <a href="#about">About us</a>
+          <a href="#contacts">Contacts</a>
+        </nav>
+
+        <div class="nav-right">
+          <div class="lang" style="gap:10px;">
+            <a href="#">EN</a><span class="sep">|</span><a href="#">IT</a>
+          </div>
+          <button class="icon-btn" aria-label="Account">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M20 21a8 8 0 1 0-16 0"/>
+              <circle cx="12" cy="8" r="4"/>
+            </svg>
+          </button>
+          <button class="icon-btn" aria-label="Cart">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M6 6h15l-1.5 9h-12z"/>
+              <path d="M6 6l-2-3H1"/>
+              <circle cx="9" cy="20" r="1.4"/>
+              <circle cx="18" cy="20" r="1.4"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO 1 -->
+  <section class="hero-full" id="top">
+    <!-- Se hai il logo, metti un PNG e commenta logo-text -->
+    <img class="logo-center" src="assets/logo-choco.png" alt="Choco Weddings" onerror="this.style.display='none'; document.querySelector('.logo-text').style.display='block';">
+    <div class="logo-text">Choco Weddings</div>
+
+    <a class="scroll-down" href="#intro" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <path d="M12 5v13"/>
+        <path d="M6 13l6 6 6-6"/>
+      </svg>
+    </a>
+  </section>
+
+  <!-- HERO 2 COLLAGE -->
+  <section class="collage" id="intro">
+    <!-- botanical stickers (usa i tuoi png se li hai) -->
+    <img class="sticker s1" src="assets/sticker-leaf-1.png" alt="" onerror="this.style.display='none'">
+    <img class="sticker s2" src="assets/sticker-leaf-2.png" alt="" onerror="this.style.display='none'">
+    <img class="sticker s3" src="assets/sticker-flower-1.png" alt="" onerror="this.style.display='none'">
+    <img class="sticker s4" src="assets/sticker-flower-2.png" alt="" onerror="this.style.display='none'">
+
+    <div class="collage-grid" aria-hidden="true">
+      <div class="pile left">
+        <div class="shot a">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+        <div class="shot b">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+        <div class="shot c">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+      </div>
+
+      <div class="pile right">
+        <div class="shot a">
+          <img src="https://images.unsplash.com/photo-1529634896865-5a4e3ee5e7b6?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+        <div class="shot b">
+          <img src="https://images.unsplash.com/photo-1523438097201-512ae7d59a90?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+        <div class="shot c">
+          <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=70" alt="">
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="center">
+        <div class="brand">Choco Weddings</div>
+        <h1>Italy,<br>weddings<br><em style="font-weight:400;">and more...</em></h1>
+        <p class="sub">
+          We are specialized in planning romantic Italian Weddings<br>
+          for couples from all over the world.
+        </p>
+        <a class="btn-outline" href="#contacts">Free consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section class="section destinations" id="destinations">
+    <img class="deco-flower left" src="assets/deco-left.png" alt="" onerror="this.style.display='none'">
+    <img class="deco-flower right" src="assets/deco-right.png" alt="" onerror="this.style.display='none'">
+
+    <div class="wrap">
+      <div class="eyebrow">ITALIAN DESTINATIONS</div>
+      <h2 class="title">Our destinations</h2>
+      <p class="lead">
+        Italy, one of the most romantic destinations in the world, is the ideal place for an unforgettable and magical wedding experience.
+        Seaside villages, wonderful landscapes, idyllic islands, incredible lakes, and ancient cities together with delicious food and Mediterranean colours,
+        are the perfect backdrop for fabulous settings of dream weddings!
+      </p>
+
+      <div class="dest-grid">
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=1200&q=70" alt="Sea and lakes">
+          <div class="label">Sea and lakes</div>
+        </div>
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1526156228453-efd3d1b1a25a?auto=format&fit=crop&w=1200&q=70" alt="Cities and villages">
+          <div class="label">Cities and villages</div>
+        </div>
+        <div class="dest-card">
+          <img src="https://images.unsplash.com/photo-1523438097201-512ae7d59a90?auto=format&fit=crop&w=1200&q=70" alt="Countryside">
+          <div class="label">Countryside</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section services" id="services">
+    <div class="wrap">
+      <div class="eyebrow">UNIQUE & PERFECT</div>
+      <h2 class="title">Services</h2>
+      <p class="lead">
+        We don’t just organize weddings, we create experiences that involve spouses and guests to leave all participants with an indelible memory of the day.
+        All our services are customized and built to fit your needs.
+      </p>
+
+      <div class="service-row">
+        <div>
+          <div class="bubble"></div>
+          <div class="name">Location</div>
+        </div>
+        <div>
+          <div class="bubble"></div>
+          <div class="name">Flowers and<br/>Bouquet</div>
+        </div>
+        <div>
+          <div class="bubble"></div>
+          <div class="name">Photos and<br/>Videos</div>
+        </div>
+        <div>
+          <div class="bubble"></div>
+          <div class="name">Music</div>
+        </div>
+        <div>
+          <div class="bubble"></div>
+          <div class="name">Wedding cake</div>
+        </div>
+      </div>
+
+      <div class="service-cta">
+        <a class="btn-outline" href="#services">See more</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR COUPLES banner -->
+  <section class="banner" id="couples">
+    <div class="inner">
+      <div>
+        <h2>The best day of your life!</h2>
+        <p>
+          What gives us the most satisfaction is seeing our spouses and brides
+          enjoying the most significant day of their lives.
+        </p>
+        <a class="btn-outline" href="#couples">Our couples</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <img class="leaf l1" src="assets/leaf-left.png" alt="" onerror="this.style.display='none'">
+    <img class="leaf l2" src="assets/leaf-right.png" alt="" onerror="this.style.display='none'">
+
+    <div class="wrap">
+      <div class="eyebrow">CHOCOWEDDING</div>
+      <h2 class="title">Every wedding a tailor-made event</h2>
+
+      <div class="about-grid">
+        <div style="position:relative;">
+          <img class="about-photo" src="https://images.unsplash.com/photo-1529634896865-5a4e3ee5e7b6?auto=format&fit=crop&w=1600&q=70" alt="About photo">
+          <div class="stats" aria-label="Stats">
+            <div class="stat">
+              <div class="t">Wedding</div>
+              <div class="k">0</div>
+            </div>
+            <div class="stat">
+              <div class="t">Cerimonies</div>
+              <div class="k">0</div>
+            </div>
+            <div class="stat">
+              <div class="t">Years</div>
+              <div class="k">0</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p>
+            We are experts in organizing weddings in dream locations in Italy: from medieval castles to the most enchanting villages,
+            from wonderful villas to the most evocative churches, we will find the most appropriate setting.
+          </p>
+          <p>
+            A wedding is a bit like a tailored suit: it must fit perfectly, and we like to think of ourselves as seamstresses able to imagine first and then
+            give shape to every single detail to make you experience an unforgettable day.
+          </p>
+
+          <div class="spacer"></div>
+          <a class="btn-outline" href="#about">About us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTS (placeholder) -->
+  <section class="section" id="contacts" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="eyebrow">CONTACTS</div>
+      <h2 class="title">Let’s plan your day</h2>
+      <p class="lead">If you want, I can style this section exactly like your real “Contacts” page.</p>
+    </div>
+  </section>
+
+  <!-- Shop anchor (placeholder) -->
+  <div id="shop"></div>
+
+  <script>
+    // scroll down button smooth
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener("click",(e)=>{
+        const id = a.getAttribute("href");
+        const el = document.querySelector(id);
+        if(!el) return;
+        e.preventDefault();
+        el.scrollIntoView({behavior:"smooth", block:"start"});
+      });
+    });
+  </script>
+</body>
+</html>
