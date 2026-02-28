@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="it">
 <head>
@@ -21,24 +22,23 @@
     /* =========================
        Design tokens
     ========================== */
+
     :root{
-      --bg: #fbfaf8;
-      --card: rgba(255,255,255,.75);
-      --card-strong: rgba(255,255,255,.88);
-      --text: #141414;
-      --muted: rgba(20,20,20,.66);
-      --line: rgba(20,20,20,.10);
-      --shadow: 0 16px 40px rgba(20,20,20,.10);
-      --radius: 22px;
+  --bg: #fbfaf8;
+  --card: rgba(255,255,255,.75);
+  --card-strong: rgba(255,255,255,.88);
+  --text: #141414;
+  --muted: rgba(20,20,20,.66);
+  --line: rgba(20,20,20,.10);
+  --shadow: 0 16px 40px rgba(20,20,20,.10);
+  --radius: 22px;
 
-      --max: 1120px;
-      --pad: clamp(16px, 3vw, 28px);
-      --section: clamp(54px, 8vw, 92px);
+  --max: 1120px;
+  --pad: clamp(16px, 3vw, 28px);
+  --section: clamp(54px, 8vw, 92px);
 
-      --hero-image: <img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">;
-    
-    
-    }
+  --hero-image: url("{% static 'img/fotomatrimonio12.png' %}");
+}
 
     /* Reduce motion accessibility */
     @media (prefers-reduced-motion: reduce) {
@@ -662,15 +662,15 @@
 
       <div class="masonry" style="margin-top: 22px;">
         <a class="photo p1 reveal" href="#" aria-label="Foto 1">
-<img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
         <a class="photo p2 reveal" href="#" aria-label="Foto 2">
-<img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
         <a class="photo p3 reveal" href="#" aria-label="Foto 3">
-<img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
         <a class="photo p4 reveal" href="#" aria-label="Foto 4">
-<img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
         <a class="photo p5 reveal" href="#" aria-label="Foto 5">
-<img src="{% static 'img/matrimonioheaderdemo.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
       </div>
     </div>
   </section>
