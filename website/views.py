@@ -96,3 +96,6 @@ def demo5(request):
 
 def demo6(request):
     return render(request, "demo6.html")
+
+def demo7(request):
+    return render(request, "demo7.html")

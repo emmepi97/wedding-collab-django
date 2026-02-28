@@ -37,6 +37,10 @@ urlpatterns = [
                     # demo pubblica diretta (NUOVA)
     path("demo6/", views.demo6, name="demo6"),
 
+
+                     # demo pubblica diretta (NUOVA)
+    path("demo7/", views.demo7, name="demo7"),
+
 ]
 
 
