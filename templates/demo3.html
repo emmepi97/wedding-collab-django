@@ -6,40 +6,45 @@
   <title>Leonardo & Vera — Wedding</title>
   <meta name="description" content="Sito del matrimonio di Leonardo e Vera: dettagli, programma, RSVP, gallery e informazioni utili." />
   <meta name="theme-color" content="#e9dfd9" />
- 
+
   <!-- Open Graph -->
   <meta property="og:title" content="Leonardo & Vera — Wedding" />
   <meta property="og:description" content="Un giorno speciale. Unisciti a noi per celebrare." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" />
- 
-  <!-- Google Fonts (opzionale, con fallback) -->
+
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
- 
+
   <style>
     /* =========================
        DESIGN SYSTEM & RESET
        ========================= */
     :root{
-      /* Palette romantica e moderna */
       --bg: #f7f4f2;
       --paper: #ffffff;
       --ink: #2d2a26;
       --muted: #6f6a66;
-      --primary: #3b5d50;   /* verde salvia profondo */
-      --accent: #c7a34c;    /* oro caldo */
-      --blush: #e9dfd9;     /* rosa cipria */
+      --primary: #3b5d50;
+      --accent: #c7a34c;
+      --blush: #e9dfd9;
       --petal: #f1e6e1;
- 
+
       --radius: 16px;
       --shadow: 0 10px 30px rgba(0,0,0,.08);
       --shadow-soft: 0 6px 20px rgba(0,0,0,.06);
- 
+
       --maxw: 1100px;
+
+      /* responsive layout tokens */
+      --nav-h: 64px;
+      --page-w: min(var(--maxw), 92%);
+      --section-y: clamp(56px, 8vw, 90px);
     }
+
     *,*::before,*::after{ box-sizing: border-box; }
     html,body{ margin:0; padding:0; }
+    html{ scroll-behavior: smooth; }
     body{
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color: var(--ink);
@@ -50,7 +55,9 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      overflow-x:hidden;
     }
+
     h1,h2,h3{
       font-family: "Playfair Display", Georgia, serif;
       line-height: 1.2;
@@ -60,80 +67,199 @@
     p{ margin: .3rem 0 1rem; color: var(--muted); }
     a{ color: var(--primary); text-decoration: none; }
     a:hover{ text-decoration: underline; }
- 
-    .container{ width: min(var(--maxw), 92%); margin: 0 auto; }
-    .section{ padding: 80px 0; }
+
+    :focus-visible{
+      outline: 3px solid rgba(59,93,80,.25);
+      outline-offset: 3px;
+      border-radius: 10px;
+    }
+
+    .container{ width: var(--page-w); margin: 0 auto; }
+    .section{ padding: var(--section-y) 0; }
+
+    /* aiuta lo scroll con navbar sticky */
+    header, section, footer{ scroll-margin-top: calc(var(--nav-h) + 14px); }
+
     .pill{
       display:inline-block; padding: 6px 12px; border-radius: 999px;
       background: linear-gradient(180deg, #fff, #f6f2ee); border: 1px solid #efe8e2;
       color: #7a736e; font-size: .9rem; box-shadow: var(--shadow-soft);
     }
     .btn{
-      display:inline-flex; align-items:center; gap:.6rem;
+      display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
       padding: 12px 18px; border-radius: 999px; border:1px solid transparent;
       background: linear-gradient(180deg, var(--ink), #111); color:#fff; font-weight:600;
-      box-shadow: var(--shadow); transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
       cursor:pointer;
+      min-height: 48px; /* touch target */
+      text-decoration:none;
+      white-space:nowrap;
     }
-    .btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
+    .btn:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.12); text-decoration:none; }
     .btn--light{ background: linear-gradient(180deg, #fff, #f4efe9); color: var(--primary); border:1px solid #e9e2dc;}
     .btn--accent{ background: linear-gradient(180deg, #daba6a, var(--accent)); color:#1a160f; border:1px solid #ad8a3e; }
- 
+
     /* =========================
-       NAVBAR
+       NAVBAR (responsive + drawer)
        ========================= */
     .nav{
-      position: sticky; top:0; z-index: 50; backdrop-filter: blur(8px);
-      background: rgba(255,255,255,.7); border-bottom: 1px solid #eee5de;
+      position: sticky; top:0; z-index: 50;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.7);
+      border-bottom: 1px solid #eee5de;
     }
     .nav__inner{
-      display:flex; align-items:center; justify-content:space-between; height:64px;
+      display:flex; align-items:center; justify-content:space-between;
+      height:var(--nav-h);
+      gap: 12px;
     }
     .brand{
-      display:flex; align-items:center; gap:.6rem; font-weight:700; letter-spacing:.5px;
+      display:flex; align-items:center; gap:.6rem;
+      font-weight:700; letter-spacing:.5px;
       color: var(--primary);
+      white-space:nowrap;
     }
     .brand svg{ width:22px; height:22px; color: var(--accent); }
-    .menu{ display:flex; gap: 1rem; }
-    .menu a{ padding: 8px 10px; border-radius: 8px; color: var(--ink); }
+    .menu{ display:flex; gap: 0.4rem; flex-wrap:wrap; }
+    .menu a{ padding: 8px 10px; border-radius: 10px; color: var(--ink); }
     .menu a:hover{ background: #f4efea; text-decoration:none; }
- 
+
+    /* hamburger (hidden desktop) */
+    .burger{
+      width:44px;height:44px;
+      border-radius: 14px;
+      border:1px solid #e9e2dc;
+      background: linear-gradient(180deg, #fff, #f4efe9);
+      display:none;
+      place-items:center;
+      cursor:pointer;
+      box-shadow: var(--shadow-soft);
+    }
+    .burger span{
+      width:18px;height:2px;background: var(--ink);
+      border-radius: 999px;
+      position:relative;
+      display:block;
+    }
+    .burger span::before,
+    .burger span::after{
+      content:"";
+      position:absolute;
+      left:0;
+      width:18px;height:2px;background: var(--ink);
+      border-radius: 999px;
+    }
+    .burger span::before{ top:-6px; }
+    .burger span::after{ top:6px; }
+
+    /* drawer */
+    .overlay{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.35);
+      opacity:0; pointer-events:none;
+      transition: opacity .18s ease;
+      z-index: 80;
+    }
+    .drawer{
+      position:fixed; top:0; right:0;
+      width: min(92vw, 420px);
+      height: 100vh;
+      background:#fff;
+      border-left: 1px solid #eee5de;
+      box-shadow: -18px 0 60px rgba(0,0,0,.12);
+      transform: translateX(105%);
+      transition: transform .22s ease;
+      z-index: 90;
+      display:flex;
+      flex-direction:column;
+    }
+    .drawer__head{
+      height: var(--nav-h);
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 0 16px;
+      border-bottom: 1px solid #eee5de;
+    }
+    .drawer__close{
+      width:44px;height:44px;
+      border-radius:14px;
+      border:1px solid #e9e2dc;
+      background:#fff;
+      cursor:pointer;
+      font-weight:800;
+    }
+    .drawer__body{
+      padding: 16px;
+      display:grid;
+      gap:10px;
+    }
+    .drawer__body a{
+      border:1px solid #efe8e2;
+      background: linear-gradient(180deg, #fff, #f6f2ee);
+      border-radius: 14px;
+      padding: 14px 14px;
+      color: var(--ink);
+      text-decoration:none;
+      font-weight:600;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .drawer__body a span{ opacity:.6; }
+    .drawer__cta{
+      margin-top: 8px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .drawer-open .overlay{ opacity:1; pointer-events:auto; }
+    .drawer-open .drawer{ transform: translateX(0); }
+
     /* =========================
        HERO
        ========================= */
     .hero{
-      position: relative; overflow: clip; padding: 90px 0 70px;
+      position: relative;
+      overflow: clip;
+      padding: clamp(64px, 8vw, 90px) 0 clamp(50px, 7vw, 70px);
       background:
         radial-gradient(1000px 600px at 80% 0%, rgba(199,163,76,.12), transparent 60%),
         linear-gradient(180deg, #fff, #f8f5f2);
     }
     .hero__grid{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items:center;
-    }
-    .hero h1{
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
-      color: var(--ink);
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(18px, 4vw, 40px);
+      align-items:center;
     }
     .display{
       font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(2.6rem, 6vw, 5rem);
       color: var(--primary);
+      margin-top:12px;
     }
-    .sub{
-      color:#7e746c; font-size: 1.05rem;
-    }
+    .hero h1{ font-size: clamp(2.2rem, 4vw, 3.4rem); color: var(--ink); }
+    .sub{ color:#7e746c; font-size: 1.05rem; max-width: 60ch; }
+
     .hero__card{
       background: rgba(255,255,255,.7);
-      border: 1px solid #efe7e1; border-radius: var(--radius); padding: 22px;
+      border: 1px solid #efe7e1;
+      border-radius: var(--radius);
+      padding: 22px;
       box-shadow: var(--shadow);
     }
+
     .hero__media{
-      position: relative; aspect-ratio: 4 / 5; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow);
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
       background: #ddd url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
     }
-    .petals{
-      position:absolute; inset:0; pointer-events:none; overflow:hidden;
-    }
+
+    .petals{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
     .petal{
       position:absolute; width:12px; height:18px; background: var(--blush);
       border-radius: 60% 60% 80% 80% / 70% 70% 30% 30%;
@@ -144,74 +270,108 @@
       from{ transform: translateY(-10%) rotate(0deg); }
       to{ transform: translateY(120vh) rotate(200deg); }
     }
- 
+
     /* =========================
        COUNTDOWN
        ========================= */
     .countdown{
-      display:flex; gap: 12px; flex-wrap:wrap; margin-top: 14px;
+      display:flex;
+      gap: 12px;
+      flex-wrap:wrap;
+      margin-top: 14px;
     }
     .countdown .tile{
-      min-width: 90px; text-align:center; padding: 10px; border-radius: 12px;
-      background:#fff; border:1px solid #efe8e2; box-shadow: var(--shadow-soft);
+      min-width: 90px;
+      flex: 1 1 110px; /* rende fluido su mobile */
+      text-align:center;
+      padding: 10px;
+      border-radius: 12px;
+      background:#fff;
+      border:1px solid #efe8e2;
+      box-shadow: var(--shadow-soft);
     }
     .tile strong{ display:block; font-size:1.6rem; color: var(--primary); }
     .tile span{ color:#7f7872; font-size:.85rem; }
- 
+
     /* =========================
        CARDS & GRID
        ========================= */
     .grid{ display:grid; gap: 24px; }
     .grid--2{ grid-template-columns: repeat(2, 1fr); }
     .grid--3{ grid-template-columns: repeat(3, 1fr); }
- 
+
     .card{
-      background: #fff; border:1px solid #efe8e2; border-radius: var(--radius);
-      box-shadow: var(--shadow-soft); padding: 22px;
+      background: #fff;
+      border:1px solid #efe8e2;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      padding: 22px;
     }
     .card h3{ margin-bottom: .4rem; }
     .muted{ color: var(--muted); }
- 
+
     /* =========================
        TIMELINE
        ========================= */
     .timeline{
-      position:relative; padding-left: 20px;
+      position:relative;
+      padding-left: 20px;
     }
     .timeline::before{
-      content:""; position:absolute; left: 12px; top:0; bottom:0; width:2px; background: #e7ded8;
+      content:"";
+      position:absolute;
+      left: 12px;
+      top:0; bottom:0;
+      width:2px;
+      background: #e7ded8;
     }
     .tl-item{
-      position:relative; margin: 0 0 18px 0; padding-left: 22px;
+      position:relative;
+      margin: 0 0 18px 0;
+      padding-left: 22px;
     }
     .tl-item::before{
-      content:""; position:absolute; left: -1px; top: 6px; width:10px; height:10px; border-radius:50%;
-      background: var(--accent); box-shadow: 0 0 0 4px #f5ede5;
+      content:"";
+      position:absolute;
+      left: -1px; top: 6px;
+      width:10px; height:10px;
+      border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px #f5ede5;
     }
- 
+
     /* =========================
-       GALLERY
+       GALLERY (responsive)
        ========================= */
     .gallery{
-      display:grid; grid-template-columns: repeat(12, 1fr); gap:10px;
+      display:grid;
+      gap:10px;
+      grid-template-columns: repeat(12, 1fr);
     }
     .g-item{
-      grid-column: span 4; aspect-ratio: 4/5; border-radius: 14px; overflow:hidden;
-      background:#ddd center/cover no-repeat; box-shadow: var(--shadow-soft);
+      grid-column: span 4;
+      aspect-ratio: 4/5;
+      border-radius: 14px;
+      overflow:hidden;
+      background:#ddd center/cover no-repeat;
+      box-shadow: var(--shadow-soft);
     }
     .g-item--wide{ grid-column: span 6; aspect-ratio: 16/9; }
- 
+
     /* =========================
-       FAQ (accordion)
+       FAQ
        ========================= */
     details{
-      background:#fff; border:1px solid #efe8e2; border-radius: 14px; padding: 14px 16px;
+      background:#fff;
+      border:1px solid #efe8e2;
+      border-radius: 14px;
+      padding: 14px 16px;
       box-shadow: var(--shadow-soft);
     }
     summary{ cursor:pointer; list-style:none; font-weight:600; color: var(--primary); }
     summary::-webkit-details-marker{ display:none; }
     details + details{ margin-top: 10px; }
- 
+
     /* =========================
        FORMS
        ========================= */
@@ -219,37 +379,69 @@
     .row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     label{ font-size:.92rem; color:#6f6a66; }
     input,select,textarea{
-      width:100%; padding: 12px 12px; border-radius: 10px; border:1px solid #e6ded7; background:#fff;
-      font: inherit; color: var(--ink);
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      border:1px solid #e6ded7;
+      background:#fff;
+      font: inherit;
+      color: var(--ink);
+      min-height: 48px; /* touch target */
     }
     textarea{ min-height:110px; resize: vertical; }
- 
+
     /* =========================
        FOOTER
        ========================= */
     .footer{
       background: linear-gradient(180deg, #faf7f4, #f2ece6);
-      border-top:1px solid #eee4dc; padding: 38px 0;
+      border-top:1px solid #eee4dc;
+      padding: 38px 0;
     }
-    .foot-grid{ display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 24px; }
- 
+    .foot-grid{
+      display:grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 24px;
+    }
+
     /* =========================
-       RESPONSIVE
+       RESPONSIVE BREAKPOINTS
        ========================= */
     @media (max-width: 960px){
+      /* show hamburger + hide desktop menu */
+      .menu{ display:none; }
+      .burger{ display:grid; }
+
       .hero__grid{ grid-template-columns: 1fr; }
       .grid--3{ grid-template-columns: 1fr; }
       .grid--2{ grid-template-columns: 1fr; }
       .foot-grid{ grid-template-columns: 1fr; }
       .row{ grid-template-columns: 1fr; }
     }
- 
+
+    @media (max-width: 700px){
+      /* Gallery: 2 colonne */
+      .gallery{ grid-template-columns: repeat(6, 1fr); }
+      .g-item{ grid-column: span 3; }
+      .g-item--wide{ grid-column: span 6; }
+    }
+
+    @media (max-width: 420px){
+      /* Gallery: 1 colonna */
+      .gallery{ grid-template-columns: 1fr; }
+      .g-item, .g-item--wide{ grid-column: auto; aspect-ratio: 16/10; }
+      .hero__card{ padding: 18px; }
+      .card{ padding: 18px; }
+    }
+
     /* Motion safety */
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; }
+      html{ scroll-behavior: auto; }
     }
   </style>
 </head>
+
 <body>
   <!-- =========================
        NAVBAR
@@ -257,22 +449,51 @@
   <nav class="nav" aria-label="Navigazione principale">
     <div class="container nav__inner">
       <a class="brand" href="#home" aria-label="Vai alla sezione iniziale">
-        <!-- inline ring icon -->
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 2a3 3 0 0 1 3 3c0 .9-.39 1.71-1 2.27l5.37 5.37a5.5 5.5 0 0 1-7.77 7.77L6.23 15.77A3.49 3.49 0 0 1 4 16.5a3.5 3.5 0 1 1 3.5-3.5c0 .79-.27 1.52-.73 2.1l5.37 5.37a3.5 3.5 0 0 0 4.95-4.95L11.77 7.65A3 3 0 0 1 12 2Z"/>
         </svg>
         Leonardo & Vera
       </a>
-      <div class="menu" role="menubar" aria-label="Menu">
+
+      <div class="menu" role="menubar" aria-label="Menu desktop">
         <a role="menuitem" href="#details">Dettagli</a>
         <a role="menuitem" href="#story">La storia</a>
         <a role="menuitem" href="#rsvp">RSVP</a>
         <a role="menuitem" href="#gallery">Gallery</a>
         <a role="menuitem" href="#info">Info utili</a>
       </div>
+
+      <button class="burger" id="burger" type="button" aria-label="Apri menu" aria-controls="drawer" aria-expanded="false">
+        <span aria-hidden="true"></span>
+      </button>
     </div>
   </nav>
- 
+
+  <!-- Drawer mobile -->
+  <div class="overlay" id="overlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-label="Menu mobile" aria-hidden="true">
+    <div class="drawer__head">
+      <div class="brand" style="gap:.6rem;">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:22px;height:22px;color:var(--accent)">
+          <path d="M12 2a3 3 0 0 1 3 3c0 .9-.39 1.71-1 2.27l5.37 5.37a5.5 5.5 0 0 1-7.77 7.77L6.23 15.77A3.49 3.49 0 0 1 4 16.5a3.5 3.5 0 1 1 3.5-3.5c0 .79-.27 1.52-.73 2.1l5.37 5.37a3.5 3.5 0 0 0 4.95-4.95L11.77 7.65A3 3 0 0 1 12 2Z"/>
+        </svg>
+        Menu
+      </div>
+      <button class="drawer__close" id="closeDrawer" type="button" aria-label="Chiudi menu">✕</button>
+    </div>
+    <div class="drawer__body">
+      <a class="drawer-link" href="#details">Dettagli <span>→</span></a>
+      <a class="drawer-link" href="#story">La storia <span>→</span></a>
+      <a class="drawer-link" href="#rsvp">RSVP <span>→</span></a>
+      <a class="drawer-link" href="#gallery">Gallery <span>→</span></a>
+      <a class="drawer-link" href="#info">Info utili <span>→</span></a>
+      <div class="drawer__cta">
+        <a class="btn btn--accent" href="#rsvp">Conferma presenza</a>
+        <a class="btn btn--light" href="#details">Dettagli evento</a>
+      </div>
+    </div>
+  </aside>
+
   <!-- =========================
        HERO
        ========================= -->
@@ -280,9 +501,9 @@
     <div class="container hero__grid">
       <div>
         <span class="pill" aria-label="Data e luogo">Sabato 12 Settembre 2026 • Toscana</span>
-        <h1 class="display" style="margin-top:12px;">Leonardo <span style="color:var(--accent)">&</span> Vera</h1>
+        <h1 class="display">Leonardo <span style="color:var(--accent)">&</span> Vera</h1>
         <p class="sub">Non vediamo l’ora di celebrare questo momento con le persone a cui vogliamo bene.</p>
- 
+
         <div class="hero__card" aria-live="polite">
           <h2>Il grande giorno</h2>
           <p class="muted">Segna la data e unisciti a noi!</p>
@@ -295,24 +516,21 @@
           <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap">
             <a class="btn btn--accent" href="#rsvp" aria-label="Vai al modulo RSVP">
               Conferma presenza
-              <!-- arrow icon -->
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 5l7 7-7 7M5 12h14"/></svg>
             </a>
             <a class="btn btn--light" href="#details">Dettagli evento</a>
           </div>
         </div>
       </div>
- 
+
       <div>
         <div class="hero__media" role="img" aria-label="Ritratto romantico di Leonardo e Vera">
-          <div class="petals" aria-hidden="true">
-            <!-- Petali decorativi -->
-          </div>
+          <div class="petals" aria-hidden="true"></div>
         </div>
       </div>
     </div>
   </header>
- 
+
   <!-- =========================
        DETTAGLI EVENTO
        ========================= -->
@@ -320,7 +538,7 @@
     <div class="container">
       <h2 id="details-title">Dettagli dell’evento</h2>
       <p class="muted">Tutto quello che ti serve per partecipare al meglio alla nostra giornata.</p>
- 
+
       <div class="grid grid--2" style="margin-top: 16px;">
         <div class="card">
           <h3>Cerimonia</h3>
@@ -341,7 +559,7 @@
           </div>
         </div>
       </div>
- 
+
       <div class="card" style="margin-top: 18px;">
         <h3>Programma</h3>
         <div class="timeline" aria-label="Programma della giornata">
@@ -355,7 +573,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- =========================
        LA NOSTRA STORIA
        ========================= -->
@@ -363,7 +581,7 @@
     <div class="container">
       <h2 id="story-title">La nostra storia</h2>
       <p class="muted">Un viaggio fatto di momenti semplici, risate e sogni condivisi.</p>
- 
+
       <div class="grid grid--3" style="margin-top: 16px;">
         <div class="card">
           <h3>Il primo incontro</h3>
@@ -380,7 +598,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- =========================
        RSVP
        ========================= -->
@@ -388,7 +606,7 @@
     <div class="container">
       <h2 id="rsvp-title">RSVP</h2>
       <p class="muted">Facci sapere se verrai. Grazie! (demo non invia dati)</p>
- 
+
       <form class="card form" id="rsvp-form" novalidate>
         <div class="row">
           <div>
@@ -425,7 +643,7 @@
       </form>
     </div>
   </section>
- 
+
   <!-- =========================
        GALLERY
        ========================= -->
@@ -443,7 +661,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- =========================
        LISTA NOZZE
        ========================= -->
@@ -460,7 +678,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- =========================
        INFO UTILI
        ========================= -->
@@ -481,7 +699,7 @@
           <p>Hotel suggeriti: Borgo Il Sogno, Casa Chianti, Relais La Vigna (contattaci per codici sconto).</p>
         </div>
       </div>
- 
+
       <div class="card" style="margin-top: 18px;">
         <h3>FAQ</h3>
         <details>
@@ -499,7 +717,7 @@
       </div>
     </div>
   </section>
- 
+
   <!-- =========================
        FOOTER
        ========================= -->
@@ -531,7 +749,7 @@
       <p class="muted" style="font-size:.9rem;">© 2026 Leonardo &amp; Vera — Sito demo</p>
     </div>
   </footer>
- 
+
   <!-- =========================
        JSON-LD (SEO opzionale)
        ========================= -->
@@ -549,25 +767,22 @@
     "sameAs": ["https://instagram.com/","https://facebook.com/"]
   }
   </script>
- 
-  <!-- =========================
-       SCRIPTS (countdown, petals, form)
-       ========================= -->
+
   <script>
     // TODO: imposta la data del matrimonio qui
     const dateStr = '2026-09-12T15:30:00+02:00';
- 
+
     // Countdown
     const dDays = document.getElementById('cd-days');
     const dHrs  = document.getElementById('cd-hours');
     const dMin  = document.getElementById('cd-mins');
     const dSec  = document.getElementById('cd-secs');
- 
+
     function updateCountdown(){
       const now = new Date().getTime();
       const target = new Date(dateStr).getTime();
       const diff = target - now;
- 
+
       if (diff <= 0){
         dDays.textContent = '0'; dHrs.textContent = '0'; dMin.textContent = '0'; dSec.textContent = '0';
         return;
@@ -576,7 +791,7 @@
       const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
       const mins = Math.floor((diff % (1000*60*60)) / (1000*60));
       const secs = Math.floor((diff % (1000*60)) / 1000);
- 
+
       dDays.textContent = days;
       dHrs.textContent  = String(hours).padStart(2,'0');
       dMin.textContent  = String(mins).padStart(2,'0');
@@ -584,8 +799,8 @@
     }
     updateCountdown();
     setInterval(updateCountdown, 1000);
- 
-    // Smooth scroll
+
+    // Smooth scroll (ok anche senza, ma mantengo il tuo)
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href');
@@ -595,25 +810,23 @@
         }
       });
     });
- 
+
     // RSVP demo submit
     const form = document.getElementById('rsvp-form');
     const msg  = document.getElementById('rsvp-msg');
     form.addEventListener('submit', e=>{
       e.preventDefault();
-      // Validazione semplice
       const ok = form.reportValidity ? form.reportValidity() : true;
       if (!ok) return;
       msg.textContent = 'Grazie! La tua risposta è stata registrata (demo).';
       msg.style.color = 'green';
       form.reset();
     });
- 
+
     // Petali decorativi
     const petals = document.querySelector('.petals');
     if (petals){
-      const count = 18; // aumenta/diminuisci per più/meno petali
-      const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const count = 18;
       for (let i=0; i<count; i++){
         const el = document.createElement('span');
         el.className = 'petal';
@@ -630,6 +843,33 @@
         petals.appendChild(el);
       }
     }
+
+    // Mobile drawer
+    const burger = document.getElementById('burger');
+    const drawer = document.getElementById('drawer');
+    const overlay = document.getElementById('overlay');
+    const closeDrawerBtn = document.getElementById('closeDrawer');
+
+    function openDrawer(){
+      document.documentElement.classList.add('drawer-open');
+      overlay.hidden = false;
+      drawer.setAttribute('aria-hidden','false');
+      burger.setAttribute('aria-expanded','true');
+    }
+    function closeDrawer(){
+      document.documentElement.classList.remove('drawer-open');
+      overlay.hidden = true;
+      drawer.setAttribute('aria-hidden','true');
+      burger.setAttribute('aria-expanded','false');
+    }
+
+    burger.addEventListener('click', openDrawer);
+    closeDrawerBtn.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeDrawer(); });
+    document.querySelectorAll('.drawer-link').forEach(a=>{
+      a.addEventListener('click', ()=> closeDrawer());
+    });
   </script>
 </body>
 </html>
