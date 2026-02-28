@@ -1,4 +1,7 @@
+
+{% load static %}
 <!doctype html>
+
 <html lang="it">
 <head>
   <meta charset="utf-8" />
@@ -352,18 +355,18 @@
       box-shadow: var(--shadow);
       padding: 18px;
     }
-    .aside__img{
-      aspect-ratio: 16/10;
-      border-radius: 20px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background:
-        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.40)),
-        url("https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
-      box-shadow: 0 18px 60px rgba(0,0,0,.40);
-      position:relative;
-      transform: translateZ(0);
-    }
+.aside__img{
+  aspect-ratio: 16/10;
+  border-radius: 20px;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.40)),
+    url("{% static 'img/matrimonioheaderdemo.png' %}") center/cover no-repeat;
+  box-shadow: 0 18px 60px rgba(0,0,0,.40);
+  position:relative;
+  transform: translateZ(0);
+}
     .aside__img::after{
       content:"";
       position:absolute; inset:-40%;
@@ -893,9 +896,14 @@
         </div>
 
         <div class="mosaic reveal" style="margin-top:12px;">
-          <div class="tile span7" data-img="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop');">
-            <div class="cap">
+          <div class="tile span7" 
+          
+          
+            data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimoniosito5.png' %}');">
+            
+            
+               <div class="cap">
               <div>
                 <b class="serif">Golden hour</b>
                 <small>tessuti, luce, dettagli</small>
@@ -904,9 +912,11 @@
             </div>
           </div>
 
-          <div class="tile span5" data-img="https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1200&auto=format&fit=crop');">
-            <div class="cap">
+          <div class="tile span5"
+          data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimoniosito5.png' %}');">
+           
+               <div class="cap">
               <div>
                 <b class="serif">Eleganza</b>
                 <small>minimal e fine</small>
@@ -915,9 +925,10 @@
             </div>
           </div>
 
-          <div class="tile span6" data-img="https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1400&auto=format&fit=crop');">
-            <div class="cap">
+          <div class="tile span6"
+          data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimoniosito5.png' %}');">
+               <div class="cap">
               <div>
                 <b class="serif">Cerimonia</b>
                 <small>luoghi iconici</small>
@@ -926,9 +937,12 @@
             </div>
           </div>
 
-          <div class="tile span6" data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1400&auto=format&fit=crop');">
-            <div class="cap">
+          <div class="tile span6"
+          
+          data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimoniosito5.png' %}');">
+           
+               <div class="cap">
               <div>
                 <b class="serif">Ritratto</b>
                 <small>stile editoriale</small>
@@ -937,9 +951,12 @@
             </div>
           </div>
 
-          <div class="tile span8" data-img="https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=1600&auto=format&fit=crop');">
-            <div class="cap">
+          <div class="tile span8"
+          data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimoniosito5.png' %}');">
+
+            
+               <div class="cap">
               <div>
                 <b class="serif">Cena &amp; luci</b>
                 <small>tavolate, candele, atmosfera</small>
@@ -948,16 +965,21 @@
             </div>
           </div>
 
-          <div class="tile span4" data-img="https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=2400&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=1200&auto=format&fit=crop');">
-            <div class="cap">
-              <div>
-                <b class="serif">Dettagli</b>
-                <small>mani, fiori, tessuti</small>
-              </div>
-              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
-            </div>
-          </div>
+
+
+<div class="tile span4"
+     data-img="{% static 'img/matrimonioheaderdemo.png' %}"
+     style="background-image:url('{% static 'img/matrimonioheaderdemo.png' %}');">
+
+  <div class="cap">
+    <div>
+      <b class="serif">Dettagli</b>
+      <small>mani, fiori, tessuti</small>
+    </div>
+    <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+  </div>
+
+</div>
         </div>
       </div>
     </section>
