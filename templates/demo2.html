@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -854,7 +856,9 @@ footer .mini{
         </div>
       </div>
 
-      <div class="img-box" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop');"></div>
+<div class="img-box"
+     style="background-image:url('{% static "img/matrimonioheaderdemo.png" %}');">
+</div>
     </div>
   </div>
 </section>
