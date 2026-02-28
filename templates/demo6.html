@@ -1,0 +1,1547 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#0f0f10" />
+  <title>Leonardo & Vera — Luxury Edition</title>
+  <meta name="description" content="Versione luxury, fine ed emozionale: immagini, contenuti ricchi, layout premium e responsive." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================
+       RESET + TOKENS (LUXURY)
+    ========================= */
+    :root{
+      --bg:#0f0f10;
+      --bg2:#121214;
+      --paper: rgba(255,255,255,.06);
+      --paper2: rgba(255,255,255,.08);
+      --line: rgba(255,255,255,.14);
+
+      --text:#f7f6f2;
+      --muted: rgba(247,246,242,.74);
+
+      --gold:#d6b56e;
+      --gold2:#b99650;
+      --ivory:#f7f3ea;
+      --ink:#141313;
+
+      --r: 18px;
+      --r2: 28px;
+      --shadow: 0 28px 90px rgba(0,0,0,.55);
+      --shadow2: 0 18px 55px rgba(0,0,0,.45);
+
+      --max: 1180px;
+      --navh: 74px;
+      --py: clamp(54px, 7vw, 96px);
+
+      --ease: cubic-bezier(.2,.9,.2,1);
+      --ease2: cubic-bezier(.2,1,.2,1);
+
+      --focus: 0 0 0 4px rgba(214,181,110,.35);
+    }
+
+    *,*::before,*::after{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
+    html{ scroll-behavior:smooth; }
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(900px 600px at 10% -10%, rgba(214,181,110,.10), transparent 60%),
+        radial-gradient(900px 600px at 110% 20%, rgba(255,255,255,.06), transparent 55%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x:hidden;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    :focus-visible{ outline:none; box-shadow: var(--focus); border-radius: 12px; }
+
+    .serif{ font-family: Newsreader, Georgia, "Times New Roman", serif; }
+    .container{ width:min(var(--max), 92%); margin:0 auto; }
+    .section{ padding: var(--py) 0; }
+    header, section, footer{ scroll-margin-top: calc(var(--navh) + 14px); }
+
+    .muted{ color: var(--muted); }
+    .kicker{
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-size: .78rem;
+      color: rgba(247,246,242,.70);
+      margin-bottom: 10px;
+    }
+
+    /* =========================
+       UI
+    ========================= */
+    .pill{
+      display:inline-flex; align-items:center; gap:.55rem;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow2);
+      font-weight: 650;
+      font-size:.95rem;
+      user-select:none;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:.65rem;
+      padding: 12px 16px;
+      border-radius: 999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      user-select:none;
+      min-height:48px;
+      font-weight: 800;
+      letter-spacing:.01em;
+      transition: transform .18s var(--ease), filter .18s var(--ease), background .18s var(--ease);
+      background: linear-gradient(180deg, rgba(214,181,110,.95), rgba(185,150,80,.95));
+      color: #1b1710;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.02) saturate(1.05); }
+    .btn:active{ transform: translateY(-1px); filter: brightness(.98); }
+    .btn--ghost{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.06));
+      border-color: rgba(255,255,255,.14);
+      color: var(--text);
+      box-shadow:none;
+    }
+    .btn--tiny{ min-height:40px; padding: 9px 12px; font-size:.92rem; }
+    .btn--icon{
+      width:46px; height:46px; padding:0; border-radius: 16px;
+      display:grid; place-items:center;
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--r);
+      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.05));
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .pad{ padding: 18px; }
+    .pad2{ padding: 22px; }
+
+    .grid{ display:grid; gap: 18px; }
+    .grid2{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid3{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+
+    /* =========================
+       SKIP LINK
+    ========================= */
+    .skip{
+      position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip:focus{
+      left:16px; top:16px; width:auto; height:auto;
+      padding:10px 14px;
+      border-radius: 14px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.18);
+      z-index:9999;
+    }
+
+    /* =========================
+       NAV (lux)
+    ========================= */
+    .nav{
+      position: sticky; top:0; z-index:90;
+      height: var(--navh);
+      display:flex; align-items:center;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      background: rgba(16,16,17,.70);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav__inner{
+      display:flex; align-items:center; justify-content:space-between;
+      gap: 12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight: 900;
+      white-space:nowrap;
+    }
+    .seal{
+      width:34px; height:34px; border-radius: 16px;
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(14px 14px at 30% 30%, rgba(255,255,255,.85), transparent 60%),
+        conic-gradient(from 210deg, rgba(214,181,110,.98), rgba(255,255,255,.20), rgba(214,181,110,.98));
+      box-shadow: 0 14px 30px rgba(0,0,0,.45);
+    }
+
+    .navlinks{
+      display:flex; align-items:center; gap: 4px;
+    }
+    .navlinks a{
+      padding: 10px 12px;
+      border-radius: 14px;
+      opacity: .88;
+      font-weight: 650;
+    }
+    .navlinks a:hover{ opacity: 1; background: rgba(255,255,255,.06); }
+    .navlinks a.active{
+      opacity: 1;
+      background: rgba(214,181,110,.10);
+      border: 1px solid rgba(214,181,110,.18);
+    }
+    .navright{ display:flex; gap:10px; align-items:center; }
+
+    .hamb{ display:none; }
+    .hamb span{
+      width:18px; height:2px; background: currentColor; display:block; border-radius:999px;
+    }
+    .hamb span+span{ margin-top:4px; }
+
+    /* Drawer */
+    .drawer{
+      position:fixed; inset:0;
+      display:none;
+      z-index:120;
+      background: rgba(0,0,0,.62);
+      padding: 16px;
+    }
+    .drawer[open]{ display:block; }
+    .drawer__panel{
+      width: min(440px, 100%);
+      margin-left:auto;
+      max-height: calc(100vh - 32px);
+      overflow:auto;
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(18,18,20,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+    .drawer__head{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding: 8px 8px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      position: sticky; top: 0;
+      background: rgba(18,18,20,.78);
+      z-index:1;
+    }
+    .drawer__links{ display:grid; gap: 8px; padding: 12px 8px 8px; }
+    .drawer__links a{
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      font-weight: 800;
+    }
+
+    /* =========================
+       HERO (Luxury editorial)
+    ========================= */
+    .hero{
+      position:relative;
+      padding: clamp(74px, 9vw, 120px) 0 clamp(56px, 8vw, 92px);
+      overflow:hidden;
+    }
+
+    /* background cinematic */
+    .hero::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.60), rgba(0,0,0,.20) 55%, rgba(0,0,0,.55)),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop") center/cover no-repeat;
+      filter: saturate(1.05) contrast(1.05);
+      transform: scale(1.04);
+      z-index:-3;
+    }
+    /* subtle grain */
+    .hero::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+      mix-blend-mode: overlay;
+      opacity: .28;
+      pointer-events:none;
+      z-index:-2;
+    }
+
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: clamp(16px, 4.5vw, 44px);
+      align-items:end;
+    }
+
+    .eyebrow{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      margin-bottom: 12px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(180deg, rgba(214,181,110,.95), rgba(255,255,255,.20));
+      box-shadow: 0 0 0 7px rgba(214,181,110,.12);
+    }
+
+    .title{
+      font-size: clamp(2.3rem, 6.2vw, 5.2rem);
+      line-height: 1.02;
+      letter-spacing: -.02em;
+      margin: 10px 0 10px;
+      text-shadow: 0 22px 80px rgba(0,0,0,.55);
+    }
+    .title .gold{
+      background: linear-gradient(90deg, rgba(214,181,110,1), rgba(255,255,255,.55), rgba(185,150,80,1));
+      -webkit-background-clip:text; background-clip:text;
+      color: transparent;
+    }
+    .lede{
+      max-width: 62ch;
+      font-size: 1.08rem;
+      color: rgba(247,246,242,.84);
+      margin-bottom: 16px;
+      text-shadow: 0 18px 60px rgba(0,0,0,.45);
+    }
+
+    .hero__cta{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      margin-top: 14px;
+    }
+
+    /* countdown glass */
+    .countdown{
+      margin-top: 16px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:stretch;
+    }
+    .cd{
+      min-width: 92px;
+      text-align:center;
+      padding:10px 12px;
+      border-radius: 16px;
+      background: rgba(16,16,17,.55);
+      border:1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    }
+    .cd strong{ display:block; font-size:1.6rem; color: rgba(214,181,110,.98); }
+    .cd span{ font-size:.86rem; color: rgba(247,246,242,.72); }
+
+    /* editorial side card */
+    .hero__aside{
+      border-radius: var(--r2);
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(16,16,17,.55);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+    .aside__img{
+      aspect-ratio: 16/10;
+      border-radius: 20px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.40)),
+        url("https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2000&auto=format&fit=crop") center/cover no-repeat;
+      box-shadow: 0 18px 60px rgba(0,0,0,.40);
+      position:relative;
+      transform: translateZ(0);
+    }
+    .aside__img::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,.18) 35%, transparent 50%);
+      transform: translateX(-40%) rotate(12deg);
+      animation: shimmer 5.2s var(--ease2) infinite;
+      mix-blend-mode: overlay;
+      opacity:.55;
+      pointer-events:none;
+    }
+    @keyframes shimmer{
+      0%{ transform: translateX(-55%) rotate(12deg); }
+      60%{ transform: translateX(35%) rotate(12deg); }
+      100%{ transform: translateX(55%) rotate(12deg); }
+    }
+
+    .aside__list{ display:grid; gap:10px; margin-top: 12px; }
+    .rowline{
+      display:flex; gap:10px; align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+    }
+    .ic{
+      width:36px; height:36px; border-radius: 16px;
+      display:grid; place-items:center;
+      background: linear-gradient(180deg, rgba(214,181,110,.95), rgba(185,150,80,.90));
+      color:#1a1610;
+      flex:0 0 auto;
+      box-shadow: 0 14px 30px rgba(0,0,0,.35);
+      font-weight: 900;
+    }
+    .rowline b{ display:block; }
+    .rowline span{ display:block; color: rgba(247,246,242,.70); margin-top:2px; }
+
+    /* =========================
+       SECTION HEAD
+    ========================= */
+    .head{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; align-items:flex-end;
+      margin-bottom: 14px;
+    }
+
+    /* =========================
+       IMAGE GRID (rich)
+    ========================= */
+    .mosaic{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .tile{
+      border-radius: 22px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:#111 center/cover no-repeat;
+      box-shadow: var(--shadow2);
+      position:relative;
+      transform: translateZ(0);
+      cursor:pointer;
+      min-height: 180px;
+    }
+    .tile::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(560px 360px at 25% 25%, rgba(255,255,255,.14), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.55));
+      opacity:.75;
+      pointer-events:none;
+    }
+    .tile .cap{
+      position:absolute; left:14px; right:14px; bottom:14px;
+      z-index:1;
+      display:flex; justify-content:space-between; align-items:flex-end; gap:10px;
+    }
+    .tile .cap b{ font-size:1.05rem; }
+    .tile .cap small{ display:block; color: rgba(247,246,242,.72); margin-top:4px; }
+
+    .span6{ grid-column: span 6; }
+    .span7{ grid-column: span 7; }
+    .span5{ grid-column: span 5; }
+    .span4{ grid-column: span 4; }
+    .span8{ grid-column: span 8; }
+    .span12{ grid-column: span 12; }
+
+    /* =========================
+       STORY / QUOTE
+    ========================= */
+    .quote{
+      border-radius: 26px;
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
+      box-shadow: var(--shadow2);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .quote::before{
+      content:"“";
+      position:absolute;
+      right: 18px;
+      top: -26px;
+      font-family: Newsreader, serif;
+      font-size: 140px;
+      color: rgba(214,181,110,.16);
+      pointer-events:none;
+    }
+
+    /* =========================
+       TIMELINE
+    ========================= */
+    .timeline{ position:relative; padding-left: 22px; margin-top: 10px; }
+    .timeline::before{
+      content:"";
+      position:absolute; left:10px; top:0; bottom:0;
+      width:2px; border-radius:999px;
+      background: linear-gradient(to bottom, rgba(214,181,110,.95), rgba(255,255,255,.16));
+    }
+    .t{
+      position:relative;
+      padding: 10px 0 10px 16px;
+    }
+    .t::before{
+      content:"";
+      position:absolute; left:4px; top: 18px;
+      width:10px;height:10px;border-radius:999px;
+      background: rgba(214,181,110,.95);
+      box-shadow: 0 0 0 6px rgba(214,181,110,.12);
+    }
+
+    /* =========================
+       FORM (lux)
+    ========================= */
+    .form{ display:grid; gap: 12px; }
+    .row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    label{ font-size:.92rem; color: rgba(247,246,242,.78); }
+    input,select,textarea{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      min-height:48px;
+      outline:none;
+      transition: border-color .18s var(--ease), box-shadow .18s var(--ease);
+    }
+    textarea{ min-height:110px; resize: vertical; }
+    input:focus,select:focus,textarea:focus{
+      border-color: rgba(214,181,110,.45);
+      box-shadow: 0 0 0 4px rgba(214,181,110,.18);
+    }
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+    .lightbox{
+      position:fixed; inset:0;
+      display:none;
+      z-index:200;
+      background: rgba(0,0,0,.78);
+      padding: 18px;
+      align-items:center; justify-content:center;
+    }
+    .lightbox[open]{ display:flex; }
+    .lb{
+      width:min(1100px, 96%);
+      display:grid;
+      gap: 10px;
+    }
+    .lbbar{
+      display:flex; flex-wrap:wrap;
+      gap:10px; align-items:center; justify-content:space-between;
+      color: rgba(255,255,255,.92);
+      font-weight: 800;
+    }
+    .lbbtn{
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.10);
+      color:#fff;
+      border-radius: 16px;
+      padding: 10px 12px;
+      min-height:44px;
+      cursor:pointer;
+    }
+    .lbbtn:hover{ background: rgba(255,255,255,.16); }
+    .lbimg{
+      width:100%;
+      aspect-ratio: 16/10;
+      border-radius: 18px;
+      background:#111 center/contain no-repeat;
+      border:1px solid rgba(255,255,255,.14);
+      box-shadow: 0 22px 80px rgba(0,0,0,.50);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+    footer{
+      padding: 44px 0;
+      border-top: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.20);
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 18px;
+    }
+    .foot ul{ list-style:none; padding:0; margin:0; display:grid; gap: 8px; }
+    .foot a{ opacity:.82; }
+    .foot a:hover{ opacity:1; text-decoration: underline; }
+
+    /* =========================
+       TOAST + REVEAL + TOP
+    ========================= */
+    .toast{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: min(380px, 92%);
+      display:none;
+      z-index: 260;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(18,18,20,.80);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      padding: 12px 12px;
+    }
+    .toast[open]{ display:block; }
+    .toast__row{ display:flex; gap:10px; align-items:flex-start; }
+    .toast__ic{
+      width:38px;height:38px;border-radius: 16px;
+      display:grid;place-items:center;
+      background: linear-gradient(180deg, rgba(214,181,110,.95), rgba(185,150,80,.90));
+      color:#1a1610;
+      flex:0 0 auto;
+      font-weight:900;
+    }
+    .toast__x{
+      margin-left:auto;
+      border:none;
+      background: transparent;
+      color: rgba(247,246,242,.72);
+      cursor:pointer;
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+    .toast__t{ margin:0; font-weight: 900; }
+    .toast__p{ margin:.15rem 0 0; color: rgba(247,246,242,.72); font-size:.95rem; }
+
+    .reveal{
+      opacity:0;
+      transform: translateY(14px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+      will-change: opacity, transform;
+    }
+    .reveal.in{ opacity:1; transform: translateY(0); }
+
+    #topBtn{
+      position: fixed;
+      left: 16px;
+      bottom: 16px;
+      display:none;
+      z-index: 240;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+    @media (max-width: 980px){
+      .hero__grid{ grid-template-columns: 1fr; align-items:stretch; }
+      .grid2, .grid3{ grid-template-columns: 1fr; }
+      .row{ grid-template-columns: 1fr; }
+      .foot{ grid-template-columns: 1fr; }
+      .navlinks{ display:none; }
+      .hamb{ display:inline-grid; place-items:center; }
+      .mosaic{ gap: 10px; }
+      .span7,.span6,.span5,.span4,.span8,.span12{ grid-column: span 12; }
+      .tile{ min-height: 220px; }
+    }
+    @media (max-width: 520px){
+      .tile{ min-height: 200px; border-radius: 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *{ animation:none !important; transition:none !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#content" class="skip">Salta al contenuto</a>
+
+  <!-- =========================
+       NAV
+  ========================= -->
+  <nav class="nav" aria-label="Navigazione principale">
+    <div class="container nav__inner">
+      <a class="brand" href="#home" aria-label="Torna all'inizio">
+        <span class="seal" aria-hidden="true"></span>
+        <span class="serif">Leonardo <span style="opacity:.7">&amp;</span> Vera</span>
+      </a>
+
+      <div class="navlinks" role="menubar" aria-label="Menu">
+        <a role="menuitem" href="#details">Dettagli</a>
+        <a role="menuitem" href="#story">Storia</a>
+        <a role="menuitem" href="#gallery">Gallery</a>
+        <a role="menuitem" href="#experience">Esperienza</a>
+        <a role="menuitem" href="#rsvp">RSVP</a>
+      </div>
+
+      <div class="navright">
+        <button class="btn btn--ghost btn--tiny" id="calBtn" type="button">Aggiungi al calendario</button>
+        <button class="btn btn--ghost btn--icon hamb" id="openDrawer" type="button" aria-label="Apri menu" aria-controls="drawer" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Drawer -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
+      <div class="drawer__head">
+        <div class="brand" style="gap:10px;">
+          <span class="seal" aria-hidden="true"></span>
+          <span class="serif">Menu</span>
+        </div>
+        <button class="btn btn--ghost btn--tiny" id="closeDrawer" type="button">Chiudi</button>
+      </div>
+      <div class="drawer__links">
+        <a href="#details" data-drawer-link>Dettagli</a>
+        <a href="#story" data-drawer-link>Storia</a>
+        <a href="#gallery" data-drawer-link>Gallery</a>
+        <a href="#experience" data-drawer-link>Esperienza</a>
+        <a href="#rsvp" data-drawer-link>RSVP</a>
+        <a href="#rsvp" class="btn" data-drawer-link style="justify-content:center;">Conferma presenza</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       HERO
+  ========================= -->
+  <header class="hero" id="home" role="banner">
+    <div class="container hero__grid">
+      <div class="reveal">
+        <div class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          <span class="kicker" style="margin:0;">Sabato 12 Settembre 2026 • Toscana</span>
+        </div>
+
+        <h1 class="title serif">
+          Leonardo <span class="gold">&amp;</span> Vera
+        </h1>
+
+        <p class="lede">
+          Un invito essenziale, elegante, luminoso. Immagini ampie, dettagli curati e contenuti “da rivista”.
+          Qui trovi luoghi, orari, atmosfera, e un RSVP rapido.
+        </p>
+
+        <div class="pill" aria-label="Info rapide">
+          <span>⛪ 15:30 Firenze</span>
+          <span style="opacity:.55">•</span>
+          <span>🥂 18:30 Chianti</span>
+          <span style="opacity:.55">•</span>
+          <span>👗 Elegante</span>
+        </div>
+
+        <div class="countdown" aria-label="Conto alla rovescia">
+          <div class="cd"><strong id="cd-days">—</strong><span>Giorni</span></div>
+          <div class="cd"><strong id="cd-hours">—</strong><span>Ore</span></div>
+          <div class="cd"><strong id="cd-mins">—</strong><span>Minuti</span></div>
+          <div class="cd"><strong id="cd-secs">—</strong><span>Secondi</span></div>
+        </div>
+
+        <div class="hero__cta">
+          <a class="btn" href="#rsvp">Conferma presenza</a>
+          <a class="btn btn--ghost" href="#gallery">Vedi gallery</a>
+          <button class="btn btn--ghost" id="copyHashtag" type="button">Copia #LeonardoEVera</button>
+        </div>
+      </div>
+
+      <aside class="hero__aside reveal" aria-label="Dettagli in evidenza">
+        <div class="aside__img" role="img" aria-label="Scatto romantico in stile editoriale"></div>
+
+        <div class="aside__list" aria-label="Highlights">
+          <div class="rowline">
+            <div class="ic">📍</div>
+            <div><b>Toscana</b><span>Firenze + Chianti</span></div>
+          </div>
+          <div class="rowline">
+            <div class="ic">🕒</div>
+            <div><b>Orari</b><span>Cerimonia 15:30 • Ricevimento 18:30</span></div>
+          </div>
+          <div class="rowline">
+            <div class="ic">✨</div>
+            <div><b>Atmosfera</b><span>Tramonto, musica, cena e festa</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main id="content">
+    <!-- =========================
+         DETAILS
+    ========================= -->
+    <section class="section" id="details" aria-labelledby="detailsTitle">
+      <div class="container">
+        <div class="head reveal">
+          <div>
+            <div class="kicker">Dettagli</div>
+            <h2 class="serif" id="detailsTitle" style="font-size:clamp(1.9rem,3.2vw,2.7rem); margin-top:6px;">
+              Cerimonia &amp; ricevimento
+            </h2>
+            <p class="muted" style="max-width:74ch;">
+              Tutto quello che serve per godersi la giornata senza pensieri: orari, indicazioni, piccoli consigli.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <a class="btn btn--ghost btn--tiny" href="https://maps.google.com/?q=Firenze" target="_blank" rel="noopener">Apri Firenze</a>
+            <a class="btn btn--ghost btn--tiny" href="https://maps.google.com/?q=Chianti" target="_blank" rel="noopener">Apri Chianti</a>
+          </div>
+        </div>
+
+        <div class="grid grid2" style="margin-top:14px;">
+          <div class="card pad2 reveal">
+            <h3 class="serif">Cerimonia</h3>
+            <p class="muted">Chiostro di San Lorenzo, Firenze</p>
+            <p><b style="color:rgba(214,181,110,.98)">15:30</b> — Arrivo consigliato: 15:00</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+              <a class="btn btn--ghost" href="https://maps.google.com/?q=Chiostro%20di%20San%20Lorenzo%20Firenze" target="_blank" rel="noopener">Apri mappa</a>
+              <a class="btn btn--ghost" href="#experience">Dress code</a>
+            </div>
+          </div>
+          <div class="card pad2 reveal">
+            <h3 class="serif">Ricevimento</h3>
+            <p class="muted">Tenuta Le Rose, Chianti</p>
+            <p><b style="color:rgba(214,181,110,.98)">18:30</b> — Aperitivo al tramonto + cena</p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+              <a class="btn btn--ghost" href="https://maps.google.com/?q=Tenuta%20Le%20Rose%20Chianti" target="_blank" rel="noopener">Apri mappa</a>
+              <a class="btn btn--ghost" href="#gallery">Vedi atmosfera</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card pad2 reveal" style="margin-top:18px;">
+          <h3 class="serif">Programma</h3>
+          <div class="timeline" aria-label="Programma">
+            <div class="t"><b>15:00</b> <span class="muted">Arrivo ospiti</span></div>
+            <div class="t"><b>15:30</b> <span class="muted">Cerimonia</span></div>
+            <div class="t"><b>16:30</b> <span class="muted">Foto & saluti</span></div>
+            <div class="t"><b>18:30</b> <span class="muted">Aperitivo</span></div>
+            <div class="t"><b>20:00</b> <span class="muted">Cena</span></div>
+            <div class="t"><b>22:30</b> <span class="muted">Torta & brindisi</span></div>
+            <div class="t"><b>23:00</b> <span class="muted">Party</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         STORY (editorial)
+    ========================= -->
+    <section class="section" id="story" aria-labelledby="storyTitle" style="background: linear-gradient(180deg, rgba(255,255,255,.03), transparent);">
+      <div class="container">
+        <div class="head reveal">
+          <div>
+            <div class="kicker">Storia</div>
+            <h2 class="serif" id="storyTitle" style="font-size:clamp(1.9rem,3.2vw,2.7rem); margin-top:6px;">
+              Un racconto in stile rivista
+            </h2>
+            <p class="muted" style="max-width:74ch;">
+              Testi più “emozionali” e curati. Puoi sostituire ogni paragrafo con la vostra storia reale.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid2" style="margin-top:14px;">
+          <div class="quote reveal">
+            <h3 class="serif">Un incontro semplice</h3>
+            <p class="muted">
+              A volte le cose migliori arrivano senza sforzo. Un posto qualunque, una frase, e quel feeling immediato.
+            </p>
+            <p class="muted" style="margin:0;">
+              <b style="color:rgba(214,181,110,.98)">2019</b> — il primo capitolo.
+            </p>
+          </div>
+
+          <div class="quote reveal">
+            <h3 class="serif">Scelte naturali</h3>
+            <p class="muted">
+              Viaggi, risate, giorni pieni e sere lente. Poi, la certezza dolce: “è casa”.
+            </p>
+            <p class="muted" style="margin:0;">
+              <b style="color:rgba(214,181,110,.98)">2025</b> — la proposta.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         GALLERY (rich mosaic)
+    ========================= -->
+    <section class="section" id="gallery" aria-labelledby="galleryTitle">
+      <div class="container">
+        <div class="head reveal">
+          <div>
+            <div class="kicker">Gallery</div>
+            <h2 class="serif" id="galleryTitle" style="font-size:clamp(1.9rem,3.2vw,2.7rem); margin-top:6px;">
+              Immagini ampie, atmosfera luxury
+            </h2>
+            <p class="muted" style="max-width:74ch;">
+              Mosaic editoriale: tante immagini, tagli diversi, effetto “premium”. Clicca per aprire la lightbox.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn--ghost btn--tiny" id="openFirst" type="button">Apri la prima</button>
+          </div>
+        </div>
+
+        <div class="mosaic reveal" style="margin-top:12px;">
+          <div class="tile span7" data-img="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Golden hour</b>
+                <small>tessuti, luce, dettagli</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+
+          <div class="tile span5" data-img="https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1200&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Eleganza</b>
+                <small>minimal e fine</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+
+          <div class="tile span6" data-img="https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1400&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Cerimonia</b>
+                <small>luoghi iconici</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+
+          <div class="tile span6" data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1400&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Ritratto</b>
+                <small>stile editoriale</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+
+          <div class="tile span8" data-img="https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=1600&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Cena &amp; luci</b>
+                <small>tavolate, candele, atmosfera</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+
+          <div class="tile span4" data-img="https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=2400&auto=format&fit=crop"
+               style="background-image:url('https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=1200&auto=format&fit=crop');">
+            <div class="cap">
+              <div>
+                <b class="serif">Dettagli</b>
+                <small>mani, fiori, tessuti</small>
+              </div>
+              <span class="pill" style="padding:8px 10px; font-size:.9rem;">✦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         EXPERIENCE / INFO RICCHE
+    ========================= -->
+    <section class="section" id="experience" aria-labelledby="expTitle" style="background: linear-gradient(180deg, rgba(214,181,110,.06), transparent);">
+      <div class="container">
+        <div class="head reveal">
+          <div>
+            <div class="kicker">Esperienza</div>
+            <h2 class="serif" id="expTitle" style="font-size:clamp(1.9rem,3.2vw,2.7rem); margin-top:6px;">
+              Piccoli dettagli che fanno “lusso”
+            </h2>
+            <p class="muted" style="max-width:74ch;">
+              Sezioni ricche: travel, dress code, suggerimenti, e micro-copy elegante.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid3" style="margin-top:14px;">
+          <div class="card pad2 reveal">
+            <h3 class="serif">Dress code</h3>
+            <p class="muted">Elegante, toni neutri. Scarpe comode per esterni: la sera si balla.</p>
+            <p class="muted" style="margin:0;">Palette consigliata: <span style="color:rgba(214,181,110,.98)">avorio</span>, sabbia, verde salvia.</p>
+          </div>
+          <div class="card pad2 reveal">
+            <h3 class="serif">Trasferimenti</h3>
+            <p class="muted">Stiamo valutando un servizio navetta (placeholder). In alternativa: car sharing tra invitati.</p>
+            <p class="muted" style="margin:0;">Tip: arriva in anticipo per parcheggio e check-in.</p>
+          </div>
+          <div class="card pad2 reveal">
+            <h3 class="serif">Pernottamento</h3>
+            <p class="muted">Suggerimenti (demo): Borgo Il Sogno • Relais La Vigna • Casa Chianti.</p>
+            <p class="muted" style="margin:0;">Scrivici per la lista completa e le convenzioni.</p>
+          </div>
+        </div>
+
+        <div class="card pad2 reveal" style="margin-top:18px; border-radius:22px;">
+          <div class="head" style="margin-bottom:0;">
+            <div>
+              <div class="kicker" style="margin:0 0 6px;">Hashtag</div>
+              <h3 class="serif" style="margin:0 0 6px; font-size:1.65rem;">Condividi i momenti</h3>
+              <p class="muted" style="margin:0;">Se pubblichi una foto, usa il nostro hashtag (demo).</p>
+            </div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+              <span class="pill" id="hashtag" style="font-weight:900;">#LeonardoEVera</span>
+              <button class="btn btn--ghost" type="button" data-copy="#hashtag">Copia</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         RSVP
+    ========================= -->
+    <section class="section" id="rsvp" aria-labelledby="rsvpTitle">
+      <div class="container">
+        <div class="head reveal">
+          <div>
+            <div class="kicker">RSVP</div>
+            <h2 class="serif" id="rsvpTitle" style="font-size:clamp(1.9rem,3.2vw,2.7rem); margin-top:6px;">
+              Conferma presenza (demo)
+            </h2>
+            <p class="muted" style="max-width:74ch;">
+              Salvataggio locale (localStorage) + esportazione CSV. Campi extra solo se “Sì”.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn--ghost btn--tiny" id="saveDraft" type="button">Salva bozza</button>
+            <button class="btn btn--ghost btn--tiny" id="exportCSV" type="button">Scarica CSV</button>
+          </div>
+        </div>
+
+        <div class="grid grid2" style="margin-top:14px;">
+          <div class="card pad2 reveal">
+            <form class="form" id="rsvpForm" novalidate>
+              <div class="row">
+                <div>
+                  <label for="name">Nome e cognome</label>
+                  <input id="name" name="name" required placeholder="Es. Martina Rossi" />
+                </div>
+                <div>
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" required placeholder="esempio@email.com" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div>
+                  <label for="presence">Parteciperai?</label>
+                  <select id="presence" name="presence" required>
+                    <option value="">Seleziona…</option>
+                    <option value="si">Sì, con gioia!</option>
+                    <option value="no">Purtroppo no</option>
+                  </select>
+                </div>
+                <div id="guestsWrap">
+                  <label for="guests">Accompagnatori</label>
+                  <input id="guests" name="guests" type="number" min="0" max="5" value="0" />
+                </div>
+              </div>
+
+              <div class="row" id="extrasWrap">
+                <div>
+                  <label for="food">Allergie / esigenze alimentari</label>
+                  <textarea id="food" name="food" placeholder="Es. vegetariano, senza glutine…"></textarea>
+                </div>
+                <div>
+                  <label for="song">Suggerisci una canzone</label>
+                  <textarea id="song" name="song" placeholder="Titolo + Artista (facoltativo)"></textarea>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:2px;">
+                <button class="btn" type="submit" id="sendBtn">Invia conferma</button>
+                <button class="btn btn--ghost" type="button" id="resetLocal">Reset demo</button>
+                <span class="muted" id="rsvpMsg" role="status" aria-live="polite"></span>
+              </div>
+            </form>
+          </div>
+
+          <div class="card pad2 reveal">
+            <h3 class="serif">Note &amp; FAQ</h3>
+            <p class="muted">Una sezione “fine” per info essenziali.</p>
+
+            <div class="card pad" style="margin-top:10px; box-shadow:none;">
+              <b class="serif">Intolleranze</b>
+              <p class="muted" style="margin:6px 0 0;">Inseriscile nell’RSVP: ci aiuti a organizzare al meglio.</p>
+            </div>
+
+            <div class="card pad" style="margin-top:10px; box-shadow:none;">
+              <b class="serif">+1 / Bambini</b>
+              <p class="muted" style="margin:6px 0 0;">Se l’invito include accompagnatore, indica il numero ospiti. Per bambini: scrivi nelle note.</p>
+            </div>
+
+            <div class="card pad" style="margin-top:10px; box-shadow:none;">
+              <b class="serif">Contatto</b>
+              <p class="muted" style="margin:6px 0 0;">Email (demo): <span id="contactMail" style="font-weight:800;">ciao@leonardoevera.it</span></p>
+              <div style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+                <button class="btn btn--ghost btn--tiny" type="button" data-copy="#contactMail">Copia email</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================= -->
+  <footer>
+    <div class="container foot reveal">
+      <div>
+        <div class="brand" style="margin-bottom:8px;">
+          <span class="seal" aria-hidden="true"></span>
+          <span class="serif">Leonardo &amp; Vera</span>
+        </div>
+        <p class="muted" style="margin:0 0 10px;">12.09.2026 • Toscana — demo</p>
+        <p class="muted" style="margin:0;">Scrivici: <a href="mailto:ciao@leonardoevera.it">ciao@leonardoevera.it</a></p>
+      </div>
+      <div>
+        <b class="serif" style="display:block; margin-bottom:8px;">Link</b>
+        <ul>
+          <li><a href="#details">Dettagli</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#rsvp">RSVP</a></li>
+        </ul>
+      </div>
+      <div>
+        <b class="serif" style="display:block; margin-bottom:8px;">Social</b>
+        <ul>
+          <li><a href="#" onclick="alert('Demo: link non attivo'); return false;">Instagram</a></li>
+          <li><a href="#" onclick="alert('Demo: link non attivo'); return false;">Facebook</a></li>
+          <li><span class="muted">#LeonardoEVera</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container" style="margin-top:18px;">
+      <p class="muted" style="font-size:.9rem; margin:0;">© 2026 — Luxury Edition (single file)</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="btn btn--ghost btn--icon" id="topBtn" type="button" aria-label="Torna su">↑</button>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lb" role="dialog" aria-modal="true" aria-label="Anteprima immagine">
+      <div class="lbbar">
+        <div style="display:flex; gap:8px; align-items:center;">
+          <button class="lbbtn" type="button" id="prev" aria-label="Immagine precedente">←</button>
+          <button class="lbbtn" type="button" id="next" aria-label="Immagine successiva">→</button>
+        </div>
+        <div id="count" aria-live="polite"></div>
+        <button class="lbbtn" type="button" id="close" aria-label="Chiudi">Chiudi</button>
+      </div>
+      <div class="lbimg" id="lbimg"></div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <div class="toast__row">
+      <div class="toast__ic" id="toastIc">✓</div>
+      <div style="flex:1 1 auto;">
+        <p class="toast__t" id="toastT" style="margin:0;">Fatto</p>
+        <p class="toast__p" id="toastP">Operazione completata.</p>
+      </div>
+      <button class="toast__x" id="toastX" type="button" aria-label="Chiudi">×</button>
+    </div>
+  </div>
+
+  <script>
+    /* =========================
+       CONFIG
+    ========================= */
+    const DATE_STR = '2026-09-12T15:30:00+02:00';
+    const HASHTAG = '#LeonardoEVera';
+    const DRAFT_KEY = 'lux_rsvp_draft_v1';
+    const RSVP_KEY  = 'lux_rsvp_list_v1';
+
+    /* =========================
+       TOAST
+    ========================= */
+    const toast = document.getElementById('toast');
+    const toastT = document.getElementById('toastT');
+    const toastP = document.getElementById('toastP');
+    const toastIc = document.getElementById('toastIc');
+    const toastX = document.getElementById('toastX');
+    let toastTimer = null;
+
+    function showToast(t, p, ic='✓'){
+      toastT.textContent = t;
+      toastP.textContent = p;
+      toastIc.textContent = ic;
+      toast.setAttribute('open','');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> toast.removeAttribute('open'), 3200);
+    }
+    toastX.addEventListener('click', ()=> toast.removeAttribute('open'));
+
+    /* =========================
+       DRAWER
+    ========================= */
+    const drawer = document.getElementById('drawer');
+    const openDrawer = document.getElementById('openDrawer');
+    const closeDrawer = document.getElementById('closeDrawer');
+
+    function setDrawer(open){
+      if(open){
+        drawer.setAttribute('open','');
+        drawer.setAttribute('aria-hidden','false');
+        openDrawer?.setAttribute('aria-expanded','true');
+        document.body.style.overflow = 'hidden';
+        closeDrawer?.focus();
+      }else{
+        drawer.removeAttribute('open');
+        drawer.setAttribute('aria-hidden','true');
+        openDrawer?.setAttribute('aria-expanded','false');
+        document.body.style.overflow = '';
+        openDrawer?.focus();
+      }
+    }
+    openDrawer?.addEventListener('click', ()=> setDrawer(true));
+    closeDrawer?.addEventListener('click', ()=> setDrawer(false));
+    drawer?.addEventListener('click', (e)=>{
+      const panel = drawer.querySelector('.drawer__panel');
+      if(panel && !panel.contains(e.target)) setDrawer(false);
+    });
+    document.querySelectorAll('[data-drawer-link]').forEach(a=>{
+      a.addEventListener('click', ()=> setDrawer(false));
+    });
+
+    /* =========================
+       NAV ACTIVE (simple spy)
+    ========================= */
+    const navAnchors = Array.from(document.querySelectorAll('.navlinks a')).filter(a=>a.getAttribute('href')?.startsWith('#'));
+    const secs = ['#details','#story','#gallery','#experience','#rsvp'].map(sel => document.querySelector(sel)).filter(Boolean);
+    const spy = new IntersectionObserver(entries=>{
+      const v = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!v) return;
+      const id = '#' + v.target.id;
+      navAnchors.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === id));
+    }, { rootMargin: '0px 0px -55% 0px', threshold: [0.18, 0.25, 0.33]});
+    secs.forEach(s=> spy.observe(s));
+
+    /* =========================
+       REVEAL
+    ========================= */
+    const rev = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+    }, {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=> rev.observe(el));
+
+    /* =========================
+       BACK TO TOP
+    ========================= */
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', ()=>{
+      topBtn.style.display = window.scrollY > 700 ? 'inline-grid' : 'none';
+    }, {passive:true});
+    topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+
+    /* =========================
+       COUNTDOWN
+    ========================= */
+    const cd = {
+      d: document.getElementById('cd-days'),
+      h: document.getElementById('cd-hours'),
+      m: document.getElementById('cd-mins'),
+      s: document.getElementById('cd-secs'),
+    };
+    function updateCountdown(){
+      const target = new Date(DATE_STR).getTime();
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const days = Math.floor(diff / (1000*60*60*24));
+      const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+      const mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+      const secs  = Math.floor((diff % (1000*60)) / 1000);
+      cd.d.textContent = days;
+      cd.h.textContent = String(hours).padStart(2,'0');
+      cd.m.textContent = String(mins).padStart(2,'0');
+      cd.s.textContent = String(secs).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    /* =========================
+       COPY
+    ========================= */
+    async function copyText(text){
+      try{
+        await navigator.clipboard.writeText(text);
+        return true;
+      }catch{
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try{ document.execCommand('copy'); }catch{}
+        ta.remove();
+        return true;
+      }
+    }
+    document.getElementById('copyHashtag')?.addEventListener('click', async ()=>{
+      await copyText(HASHTAG);
+      showToast('Copiato', HASHTAG, '📋');
+    });
+    document.querySelectorAll('[data-copy]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const sel = btn.getAttribute('data-copy');
+        const el = document.querySelector(sel);
+        if(!el) return;
+        const text = el.textContent.trim();
+        await copyText(text);
+        showToast('Copiato', text, '📋');
+      });
+    });
+
+    /* =========================
+       ADD TO CALENDAR (ICS)
+    ========================= */
+    document.getElementById('calBtn')?.addEventListener('click', ()=>{
+      const dtstamp = new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z';
+      const dtstart = '20260912T153000';
+      const dtend   = '20260912T233000';
+      const uid = Date.now() + '@luxwedding';
+
+      const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LeonardoVera//Luxury//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${uid}
+DTSTAMP:${dtstamp}
+DTSTART;TZID=Europe/Rome:${dtstart}
+DTEND;TZID=Europe/Rome:${dtend}
+SUMMARY:Leonardo & Vera — Matrimonio
+LOCATION:Toscana, Italia
+DESCRIPTION:Cerimonia e ricevimento — dettagli nella pagina.
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Leonardo-Vera-Luxury.ics';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      showToast('Calendario', 'File .ics scaricato.', '📅');
+    });
+
+    /* =========================
+       LIGHTBOX (mosaic)
+    ========================= */
+    const tiles = Array.from(document.querySelectorAll('.tile[data-img]'));
+    const lightbox = document.getElementById('lightbox');
+    const lbimg = document.getElementById('lbimg');
+    const count = document.getElementById('count');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    const close = document.getElementById('close');
+    const openFirst = document.getElementById('openFirst');
+    let idx = 0;
+
+    function openLB(i){
+      idx = i;
+      const src = tiles[idx]?.getAttribute('data-img');
+      if(!src) return;
+      lbimg.style.backgroundImage = `url('${src}')`;
+      count.textContent = `${idx+1} / ${tiles.length}`;
+      lightbox.setAttribute('open','');
+      lightbox.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+      close?.focus();
+    }
+    function closeLB(){
+      lightbox.removeAttribute('open');
+      lightbox.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    function prevLB(){ openLB((idx-1+tiles.length)%tiles.length); }
+    function nextLB(){ openLB((idx+1)%tiles.length); }
+
+    tiles.forEach((t,i)=> t.addEventListener('click', ()=> openLB(i)));
+    openFirst?.addEventListener('click', ()=> openLB(0));
+    prev?.addEventListener('click', prevLB);
+    next?.addEventListener('click', nextLB);
+    close?.addEventListener('click', closeLB);
+    lightbox?.addEventListener('click', (e)=>{
+      const inner = lightbox.querySelector('.lb');
+      if(inner && !inner.contains(e.target)) closeLB();
+    });
+
+    /* =========================
+       RSVP (demo)
+    ========================= */
+    const form = document.getElementById('rsvpForm');
+    const rsvpMsg = document.getElementById('rsvpMsg');
+    const presence = document.getElementById('presence');
+    const guestsWrap = document.getElementById('guestsWrap');
+    const extrasWrap = document.getElementById('extrasWrap');
+    const saveDraft = document.getElementById('saveDraft');
+    const exportCSV = document.getElementById('exportCSV');
+    const resetLocal = document.getElementById('resetLocal');
+    const sendBtn = document.getElementById('sendBtn');
+
+    function setPresenceUI(){
+      const v = presence?.value;
+      const show = v !== 'no';
+      if(guestsWrap) guestsWrap.style.display = show ? '' : 'none';
+      if(extrasWrap) extrasWrap.style.display = show ? '' : 'none';
+    }
+    presence?.addEventListener('change', setPresenceUI);
+    setPresenceUI();
+
+    function getData(){
+      const fd = new FormData(form);
+      const obj = Object.fromEntries(fd.entries());
+      obj.guests = Number(obj.guests ?? 0);
+      return obj;
+    }
+    function loadDraft(){
+      try{
+        const raw = localStorage.getItem(DRAFT_KEY);
+        if(!raw) return;
+        const data = JSON.parse(raw);
+        for(const [k,v] of Object.entries(data)){
+          const el = form.elements[k];
+          if(el) el.value = v;
+        }
+        setPresenceUI();
+        showToast('Bozza caricata', 'Ripresa dal dispositivo.', '📝');
+      }catch{}
+    }
+    function saveDraftFn(){
+      try{
+        localStorage.setItem(DRAFT_KEY, JSON.stringify(getData()));
+        rsvpMsg.textContent = 'Bozza salvata sul dispositivo.';
+        rsvpMsg.style.color = 'rgba(214,181,110,.95)';
+        showToast('Bozza salvata', 'Solo su questo dispositivo.', '📝');
+      }catch{
+        showToast('Errore', 'Impossibile salvare la bozza.', '⚠️');
+      }
+    }
+    function pushRSVP(data){
+      const list = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
+      list.push({ ...data, ts: new Date().toISOString() });
+      localStorage.setItem(RSVP_KEY, JSON.stringify(list));
+    }
+    function toCSV(rows){
+      const headers = ['ts','name','email','presence','guests','food','song'];
+      const esc = (s)=> `"${String(s ?? '').replaceAll('"','""')}"`;
+      const lines = [headers.join(',')];
+      for(const r of rows){
+        lines.push(headers.map(h=>esc(r[h])).join(','));
+      }
+      return lines.join('\n');
+    }
+    function downloadBlob(filename, content, type){
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    saveDraft?.addEventListener('click', saveDraftFn);
+    loadDraft();
+
+    exportCSV?.addEventListener('click', ()=>{
+      const rows = JSON.parse(localStorage.getItem(RSVP_KEY) || '[]');
+      if(rows.length === 0){
+        showToast('Nessun dato', 'Non ci sono RSVP salvate (demo).', 'ℹ️');
+        return;
+      }
+      downloadBlob('RSVP-Luxury-demo.csv', toCSV(rows), 'text/csv;charset=utf-8');
+      showToast('CSV scaricato', 'Controlla i download.', '⬇️');
+    });
+
+    resetLocal?.addEventListener('click', ()=>{
+      localStorage.removeItem(DRAFT_KEY);
+      localStorage.removeItem(RSVP_KEY);
+      form.reset();
+      setPresenceUI();
+      showToast('Reset', 'Dati demo rimossi dal dispositivo.', '🧹');
+      rsvpMsg.textContent = '';
+    });
+
+    form?.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const ok = form.reportValidity ? form.reportValidity() : true;
+      if(!ok) return;
+
+      const data = getData();
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Invio…';
+      rsvpMsg.textContent = '';
+
+      await new Promise(r=> setTimeout(r, 550));
+      try{
+        pushRSVP(data);
+        localStorage.removeItem(DRAFT_KEY);
+        form.reset();
+        setPresenceUI();
+        rsvpMsg.textContent = 'Grazie! RSVP registrata (demo).';
+        rsvpMsg.style.color = 'rgba(214,181,110,.95)';
+        showToast('RSVP salvata', 'Risposta registrata (demo).', '✅');
+      }catch{
+        showToast('Ricevuto', 'Risposta registrata (demo).', '✅');
+      }finally{
+        sendBtn.disabled = false;
+        sendBtn.textContent = 'Invia conferma';
+      }
+    });
+
+    /* =========================
+       ESC shortcuts
+    ========================= */
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape'){
+        if(drawer?.hasAttribute('open')) setDrawer(false);
+        if(lightbox?.hasAttribute('open')) closeLB();
+        toast.removeAttribute('open');
+      }
+      if(lightbox?.hasAttribute('open')){
+        if(e.key === 'ArrowLeft') prevLB();
+        if(e.key === 'ArrowRight') nextLB();
+      }
+    });
+  </script>
+</body>
+</html>
