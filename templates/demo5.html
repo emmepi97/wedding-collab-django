@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 <html lang="it">
 <head>
@@ -862,25 +864,39 @@
         <h2 class="serif" id="galTitle" style="font-size:clamp(1.8rem,3.2vw,2.6rem); margin-top:6px;">Clicca e apri lightbox</h2>
         <p class="muted" style="max-width:72ch;">Animazioni leggere + lightbox accessibile con tasti freccia ed ESC.</p>
 
-        <div class="gallery reveal" style="margin-top:12px;">
-          <div class="g" data-img="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=900&auto=format&fit=crop');"></div>
+<div class="gallery reveal" style="margin-top:12px;">
 
-          <div class="g wide" data-img="https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1200&auto=format&fit=crop');"></div>
+  <div class="g"
+       data-img="{% static 'img/gallery/foto1.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto1.jpg' %}');">
+  </div>
 
-          <div class="g" data-img="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=900&auto=format&fit=crop');"></div>
+  <div class="g wide"
+       data-img="{% static 'img/gallery/foto2.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto2.jpg' %}');">
+  </div>
 
-          <div class="g" data-img="https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=900&auto=format&fit=crop');"></div>
+  <div class="g"
+       data-img="{% static 'img/gallery/foto3.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto3.jpg' %}');">
+  </div>
 
-          <div class="g wide" data-img="https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1520975682031-a9dd5a88408e?q=80&w=1200&auto=format&fit=crop');"></div>
+  <div class="g"
+       data-img="{% static 'img/gallery/foto4.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto4.jpg' %}');">
+  </div>
 
-          <div class="g" data-img="https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=1800&auto=format&fit=crop"
-               style="background-image:url('https://images.unsplash.com/photo-1510511233900-1982d92bd835?q=80&w=900&auto=format&fit=crop');"></div>
-        </div>
+  <div class="g wide"
+       data-img="{% static 'img/gallery/foto5.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto5.jpg' %}');">
+  </div>
+
+  <div class="g"
+       data-img="{% static 'img/gallery/foto6.jpg' %}"
+       style="background-image:url('{% static 'img/gallery/foto6.jpg' %}');">
+  </div>
+
+</div>
       </div>
     </section>
 
@@ -1433,6 +1449,6 @@ END:VCALENDAR`;
       }
     });
   </script>
-  
+
 </body>
 </html>
