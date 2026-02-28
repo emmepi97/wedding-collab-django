@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="it">
 <head>
@@ -9,11 +8,21 @@
   <meta name="description" content="Sito del matrimonio di Leonardo e Vera: dettagli, programma, RSVP, gallery e informazioni utili." />
   <meta name="theme-color" content="#e9dfd9" />
 
+  {# ====== STATIC URLS (puliti e riutilizzabili) ====== #}
+  {% static 'img/og.jpg' as OG_IMG %}
+  {% static 'img/hero.jpg' as HERO_IMG %}
+  {% static 'img/gallery/foto1.jpg' as G1 %}
+  {% static 'img/gallery/foto2.jpg' as G2 %}
+  {% static 'img/gallery/foto3.jpg' as G3 %}
+  {% static 'img/gallery/foto4.jpg' as G4 %}
+  {% static 'img/gallery/foto5.jpg' as G5 %}
+  {% static 'img/gallery/foto6.jpg' as G6 %}
+
   <!-- Open Graph -->
   <meta property="og:title" content="Leonardo & Vera — Wedding" />
   <meta property="og:description" content="Un giorno speciale. Unisciti a noi per celebrare." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:image" content="{{ OG_IMG }}" />
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -252,13 +261,14 @@
       box-shadow: var(--shadow);
     }
 
+    /* ✅ immagine hero da static usando una CSS variable */
     .hero__media{
       position: relative;
       aspect-ratio: 4 / 5;
       border-radius: 24px;
       overflow: hidden;
       box-shadow: var(--shadow);
-      background: #ddd url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+      background: #ddd var(--hero-img) center/cover no-repeat;
     }
 
     .petals{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
@@ -284,7 +294,7 @@
     }
     .countdown .tile{
       min-width: 90px;
-      flex: 1 1 110px; /* rende fluido su mobile */
+      flex: 1 1 110px;
       text-align:center;
       padding: 10px;
       border-radius: 12px;
@@ -388,7 +398,7 @@
       background:#fff;
       font: inherit;
       color: var(--ink);
-      min-height: 48px; /* touch target */
+      min-height: 48px;
     }
     textarea{ min-height:110px; resize: vertical; }
 
@@ -410,7 +420,6 @@
        RESPONSIVE BREAKPOINTS
        ========================= */
     @media (max-width: 960px){
-      /* show hamburger + hide desktop menu */
       .menu{ display:none; }
       .burger{ display:grid; }
 
@@ -422,21 +431,18 @@
     }
 
     @media (max-width: 700px){
-      /* Gallery: 2 colonne */
       .gallery{ grid-template-columns: repeat(6, 1fr); }
       .g-item{ grid-column: span 3; }
       .g-item--wide{ grid-column: span 6; }
     }
 
     @media (max-width: 420px){
-      /* Gallery: 1 colonna */
       .gallery{ grid-template-columns: 1fr; }
       .g-item, .g-item--wide{ grid-column: auto; aspect-ratio: 16/10; }
       .hero__card{ padding: 18px; }
       .card{ padding: 18px; }
     }
 
-    /* Motion safety */
     @media (prefers-reduced-motion: reduce){
       *{ animation: none !important; transition: none !important; }
       html{ scroll-behavior: auto; }
@@ -526,7 +532,11 @@
       </div>
 
       <div>
-        <div class="hero__media" role="img" aria-label="Ritratto romantico di Leonardo e Vera">
+        {# ✅ qui settiamo la variabile CSS con l'immagine da static #}
+        <div class="hero__media"
+             style="--hero-img: url('{{ HERO_IMG }}');"
+             role="img"
+             aria-label="Ritratto romantico di Leonardo e Vera">
           <div class="petals" aria-hidden="true"></div>
         </div>
       </div>
@@ -650,39 +660,19 @@
        GALLERY
        ========================= -->
   <section class="section" id="gallery" aria-labelledby="gallery-title" style="background:linear-gradient(180deg,#f7f3ef,#fff)">
-<div class="gallery reveal" style="margin-top:12px;">
+    <div class="container">
+      <h2 id="gallery-title">Gallery</h2>
+      <p class="muted">Clicca per aprire (lightbox da aggiungere se vuoi).</p>
 
-  <div class="g"
-       data-img="{% static 'img/gallery/foto1.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto1.jpg' %}');">
-  </div>
-
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto2.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto2.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto3.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto3.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto4.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto4.jpg' %}');">
-  </div>
-
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto5.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto5.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto6.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto6.jpg' %}');">
-  </div>
-
-</div>
+      <div class="gallery" style="margin-top:12px;">
+        <div class="g-item"       data-img="{{ G1 }}" style="background-image:url('{{ G1 }}');"></div>
+        <div class="g-item g-item--wide" data-img="{{ G2 }}" style="background-image:url('{{ G2 }}');"></div>
+        <div class="g-item"       data-img="{{ G3 }}" style="background-image:url('{{ G3 }}');"></div>
+        <div class="g-item"       data-img="{{ G4 }}" style="background-image:url('{{ G4 }}');"></div>
+        <div class="g-item g-item--wide" data-img="{{ G5 }}" style="background-image:url('{{ G5 }}');"></div>
+        <div class="g-item"       data-img="{{ G6 }}" style="background-image:url('{{ G6 }}');"></div>
+      </div>
+    </div>
   </section>
 
   <!-- =========================
@@ -792,10 +782,8 @@
   </script>
 
   <script>
-    // TODO: imposta la data del matrimonio qui
     const dateStr = '2026-09-12T15:30:00+02:00';
 
-    // Countdown
     const dDays = document.getElementById('cd-days');
     const dHrs  = document.getElementById('cd-hours');
     const dMin  = document.getElementById('cd-mins');
@@ -823,7 +811,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // Smooth scroll (ok anche senza, ma mantengo il tuo)
+    // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href');

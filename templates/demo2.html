@@ -1,11 +1,15 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Leonardo + Vera — Wedding</title>
+
+{# ====== URL STATIC PRONTI (evita casino virgolette) ====== #}
+{% static 'img/hero.jpg' as HERO_IMG %}
+{% static 'img/details.jpg' as DETAILS_IMG %}
+{% static 'img/matrimonioheaderdemo.png' as STORY_IMG %}
 
 <style>
 /* =======================
@@ -275,7 +279,10 @@ nav a.active::after{
   content:"";
   position:absolute;
   inset:0;
-  background:url(https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1800&auto=format&fit=crop) center/cover no-repeat;
+  /* ✅ immagine da static (iniettata via style nel body, vedi sotto) */
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
   z-index:-3;
   transform:scale(1.02);
 }
@@ -699,7 +706,7 @@ footer .mini{
 <!-- =======================
      HERO
 ======================= -->
-<section class="hero" id="top">
+<section class="hero" id="top" style="--hero-bg: url('{{ HERO_IMG }}');">
   <div class="inner">
     <h1>Leonardo + Vera</h1>
     <p>12 Settembre 2026 · Toscana</p>
@@ -723,6 +730,22 @@ footer .mini{
   </div>
 </section>
 
+<script>
+  // ✅ Applica immagine hero al pseudo-elemento (senza rompere il CSS)
+  // Nota: impostiamo l'url direttamente via style nel DOM
+  document.addEventListener("DOMContentLoaded", ()=>{
+    const hero = document.querySelector(".hero");
+    const bg = hero.style.getPropertyValue("--hero-bg");
+    // fallback: se vuoto non fa nulla
+    if(bg){
+      // inject una regola CSS dinamica per .hero::before
+      const style = document.createElement("style");
+      style.textContent = `.hero::before{ background-image: ${bg}; }`;
+      document.head.appendChild(style);
+    }
+  });
+</script>
+
 <!-- =======================
      DETTAGLI
 ======================= -->
@@ -737,7 +760,7 @@ footer .mini{
     </div>
 
     <div class="split reveal">
-      <div class="img-box" style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1400&auto=format&fit=crop');"></div>
+      <div class="img-box" style="background-image:url('{{ DETAILS_IMG }}');"></div>
 
       <div class="text">
         <div class="pill">Programma</div>
@@ -856,9 +879,7 @@ footer .mini{
         </div>
       </div>
 
-<div class="img-box"
-     style="background-image:url('{% static "img/matrimonioheaderdemo.png" %}');">
-</div>
+      <div class="img-box" style="background-image:url('{{ STORY_IMG }}');"></div>
     </div>
   </div>
 </section>
@@ -1027,7 +1048,7 @@ toTop.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"})
    COUNTDOWN (12 Sep 2026)
 ======================= */
 const countdownEl = document.getElementById("countdown");
-const target = new Date("2026-09-12T15:30:00"); // ora cerimonia
+const target = new Date("2026-09-12T15:30:00");
 function pad(n){return String(n).padStart(2,"0");}
 function tick(){
   const now = new Date();
@@ -1124,9 +1145,8 @@ form.addEventListener("submit", async (e)=>{
    ADD TO CALENDAR (ICS)
 ======================= */
 function downloadICS(){
-  // Evento base: 12 Sep 2026 15:30 -> 23:30 (placeholder)
-  const dtStart = "20260912T133000Z"; // UTC approx (placeholder)
-  const dtEnd   = "20260912T213000Z"; // UTC approx (placeholder)
+  const dtStart = "20260912T133000Z";
+  const dtEnd   = "20260912T213000Z";
 
   const ics =
 `BEGIN:VCALENDAR

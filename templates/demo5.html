@@ -1,5 +1,4 @@
 {% load static %}
-
 <!doctype html>
 <html lang="it">
 <head>
@@ -110,7 +109,7 @@
       border:1px solid transparent;
       cursor:pointer;
       user-select:none;
-      min-height:48px; /* touch target */
+      min-height:48px;
       font-weight: 750;
       letter-spacing:.01em;
       transition: transform .18s var(--ease), filter .18s var(--ease), background .18s var(--ease);
@@ -257,7 +256,6 @@
       padding: clamp(68px, 9vw, 112px) 0 clamp(56px, 8vw, 92px);
       overflow:hidden;
     }
-    /* animated gradient mesh */
     .mesh{
       position:absolute; inset:-10%;
       background:
@@ -266,7 +264,6 @@
         radial-gradient(480px 360px at 55% 80%, rgba(251,191,36,.18), transparent 60%),
         radial-gradient(420px 320px at 10% 85%, rgba(96,165,250,.18), transparent 60%),
         radial-gradient(360px 280px at 90% 85%, rgba(251,113,133,.16), transparent 60%);
-      filter: blur(0px);
       opacity:.95;
       animation: meshMove 16s var(--ease2) infinite alternate;
       z-index:-3;
@@ -276,7 +273,6 @@
       to  { transform: translate3d(1.8%, 1.4%,0) scale(1.05); }
     }
 
-    /* floating particles */
     .stars{
       position:absolute; inset:0; pointer-events:none; z-index:-2;
       opacity:.9;
@@ -324,7 +320,6 @@
       margin-top: 12px;
     }
 
-    /* hero stats */
     .stats{
       margin-top: 16px;
       display:grid;
@@ -342,7 +337,6 @@
     .stat b{ display:block; font-size: 1.35rem; }
     .stat span{ color: rgba(243,246,255,.72); font-size:.92rem; }
 
-    /* hero visual */
     .visual{
       position:relative;
       aspect-ratio: 4/5;
@@ -357,7 +351,6 @@
       transform: translateZ(0);
     }
 
-    /* shimmer */
     .visual::before{
       content:"";
       position:absolute; inset:-40%;
@@ -374,7 +367,6 @@
       100%{ transform: translateX(55%) rotate(12deg); }
     }
 
-    /* floating cards around visual */
     .float{
       position:absolute;
       border-radius: 18px;
@@ -451,7 +443,6 @@
       box-shadow: 0 0 0 6px rgba(121,242,212,.12);
     }
 
-    /* gallery */
     .gallery{
       display:grid;
       grid-template-columns: repeat(12, 1fr);
@@ -479,7 +470,6 @@
     }
     .g.wide{ grid-column: span 6; aspect-ratio: 16/9; }
 
-    /* lightbox */
     .lightbox{
       position:fixed; inset:0;
       display:none;
@@ -519,7 +509,6 @@
       box-shadow: 0 22px 80px rgba(0,0,0,.45);
     }
 
-    /* form */
     .form{ display:grid; gap: 12px; }
     .row{ display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
     label{ font-size:.92rem; color: rgba(243,246,255,.78); }
@@ -539,7 +528,6 @@
       box-shadow: 0 0 0 4px rgba(121,242,212,.18);
     }
 
-    /* footer */
     footer{
       padding: 44px 0;
       border-top: 1px solid rgba(255,255,255,.10);
@@ -554,7 +542,6 @@
     .foot a{ opacity:.82; }
     .foot a:hover{ opacity:1; text-decoration: underline; }
 
-    /* toast */
     .toast{
       position: fixed;
       right: 16px;
@@ -592,7 +579,6 @@
     .toast__t{ margin:0; font-weight: 900; }
     .toast__p{ margin:.15rem 0 0; color: rgba(243,246,255,.72); font-size:.95rem; }
 
-    /* reveal */
     .reveal{
       opacity:0;
       transform: translateY(14px);
@@ -601,7 +587,6 @@
     }
     .reveal.in{ opacity:1; transform: translateY(0); }
 
-    /* back to top */
     #topBtn{
       position: fixed;
       left: 16px;
@@ -610,9 +595,6 @@
       z-index: 240;
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
     @media (max-width: 980px){
       .hero__grid{ grid-template-columns: 1fr; }
       .stats{ grid-template-columns: 1fr; }
@@ -641,7 +623,6 @@
       .g, .g.wide{ grid-column: auto; aspect-ratio: 16/10; }
     }
 
-    /* Motion safety */
     @media (prefers-reduced-motion: reduce){
       html{ scroll-behavior:auto; }
       *{ animation: none !important; transition: none !important; }
@@ -652,9 +633,6 @@
 <body>
   <a href="#content" class="skip">Salta al contenuto</a>
 
-  <!-- =========================
-       NAV
-  ========================= -->
   <nav class="nav" aria-label="Navigazione principale">
     <div class="container nav__inner">
       <a class="brand" href="#home" aria-label="Torna all'inizio">
@@ -679,7 +657,6 @@
     </div>
   </nav>
 
-  <!-- Drawer -->
   <div class="drawer" id="drawer" aria-hidden="true">
     <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Menu mobile">
       <div class="drawer__head">
@@ -700,9 +677,6 @@
     </div>
   </div>
 
-  <!-- =========================
-       HERO
-  ========================= -->
   <header class="hero" id="home" role="banner">
     <div class="mesh" aria-hidden="true"></div>
     <div class="stars" id="stars" aria-hidden="true"></div>
@@ -770,9 +744,7 @@
   </header>
 
   <main id="content">
-    <!-- =========================
-         STORY
-    ========================= -->
+    <!-- STORY -->
     <section class="section" id="story" aria-labelledby="storyTitle">
       <div class="container">
         <div class="kicker">Storia</div>
@@ -816,9 +788,7 @@
       </div>
     </section>
 
-    <!-- =========================
-         DAY
-    ========================= -->
+    <!-- DAY -->
     <section class="section" id="day" aria-labelledby="dayTitle">
       <div class="container">
         <div class="kicker">Il giorno</div>
@@ -855,54 +825,48 @@
       </div>
     </section>
 
-    <!-- =========================
-         GALLERY
-    ========================= -->
+    <!-- GALLERY -->
     <section class="section" id="gallery" aria-labelledby="galTitle">
       <div class="container">
         <div class="kicker">Gallery</div>
         <h2 class="serif" id="galTitle" style="font-size:clamp(1.8rem,3.2vw,2.6rem); margin-top:6px;">Clicca e apri lightbox</h2>
         <p class="muted" style="max-width:72ch;">Animazioni leggere + lightbox accessibile con tasti freccia ed ESC.</p>
 
-<div class="gallery reveal" style="margin-top:12px;">
+        <div class="gallery reveal" style="margin-top:12px;">
+          <div class="g"
+               data-img="{% static "img/gallery/foto1.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto1.jpg" %}');">
+          </div>
 
-  <div class="g"
-       data-img="{% static 'img/gallery/foto1.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto1.jpg' %}');">
-  </div>
+          <div class="g wide"
+               data-img="{% static "img/gallery/foto2.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto2.jpg" %}');">
+          </div>
 
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto2.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto2.jpg' %}');">
-  </div>
+          <div class="g"
+               data-img="{% static "img/gallery/foto3.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto3.jpg" %}');">
+          </div>
 
-  <div class="g"
-       data-img="{% static 'img/gallery/foto3.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto3.jpg' %}');">
-  </div>
+          <div class="g"
+               data-img="{% static "img/gallery/foto4.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto4.jpg" %}');">
+          </div>
 
-  <div class="g"
-       data-img="{% static 'img/gallery/foto4.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto4.jpg' %}');">
-  </div>
+          <div class="g wide"
+               data-img="{% static "img/gallery/foto5.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto5.jpg" %}');">
+          </div>
 
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto5.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto5.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto6.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto6.jpg' %}');">
-  </div>
-
-</div>
+          <div class="g"
+               data-img="{% static "img/gallery/foto6.jpg" %}"
+               style="background-image:url('{% static "img/gallery/foto6.jpg" %}');">
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- =========================
-         RSVP
-    ========================= -->
+    <!-- RSVP -->
     <section class="section" id="rsvp" aria-labelledby="rsvpTitle">
       <div class="container">
         <div class="kicker">RSVP</div>
@@ -961,14 +925,17 @@
           <div class="card pad2 reveal">
             <h3 class="serif">FAQ lampo</h3>
             <p class="muted">Accordeon leggero (HTML nativo).</p>
+
             <details class="card" style="padding:14px; margin-top:10px;">
               <summary style="cursor:pointer; font-weight:800;">Posso portare un +1?</summary>
               <p class="muted" style="margin:10px 0 0;">Se il tuo invito include +1, segnalalo con il numero accompagnatori.</p>
             </details>
+
             <details class="card" style="padding:14px; margin-top:10px;">
               <summary style="cursor:pointer; font-weight:800;">Opzioni vegetariane / allergie?</summary>
               <p class="muted" style="margin:10px 0 0;">Sì! Scrivilo nel campo dedicato.</p>
             </details>
+
             <details class="card" style="padding:14px; margin-top:10px;">
               <summary style="cursor:pointer; font-weight:800;">Entro quando rispondere?</summary>
               <p class="muted" style="margin:10px 0 0;">Idealmente entro 30 giorni dalla ricezione dell’invito.</p>
@@ -978,9 +945,7 @@
       </div>
     </section>
 
-    <!-- =========================
-         INFO / CTA
-    ========================= -->
+    <!-- INFO -->
     <section class="section" id="info" aria-labelledby="infoTitle">
       <div class="container">
         <div class="kicker">Info</div>
@@ -1022,9 +987,6 @@
     </section>
   </main>
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
   <footer>
     <div class="container foot reveal">
       <div>
@@ -1057,10 +1019,8 @@
     </div>
   </footer>
 
-  <!-- Back to top -->
   <button class="btn btn--ghost btn--icon" id="topBtn" type="button" aria-label="Torna su">↑</button>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lb" role="dialog" aria-modal="true" aria-label="Anteprima immagine">
       <div class="lbbar">
@@ -1075,7 +1035,6 @@
     </div>
   </div>
 
-  <!-- Toast -->
   <div class="toast" id="toast" role="status" aria-live="polite">
     <div class="toast__row">
       <div class="toast__ic" id="toastIc">✓</div>
@@ -1149,16 +1108,22 @@
     });
 
     /* =========================
-       NAV ACTIVE (scroll spy light)
+       NAV ACTIVE
     ========================= */
-    const navAnchors = Array.from(document.querySelectorAll('.navlinks a')).filter(a=>a.getAttribute('href')?.startsWith('#'));
-    const secs = ['#story','#day','#gallery','#rsvp','#info'].map(sel => document.querySelector(sel)).filter(Boolean);
+    const navAnchors = Array.from(document.querySelectorAll('.navlinks a'))
+      .filter(a=>a.getAttribute('href')?.startsWith('#'));
+
+    const secs = ['#story','#day','#gallery','#rsvp','#info']
+      .map(sel => document.querySelector(sel))
+      .filter(Boolean);
+
     const spy = new IntersectionObserver(entries=>{
       const v = entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
       if(!v) return;
       const id = '#' + v.target.id;
       navAnchors.forEach(a=> a.classList.toggle('active', a.getAttribute('href') === id));
     }, { rootMargin: '0px 0px -55% 0px', threshold: [0.18, 0.25, 0.33]});
+
     secs.forEach(s=> spy.observe(s));
 
     /* =========================
@@ -1179,7 +1144,7 @@
     topBtn.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
 
     /* =========================
-       STARS (cheap particles, single paint)
+       STARS
     ========================= */
     const stars = document.getElementById('stars');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1206,7 +1171,7 @@
     }
 
     /* =========================
-       COUNTDOWN -> stat days
+       COUNTDOWN
     ========================= */
     const statDays = document.getElementById('statDays');
     function updateDays(){
@@ -1217,7 +1182,7 @@
       statDays.textContent = String(days);
     }
     updateDays();
-    setInterval(updateDays, 1000*60); // light
+    setInterval(updateDays, 1000*60);
 
     /* =========================
        COPY HASHTAG
@@ -1426,8 +1391,6 @@ END:VCALENDAR`;
         rsvpMsg.textContent = 'Grazie! RSVP registrata (demo).';
         rsvpMsg.style.color = 'rgba(121,242,212,.95)';
         showToast('RSVP salvata', 'Risposta registrata (demo).', '✅');
-      }catch{
-        showToast('Ricevuto', 'Risposta registrata (demo).', '✅');
       }finally{
         sendBtn.disabled = false;
         sendBtn.textContent = 'Invia conferma';
@@ -1449,6 +1412,5 @@ END:VCALENDAR`;
       }
     });
   </script>
-
 </body>
 </html>
