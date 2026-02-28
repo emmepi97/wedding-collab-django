@@ -9,6 +9,16 @@
   <meta name="description" content="Matrimonio di Leonardo e Vera — dettagli, programma, RSVP, informazioni utili e lista nozze." />
   <meta name="theme-color" content="#f6f3ee" />
 
+    {# ====== STATIC URLS (puliti e riutilizzabili) ====== #}
+  {% static 'img/fotomatrimonio17.png' as OG_IMG %}
+  {% static 'img/fotomatrimonio17.png' as HERO_IMG %}
+  {% static 'img/fotomatrimonio17.png' as G1 %}
+  {% static 'img/fotomatrimonio17.png' as G2 %}
+  {% static 'img/fotomatrimonio17.png' as G3 %}
+  {% static 'img/fotomatrimonio17.png' as G4 %}
+  {% static 'img/fotomatrimonio17.png' as G5 %}
+  {% static 'img/fotomatrimonio17.png' as G6 %}
+
   <!-- Open Graph -->
   <meta property="og:title" content="Leonardo & Vera — Wedding" />
   <meta property="og:description" content="Un giorno speciale. Unisciti a noi per celebrare." />
@@ -897,54 +907,22 @@
     <!-- =========================
          GALLERY
     ========================= -->
-    <section class="section" id="gallery" aria-labelledby="gallery-title">
-      <div class="container">
-        <div class="section-head reveal">
-          <div>
-            <div class="eyebrow">Gallery</div>
-            <h2 id="gallery-title" class="serif">Gallery</h2>
-            <p class="muted">Scatti d’ispirazione (immagini demo). Clicca per aprire.</p>
-          </div>
-          <div class="inline">
-            <button class="btn btn--ghost btn--tiny" type="button" id="openFirst">Apri</button>
-          </div>
-        </div>
+  
+      <section class="section" id="gallery" aria-labelledby="gallery-title" style="background:linear-gradient(180deg,#f7f3ef,#fff)">
+    <div class="container">
+      <h2 id="gallery-title">Gallery</h2>
+      <p class="muted">Clicca per aprire (lightbox da aggiungere se vuoi).</p>
 
-<div class="gallery reveal" style="margin-top:12px;">
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto1.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto1.jpg' %}');">
-  </div>
-
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto2.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto2.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto3.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto3.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto4.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto4.jpg' %}');">
-  </div>
-
-  <div class="g wide"
-       data-img="{% static 'img/gallery/foto5.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto5.jpg' %}');">
-  </div>
-
-  <div class="g"
-       data-img="{% static 'img/gallery/foto6.jpg' %}"
-       style="background-image:url('{% static 'img/gallery/foto6.jpg' %}');">
-  </div>
-
-</div>
+      <div class="gallery" style="margin-top:12px;">
+        <div class="g-item"       data-img="{{ G1 }}" style="background-image:url('{{ G1 }}');"></div>
+        <div class="g-item g-item--wide" data-img="{{ G2 }}" style="background-image:url('{{ G2 }}');"></div>
+        <div class="g-item"       data-img="{{ G3 }}" style="background-image:url('{{ G3 }}');"></div>
+        <div class="g-item"       data-img="{{ G4 }}" style="background-image:url('{{ G4 }}');"></div>
+        <div class="g-item g-item--wide" data-img="{{ G5 }}" style="background-image:url('{{ G5 }}');"></div>
+        <div class="g-item"       data-img="{{ G6 }}" style="background-image:url('{{ G6 }}');"></div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- =========================
          TRAVEL / STAY
