@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Leonardo + Vera — Wedding</title>
+
+<style>
+/* =======================
+   RESET & BASE
+======================= */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#ffffff;
+  --text:#141414;
+  --muted:#4a4a4a;
+  --line:#ececec;
+  --card:#ffffff;
+  --shadow: 0 18px 60px rgba(0,0,0,.08);
+  --shadow-soft: 0 10px 30px rgba(0,0,0,.08);
+  --radius:18px;
+  --radius-lg:28px;
+  --accent:#111;
+  --accent-2:#2b2b2b;
+}
+html{scroll-behavior:smooth;}
+body{
+  font-family: "Helvetica Neue", Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+section{padding:110px 8%;}
+a{color:inherit}
+
+/* =======================
+   TYPOGRAPHY
+======================= */
+h1,h2,h3{font-weight:750;letter-spacing:-.02em;}
+h1{font-size: clamp(3rem, 7vw, 7rem); line-height:1.02;}
+h2{font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom:18px;}
+p{max-width:720px;font-size:1.08rem;color:var(--muted);}
+.small{font-size:.95rem;color:#5a5a5a}
+
+/* =======================
+   LAYOUT HELPERS
+======================= */
+.container{max-width:1200px;margin:0 auto;}
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-soft);
+}
+.p24{padding:24px;}
+.p28{padding:28px;}
+.p32{padding:32px;}
+.grid{
+  display:grid;
+  gap:18px;
+}
+.grid-3{grid-template-columns:repeat(3, minmax(0,1fr));}
+.grid-2{grid-template-columns:repeat(2, minmax(0,1fr));}
+@media(max-width:980px){
+  .grid-3,.grid-2{grid-template-columns:1fr;}
+}
+
+/* =======================
+   NAVBAR
+======================= */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:74px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 8%;
+  background:rgba(255,255,255,0.68);
+  backdrop-filter:blur(14px);
+  z-index:50;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+}
+.brand{
+  display:flex; align-items:center; gap:10px;
+  font-weight:800;
+}
+.brand .dot{
+  width:10px;height:10px;border-radius:999px;background:#111;
+  box-shadow:0 0 0 6px rgba(17,17,17,.09);
+}
+nav .links{
+  display:flex; align-items:center; gap:22px;
+}
+nav a{
+  text-decoration:none;
+  font-weight:650;
+  color:#1a1a1a;
+  font-size:.95rem;
+  opacity:.85;
+  position:relative;
+  padding:10px 2px;
+}
+nav a:hover{opacity:1;}
+nav a.active::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:2px;
+  height:2px;
+  background:#111;
+  border-radius:999px;
+}
+.nav-cta{
+  margin-left:6px;
+  padding:10px 14px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.12);
+  background:#fff;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);
+}
+.nav-cta:hover{transform:translateY(-1px);}
+
+/* =======================
+   HERO FULLSCREEN
+======================= */
+.hero{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  position:relative;
+  color:#fff;
+  padding-top:74px;
+}
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url(https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1800&auto=format&fit=crop) center/cover no-repeat;
+  z-index:-3;
+  transform:scale(1.02);
+}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(900px 500px at 50% 35%, rgba(255,255,255,0.18), transparent 55%),
+    linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.30));
+  z-index:-2;
+}
+.hero .inner{
+  max-width:980px;
+  padding:0 8%;
+  animation:floatIn .85s ease both;
+}
+.hero h1{
+  color:#fff;
+  text-shadow: 0 18px 80px rgba(0,0,0,.55);
+  margin-bottom:14px;
+}
+.hero p{
+  color:rgba(255,255,255,.88);
+  font-size:1.15rem;
+  margin:0 auto 20px;
+}
+.hero .badges{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter: blur(10px);
+  font-weight:650;
+  font-size:.95rem;
+}
+.badge span{
+  opacity:.95;
+}
+.hero .actions{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:13px 18px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.25);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .15s ease, opacity .15s ease, background .15s ease;
+}
+.btn:hover{transform:translateY(-1px); opacity:.95;}
+.btn.primary{
+  background:#fff;
+  color:#111;
+  border-color:rgba(255,255,255,.5);
+}
+.hero .scroll-hint{
+  position:absolute;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  display:flex; flex-direction:column; gap:8px;
+  opacity:.9;
+  font-weight:600;
+  font-size:.92rem;
+}
+.mouse{
+  width:28px; height:42px; border-radius:999px;
+  border:2px solid rgba(255,255,255,.7);
+  margin:0 auto;
+  position:relative;
+}
+.mouse::after{
+  content:"";
+  width:6px;height:6px;border-radius:999px;background:#fff;
+  position:absolute;left:50%;top:10px;transform:translateX(-50%);
+  animation:scrollDot 1.3s infinite;
+}
+
+@keyframes scrollDot{
+  0%{opacity:.2; transform:translate(-50%,0);}
+  30%{opacity:1;}
+  100%{opacity:.1; transform:translate(-50%,14px);}
+}
+@keyframes floatIn{
+  from{opacity:0; transform:translateY(16px) scale(.99);}
+  to{opacity:1; transform:translateY(0) scale(1);}
+}
+
+/* =======================
+   SECTION HEADERS
+======================= */
+.section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:28px;
+}
+.kicker{
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:.78rem;
+  color:#6a6a6a;
+}
+hr.sep{
+  border:none;
+  border-top:1px solid var(--line);
+  margin-top:18px;
+}
+
+/* =======================
+   SPLIT SECTIONS
+======================= */
+.split{
+  display:flex;
+  flex-wrap:wrap;
+  gap:38px;
+  align-items:center;
+}
+.split .img-box{
+  flex:1 1 45%;
+  min-height:420px;
+  background-position:center;
+  background-size:cover;
+  border-radius:var(--radius-lg);
+  border:1px solid rgba(255,255,255,.35);
+  box-shadow:var(--shadow);
+  position:relative;
+  overflow:hidden;
+}
+.split .img-box::after{
+  content:"";
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.28));
+  opacity:.55;
+}
+.split .text{
+  flex:1 1 45%;
+}
+.pill{
+  display:inline-flex;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,.06);
+  font-weight:750;
+  margin-bottom:14px;
+}
+
+/* =======================
+   TIMELINE MODERN
+======================= */
+.timeline{
+  margin-top:18px;
+  position:relative;
+  padding-left:22px;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  left:6px; top:0; bottom:0;
+  width:2px; border-radius:999px;
+  background:linear-gradient(to bottom, #111, rgba(17,17,17,.25));
+}
+.t-item{
+  position:relative;
+  padding:12px 0 12px 18px;
+}
+.t-item::before{
+  content:"";
+  position:absolute;
+  left:-2px; top:18px;
+  width:12px;height:12px;border-radius:999px;
+  background:#111;
+  box-shadow:0 0 0 6px rgba(17,17,17,.10);
+}
+.t-item b{font-size:1.15rem;}
+.t-item span{display:block;color:#555;margin-top:4px;}
+
+/* =======================
+   DETAILS CARDS
+======================= */
+.details-cards .card h3{
+  font-size:1.2rem;
+  margin-bottom:6px;
+}
+.iconline{
+  display:flex; gap:10px; align-items:flex-start;
+  color:#2a2a2a;
+}
+.icon{
+  width:34px;height:34px;border-radius:12px;
+  display:grid; place-items:center;
+  background:#111;
+  color:#fff;
+  flex:0 0 auto;
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+}
+.muted{color:#5a5a5a;}
+.map-wrap{
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+}
+
+/* =======================
+   RSVP FORM (UPGRADED)
+======================= */
+form{
+  margin-top:18px;
+  display:grid;
+  gap:14px;
+  max-width:560px;
+}
+input,select,textarea{
+  padding:13px 14px;
+  border:1px solid rgba(0,0,0,.18);
+  border-radius:14px;
+  font-size:1rem;
+  outline:none;
+  background:#fff;
+  transition:border .15s ease, box-shadow .15s ease;
+}
+input:focus,select:focus,textarea:focus{
+  border-color: rgba(0,0,0,.45);
+  box-shadow:0 0 0 6px rgba(0,0,0,.06);
+}
+textarea{min-height:110px; resize:vertical;}
+button{
+  padding:14px 18px;
+  border:none;
+  background:#111;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  border-radius:14px;
+  font-weight:750;
+  transition:transform .15s ease, opacity .15s ease;
+}
+button:hover{transform:translateY(-1px); opacity:0.92;}
+button:disabled{opacity:.55; cursor:not-allowed; transform:none;}
+.inline{
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.notice{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:14px 16px;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:linear-gradient(to bottom, rgba(0,0,0,.02), rgba(0,0,0,.00));
+}
+
+/* =======================
+   FAQ ACCORDION
+======================= */
+.faq details{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px 16px;
+  background:#fff;
+  box-shadow:0 10px 24px rgba(0,0,0,.05);
+}
+.faq details summary{
+  list-style:none;
+  cursor:pointer;
+  font-weight:750;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.faq details summary::-webkit-details-marker{display:none;}
+.chev{
+  width:32px;height:32px;border-radius:12px;
+  border:1px solid var(--line);
+  display:grid;place-items:center;
+}
+.faq details[open] .chev{transform:rotate(180deg);}
+.faq p{margin-top:10px;}
+
+/* =======================
+   FOOTER
+======================= */
+footer{
+  padding:70px 8%;
+  background:#111;
+  color:#f0f0f0;
+  text-align:center;
+  margin-top:80px;
+}
+footer p{color:rgba(255,255,255,.85); margin:0 auto;}
+footer .mini{
+  margin-top:10px;
+  font-size:.92rem;
+  opacity:.8;
+}
+
+/* =======================
+   REVEAL ON SCROLL
+======================= */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .6s ease, transform .6s ease;
+}
+.reveal.in{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =======================
+   BACK TO TOP
+======================= */
+#toTop{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  width:48px;height:48px;
+  border-radius:16px;
+  border:1px solid rgba(0,0,0,.14);
+  background:rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  box-shadow:0 12px 30px rgba(0,0,0,.12);
+  cursor:pointer;
+  display:none;
+  z-index:60;
+  font-weight:900;
+}
+#toTop:hover{transform:translateY(-1px);}
+@media(max-width:980px){
+  section{padding:95px 7%;}
+}
+@media(max-width:720px){
+  nav .links{display:none;}
+  .split .img-box{min-height:340px;}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="brand">
+    <span class="dot"></span>
+    <strong>Leonardo + Vera</strong>
+  </div>
+
+  <div class="links" id="navLinks">
+    <a href="#details">Dettagli</a>
+    <a href="#story">Storia</a>
+    <a href="#rsvp">RSVP</a>
+    <a href="#info">Info</a>
+  </div>
+
+  <a class="nav-cta" href="#rsvp">Conferma presenza</a>
+</nav>
+
+<!-- =======================
+     HERO
+======================= -->
+<section class="hero" id="top">
+  <div class="inner">
+    <h1>Leonardo + Vera</h1>
+    <p>12 Settembre 2026 · Toscana</p>
+
+    <div class="badges" aria-label="informazioni rapide">
+      <div class="badge"><span>📍 Toscana</span></div>
+      <div class="badge"><span>🕒 Cerimonia 15:30</span></div>
+      <div class="badge"><span>🍷 Ricevimento 18:30</span></div>
+      <div class="badge"><span>⏳ <span id="countdown">Calcolo countdown…</span></span></div>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="#details">Scopri i dettagli</a>
+      <button class="btn" id="addToCalendar" type="button">Aggiungi al calendario</button>
+    </div>
+  </div>
+
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="mouse"></div>
+    <div>Scroll</div>
+  </div>
+</section>
+
+<!-- =======================
+     DETTAGLI
+======================= -->
+<section id="details">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Dettagli</div>
+        <h2>Cerimonia & Ricevimento</h2>
+        <p>Orari, location e indicazioni pratiche per vivere la giornata senza pensieri.</p>
+      </div>
+    </div>
+
+    <div class="split reveal">
+      <div class="img-box" style="background-image:url('https://images.unsplash.com/photo-1518609571773-39b7d303a87e?q=80&w=1400&auto=format&fit=crop');"></div>
+
+      <div class="text">
+        <div class="pill">Programma</div>
+
+        <div class="grid grid-2 details-cards">
+          <div class="card p28">
+            <div class="iconline">
+              <div class="icon">⛪</div>
+              <div>
+                <h3>Cerimonia</h3>
+                <p class="muted"><b>15:30</b> · Chiostro di San Lorenzo, Firenze</p>
+                <p class="small">Arrivo consigliato: <b>15:00</b></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p28">
+            <div class="iconline">
+              <div class="icon">🥂</div>
+              <div>
+                <h3>Ricevimento</h3>
+                <p class="muted"><b>18:30</b> · Tenuta Le Rose, Chianti</p>
+                <p class="small">Aperitivo al tramonto + cena</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p28">
+            <div class="iconline">
+              <div class="icon">👗</div>
+              <div>
+                <h3>Dress code</h3>
+                <p class="muted">Elegante · colori neutri</p>
+                <p class="small">Consiglio: scarpe comode per esterni</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card p28">
+            <div class="iconline">
+              <div class="icon">🚗</div>
+              <div>
+                <h3>Parcheggi</h3>
+                <p class="muted">Disponibili presso entrambe le location</p>
+                <p class="small">Indicazioni dettagliate in arrivo via email</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="notice">
+          <div class="icon" style="width:34px;height:34px;border-radius:12px;">💡</div>
+          <div>
+            <div style="font-weight:800;">Tip veloce</div>
+            <p class="small">Se hai intolleranze/allergie, segnalale nell’RSVP: ci aiuti a organizzare al meglio.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:24px;" class="reveal">
+      <div class="kicker" style="margin-bottom:10px;">Mappa</div>
+      <div class="map-wrap">
+        <!-- Sostituisci con la tua mappa / luogo preciso quando vuoi -->
+        <iframe
+          title="Mappa Toscana"
+          src="https://www.google.com/maps?q=Toscana&output=embed"
+          width="100%"
+          height="360"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+      <p class="small" style="margin-top:10px;">(Placeholder) Quando avrai gli indirizzi definitivi, li inseriamo qui in modo preciso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =======================
+     STORIA
+======================= -->
+<section id="story">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Storia</div>
+        <h2>La nostra storia</h2>
+        <p>Un percorso fatto di cose semplici, scelte naturali e momenti che ci hanno portati fin qui.</p>
+      </div>
+    </div>
+
+    <div class="split reveal">
+      <div class="text">
+        <div class="pill">Momenti</div>
+        <p>
+          Ci siamo incontrati in modo semplice, spontaneo.
+          Da allora ogni passo è stato naturale, leggero, pieno di momenti
+          che ci hanno portati fin qui.
+        </p>
+
+        <div class="timeline">
+          <div class="t-item">
+            <b>2019</b>
+            <span>Il primo incontro</span>
+          </div>
+          <div class="t-item">
+            <b>2021</b>
+            <span>Il viaggio che ha cambiato tutto</span>
+          </div>
+          <div class="t-item">
+            <b>2025</b>
+            <span>La proposta</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="img-box" style="background-image:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop');"></div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================
+     RSVP
+======================= -->
+<section id="rsvp">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">RSVP</div>
+        <h2>Conferma presenza</h2>
+        <p>Faccelo sapere — ci aiuterai ad organizzare al meglio.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-2 reveal" style="align-items:start;">
+      <div class="card p32">
+        <form id="rsvpForm">
+          <input type="text" name="nome" placeholder="Nome e cognome" required />
+          <input type="email" name="email" placeholder="Email" required />
+
+          <select name="presenza" required>
+            <option value="">Parteciperai?</option>
+            <option value="si">Sì, ci sarò!</option>
+            <option value="no">Purtroppo no</option>
+          </select>
+
+          <textarea name="note" placeholder="Allergie, richieste speciali..."></textarea>
+
+          <div class="inline">
+            <button id="sendBtn" type="submit">Invia conferma</button>
+            <button id="saveDraft" type="button" style="background:#2b2b2b;">Salva bozza</button>
+          </div>
+
+          <p id="msg" class="small" style="margin-top:6px;"></p>
+        </form>
+      </div>
+
+      <div class="card p32">
+        <div class="pill">FAQ</div>
+        <div class="grid faq">
+          <details>
+            <summary>
+              Posso portare un accompagnatore?
+              <span class="chev">⌄</span>
+            </summary>
+            <p class="small">Se il tuo invito include +1, troverai l’indicazione nel messaggio ricevuto. In caso di dubbi, scrivici.</p>
+          </details>
+
+          <details>
+            <summary>
+              Ci saranno opzioni vegetariane / allergeni?
+              <span class="chev">⌄</span>
+            </summary>
+            <p class="small">Sì. Inserisci eventuali allergie/intolleranze nel campo note dell’RSVP.</p>
+          </details>
+
+          <details>
+            <summary>
+              Come funziona il trasporto tra le location?
+              <span class="chev">⌄</span>
+            </summary>
+            <p class="small">Stiamo valutando una soluzione comoda. Condivideremo i dettagli appena definiti.</p>
+          </details>
+
+          <details>
+            <summary>
+              Entro quando devo rispondere?
+              <span class="chev">⌄</span>
+            </summary>
+            <p class="small">Idealmente entro <b>30 giorni</b> dalla ricezione dell’invito, così possiamo finalizzare tutto.</p>
+          </details>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="notice">
+          <div class="icon" style="width:34px;height:34px;border-radius:12px;">📩</div>
+          <div>
+            <div style="font-weight:800;">Contatto</div>
+            <p class="small">Per qualsiasi necessità: <b>leonardoevera@email.com</b> (placeholder).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =======================
+     INFO
+======================= -->
+<section id="info">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="kicker">Info</div>
+        <h2>Informazioni utili</h2>
+        <p>Qualche dettaglio pratico per organizzarti con serenità.</p>
+      </div>
+    </div>
+
+    <div class="grid grid-3 reveal">
+      <div class="card p28">
+        <h3>Hotel consigliati</h3>
+        <p class="small">Su richiesta ti inviamo una lista aggiornata con fasce prezzo e distanze.</p>
+      </div>
+      <div class="card p28">
+        <h3>Meteo & location</h3>
+        <p class="small">Settembre in Toscana è spesso mite: porta qualcosa di leggero per la sera.</p>
+      </div>
+      <div class="card p28">
+        <h3>Regalo</h3>
+        <p class="small">La cosa più bella è averti con noi. Se desideri, condivideremo una piccola lista (placeholder).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><b>Leonardo + Vera</b> — 12.09.2026</p>
+  <div class="mini">Grazie di cuore per essere parte della nostra giornata ✨</div>
+</footer>
+
+<button id="toTop" title="Torna su" aria-label="Torna su">↑</button>
+
+<script>
+/* =======================
+   NAV ACTIVE LINKS
+======================= */
+const sections = ["details","story","rsvp","info"].map(id => document.getElementById(id));
+const navAnchors = Array.from(document.querySelectorAll("#navLinks a"));
+
+const setActive = () => {
+  const y = window.scrollY + 120;
+  let current = "details";
+  for (const s of sections) {
+    if (s.offsetTop <= y) current = s.id;
+  }
+  navAnchors.forEach(a => a.classList.toggle("active", a.getAttribute("href") === "#" + current));
+};
+window.addEventListener("scroll", setActive);
+setActive();
+
+/* =======================
+   REVEAL ON SCROLL
+======================= */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("in");
+  });
+},{threshold:0.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+/* =======================
+   BACK TO TOP
+======================= */
+const toTop = document.getElementById("toTop");
+window.addEventListener("scroll", ()=>{
+  toTop.style.display = window.scrollY > 600 ? "grid" : "none";
+});
+toTop.addEventListener("click", ()=> window.scrollTo({top:0, behavior:"smooth"}));
+
+/* =======================
+   COUNTDOWN (12 Sep 2026)
+======================= */
+const countdownEl = document.getElementById("countdown");
+const target = new Date("2026-09-12T15:30:00"); // ora cerimonia
+function pad(n){return String(n).padStart(2,"0");}
+function tick(){
+  const now = new Date();
+  const diff = target - now;
+  if(diff <= 0){
+    countdownEl.textContent = "È oggi! 🎉";
+    return;
+  }
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hrs = Math.floor((diff / (1000*60*60)) % 24);
+  const mins = Math.floor((diff / (1000*60)) % 60);
+  countdownEl.textContent = `${days}g ${pad(hrs)}h ${pad(mins)}m`;
+}
+tick();
+setInterval(tick, 1000*20);
+
+/* =======================
+   RSVP: DRAFT + DEMO SUBMIT
+======================= */
+const form = document.getElementById("rsvpForm");
+const msg = document.getElementById("msg");
+const sendBtn = document.getElementById("sendBtn");
+const saveDraft = document.getElementById("saveDraft");
+
+const DRAFT_KEY = "wedding_rsvp_draft_v1";
+
+function loadDraft(){
+  try{
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if(!raw) return;
+    const data = JSON.parse(raw);
+    for(const [k,v] of Object.entries(data)){
+      const el = form.elements[k];
+      if(el) el.value = v;
+    }
+    msg.style.color = "#2b2b2b";
+    msg.textContent = "Bozza caricata dal dispositivo.";
+  }catch(_){}
+}
+function saveDraftFn(){
+  const data = {
+    nome: form.elements.nome.value.trim(),
+    email: form.elements.email.value.trim(),
+    presenza: form.elements.presenza.value,
+    note: form.elements.note.value.trim()
+  };
+  localStorage.setItem(DRAFT_KEY, JSON.stringify(data));
+  msg.style.color = "#2b2b2b";
+  msg.textContent = "Bozza salvata (solo su questo dispositivo).";
+}
+
+saveDraft.addEventListener("click", saveDraftFn);
+loadDraft();
+
+form.addEventListener("submit", async (e)=>{
+  e.preventDefault();
+
+  // validazione base extra
+  const nome = form.elements.nome.value.trim();
+  const email = form.elements.email.value.trim();
+  const presenza = form.elements.presenza.value;
+
+  if(nome.length < 3){
+    msg.style.color = "crimson";
+    msg.textContent = "Inserisci un nome valido.";
+    return;
+  }
+  if(!email.includes("@")){
+    msg.style.color = "crimson";
+    msg.textContent = "Inserisci un'email valida.";
+    return;
+  }
+  if(!presenza){
+    msg.style.color = "crimson";
+    msg.textContent = "Seleziona se parteciperai.";
+    return;
+  }
+
+  // demo "invio"
+  sendBtn.disabled = true;
+  sendBtn.textContent = "Invio…";
+  msg.textContent = "";
+
+  await new Promise(r=>setTimeout(r, 650));
+
+  // in un sito reale qui chiameresti un endpoint (Fetch/AJAX)
+  localStorage.removeItem(DRAFT_KEY);
+  msg.style.color = "green";
+  msg.textContent = "Grazie! La tua risposta è stata registrata (demo).";
+  form.reset();
+
+  sendBtn.disabled = false;
+  sendBtn.textContent = "Invia conferma";
+});
+
+/* =======================
+   ADD TO CALENDAR (ICS)
+======================= */
+document.getElementById("addToCalendar").addEventListener("click", ()=>{
+  // Evento base: 12 Sep 2026 15:30 -> 23:30 (placeholder)
+  const dtStart = "20260912T133000Z"; // UTC approx (placeholder)
+  const dtEnd   = "20260912T213000Z"; // UTC approx (placeholder)
+
+  const ics =
+`BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LeonardoVera//Wedding//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:${Date.now()}@leonardovera
+DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").split(".")[0]}Z
+DTSTART:${dtStart}
+DTEND:${dtEnd}
+SUMMARY:Leonardo + Vera — Matrimonio
+LOCATION:Toscana, Italia
+DESCRIPTION:Cerimonia e ricevimento — dettagli nella pagina.
+END:VEVENT
+END:VCALENDAR`;
+
+  const blob = new Blob([ics], {type:"text/calendar;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Leonardo-Vera-Wedding.ics";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+</script>
+
+</body>
+</html>

@@ -78,3 +78,17 @@ def demo_romantico(request):
     return render(request, "demo_romantico.html")
 
 
+def demo2(request):
+    return render(request, "demo2.html")
+
+
+def demo3(request):
+    return render(request, "demo3.html")
+
+
+def demo4(request):
+    return render(request, "demo4.html")
+
+def demo5(request):
+    return render(request, "demo5.html")
+

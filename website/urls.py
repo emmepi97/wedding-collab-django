@@ -19,6 +19,23 @@ urlpatterns = [
 
     # dettaglio demo via slug (se lo usi)
     path("demo/<slug:slug>/", views.demo_detail, name="demo_detail"),
+
+        # demo pubblica diretta (NUOVA)
+    path("demo/choco/", views.demo_romantico, name="demo_choco"),
+
+            # demo pubblica diretta (NUOVA)
+    path("demo2/", views.demo2, name="demo2"),
+
+                # demo pubblica diretta (NUOVA)
+    path("demo3/", views.demo3, name="demo3"),
+
+                # demo pubblica diretta (NUOVA)
+    path("demo4/", views.demo4, name="demo4"),
+
+                    # demo pubblica diretta (NUOVA)
+    path("demo5/", views.demo5, name="demo5"),
+
+
 ]
 
 
