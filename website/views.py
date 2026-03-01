@@ -104,3 +104,10 @@ def demo7(request):
 
 def demo8(request):
     return render(request, "demo8.html")
+
+
+def demoluxury(request):
+    return render(request, "demo_luxury.html")
+
+def demominimal(request):
+    return render(request, "demo_minimal.html")
