@@ -623,6 +623,32 @@
       display:none;
       z-index: 200;
     }
+
+
+
+    /* Gallery */
+    .masonry{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 12px;
+    }
+    .photo{ border-radius: 22px; overflow:hidden; border: 1px solid rgba(20,20,20,.08); background: rgba(255,255,255,.75); box-shadow: var(--shadow); }
+    .photo img{ width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .35s ease; }
+    .photo:hover img{ transform: scale(1.06); }
+    .p1{ grid-column: span 5; aspect-ratio: 4/3; }
+    .p2{ grid-column: span 4; aspect-ratio: 1/1; }
+    .p3{ grid-column: span 3; aspect-ratio: 3/4; }
+    .p4{ grid-column: span 7; aspect-ratio: 16/9; }
+    .p5{ grid-column: span 5; aspect-ratio: 4/5; }
+    @media (max-width: 900px){
+      .p1,.p2,.p3,.p4,.p5{ grid-column: span 6; }
+    }
+    @media (max-width: 560px){
+      .p1,.p2,.p3,.p4,.p5{ grid-column: span 12; }
+    }
+
+
+
     .toast[open]{ display:block; }
     .toast__row{ display:flex; gap:10px; align-items:flex-start; }
     .toast__icon{
