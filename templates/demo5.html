@@ -836,22 +836,29 @@
     </section>
 
     <!-- GALLERY -->
-  <section class="section" id="gallery" aria-labelledby="gallery-title" style="background:linear-gradient(180deg,#f7f3ef,#fff)">
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
     <div class="container">
-      <h2 id="gallery-title">Gallery test</h2>
-      <p class="muted">aaaa</p>
+      <div class="reveal">
+        <div class="eyebrow">Gallery</div>
+        <div class="h2">Un assaggio di noi.</div>
+        <p class="lead">Immagini placeholder (Unsplash). Puoi sostituire gli URL con le tue foto.</p>
+      </div>
 
-      <div class="gallery" style="margin-top:12px;">
-        <div class="g-item"       data-img="{{ G1 }}" style="background-image:url('{{ G1 }}');"></div>
-        <div class="g-item g-item--wide" data-img="{{ G2 }}" style="background-image:url('{{ G2 }}');"></div>
-        <div class="g-item"       data-img="{{ G3 }}" style="background-image:url('{{ G3 }}');"></div>
-        <div class="g-item"       data-img="{{ G4 }}" style="background-image:url('{{ G4 }}');"></div>
-        <div class="g-item g-item--wide" data-img="{{ G5 }}" style="background-image:url('{{ G5 }}');"></div>
-        <div class="g-item"       data-img="{{ G6 }}" style="background-image:url('{{ G6 }}');"></div>
+      <div class="masonry" style="margin-top: 22px;">
+        <a class="photo p1 reveal" href="#" aria-label="Foto 1">
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+        <a class="photo p2 reveal" href="#" aria-label="Foto 2">
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+        <a class="photo p3 reveal" href="#" aria-label="Foto 3">
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+        <a class="photo p4 reveal" href="#" aria-label="Foto 4">
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
+        <a class="photo p5 reveal" href="#" aria-label="Foto 5">
+<img src="{% static 'img/fotomatrimonio12.png' %}" alt="Scatto 1" loading="lazy" decoding="async">        </a>
       </div>
     </div>
   </section>
-
 
     <!-- RSVP -->
     <section class="section" id="rsvp" aria-labelledby="rsvpTitle">
