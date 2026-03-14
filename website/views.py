@@ -121,3 +121,13 @@ def brochureita(request):
 
 def brochureeng(request):
     return render(request, "brochure_eng.html")
+
+def weddinglistino(request):
+    return render(request, "weddingcoding-listino.html")
+
+
+
+
+
+
+

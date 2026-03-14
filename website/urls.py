@@ -59,6 +59,8 @@ urlpatterns = [
                          # demo pubblica diretta (NUOVA)
     path("brochure_eng/", views.brochureeng, name="brochureeng"),
 
+                         # demo pubblica diretta (NUOVA)
+    path("weddingcoding-listino/", views.weddinglistino, name="weddingcoding-listino"),
 
 ]
 
