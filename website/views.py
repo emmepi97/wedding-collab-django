@@ -111,3 +111,13 @@ def demoluxury(request):
 
 def demominimal(request):
     return render(request, "demo_minimal.html")
+
+
+
+def brochureita(request):
+    return render(request, "brochure_ita.html")
+
+
+
+def brochureeng(request):
+    return render(request, "brochure_eng.html")
