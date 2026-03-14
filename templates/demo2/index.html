@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ============================================================
+       WEDDING WEBSITE — index.html
+       Customize: couple names, date, venue, all text content
+       ============================================================ -->
+  <title>Emma & James — September 6, 2025</title>
+  <meta name="description" content="Join us as we celebrate the marriage of Emma & James on September 6, 2025." />
+
+  <!-- Google Fonts: Cormorant Garamond (display) + Lora (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       ============================================================ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="nav-monogram">E &amp; J</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#details">Details</a></li>
+        <li><a href="#schedule">Schedule</a></li>
+        <li><a href="#travel">Travel</a></li>
+        <li><a href="#dresscode">Dress Code</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#rsvp" class="nav-cta">RSVP</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       SECTION 1 — HERO
+       Customize: couple names, wedding date, tagline
+       Hero image: place your image at images/hero.jpg
+       ============================================================ -->
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-image" style="background-image: url('images/hero.jpg');"></div>
+
+    <!-- Decorative botanical SVG top-left -->
+    <div class="hero-deco hero-deco--tl" aria-hidden="true">
+      <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 200 Q60 140 100 100 Q130 70 160 30" stroke="rgba(212,175,120,0.5)" stroke-width="1.2" fill="none"/>
+        <path d="M100 100 Q80 80 50 90" stroke="rgba(212,175,120,0.4)" stroke-width="1" fill="none"/>
+        <path d="M130 70 Q150 50 140 30" stroke="rgba(212,175,120,0.4)" stroke-width="1" fill="none"/>
+        <circle cx="160" cy="28" r="3" fill="rgba(212,175,120,0.5)"/>
+        <circle cx="50" cy="91" r="2.5" fill="rgba(212,175,120,0.4)"/>
+        <path d="M70 160 Q90 130 120 110" stroke="rgba(212,175,120,0.3)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <!-- Decorative botanical SVG bottom-right -->
+    <div class="hero-deco hero-deco--br" aria-hidden="true">
+      <svg viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M160 20 Q140 80 100 120 Q70 150 40 190" stroke="rgba(212,175,120,0.5)" stroke-width="1.2" fill="none"/>
+        <path d="M100 120 Q120 140 150 130" stroke="rgba(212,175,120,0.4)" stroke-width="1" fill="none"/>
+        <path d="M70 150 Q50 170 60 190" stroke="rgba(212,175,120,0.4)" stroke-width="1" fill="none"/>
+        <circle cx="40" cy="192" r="3" fill="rgba(212,175,120,0.5)"/>
+        <circle cx="150" cy="131" r="2.5" fill="rgba(212,175,120,0.4)"/>
+      </svg>
+    </div>
+
+    <div class="hero-content animate-in">
+      <p class="hero-pretext">We're getting married</p>
+      <!-- ★ CUSTOMIZE: change couple names below -->
+      <h1 class="hero-names">Emma <span class="hero-amp">&amp;</span> James</h1>
+      <div class="hero-divider">
+        <span class="hero-divider-line"></span>
+        <span class="hero-divider-icon">✦</span>
+        <span class="hero-divider-line"></span>
+      </div>
+      <!-- ★ CUSTOMIZE: change date below -->
+      <p class="hero-date">Saturday, September 6th, 2025</p>
+      <!-- ★ CUSTOMIZE: change location below -->
+      <p class="hero-location">Villa Rothschild · Cannes, France</p>
+      <p class="hero-tagline"><em>"Two souls, one story — and a lifetime of chapters yet to come."</em></p>
+      <a href="#rsvp" class="btn btn--hero">Confirm Attendance</a>
+    </div>
+
+    <div class="hero-countdown" id="countdown">
+      <div class="countdown-item"><span class="countdown-num" id="cd-days">00</span><span class="countdown-label">Days</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-hours">00</span><span class="countdown-label">Hours</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-mins">00</span><span class="countdown-label">Minutes</span></div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item"><span class="countdown-num" id="cd-secs">00</span><span class="countdown-label">Seconds</span></div>
+    </div>
+
+    <a href="#story" class="hero-scroll" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </a>
+  </section>
+
+  <!-- ============================================================
+       SECTION 2 — OUR STORY
+       Customize: story text, couple photo at images/couple.jpg
+       ============================================================ -->
+  <section class="section story" id="story">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">How it began</p>
+        <h2 class="section-title">Our Story</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <div class="story-grid">
+        <div class="story-image-wrap reveal">
+          <!-- ★ CUSTOMIZE: replace with your couple photo at images/couple.jpg -->
+          <div class="story-image" style="background-image: url('images/couple.jpg');"></div>
+          <div class="story-image-frame"></div>
+        </div>
+
+        <div class="story-text reveal" data-delay="200">
+          <!-- ★ CUSTOMIZE: edit story paragraphs below -->
+          <p class="story-lead">It started with a single glance across a crowded room in Florence — and neither of us quite looked away.</p>
+          <p>Emma and James first met at an architecture conference in the summer of 2019. James, a structural engineer, was presenting his research on sustainable design. Emma, a landscape architect, had arrived late and taken the last empty seat — which happened to be right next to him.</p>
+          <p>By the end of the afternoon they had missed two presentations, shared one espresso, and exchanged numbers on the back of a conference programme that Emma still keeps in her desk drawer.</p>
+          <p>Four years, countless adventures, and one very nervous question at sunset on the Amalfi Coast later — here we are.</p>
+
+          <!-- Story timeline -->
+          <div class="story-timeline">
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2019</span>
+              <span class="timeline-event">First meeting, Florence</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2020</span>
+              <span class="timeline-event">First trip together, Lisbon</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2022</span>
+              <span class="timeline-event">Moved in together, London</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-year">2024</span>
+              <span class="timeline-event">Engagement, Amalfi Coast</span>
+            </div>
+            <div class="timeline-item">
+              <span class="timeline-dot timeline-dot--gold"></span>
+              <span class="timeline-year">2025</span>
+              <span class="timeline-event">Our Wedding Day ✦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 3 — EVENT DETAILS
+       Customize: ceremony/reception venues, addresses, times
+       ============================================================ -->
+  <section class="section details" id="details">
+    <div class="details-bg"></div>
+    <div class="container">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">Mark your calendar</p>
+        <h2 class="section-title">Event Details</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <div class="details-grid">
+        <!-- Ceremony card -->
+        <div class="details-card reveal">
+          <div class="details-card-icon" aria-hidden="true">
+            <!-- Ring SVG icon -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="14" stroke="currentColor" stroke-width="1.5"/>
+              <circle cx="24" cy="24" r="8" stroke="currentColor" stroke-width="1"/>
+              <path d="M18 16 L24 10 L30 16" stroke="currentColor" stroke-width="1.2" fill="none"/>
+            </svg>
+          </div>
+          <p class="details-card-eyebrow">Ceremony</p>
+          <h3 class="details-card-title">Chapelle Sainte-Anne</h3>
+          <div class="details-info-list">
+            <!-- ★ CUSTOMIZE: ceremony details below -->
+            <div class="details-info-item">
+              <span class="details-info-label">Date</span>
+              <span>Saturday, 6 September 2025</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Time</span>
+              <span>3:30 PM — doors open at 3:00 PM</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Address</span>
+              <span>12 Avenue de Grasse, 06400 Cannes, France</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Note</span>
+              <span>Please be seated by 3:20 PM. Photography is welcome during the ceremony.</span>
+            </div>
+          </div>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn--outline btn--sm">View on Map</a>
+        </div>
+
+        <!-- Reception card -->
+        <div class="details-card reveal" data-delay="150">
+          <div class="details-card-icon" aria-hidden="true">
+            <!-- Champagne SVG icon -->
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6 L30 6 L28 28 L20 28 Z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <path d="M20 28 L20 40 L28 40 L28 28" stroke="currentColor" stroke-width="1.5" fill="none"/>
+              <line x1="17" y1="40" x2="31" y2="40" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M18 14 Q24 18 30 14" stroke="currentColor" stroke-width="1" fill="none"/>
+            </svg>
+          </div>
+          <p class="details-card-eyebrow">Reception</p>
+          <h3 class="details-card-title">Villa Rothschild</h3>
+          <div class="details-info-list">
+            <!-- ★ CUSTOMIZE: reception details below -->
+            <div class="details-info-item">
+              <span class="details-info-label">Date</span>
+              <span>Saturday, 6 September 2025</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Time</span>
+              <span>6:00 PM — dinner at 7:30 PM</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Address</span>
+              <span>Chemin des Rothschild, 06400 Cannes, France</span>
+            </div>
+            <div class="details-info-item">
+              <span class="details-info-label">Note</span>
+              <span>Welcome cocktails in the garden terrace. Shuttle service available from the chapel.</span>
+            </div>
+          </div>
+          <a href="https://maps.google.com" target="_blank" rel="noopener" class="btn btn--outline btn--sm">View on Map</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 4 — SCHEDULE
+       Customize: timeline events in script.js → scheduleData array
+       ============================================================ -->
+  <section class="section schedule" id="schedule">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <p class="section-eyebrow">The big day</p>
+        <h2 class="section-title">Wedding Day Schedule</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <!-- ★ Schedule items are rendered by JavaScript from scheduleData in script.js -->
+      <div class="schedule-timeline" id="scheduleTimeline"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5 — TRAVEL & ACCOMMODATION
+       Customize: hotel names, transport info, links
+       ============================================================ -->
+  <section class="section travel" id="travel">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Getting here</p>
+        <h2 class="section-title">Travel &amp; Accommodation</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <div class="travel-grid">
+        <!-- Arriving by Air -->
+        <div class="travel-card reveal">
+          <div class="travel-card-icon" aria-hidden="true">✈</div>
+          <h3 class="travel-card-title">By Air</h3>
+          <!-- ★ CUSTOMIZE: flight/airport info -->
+          <p>Nice Côte d'Azur Airport (NCE) is the closest airport, approximately 30 minutes from Cannes by taxi or the Navette Express bus (line 210).</p>
+          <p>Paris Charles de Gaulle (CDG) connects to Nice with flights every hour from most major European cities.</p>
+        </div>
+
+        <!-- Arriving by Train -->
+        <div class="travel-card reveal" data-delay="100">
+          <div class="travel-card-icon" aria-hidden="true">🚄</div>
+          <h3 class="travel-card-title">By Train</h3>
+          <!-- ★ CUSTOMIZE: train/transport info -->
+          <p>Cannes railway station (Gare de Cannes) is centrally located. TGV services connect to Paris in approximately 5.5 hours. Frequent regional TER trains run from Nice in 30 minutes.</p>
+          <p>Taxis and ride-hailing services are easily available from the station.</p>
+        </div>
+
+        <!-- Accommodation -->
+        <div class="travel-card reveal" data-delay="200">
+          <div class="travel-card-icon" aria-hidden="true">🏨</div>
+          <h3 class="travel-card-title">Where to Stay</h3>
+          <!-- ★ CUSTOMIZE: hotel suggestions -->
+          <ul class="travel-hotel-list">
+            <li>
+              <strong>Hôtel Martinez</strong> — 73 La Croisette<br/>
+              <span class="travel-tag">Luxury · Official Block Rate</span>
+              <span class="travel-note">Use code EMMA2025 for 15% off</span>
+            </li>
+            <li>
+              <strong>Majestic Barrière</strong> — 10 La Croisette<br/>
+              <span class="travel-tag">Luxury · 5-star</span>
+            </li>
+            <li>
+              <strong>Le Cavendish Boutique Hôtel</strong> — 11 Bd Carnot<br/>
+              <span class="travel-tag">Boutique · 4-star</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Shuttle -->
+        <div class="travel-card reveal" data-delay="300">
+          <div class="travel-card-icon" aria-hidden="true">🚌</div>
+          <h3 class="travel-card-title">Shuttle Service</h3>
+          <!-- ★ CUSTOMIZE: shuttle/transport info -->
+          <p>A complimentary shuttle will run between the ceremony and the reception venue. The shuttle departs immediately after the ceremony concludes (approx. 5:15 PM).</p>
+          <p>A return shuttle from Villa Rothschild to Hôtel Martinez will depart at midnight and again at 1:30 AM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6 — DRESS CODE
+       Customize: dress code text, palette description
+       ============================================================ -->
+  <section class="section dresscode" id="dresscode">
+    <div class="dresscode-bg"></div>
+    <div class="container container--narrow">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">Looking the part</p>
+        <h2 class="section-title">Dress Code</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <div class="dresscode-content reveal">
+        <!-- ★ CUSTOMIZE: dress code details below -->
+        <p class="dresscode-headline">Black Tie Optional</p>
+        <p class="dresscode-body">We invite our guests to dress with elegance and sophistication. The reception will be held in a grand garden terrace, so we encourage heels with caution — block heels or stylish flats are warmly welcomed.</p>
+
+        <div class="dresscode-palette">
+          <p class="dresscode-palette-label">Our colour palette — feel free to be inspired:</p>
+          <div class="dresscode-swatches">
+            <!-- ★ CUSTOMIZE: adjust swatch colors and labels -->
+            <div class="swatch" style="background:#1c2a3a;"><span>Midnight Navy</span></div>
+            <div class="swatch" style="background:#8b7355;"><span>Warm Taupe</span></div>
+            <div class="swatch" style="background:#c9a96e;"><span>Champagne Gold</span></div>
+            <div class="swatch" style="background:#e8ddd0;"><span>Ivory Cream</span></div>
+            <div class="swatch" style="background:#7a3b3b;"><span>Deep Rose</span></div>
+          </div>
+        </div>
+
+        <p class="dresscode-note">We kindly ask that guests refrain from wearing white, ivory or cream tones, which are reserved for the bride. Thank you for understanding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 7 — GALLERY
+       Customize: add your images to images/ folder, update JS
+       Images: gallery-1.jpg through gallery-6.jpg (or more)
+       ============================================================ -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Moments together</p>
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-ornament">✦</div>
+      </div>
+
+      <!-- ★ Gallery is rendered by JavaScript from galleryImages in script.js -->
+      <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+
+    <!-- Lightbox overlay -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" style="display:none;">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">&times;</button>
+      <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous image">&#8592;</button>
+      <button class="lightbox-next" id="lightboxNext" aria-label="Next image">&#8594;</button>
+      <div class="lightbox-img-wrap">
+        <img src="" alt="" id="lightboxImg" class="lightbox-img" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 8 — SEATING PLAN
+       Customize: edit tablesData array in script.js — VERY EASY!
+       ============================================================ -->
+  <section class="section tables" id="tables">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Your seat awaits</p>
+        <h2 class="section-title">Seating Plan</h2>
+        <div class="section-ornament">✦</div>
+        <p class="section-subtitle">Find your name and table below. If you have any questions, please contact us before the event.</p>
+      </div>
+
+      <!-- Search by guest name -->
+      <div class="tables-search-wrap">
+        <input
+          type="text"
+          id="guestSearch"
+          class="tables-search"
+          placeholder="Search your name..."
+          aria-label="Search guest name"
+        />
+        <span class="tables-search-icon" aria-hidden="true">&#9906;</span>
+      </div>
+
+      <!-- ★ Table cards are rendered by JavaScript from tablesData in script.js -->
+      <div class="tables-grid" id="tablesGrid"></div>
+      <p class="tables-not-found" id="tablesNotFound" style="display:none;">No results found. Please contact us.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 9 — RSVP
+       Customize: form action URL (Formspree endpoint)
+       See script.js comments for setup instructions
+       ============================================================ -->
+  <section class="section rsvp" id="rsvp">
+    <div class="rsvp-bg"></div>
+    <div class="container container--narrow">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">Will you join us?</p>
+        <h2 class="section-title">RSVP</h2>
+        <div class="section-ornament">✦</div>
+        <!-- ★ CUSTOMIZE: RSVP deadline -->
+        <p class="section-subtitle section-subtitle--light">Kindly reply by <strong>1 August 2025</strong></p>
+      </div>
+
+      <!--
+        ============================================================
+        RSVP FORM — Powered by Formspree (free tier)
+        ============================================================
+        HOW TO ACTIVATE:
+        1. Create a free account at https://formspree.io
+        2. Create a new form → copy your unique endpoint URL
+        3. Replace "YOUR_FORMSPREE_ENDPOINT" in the action attribute below
+           Example: action="https://formspree.io/f/xabcdefg"
+        4. That's it — responses arrive in your Formspree dashboard
+           and optionally forwarded to your email.
+        ============================================================
+      -->
+      <form
+        id="rsvpForm"
+        class="rsvp-form"
+        action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+        method="POST"
+        novalidate
+      >
+        <!-- Formspree honeypot (spam protection) -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <!-- Redirect after submission (optional, Formspree feature) -->
+        <input type="hidden" name="_next" value="https://yourdomain.com/#rsvp" />
+
+        <div class="rsvp-grid">
+          <!-- Full Name -->
+          <div class="form-group form-group--full">
+            <label for="fullName">Full Name <span class="required">*</span></label>
+            <input type="text" id="fullName" name="full_name" placeholder="Your full name" required />
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <!-- Attendance -->
+          <div class="form-group">
+            <label>Attendance <span class="required">*</span></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="Yes, I'll be there!" required />
+                <span class="radio-custom"></span>
+                Joyfully accept
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="attendance" value="Regretfully decline" />
+                <span class="radio-custom"></span>
+                Regretfully decline
+              </label>
+            </div>
+          </div>
+
+          <!-- Number of guests -->
+          <div class="form-group">
+            <label for="guestCount">Number of Guests</label>
+            <select id="guestCount" name="guest_count">
+              <option value="1">Just me</option>
+              <option value="2" selected>2 guests</option>
+              <option value="3">3 guests</option>
+              <option value="4">4 guests</option>
+            </select>
+          </div>
+
+          <!-- Dietary Requirements -->
+          <div class="form-group">
+            <label for="dietary">Dietary Requirements</label>
+            <select id="dietary" name="dietary_requirements">
+              <option value="None">None</option>
+              <option value="Vegetarian">Vegetarian</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Gluten-Free">Gluten-Free</option>
+              <option value="Halal">Halal</option>
+              <option value="Kosher">Kosher</option>
+              <option value="Other">Other (please specify below)</option>
+            </select>
+          </div>
+
+          <!-- Allergies -->
+          <div class="form-group">
+            <label for="allergies">Allergies</label>
+            <input type="text" id="allergies" name="allergies" placeholder="E.g. nuts, shellfish…" />
+          </div>
+
+          <!-- Message -->
+          <div class="form-group form-group--full">
+            <label for="message">Message for the Couple</label>
+            <textarea id="message" name="message" rows="4" placeholder="A kind word, a wish, or anything you'd like to share…"></textarea>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <button type="submit" class="btn btn--primary" id="rsvpSubmitBtn">
+            <span class="btn-text">Send RSVP</span>
+            <span class="btn-loading" style="display:none;">Sending…</span>
+          </button>
+        </div>
+
+        <!-- Success / error messages -->
+        <div class="form-success" id="formSuccess" style="display:none;" role="alert">
+          <span class="form-success-icon">✦</span>
+          <p>Thank you so much! Your RSVP has been received. We look forward to celebrating with you.</p>
+        </div>
+        <div class="form-error" id="formError" style="display:none;" role="alert">
+          <p>Something went wrong. Please try again or email us directly at <a href="mailto:emma.james.wedding@example.com">emma.james.wedding@example.com</a>.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       Customize: names, date, email, social links
+       ============================================================ -->
+  <footer class="footer" id="footer">
+    <div class="footer-deco" aria-hidden="true">
+      <svg viewBox="0 0 600 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <path d="M0 40 Q75 10 150 40 Q225 70 300 40 Q375 10 450 40 Q525 70 600 40" stroke="rgba(212,175,120,0.25)" stroke-width="1.5" fill="none"/>
+        <path d="M0 55 Q75 25 150 55 Q225 85 300 55 Q375 25 450 55 Q525 85 600 55" stroke="rgba(212,175,120,0.12)" stroke-width="1" fill="none"/>
+      </svg>
+    </div>
+    <div class="footer-inner">
+      <!-- ★ CUSTOMIZE: names and date -->
+      <p class="footer-monogram">E &amp; J</p>
+      <h2 class="footer-names">Emma &amp; James</h2>
+      <p class="footer-date">6 · IX · MMXXV</p>
+      <p class="footer-tagline"><em>"All you need is love."</em></p>
+      <div class="footer-divider"></div>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="#story">Our Story</a>
+        <a href="#details">Details</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#tables">Tables</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+      <!-- ★ CUSTOMIZE: contact email -->
+      <p class="footer-contact">Questions? <a href="mailto:emma.james.wedding@example.com">emma.james.wedding@example.com</a></p>
+      <p class="footer-legal">&copy; 2025 Emma &amp; James. Made with love.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

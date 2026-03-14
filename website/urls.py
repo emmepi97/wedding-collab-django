@@ -62,6 +62,11 @@ urlpatterns = [
                          # demo pubblica diretta (NUOVA)
     path("weddingcoding-listino/", views.weddinglistino, name="weddingcoding-listino"),
 
+path("demo1/", views.demo11, name="demo1"),
+path("demo2/", views.demo12, name="demo2"),
+path("demo3/", views.demo13, name="demo3"),
+
+
 ]
 
 
