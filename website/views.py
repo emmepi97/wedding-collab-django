@@ -126,7 +126,8 @@ def weddinglistino(request):
     return render(request, "weddingcoding-listino.html")
 
 
-def demo11(request):
+
+def demo1(request):
     return render(request, "demo1/index.html")
 
 def demo12(request):
