@@ -63,7 +63,7 @@ urlpatterns = [
     path("partnerkit/", views.partnerkit, name="partnerkit"),
 
     
-    path("demoeng02c/", views.demoeng02c, name="demoeng02c"),
+    path("emma&james/", views.emmaejames, name="emmaejames"),
     
     path("charlotte&oliver/", views.charlotteoliver, name="charlotteoliver"),
 

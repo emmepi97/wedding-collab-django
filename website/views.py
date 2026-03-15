@@ -127,6 +127,7 @@ def partnerkit(request):
 
 
 
+
 def saraandrea(request):
     return render(request, "sara&andrea.html")
 
@@ -134,7 +135,7 @@ def charlotteoliver(request):
     return render(request, "charlotte&oliver.html")
 
 
-def demoeng02c(request):
-    return render(request, "demoeng02c.html")
+def emmaejames(request):
+    return render(request, "emma&james.html")
 
 
