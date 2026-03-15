@@ -60,7 +60,7 @@ urlpatterns = [
     path("brochure_eng/", views.brochureeng, name="brochureeng"),
 
                          # demo pubblica diretta (NUOVA)
-    path("weddingcoding-listino/", views.weddinglistino, name="weddingcoding-listino"),
+    path("partnerkit/", views.partnerkit, name="partnerkit"),
 
     
     path("demoeng02c/", views.demoeng02c, name="demoeng02c"),
