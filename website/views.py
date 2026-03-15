@@ -122,8 +122,11 @@ def brochureita(request):
 def brochureeng(request):
     return render(request, "brochure_eng.html")
 
+
+
+
 def partnerkit(request):
-    return render(request, "partnerkit.html.html")
+    return render(request, "partnerkit.html")
 
 
 
