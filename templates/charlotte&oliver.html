@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Charlotte & Oliver | Wedding Weekend</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Inter",sans-serif;
+background:#f7f3ee;
+color:#201917;
+line-height:1.6;
+}
+
+.container{
+width:90%;
+max-width:1100px;
+margin:auto;
+}
+
+header{
+position:sticky;
+top:0;
+background:white;
+border-bottom:1px solid #eee;
+}
+
+.header-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 0;
+}
+
+.brand{
+font-family:"Cormorant Garamond",serif;
+font-size:26px;
+text-decoration:none;
+color:#201917;
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:#555;
+font-size:14px;
+}
+
+.hero{
+padding:120px 0;
+text-align:center;
+}
+
+.hero h1{
+font-family:"Cormorant Garamond",serif;
+font-size:64px;
+margin:10px 0;
+}
+
+.hero span{
+color:#b8956f;
+}
+
+.hero-date{
+font-weight:600;
+color:#777;
+}
+
+.btn{
+display:inline-block;
+padding:12px 20px;
+border-radius:40px;
+margin-top:20px;
+text-decoration:none;
+font-weight:600;
+}
+
+.btn-primary{
+background:#201917;
+color:white;
+}
+
+.btn-secondary{
+background:white;
+border:1px solid #ddd;
+margin-left:10px;
+}
+
+.section{
+padding:80px 0;
+}
+
+.section-heading{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-heading h2{
+font-family:"Cormorant Garamond",serif;
+font-size:40px;
+}
+
+.section-heading p{
+color:#666;
+max-width:600px;
+margin:auto;
+}
+
+.details-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:12px;
+border:1px solid #eee;
+}
+
+.timeline{
+max-width:700px;
+margin:auto;
+}
+
+.timeline-item{
+margin-bottom:30px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+.rsvp-form{
+max-width:500px;
+margin:auto;
+}
+
+.rsvp-form input,
+.rsvp-form textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+margin-bottom:20px;
+border-radius:6px;
+border:1px solid #ddd;
+}
+
+.tables-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.table-card{
+background:white;
+padding:20px;
+border-radius:10px;
+border:1px solid #eee;
+}
+
+footer{
+padding:60px 0;
+text-align:center;
+border-top:1px solid #eee;
+margin-top:60px;
+}
+
+footer h2{
+font-family:"Cormorant Garamond",serif;
+font-size:36px;
+margin:10px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container header-inner">
+
+<a href="#" class="brand">C&O</a>
+
+<nav>
+<a href="#story">Story</a>
+<a href="#details">Details</a>
+<a href="#timeline">Timeline</a>
+<a href="#gallery">Gallery</a>
+<a href="#rsvp">RSVP</a>
+<a href="#seating">Seating</a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+
+<div class="container">
+
+<p>Wedding Weekend • Florence, Italy</p>
+
+<h1>Charlotte <span>&</span> Oliver</h1>
+
+<p class="hero-date">Sunday, June 21, 2026</p>
+
+<p>
+With immense joy, we invite you to celebrate our wedding day.
+</p>
+
+<a href="#rsvp" class="btn btn-primary">RSVP</a>
+<a href="#details" class="btn btn-secondary">Details</a>
+
+</div>
+
+</section>
+
+<section class="section" id="story">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Our Story</h2>
+<p>
+A love story built on friendship, travel and beautiful moments together.
+</p>
+</div>
+
+<p style="max-width:700px;margin:auto;text-align:center;">
+We met during an autumn evening with mutual friends.
+What started as a conversation became a beautiful journey together.
+</p>
+
+</div>
+
+</section>
+
+<section class="section" id="details">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Event Details</h2>
+<p>Everything you need to know for the celebration.</p>
+</div>
+
+<div class="details-grid">
+
+<div class="card">
+<h3>Date</h3>
+<p>Sunday June 21 2026</p>
+</div>
+
+<div class="card">
+<h3>Ceremony</h3>
+<p>4:00 PM<br>Villa Aurelia Garden</p>
+</div>
+
+<div class="card">
+<h3>Reception</h3>
+<p>6:00 PM<br>Terrace Hall</p>
+</div>
+
+<div class="card">
+<h3>Dress Code</h3>
+<p>Black Tie Optional</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="timeline">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Wedding Timeline</h2>
+</div>
+
+<div class="timeline">
+
+<div class="timeline-item">
+<strong>3:15 PM</strong> – Guest Arrival
+</div>
+
+<div class="timeline-item">
+<strong>4:00 PM</strong> – Ceremony
+</div>
+
+<div class="timeline-item">
+<strong>5:00 PM</strong> – Aperitivo
+</div>
+
+<div class="timeline-item">
+<strong>6:30 PM</strong> – Dinner Reception
+</div>
+
+<div class="timeline-item">
+<strong>9:30 PM</strong> – Cake & Dancing
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="gallery">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Gallery</h2>
+</div>
+
+<div class="gallery">
+
+<img src="https://picsum.photos/400/300">
+<img src="https://picsum.photos/401/300">
+<img src="https://picsum.photos/402/300">
+<img src="https://picsum.photos/403/300">
+<img src="https://picsum.photos/404/300">
+<img src="https://picsum.photos/405/300">
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section" id="rsvp">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>RSVP</h2>
+<p>Please reply by May 15</p>
+</div>
+
+<form class="rsvp-form">
+
+<label>Name</label>
+<input type="text">
+
+<label>Email</label>
+<input type="email">
+
+<label>Guests</label>
+<input type="number" value="1">
+
+<label>Message</label>
+<textarea rows="4"></textarea>
+
+<button class="btn btn-primary">Send RSVP</button>
+
+</form>
+
+</div>
+
+</section>
+
+<section class="section" id="seating">
+
+<div class="container">
+
+<div class="section-heading">
+<h2>Seating Plan</h2>
+</div>
+
+<div class="tables-grid" id="tables-grid"></div>
+
+</div>
+
+</section>
+
+<footer>
+
+<div class="container">
+
+<h2>Charlotte & Oliver</h2>
+
+<p>Florence, Italy • <span id="year"></span></p>
+
+</div>
+
+</footer>
+
+<script>
+
+const tables=[
+{
+name:"Head Table",
+guests:["Charlotte","Oliver","Best Man","Maid of Honor"]
+},
+{
+name:"Rose Table",
+guests:["Emily","James","Sophia","Daniel"]
+},
+{
+name:"Garden Table",
+guests:["Noah","Ava","Grace","Leo"]
+}
+];
+
+function renderTables(){
+
+const grid=document.getElementById("tables-grid");
+
+grid.innerHTML=tables.map(t=>`
+
+<div class="table-card">
+
+<h3>${t.name}</h3>
+
+<ul>
+${t.guests.map(g=>`<li>${g}</li>`).join("")}
+</ul>
+
+</div>
+
+`).join("");
+
+}
+
+document.getElementById("year").innerText=new Date().getFullYear();
+
+renderTables();
+
+</script>
+
+</body>
+</html>
