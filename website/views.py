@@ -125,27 +125,13 @@ def brochureeng(request):
 def weddinglistino(request):
     return render(request, "weddingcoding-listino.html")
 
+
+
 def charlotteoliver(request):
     return render(request, "charlotte&oliver.html")
 
 
 def demoeng02c(request):
     return render(request, "demoeng02c.html")
-
-
-
-def demo1(request):
-    return render(request, "demo1/index.html")
-
-def demo12(request):
-    return render(request, "demo2/index.html")
-
-def demo13(request):
-    return render(request, "demo3/index.html")
-
-
-
-
-
 
 
