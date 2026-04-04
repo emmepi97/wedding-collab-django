@@ -141,4 +141,6 @@ def charlotteoliver(request):
 def emmaejames(request):
     return render(request, "emma&james.html")
 
+def harrykate(request):
+    return render(request, "harry&kate.html")
 

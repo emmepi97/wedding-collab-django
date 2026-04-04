@@ -69,6 +69,8 @@ urlpatterns = [
 
     path("sara&andrea/", views.saraandrea, name="saraeandrea"),
 
+    path("harry&kate/", views.harrykate, name="harryekate"),
+
 
 
 

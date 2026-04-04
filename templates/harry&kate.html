@@ -1,0 +1,3307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kate &amp; Harry — September 14, 2025</title>
+  <meta name="description" content="Join us to celebrate the wedding of Kate and Harry — September 14, 2025, Villa della Rosa, Rome.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- 
+    FONTS: Cormorant Garamond (romantic serif for headings) + DM Sans (clean body text)
+    These load from Google Fonts — requires internet connection. 
+    For offline use, download and self-host.
+  -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+/* =====================================================
+   WEDDING WEBSITE — Kate & Harry
+   style.css — Complete Stylesheet
+   
+   DESIGN SYSTEM:
+   · Typography: Cormorant Garamond (headings) + DM Sans (body)
+   · Palette: Champagne, Dusty Rose, Gold, Forest Green, Charcoal
+   · Aesthetic: Romantic Editorial Luxury
+   ===================================================== */
+
+
+/* =====================================================
+   CUSTOM PROPERTIES — Edit colours here
+   ===================================================== */
+:root {
+  /* --- Colours --- */
+  --cream:        #FEFCF8;
+  --ivory:        #F5ECD7;
+  --ivory-mid:    #EDE4D0;
+  --ivory-dark:   #DDD4C0;
+  --rose:         #C9A99A;
+  --rose-dark:    #8B5A52;
+  --rose-bg:      #6B4040;
+  --gold:         #B8975A;
+  --gold-dark:    #7A6030;
+  --gold-light:   #D4B97A;
+  --forest:       #2C3E35;
+  --forest-light: #3A5040;
+  --blue-slate:   #3A5A7A;
+  --sage:         #9FA88E;
+  --charcoal:     #3D3530;
+  --text:         #2A2A2A;
+  --text-muted:   #8B7D74;
+  --text-light:   #FEFCF8;
+
+  /* --- Surfaces & Borders --- */
+  --border:         rgba(184, 151, 90, 0.18);
+  --border-strong:  rgba(184, 151, 90, 0.38);
+  --surface-dark:   rgba(255, 255, 255, 0.06);
+  --surface-hover:  rgba(255, 255, 255, 0.10);
+
+  /* --- Shadows --- */
+  --shadow:    0 4px 28px rgba(42, 28, 20, 0.07);
+  --shadow-lg: 0 10px 50px rgba(42, 28, 20, 0.11);
+
+  /* --- Radius & Spacing --- */
+  --radius:     8px;
+  --radius-sm:  4px;
+
+  /* --- Transitions --- */
+  --transition:      0.28s ease;
+  --transition-slow: 0.5s ease;
+
+  /* --- Typography --- */
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-body:    'DM Sans', system-ui, -apple-system, sans-serif;
+}
+
+
+/* =====================================================
+   RESET & BASE
+   ===================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.72;
+  color: var(--text);
+  background-color: var(--cream);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+a:hover { color: var(--gold-dark); }
+
+ul  { list-style: none; }
+button { font-family: inherit; }
+
+
+/* =====================================================
+   TYPOGRAPHY SCALE
+   ===================================================== */
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.18;
+}
+
+
+/* =====================================================
+   UTILITY CLASSES
+   ===================================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.container--narrow {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.88rem 2.6rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary {
+  background-color: var(--gold);
+  color: var(--cream);
+  border-color: var(--gold);
+}
+.btn-primary:hover {
+  background-color: var(--gold-dark);
+  border-color: var(--gold-dark);
+  color: var(--cream);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(184, 151, 90, 0.28);
+}
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-muted);
+  border-color: var(--border);
+}
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.btn-large {
+  padding: 1.05rem 3.2rem;
+  font-size: 0.82rem;
+}
+
+
+/* =====================================================
+   SECTIONS — Base & Variants
+   ===================================================== */
+.section { padding: 6.5rem 0; }
+.section-light  { background-color: var(--cream); }
+.section-dark   { background-color: var(--forest); color: var(--text-light); }
+.section-ivory  { background-color: var(--ivory); }
+.section-rose   { background-color: var(--rose-bg); color: var(--text-light); }
+
+/* Section headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.section-header--light .section-eyebrow,
+.section-header--light .section-title {
+  color: var(--text-light);
+}
+
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  display: block;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  font-weight: 300;
+  color: var(--charcoal);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+.section-subtitle {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0.6rem auto 0;
+}
+.section-subtitle--light {
+  color: rgba(255, 255, 255, 0.6);
+}
+.section-subtitle--light strong {
+  color: var(--text-light);
+}
+
+.section-divider {
+  width: 56px;
+  height: 1px;
+  background-color: var(--gold);
+  margin: 0.85rem auto;
+  border: none;
+}
+.section-divider--light {
+  background-color: rgba(255, 255, 255, 0.28);
+}
+
+
+/* =====================================================
+   NAVBAR
+   ===================================================== */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 3rem;
+  transition: background-color var(--transition-slow),
+              padding var(--transition),
+              box-shadow var(--transition);
+}
+.navbar.scrolled {
+  background-color: rgba(254, 252, 248, 0.97);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.95rem 3rem;
+  box-shadow: 0 1px 24px rgba(42, 28, 20, 0.07);
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 0.06em;
+  transition: color var(--transition);
+  flex-shrink: 0;
+}
+.navbar.scrolled .nav-brand { color: var(--charcoal); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+.nav-links li { display: flex; }
+.nav-links a {
+  font-family: var(--font-body);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color var(--transition);
+  padding: 0.2rem 0;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: currentColor;
+  transition: width var(--transition);
+}
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: var(--cream); }
+.navbar.scrolled .nav-links a { color: var(--text-muted); }
+.navbar.scrolled .nav-links a:hover { color: var(--gold); }
+
+/* RSVP CTA button in nav */
+.nav-links a.nav-cta {
+  padding: 0.5rem 1.35rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: var(--radius-sm);
+}
+.nav-links a.nav-cta::after { display: none; }
+.navbar.scrolled .nav-links a.nav-cta {
+  border-color: var(--gold);
+  color: var(--gold) !important;
+}
+.navbar.scrolled .nav-links a.nav-cta:hover {
+  background-color: var(--gold);
+  color: var(--cream) !important;
+}
+
+/* Hamburger toggle (mobile) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.85);
+  transition: all var(--transition);
+  border-radius: 2px;
+}
+.navbar.scrolled .nav-toggle span { background-color: var(--charcoal); }
+.nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+
+/* =====================================================
+   HERO SECTION
+   ===================================================== */
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+  transition: transform 10s ease;
+  will-change: transform;
+}
+.hero:hover .hero-img { transform: scale(1.0); }
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(44, 62, 53, 0.25) 0%,
+    rgba(44, 62, 53, 0.52) 50%,
+    rgba(30, 20, 12, 0.72) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: var(--cream);
+  padding: 2rem 1.5rem;
+  animation: heroFadeUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-eyebrow {
+  font-size: 0.74rem;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1.1rem;
+  animation: heroFadeUp 1.2s 0.12s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.8rem, 11vw, 9rem);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--cream);
+  line-height: 0.95;
+  margin-bottom: 1.2rem;
+  animation: heroFadeUp 1.2s 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hero-ampersand {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0.12em;
+}
+
+.hero-date {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 0.6rem;
+  animation: heroFadeUp 1.2s 0.32s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.5vw, 1.55rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 2.2rem;
+  animation: heroFadeUp 1.2s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Countdown */
+.hero-countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.6rem;
+  animation: heroFadeUp 1.2s 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.countdown-item { text-align: center; }
+.countdown-item span {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 300;
+  color: var(--cream);
+  line-height: 1;
+}
+.countdown-item label {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.2rem;
+}
+.countdown-sep {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.25);
+  padding-top: 0.25rem;
+  line-height: 1;
+  align-self: flex-start;
+}
+
+.hero-content > .btn {
+  animation: heroFadeUp 1.2s 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 2.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  animation: scrollBounce 2.4s 1.5s ease infinite;
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0);  opacity: 0.42; }
+  50%       { transform: translateX(-50%) translateY(9px); opacity: 0.72; }
+}
+.scroll-line {
+  width: 1px;
+  height: 32px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.45), transparent);
+}
+
+
+/* =====================================================
+   OUR STORY
+   ===================================================== */
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 4.5rem;
+}
+
+.story-image {
+  position: relative;
+}
+.story-image img {
+  width: 100%;
+  height: 530px;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.story-image-frame {
+  position: absolute;
+  top: -14px; left: -14px;
+  right: 14px; bottom: 14px;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius);
+  z-index: -1;
+  opacity: 0.35;
+  transition: opacity var(--transition);
+}
+.story-image:hover .story-image-frame { opacity: 0.6; }
+
+.story-lead {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.62;
+  color: var(--charcoal);
+  margin-bottom: 1.4rem;
+}
+.story-body {
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+.story-body--italic {
+  font-style: italic;
+  color: var(--rose-dark);
+  font-size: 1.02rem;
+}
+
+/* Story Timeline */
+.timeline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-top: 1px solid var(--border);
+  padding-top: 3rem;
+  gap: 0;
+}
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 130px;
+  max-width: 210px;
+  text-align: center;
+  position: relative;
+  padding: 0 0.75rem;
+}
+.timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 7px;
+  left: calc(50% + 9px);
+  width: calc(100% - 18px);
+  height: 1px;
+  background-color: var(--border);
+  z-index: 0;
+}
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--ivory-mid);
+  border: 2px solid var(--gold);
+  margin-bottom: 0.8rem;
+  position: relative;
+  z-index: 1;
+  transition: background-color var(--transition), transform var(--transition);
+}
+.timeline-item:hover .timeline-dot {
+  background-color: var(--gold-light);
+  transform: scale(1.15);
+}
+.timeline-item--highlight .timeline-dot {
+  background-color: var(--gold);
+  width: 20px;
+  height: 20px;
+  box-shadow: 0 0 0 4px rgba(184, 151, 90, 0.18);
+}
+.timeline-date {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.3rem;
+}
+.timeline-text {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--charcoal);
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+
+/* =====================================================
+   EVENT DETAILS
+   ===================================================== */
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.detail-card {
+  background-color: var(--surface-dark);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: var(--radius);
+  padding: 2.2rem 1.6rem;
+  text-align: center;
+  transition: background-color var(--transition), transform var(--transition);
+}
+.detail-card:hover {
+  background-color: var(--surface-hover);
+  transform: translateY(-3px);
+}
+.detail-icon {
+  font-size: 2rem;
+  margin-bottom: 1.1rem;
+  display: block;
+}
+.detail-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 0.4rem;
+}
+.detail-time {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 300;
+  color: var(--gold-light);
+  margin-bottom: 0.3rem;
+  line-height: 1;
+}
+.detail-venue {
+  font-size: 0.87rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 0.2rem;
+}
+.detail-address {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+.detail-map-link {
+  font-size: 0.74rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: inline-block;
+  padding-bottom: 2px;
+  border-bottom: 1px solid rgba(212, 185, 122, 0.4);
+  transition: border-color var(--transition);
+}
+.detail-map-link:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+
+/* =====================================================
+   SCHEDULE
+   ===================================================== */
+.schedule-list {
+  border-top: 1px solid var(--border);
+}
+.schedule-item {
+  display: grid;
+  grid-template-columns: 95px 1px 1fr;
+  gap: 1.6rem;
+  align-items: flex-start;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background-color var(--transition);
+}
+.schedule-item:hover {
+  background-color: rgba(184, 151, 90, 0.03);
+}
+.schedule-item:last-child { border-bottom: none; }
+
+.schedule-time {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--gold);
+  text-align: right;
+  padding-top: 0.1rem;
+}
+.schedule-line {
+  width: 1px;
+  align-self: stretch;
+  background-color: var(--border);
+  position: relative;
+  margin-top: 2px;
+}
+.schedule-line::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--gold);
+  opacity: 0.55;
+}
+.schedule-info strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.15rem;
+}
+.schedule-info p {
+  font-size: 0.87rem;
+  color: var(--text-muted);
+}
+
+
+/* =====================================================
+   TRAVEL & ACCOMMODATION
+   ===================================================== */
+.travel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.4rem;
+  margin-bottom: 1.5rem;
+}
+.travel-card {
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.travel-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.travel-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  margin-bottom: 0.85rem;
+}
+.travel-card p {
+  font-size: 0.93rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+.hotel-list li {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 0.85rem;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--gold);
+  line-height: 1.5;
+}
+.hotel-list li:last-child { margin-bottom: 0; }
+.hotel-list em {
+  font-size: 0.82rem;
+  display: block;
+  color: var(--gold-dark);
+  margin-top: 0.15rem;
+}
+
+.travel-note {
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+
+/* =====================================================
+   DRESS CODE
+   ===================================================== */
+.dresscode-content { text-align: center; }
+
+.dresscode-main {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+.dresscode-sub {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.68);
+  max-width: 520px;
+  margin: 0 auto 2.8rem;
+  line-height: 1.7;
+}
+.dresscode-hints {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  max-width: 620px;
+  margin: 0 auto 2.2rem;
+}
+.dresscode-hint {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius);
+  padding: 1.6rem 1.5rem;
+  text-align: left;
+}
+.hint-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.55rem;
+}
+.dresscode-hint p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.6;
+}
+.dresscode-note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.42);
+  font-style: italic;
+}
+
+
+/* =====================================================
+   VENUE MAP
+   ===================================================== */
+.venue-map-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+#venue-map-svg {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--ivory);
+}
+/* SVG hover interaction */
+.map-zone {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+.map-zone:hover > rect,
+.map-zone:hover > ellipse {
+  filter: brightness(1.06);
+}
+.venue-map-note {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+
+/* =====================================================
+   GALLERY
+   ===================================================== */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 290px 290px;
+  gap: 1rem;
+}
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background-color: var(--ivory-mid);
+}
+.gallery-item--large { grid-row: span 2; }
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.gallery-item:hover img { transform: scale(1.06); }
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(44, 62, 53, 0.62) 0%, transparent 60%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay span {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.04em;
+}
+
+
+/* =====================================================
+   COUPLE QUIZ
+   ===================================================== */
+.quiz-wrapper {
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 3rem;
+  box-shadow: var(--shadow);
+  min-height: 280px;
+}
+
+/* Start screen */
+.quiz-start { text-align: center; padding: 1.5rem 0; }
+.quiz-start p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 2.2rem;
+}
+
+/* Progress bar */
+.quiz-progress {
+  height: 2px;
+  background-color: var(--border);
+  border-radius: 2px;
+  margin-bottom: 2.2rem;
+  overflow: hidden;
+}
+.quiz-progress-bar {
+  height: 100%;
+  background-color: var(--gold);
+  border-radius: 2px;
+  transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Question */
+.quiz-question-counter {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.quiz-question-text {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 3vw, 1.65rem);
+  font-weight: 300;
+  color: var(--charcoal);
+  margin-bottom: 2rem;
+  line-height: 1.38;
+}
+
+/* Options */
+.quiz-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.8rem;
+}
+.quiz-option {
+  padding: 1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--ivory);
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  text-align: left;
+  line-height: 1.4;
+  transition: all var(--transition);
+}
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--gold);
+  background-color: var(--cream);
+  transform: translateX(4px);
+  box-shadow: var(--shadow);
+}
+.quiz-option:disabled { cursor: default; }
+.quiz-option.correct {
+  background-color: #4A7A5A;
+  border-color: #4A7A5A;
+  color: var(--cream);
+}
+.quiz-option.wrong {
+  background-color: var(--rose-dark);
+  border-color: var(--rose-dark);
+  color: var(--cream);
+}
+
+.quiz-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.quiz-score-inline {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* Result */
+.quiz-result { text-align: center; padding: 1rem 0; }
+.quiz-result-score {
+  font-family: var(--font-display);
+  font-size: 5.5rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+.quiz-result-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.8rem;
+  display: block;
+}
+.quiz-result-message {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--charcoal);
+  margin-bottom: 0.6rem;
+}
+.quiz-result-sub {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 2.2rem;
+}
+
+
+/* =====================================================
+   MEMORY GAME
+   ===================================================== */
+.game-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.game-stats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.4rem;
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.game-stat {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.game-stat strong {
+  color: var(--charcoal);
+  font-size: 1rem;
+  font-family: var(--font-display);
+}
+
+/* Memory grid */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+/* Card */
+.memory-card {
+  aspect-ratio: 3 / 4.2;
+  perspective: 700px;
+  cursor: pointer;
+}
+.memory-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.48s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: var(--radius);
+}
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched  .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front,
+.memory-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+}
+
+/* Card back (hidden face / pattern) */
+.memory-card-front {
+  background-color: var(--cream);
+  transition: background-color var(--transition);
+}
+.memory-card:hover .memory-card-front {
+  background-color: var(--ivory);
+  border-color: var(--gold);
+}
+.memory-card-front-pattern {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0.35;
+  user-select: none;
+}
+
+/* Card face (emoji side) */
+.memory-card-back {
+  background-color: var(--ivory);
+  transform: rotateY(180deg);
+  border-color: var(--gold);
+}
+.memory-card.matched .memory-card-back {
+  background-color: rgba(184, 151, 90, 0.12);
+  border-color: var(--gold);
+}
+.memory-card-emoji {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+  user-select: none;
+}
+.memory-card-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+/* Win message */
+.game-win-message {
+  text-align: center;
+  padding: 2.8rem 2rem;
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 1.5rem;
+  box-shadow: var(--shadow);
+  animation: heroFadeUp 0.55s ease both;
+}
+.win-icon {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
+}
+.game-win-message h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--charcoal);
+  margin-bottom: 0.45rem;
+}
+.game-win-message p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.8rem;
+}
+
+
+/* =====================================================
+   RSVP FORM
+   ===================================================== */
+.rsvp-form {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius);
+  padding: 2.6rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+.form-group label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.88rem 1.05rem;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: var(--radius);
+  color: var(--cream);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  transition: border-color var(--transition), background-color var(--transition);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--gold);
+  background-color: rgba(255, 255, 255, 0.11);
+}
+.form-group select {
+  cursor: pointer;
+  appearance: auto;
+  -webkit-appearance: auto;
+}
+.form-group select option { background-color: var(--forest); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+
+/* Radio group */
+.form-group--radio label:first-child {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+.radio-group {
+  display: flex;
+  gap: 1.8rem;
+  flex-wrap: wrap;
+}
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: color var(--transition);
+}
+.radio-label:hover { color: var(--cream); }
+.radio-label input[type="radio"] {
+  accent-color: var(--gold);
+  width: 15px;
+  height: 15px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.form-submit { text-align: center; margin-top: 0.8rem; }
+
+/* Success state */
+.form-success {
+  text-align: center;
+  padding: 3rem 2rem;
+  background-color: rgba(184, 151, 90, 0.08);
+  border: 1px solid rgba(184, 151, 90, 0.35);
+  border-radius: var(--radius);
+  animation: heroFadeUp 0.55s ease both;
+}
+.form-success-icon {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.form-success-title {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+.form-success-sub {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* =====================================================
+   SEATING PLAN
+   ===================================================== */
+.seating-search-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.8rem;
+}
+.seat-search-input {
+  padding: 0.88rem 1.6rem;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--charcoal);
+  background-color: var(--cream);
+  width: 100%;
+  max-width: 420px;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.seat-search-input:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(184, 151, 90, 0.1);
+}
+.seat-search-input::placeholder { color: var(--text-muted); }
+
+.seating-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
+  gap: 1.4rem;
+}
+
+/* Table card */
+.table-card {
+  background-color: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+}
+.table-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+.table-card.highlight {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(184, 151, 90, 0.14), var(--shadow);
+}
+
+.table-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.table-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--charcoal);
+}
+.table-count {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.table-guest {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.38rem 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+.table-guest:last-child { border-bottom: none; }
+.table-guest::before {
+  content: '✦';
+  font-size: 0.48rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.table-guest.highlighted {
+  color: var(--charcoal);
+  font-weight: 500;
+  background-color: rgba(184, 151, 90, 0.07);
+  margin: 0 -0.3rem;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  border-radius: 3px;
+}
+
+.seating-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-muted);
+  font-style: italic;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+.footer {
+  background-color: var(--charcoal);
+  color: var(--cream);
+  text-align: center;
+  padding: 6rem 2rem;
+}
+.footer-ornament {
+  font-size: 1.4rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 1.8rem;
+  opacity: 0.55;
+}
+.footer-names {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.footer-date {
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  display: block;
+}
+.footer-message {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 450px;
+  margin: 0 auto 1.6rem;
+  line-height: 1.75;
+}
+.footer-contact {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: 2.8rem;
+}
+.footer-contact a {
+  color: var(--gold);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition);
+}
+.footer-contact a:hover { border-color: var(--gold); }
+.footer-divider {
+  width: 36px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.12);
+  margin: 0 auto 1.6rem;
+  border: none;
+}
+.footer-credit {
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* =====================================================
+   SCROLL REVEAL ANIMATION
+   ===================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE BREAKPOINTS
+   ===================================================== */
+
+/* --- Tablet: 1024px --- */
+@media (max-width: 1024px) {
+  .details-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+  .gallery-item--large { grid-row: span 1; }
+  .story-grid { gap: 3rem; }
+}
+
+/* --- Small tablet / large mobile: 768px --- */
+@media (max-width: 768px) {
+  :root { font-size: 15px; }
+
+  .section { padding: 4.5rem 0; }
+
+  /* Navbar */
+  .navbar { padding: 1.2rem 1.5rem; }
+  .navbar.scrolled { padding: 0.9rem 1.5rem; }
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(254, 252, 248, 0.97);
+    backdrop-filter: blur(14px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.2rem;
+    z-index: 999;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a {
+    color: var(--charcoal) !important;
+    font-size: 0.9rem;
+  }
+  .nav-links a:hover { color: var(--gold) !important; }
+  .nav-brand { color: var(--cream); }
+  .navbar.scrolled .nav-brand { color: var(--charcoal); }
+
+  /* Hero */
+  .hero-countdown { gap: 0.6rem; }
+  .countdown-sep { font-size: 1rem; }
+
+  /* Story */
+  .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .story-image img { height: 360px; }
+  .story-image-frame { display: none; }
+  .timeline { gap: 2rem; }
+  .timeline-item { min-width: 140px; }
+  .timeline-item:not(:last-child)::after { display: none; }
+
+  /* Details */
+  .details-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Schedule */
+  .schedule-item { grid-template-columns: 80px 1px 1fr; gap: 1rem; }
+
+  /* Travel */
+  .travel-grid { grid-template-columns: 1fr; }
+
+  /* Dress code */
+  .dresscode-hints { grid-template-columns: 1fr; max-width: 100%; }
+
+  /* Gallery */
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 0.75rem; }
+  .gallery-item { height: 200px; }
+
+  /* Quiz */
+  .quiz-options { grid-template-columns: 1fr; }
+  .quiz-wrapper { padding: 2rem 1.5rem; }
+
+  /* Memory game */
+  .memory-grid { gap: 0.55rem; }
+
+  /* RSVP */
+  .form-row { grid-template-columns: 1fr; }
+  .rsvp-form { padding: 1.8rem 1.4rem; }
+}
+
+/* --- Mobile: 480px --- */
+@media (max-width: 480px) {
+  .container, .container--narrow { padding: 0 1.2rem; }
+
+  .hero-title { font-size: 3.2rem; }
+  .hero-countdown { gap: 0.5rem; }
+
+  .memory-grid { grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+  .memory-card-emoji { font-size: 1.4rem; }
+  .memory-card-label { display: none; }
+
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-item { height: 220px; }
+  .gallery-item--large { height: 260px; }
+
+  .details-grid { grid-template-columns: 1fr; }
+
+  .quiz-options { grid-template-columns: 1fr; }
+
+  .dresscode-hints { grid-template-columns: 1fr; }
+
+  .seating-grid { grid-template-columns: 1fr; }
+
+  .radio-group { flex-direction: column; gap: 1rem; }
+}
+
+
+/* === Compatibility fixes to preserve original content while making single-file version work === */
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.table-header { display:flex; align-items:center; justify-content:space-between; gap:0.75rem; margin-bottom:1.1rem; padding-bottom:1rem; border-bottom:1px solid var(--border); flex-wrap:wrap; }
+.table-emoji { font-size:1.2rem; line-height:1; }
+.guest-list { list-style:none; margin:0; padding:0; }
+.guest-item { display:flex; align-items:center; gap:0.5rem; padding:0.38rem 0; font-size:0.88rem; color:var(--text-muted); border-bottom:1px solid rgba(0,0,0,0.04); }
+.guest-item:last-child { border-bottom:none; }
+.guest-icon { font-size:0.48rem; color:var(--gold); flex-shrink:0; }
+.guest-name mark { background-color:rgba(184,151,90,0.16); color:var(--charcoal); padding:0 0.15rem; border-radius:2px; }
+.quiz-body.active, .quiz-result.active { display:block; }
+.quiz-q-text { font-family: var(--font-display); font-size: clamp(1.3rem, 3vw, 1.65rem); font-weight: 300; color: var(--charcoal); margin-bottom: 2rem; line-height: 1.38; }
+.option-letter { display:inline-flex; width:1.8rem; height:1.8rem; align-items:center; justify-content:center; border:1px solid var(--border); border-radius:999px; margin-right:0.8rem; font-size:0.75rem; font-weight:600; flex-shrink:0; }
+.quiz-option { display:flex; align-items:flex-start; }
+.option-text { flex:1; }
+.quiz-feedback { margin: 0.8rem 0 1rem; font-size:0.92rem; }
+.quiz-feedback.correct { color:#4A7A5A; }
+.quiz-feedback.wrong { color:var(--rose-dark); }
+.btn-quiz-next { display:inline-flex; align-items:center; justify-content:center; padding:0.88rem 2rem; font-family:var(--font-body); font-size:0.78rem; font-weight:500; letter-spacing:0.18em; text-transform:uppercase; border:1px solid var(--gold); border-radius:var(--radius-sm); cursor:pointer; transition:all var(--transition); text-decoration:none; white-space:nowrap; background-color:var(--gold); color:var(--cream); }
+.btn-quiz-next:hover { background-color:var(--gold-dark); border-color:var(--gold-dark); }
+.result-emoji { font-size:2.6rem; margin-bottom:0.75rem; }
+.result-title { font-family:var(--font-display); font-size:1.9rem; font-weight:300; color:var(--charcoal); margin-bottom:0.8rem; }
+.result-score { display:flex; align-items:flex-end; justify-content:center; gap:0.3rem; margin-bottom:0.8rem; }
+.score-number, .score-total { font-family:var(--font-display); font-size:3.4rem; line-height:1; color:var(--gold); }
+.score-divider { font-family:var(--font-display); font-size:2rem; line-height:1; color:var(--text-muted); }
+.result-message { font-size:0.95rem; color:var(--text-muted); max-width:520px; margin:0 auto 1.5rem; }
+.memory-card .card-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.48s cubic-bezier(0.645,0.045,0.355,1); border-radius:var(--radius); }
+.memory-card.flipped .card-inner, .memory-card.matched .card-inner { transform:rotateY(180deg); }
+.memory-card .card-face { position:absolute; inset:0; border-radius:var(--radius); backface-visibility:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid var(--border); }
+.memory-card .card-back { background-color:var(--cream); transition:background-color var(--transition); }
+.memory-card:hover .card-back { background-color:var(--ivory); border-color:var(--gold); }
+.memory-card .card-back-icon { font-family:var(--font-display); font-size:1.6rem; font-style:italic; color:var(--gold); opacity:0.35; user-select:none; }
+.memory-card .card-front { background-color:var(--ivory); transform:rotateY(180deg); border-color:var(--gold); }
+.memory-card.matched .card-front { background-color:rgba(184,151,90,0.12); }
+.memory-card .card-emoji { font-size:2rem; margin-bottom:0.4rem; user-select:none; }
+.memory-card .card-label { font-size:0.65rem; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-muted); user-select:none; }
+#lightbox { position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:2000; }
+#lightbox.open { display:flex; }
+#lightbox .lightbox-overlay { position:absolute; inset:0; background:rgba(0,0,0,0.78); }
+#lightbox .lightbox-content { position:relative; z-index:1; width:min(92vw,1000px); height:min(88vh,760px); display:flex; align-items:center; justify-content:center; }
+#lightbox .lightbox-img { max-width:100%; max-height:100%; object-fit:contain; border-radius:var(--radius); box-shadow:var(--shadow-lg); }
+#lightbox .lightbox-close, #lightbox .lightbox-prev, #lightbox .lightbox-next { position:absolute; border:none; background:rgba(255,255,255,0.12); color:white; width:44px; height:44px; border-radius:999px; cursor:pointer; font-size:1.5rem; line-height:1; display:flex; align-items:center; justify-content:center; }
+#lightbox .lightbox-close { top:16px; right:16px; }
+#lightbox .lightbox-prev { left:16px; top:50%; transform:translateY(-50%); }
+#lightbox .lightbox-next { right:16px; top:50%; transform:translateY(-50%); }
+</style>
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVBAR
+       To add/remove nav items: edit the <li> elements below.
+  ====================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">E &amp; J</div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#story">Story</a></li>
+      <li><a href="#details">Details</a></li>
+      <li><a href="#schedule">Schedule</a></li>
+      <li><a href="#travel">Travel</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+      <li><a href="#game">Game</a></li>
+      <li><a href="#seating">Seating</a></li>
+      <li><a href="#rsvp" class="nav-cta">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======================================================
+       HERO SECTION
+       Change: names in hero-title, date/location in hero-date,
+       tagline in hero-tagline, hero image in hero-img src.
+       Wedding date for countdown is set in script.js → weddingConfig.
+  ====================================================== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <!-- 
+        HERO IMAGE: Replace src with your image.
+        Recommended: save as images/hero.jpg (1800×1200px or larger).
+        Using Unsplash placeholder by default (works online immediately).
+      -->
+      <img
+        src="https://images.unsplash.com/photo-1519741497674-611481863552?w=1800&q=80"
+        alt="Kate and Harry wedding"
+        class="hero-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">We're getting married</p>
+      <!-- EDIT: Couple names -->
+      <h1 class="hero-title">Kate <span class="hero-ampersand">&amp;</span> Harry</h1>
+      <!-- EDIT: Date and location -->
+      <p class="hero-date">September 14, 2025 &nbsp;·&nbsp; Villa della Rosa &nbsp;·&nbsp; Rome</p>
+      <!-- EDIT: Romantic tagline -->
+      <p class="hero-tagline">Two souls, one beautiful beginning.</p>
+      <!-- Countdown — controlled by script.js weddingConfig.weddingDate -->
+      <div class="hero-countdown" id="countdown">
+        <div class="countdown-item"><span id="cd-days">—</span><label>Days</label></div>
+        <div class="countdown-sep">·</div>
+        <div class="countdown-item"><span id="cd-hours">—</span><label>Hours</label></div>
+        <div class="countdown-sep">·</div>
+        <div class="countdown-item"><span id="cd-mins">—</span><label>Minutes</label></div>
+      </div>
+      <a href="#rsvp" class="btn btn-primary">Confirm Attendance</a>
+    </div>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       OUR STORY
+       Edit text paragraphs and timeline dates/events below.
+  ====================================================== -->
+  <section id="story" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">How it all began</p>
+        <h2 class="section-title">Our Story</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="story-grid">
+        <div class="story-image">
+          <!-- EDIT: Story image. Recommended: images/story.jpg -->
+          <img
+            src="https://images.unsplash.com/photo-1529636444744-adffc9135a5e?w=800&q=80"
+            alt="Kate and Harry together">
+          <div class="story-image-frame"></div>
+        </div>
+        <div class="story-content">
+          <!-- EDIT: Story text paragraphs -->
+          <p class="story-lead">It started with a glance across a crowded room in Florence — a Saturday evening in October, a shared table at a dinner party, and a conversation that lasted well past midnight.</p>
+          <p class="story-body">What followed was three years of laughter, adventures across four continents, quiet Sunday mornings over coffee, and the growing certainty that this was it — the person you choose again and again.</p>
+          <p class="story-body">On a rainy Tuesday in Paris, Harry got down on one knee at Café de Flore — Kate's favourite table by the window — and asked the question she had been hoping for since that very first evening in Florence.</p>
+          <p class="story-body story-body--italic">She said yes before he finished the sentence.</p>
+        </div>
+      </div>
+
+      <!-- TIMELINE — Edit dates and text inside each .timeline-item -->
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">October 2021</div>
+          <div class="timeline-text">First meeting at a dinner party in Florence</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">March 2022</div>
+          <div class="timeline-text">First trip together — Lisbon, Portugal</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">December 2022</div>
+          <div class="timeline-text">Moved in together in Rome</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">June 2024</div>
+          <div class="timeline-text">The proposal — Café de Flore, Paris</div>
+        </div>
+        <div class="timeline-item timeline-item--highlight">
+          <div class="timeline-dot"></div>
+          <div class="timeline-date">September 14, 2025</div>
+          <div class="timeline-text">Our Wedding Day ✦</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       EVENT DETAILS
+       Edit venue names, times, and addresses in the cards.
+  ====================================================== -->
+  <section id="details" class="section section-dark">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">The day ahead</p>
+        <h2 class="section-title">Event Details</h2>
+        <div class="section-divider section-divider--light"></div>
+      </div>
+      <div class="details-grid">
+        <!-- EDIT: Detail cards — icon, title, time, venue, address -->
+        <div class="detail-card">
+          <div class="detail-icon" aria-hidden="true">💒</div>
+          <h3>Ceremony</h3>
+          <p class="detail-time">3:00 PM</p>
+          <p class="detail-venue">Villa della Rosa — Chapel Garden</p>
+          <p class="detail-address">Via della Rosa 12, Rome, Italy 00187</p>
+          <a href="https://maps.google.com/?q=Rome+Italy" target="_blank" rel="noopener" class="detail-map-link">View on Maps →</a>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon" aria-hidden="true">🥂</div>
+          <h3>Cocktail Hour</h3>
+          <p class="detail-time">4:30 PM</p>
+          <p class="detail-venue">Villa della Rosa — Garden Terrace</p>
+          <p class="detail-address">Aperitivo, canapés &amp; live music</p>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon" aria-hidden="true">🍽️</div>
+          <h3>Reception Dinner</h3>
+          <p class="detail-time">6:30 PM</p>
+          <p class="detail-venue">Villa della Rosa — Grand Ballroom</p>
+          <p class="detail-address">Dinner, speeches &amp; first dance</p>
+        </div>
+        <div class="detail-card">
+          <div class="detail-icon" aria-hidden="true">🎶</div>
+          <h3>Dancing</h3>
+          <p class="detail-time">9:00 PM – 1:00 AM</p>
+          <p class="detail-venue">Villa della Rosa — Garden Pavilion</p>
+          <p class="detail-address">Live band &amp; DJ set</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       WEDDING DAY SCHEDULE
+       Edit each .schedule-item: time, title, description.
+  ====================================================== -->
+  <section id="schedule" class="section section-light">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <p class="section-eyebrow">Your guide to the day</p>
+        <h2 class="section-title">Wedding Day Schedule</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="schedule-list">
+        <!-- EDIT: Each schedule item below -->
+        <div class="schedule-item">
+          <span class="schedule-time">2:30 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Guests Arrive</strong><p>Welcome drinks served at the garden entrance</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">3:00 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Ceremony Begins</strong><p>Chapel Garden — please be seated by 2:50 PM</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">3:45 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Ceremony Concludes</strong><p>Ring exchange, first kiss &amp; confetti</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">4:00 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Couple Portraits</strong><p>Guests enjoy the garden &amp; cocktails</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">4:30 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Cocktail Hour</strong><p>Garden Terrace — aperitivo, live quartet &amp; canapés</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">6:30 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Dinner is Served</strong><p>Grand Ballroom — please find your seats</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">8:00 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Speeches &amp; Toasts</strong><p>Champagne on every table</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">8:45 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>First Dance</strong><p>Kate &amp; Harry open the floor</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">9:00 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Dancing Begins</strong><p>Live band — Garden Pavilion</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">11:00 PM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>Midnight Supper</strong><p>Late-night bites &amp; DJ set until close</p></div>
+        </div>
+        <div class="schedule-item">
+          <span class="schedule-time">1:00 AM</span>
+          <div class="schedule-line" aria-hidden="true"></div>
+          <div class="schedule-info"><strong>End of Evening</strong><p>Last shuttles depart — safe travels!</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       TRAVEL & ACCOMMODATION
+       Edit transport info, hotel names, addresses.
+  ====================================================== -->
+  <section id="travel" class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Getting here</p>
+        <h2 class="section-title">Travel &amp; Accommodation</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="travel-grid">
+        <!-- EDIT: Travel cards -->
+        <div class="travel-card">
+          <h3><span aria-hidden="true">✈️</span> By Plane</h3>
+          <p>The nearest airport is <strong>Rome Fiumicino (FCO)</strong>, approximately 40 minutes from the venue. Direct flights available from most major European cities.</p>
+        </div>
+        <div class="travel-card">
+          <h3><span aria-hidden="true">🚆</span> By Train</h3>
+          <p><strong>Rome Termini</strong> is the main railway hub. From there, take a taxi (approx. 20 min) or hop on our complimentary shuttle to the venue.</p>
+        </div>
+        <div class="travel-card">
+          <h3><span aria-hidden="true">🚌</span> Shuttle Service</h3>
+          <p>Complimentary shuttles depart from <strong>Hotel Artemide</strong> at <strong>2:00 PM</strong> and return at <strong>1:30 AM</strong>. Please confirm your seat in your RSVP.</p>
+        </div>
+        <div class="travel-card">
+          <h3><span aria-hidden="true">🏨</span> Suggested Hotels</h3>
+          <!-- EDIT: Hotel list -->
+          <ul class="hotel-list">
+            <li><strong>Hotel Artemide</strong> — 4★, Via Nazionale 22<br><em>Special rate: mention "Kate &amp; Harry Wedding"</em></li>
+            <li><strong>Hotel dei Borgognoni</strong> — 4★, Via del Bufalo 126</li>
+            <li><strong>Daphne Inn</strong> — Boutique, Via degli Avignonesi</li>
+          </ul>
+        </div>
+      </div>
+      <div class="travel-note">
+        <!-- EDIT: Contact email -->
+        <p>💌 Questions about travel? Email us at <a href="mailto:Kate.Harry.wedding@gmail.com">Kate.Harry.wedding@gmail.com</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       DRESS CODE
+       Edit the dress code description and hints.
+  ====================================================== -->
+  <section id="dresscode" class="section section-rose">
+    <div class="container container--narrow">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">What to wear</p>
+        <h2 class="section-title">Dress Code</h2>
+        <div class="section-divider section-divider--light"></div>
+      </div>
+      <div class="dresscode-content">
+        <!-- EDIT: Dress code label -->
+        <p class="dresscode-main">Black Tie Optional</p>
+        <!-- EDIT: Description -->
+        <p class="dresscode-sub">We invite you to dress beautifully for a garden evening celebration. Formal attire is warmly welcomed — think elegant gowns, cocktail dresses, dark suits, and tuxedos.</p>
+        <div class="dresscode-hints">
+          <div class="dresscode-hint">
+            <span class="hint-label">Ladies</span>
+            <p>Floor-length gown, cocktail dress, or elegant midi. Heels or elegant flats are recommended — the ceremony takes place on a garden lawn.</p>
+          </div>
+          <div class="dresscode-hint">
+            <span class="hint-label">Gentlemen</span>
+            <p>Dark suit, lounge suit, or tuxedo. A tie or pocket square adds a lovely touch to the evening.</p>
+          </div>
+        </div>
+        <p class="dresscode-note">Please avoid white, ivory, and cream — save those shades for the bride 🤍</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       VENUE MAP — SVG
+       Edit the SVG below to modify zones, labels, and layout.
+       See HOW_TO_CUSTOMIZE.md for detailed SVG editing guide.
+  ====================================================== -->
+  <section id="venue-map" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find your way</p>
+        <h2 class="section-title">Venue Map</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Villa della Rosa — a guide to the grounds</p>
+      </div>
+      <div class="venue-map-wrapper">
+        <!--
+          SVG VENUE MAP
+          To edit: change rect/ellipse/text positions and colors.
+          Zone colors use CSS variable references below — edit in style.css.
+          Add tooltips by editing the <title> tags inside SVG groups.
+        -->
+        <svg id="venue-map-svg" viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Venue map of Villa della Rosa">
+          <defs>
+            <filter id="mapShadow" x="-5%" y="-5%" width="110%" height="110%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.08"/>
+            </filter>
+          </defs>
+          <!-- Outer garden background -->
+          <rect width="900" height="560" fill="#F5ECD7" rx="12"/>
+          <rect x="14" y="14" width="872" height="532" fill="#EAE5D4" rx="10"/>
+          <!-- Cross paths -->
+          <rect x="338" y="14" width="22" height="532" fill="#DDD4C0" rx="3"/>
+          <rect x="14" y="260" width="872" height="22" fill="#DDD4C0" rx="3"/>
+          <!-- Path centerline ornament -->
+          <line x1="349" y1="14" x2="349" y2="260" stroke="#C9A99A" stroke-width="0.5" stroke-dasharray="5,8"/>
+          <line x1="349" y1="282" x2="349" y2="546" stroke="#C9A99A" stroke-width="0.5" stroke-dasharray="5,8"/>
+          <line x1="14" y1="271" x2="338" y2="271" stroke="#C9A99A" stroke-width="0.5" stroke-dasharray="5,8"/>
+          <line x1="360" y1="271" x2="886" y2="271" stroke="#C9A99A" stroke-width="0.5" stroke-dasharray="5,8"/>
+
+          <!-- ===== ZONE 1: CEREMONY (top-left) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Ceremony — Chapel Garden, 3:00 PM</title>
+            <rect x="30" y="30" width="295" height="215" fill="#C9A99A" fill-opacity="0.22" rx="8" stroke="#C9A99A" stroke-width="1.5"/>
+          </g>
+          <text x="178" y="56" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="13" fill="#8B5A52" font-weight="600" letter-spacing="2">CEREMONY</text>
+          <!-- Chairs rows (left side of aisle) -->
+          <rect x="50"  y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="68"  y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="86"  y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="104" y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="50"  y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="68"  y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="86"  y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="104" y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="50"  y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="68"  y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="86"  y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="104" y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="50"  y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="68"  y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="86"  y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="104" y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <!-- Aisle -->
+          <rect x="132" y="70" width="14" height="130" fill="#DDD4C0" fill-opacity="0.6" rx="2"/>
+          <!-- Chairs rows (right side of aisle) -->
+          <rect x="158" y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="176" y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="194" y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="212" y="72" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.7"/>
+          <rect x="158" y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="176" y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="194" y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="212" y="85" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.55"/>
+          <rect x="158" y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="176" y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="194" y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="212" y="98" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.4"/>
+          <rect x="158" y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="176" y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="194" y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <rect x="212" y="111" width="13" height="8" rx="2" fill="#C9A99A" fill-opacity="0.3"/>
+          <!-- Altar -->
+          <ellipse cx="139" cy="213" rx="32" ry="11" fill="#B8975A" fill-opacity="0.45" stroke="#B8975A" stroke-width="1.2"/>
+          <text x="139" y="217" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#7A6030" font-style="italic">Altar</text>
+
+          <!-- ===== ZONE 2: COCKTAIL TERRACE (top-center) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Cocktail Terrace — 4:30 PM, Garden Terrace</title>
+            <rect x="376" y="30" width="235" height="215" fill="#B8975A" fill-opacity="0.18" rx="8" stroke="#B8975A" stroke-width="1.5"/>
+          </g>
+          <text x="493" y="56" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="13" fill="#7A6030" font-weight="600" letter-spacing="2">COCKTAIL TERRACE</text>
+          <circle cx="428" cy="135" r="24" fill="#B8975A" fill-opacity="0.28" stroke="#B8975A" stroke-width="1"/>
+          <text x="428" y="133" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#7A6030">Aperitivo</text>
+          <circle cx="493" cy="120" r="24" fill="#B8975A" fill-opacity="0.28" stroke="#B8975A" stroke-width="1"/>
+          <text x="493" y="118" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#7A6030">Aperitivo</text>
+          <circle cx="558" cy="135" r="24" fill="#B8975A" fill-opacity="0.28" stroke="#B8975A" stroke-width="1"/>
+          <text x="558" y="133" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#7A6030">Aperitivo</text>
+
+          <!-- ===== ZONE 3: PHOTO AREA (top-right) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Photo Area — Couple portraits & photo booth</title>
+            <rect x="628" y="30" width="244" height="215" fill="#9FA88E" fill-opacity="0.22" rx="8" stroke="#9FA88E" stroke-width="1.5"/>
+          </g>
+          <text x="750" y="56" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="13" fill="#5A6345" font-weight="600" letter-spacing="2">PHOTO AREA</text>
+          <ellipse cx="750" cy="148" rx="50" ry="65" fill="none" stroke="#9FA88E" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="750" y="144" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="20" fill="#5A6345">📷</text>
+          <text x="750" y="165" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#5A6345" font-style="italic">Photo Booth</text>
+
+          <!-- ===== ZONE 4: DINNER — GRAND BALLROOM (bottom-left) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Grand Ballroom — Dinner &amp; Reception, 6:30 PM</title>
+            <rect x="30" y="296" width="565" height="235" fill="#8FA8C8" fill-opacity="0.18" rx="8" stroke="#8FA8C8" stroke-width="1.5"/>
+          </g>
+          <text x="312" y="322" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="13" fill="#3A5A7A" font-weight="600" letter-spacing="2">GRAND BALLROOM — DINNER</text>
+          <!-- Dinner tables -->
+          <circle cx="100"  cy="400" r="38" fill="#8FA8C8" fill-opacity="0.28" stroke="#8FA8C8" stroke-width="1"/>
+          <text x="100"  y="397" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#3A5A7A">Table 1</text>
+          <circle cx="200" cy="400" r="38" fill="#8FA8C8" fill-opacity="0.28" stroke="#8FA8C8" stroke-width="1"/>
+          <text x="200" y="397" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#3A5A7A">Table 2</text>
+          <circle cx="300" cy="400" r="38" fill="#8FA8C8" fill-opacity="0.28" stroke="#8FA8C8" stroke-width="1"/>
+          <text x="300" y="397" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#3A5A7A">Table 3</text>
+          <circle cx="400" cy="400" r="38" fill="#8FA8C8" fill-opacity="0.28" stroke="#8FA8C8" stroke-width="1"/>
+          <text x="400" y="397" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#3A5A7A">Table 4</text>
+          <circle cx="500" cy="390" r="42" fill="#8FA8C8" fill-opacity="0.38" stroke="#8FA8C8" stroke-width="1.5"/>
+          <text x="500" y="387" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#3A5A7A" font-weight="600">Head Table</text>
+          <!-- Small chairs dots for head table -->
+          <circle cx="460" cy="380" r="4" fill="#8FA8C8" fill-opacity="0.5"/>
+          <circle cx="540" cy="380" r="4" fill="#8FA8C8" fill-opacity="0.5"/>
+          <circle cx="500" cy="348" r="4" fill="#8FA8C8" fill-opacity="0.5"/>
+
+          <!-- ===== ZONE 5: DANCE FLOOR (bottom-center-right) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Dance Floor — Live band from 9:00 PM</title>
+            <rect x="612" y="296" width="135" height="140" fill="#C9A99A" fill-opacity="0.22" rx="8" stroke="#C9A99A" stroke-width="1.5"/>
+          </g>
+          <text x="679" y="320" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="12" fill="#8B5A52" font-weight="600" letter-spacing="1">DANCE FLOOR</text>
+          <!-- Checkered pattern -->
+          <rect x="623" y="330" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.32"/>
+          <rect x="653" y="330" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.15"/>
+          <rect x="683" y="330" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.32"/>
+          <rect x="713" y="330" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.15"/>
+          <rect x="623" y="360" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.15"/>
+          <rect x="653" y="360" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.32"/>
+          <rect x="683" y="360" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.15"/>
+          <rect x="713" y="360" width="26" height="26" rx="2" fill="#C9A99A" fill-opacity="0.32"/>
+          <text x="679" y="415" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="14" fill="#8B5A52">🎵</text>
+
+          <!-- ===== ZONE 6: BAR (bottom-right) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Bar — Champagne &amp; cocktails all evening</title>
+            <rect x="762" y="296" width="110" height="140" fill="#B8975A" fill-opacity="0.22" rx="8" stroke="#B8975A" stroke-width="1.5"/>
+          </g>
+          <text x="817" y="354" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="13" fill="#7A6030" font-weight="600" letter-spacing="1">BAR</text>
+          <text x="817" y="374" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="18" fill="#7A6030">🍾</text>
+          <text x="817" y="395" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#7A6030" font-style="italic">Champagne &amp; Cocktails</text>
+
+          <!-- ===== ZONE 7: LOUNGE (bottom-far-right) ===== -->
+          <g class="map-zone" filter="url(#mapShadow)">
+            <title>Lounge — Seating &amp; relaxation area</title>
+            <rect x="612" y="452" width="260" height="75" fill="#9FA88E" fill-opacity="0.20" rx="8" stroke="#9FA88E" stroke-width="1.5"/>
+          </g>
+          <text x="742" y="491" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="12" fill="#5A6345" font-weight="600" letter-spacing="1">LOUNGE</text>
+          <text x="742" y="510" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="9" fill="#5A6345" font-style="italic">Seating &amp; relaxation</text>
+
+          <!-- Main Entrance arrow -->
+          <text x="349" y="550" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="11" fill="#B8975A" letter-spacing="3" font-style="italic">▼ MAIN ENTRANCE</text>
+
+          <!-- Legend bar -->
+          <rect x="30" y="485" width="290" height="36" fill="#FEFCF8" rx="6" fill-opacity="0.88"/>
+          <circle cx="52"  cy="503" r="7" fill="#C9A99A" fill-opacity="0.6"/>
+          <text x="65"  cy="507" y="507" font-family="DM Sans, sans-serif" font-size="9" fill="#6A5A55">Ceremony</text>
+          <circle cx="122" cy="503" r="7" fill="#B8975A" fill-opacity="0.6"/>
+          <text x="135" y="507" font-family="DM Sans, sans-serif" font-size="9" fill="#6A5A55">Cocktail</text>
+          <circle cx="185" cy="503" r="7" fill="#8FA8C8" fill-opacity="0.6"/>
+          <text x="198" y="507" font-family="DM Sans, sans-serif" font-size="9" fill="#6A5A55">Dinner</text>
+          <circle cx="245" cy="503" r="7" fill="#9FA88E" fill-opacity="0.6"/>
+          <text x="258" y="507" font-family="DM Sans, sans-serif" font-size="9" fill="#6A5A55">Photos</text>
+
+          <!-- Venue name stamp -->
+          <text x="450" y="30" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" fill="#B8975A" letter-spacing="4" font-style="italic">Villa della Rosa — Rome</text>
+        </svg>
+        <p class="venue-map-note">The venue is fully accessible. Hover or tap each area for more information.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       GALLERY
+       Replace src URLs with your own images.
+       Save images in images/ folder and use relative paths.
+       e.g. src="images/gallery-1.jpg"
+  ====================================================== -->
+  <section id="gallery" class="section section-dark">
+    <div class="container">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">Our favourite moments</p>
+        <h2 class="section-title">Gallery</h2>
+        <div class="section-divider section-divider--light"></div>
+      </div>
+      <div class="gallery-grid">
+        <!-- EDIT: Replace src values with your own image paths -->
+        <div class="gallery-item gallery-item--large">
+          <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=900&q=80" alt="Kate and Harry portrait" loading="lazy">
+          <div class="gallery-overlay"><span>Kate &amp; Harry</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&q=80" alt="Florence 2022" loading="lazy">
+          <div class="gallery-overlay"><span>Florence, 2022</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=700&q=80" alt="Engagement Paris" loading="lazy">
+          <div class="gallery-overlay"><span>Paris, 2024</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=700&q=80" alt="Lisbon 2022" loading="lazy">
+          <div class="gallery-overlay"><span>Lisbon, 2022</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80" alt="Wedding details" loading="lazy">
+          <div class="gallery-overlay"><span>Wedding Details</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1468971050039-be99497410af?w=700&q=80" alt="The venue" loading="lazy">
+          <div class="gallery-overlay"><span>Villa della Rosa</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       COUPLE QUIZ
+       Questions are defined in script.js → quizData array.
+       Edit questions, options, and correct answers there.
+  ====================================================== -->
+  <section id="quiz" class="section section-light">
+    <div class="container container--narrow">
+      <div class="section-header">
+        <p class="section-eyebrow">A little challenge</p>
+        <h2 class="section-title">How Well Do You Know Us?</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Test your knowledge of Kate &amp; Harry with this little quiz.</p>
+      </div>
+      <!-- Quiz is rendered by JavaScript. See quizData in script.js to edit questions. -->
+      <div class="quiz-wrapper" id="quizWrapper">
+        <div id="quizStart" class="quiz-start">
+          <p>6 questions &nbsp;·&nbsp; Multiple choice &nbsp;·&nbsp; No wrong answers (well, almost)</p>
+          <button class="btn btn-primary" id="startQuizBtn">Begin the Quiz</button>
+        </div>
+        <div id="quizBody" class="quiz-body" style="display:none;"></div>
+        <div id="quizResult" class="quiz-result" style="display:none;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       MEMORY GAME — Wedding-themed Memory Card Game
+       Cards are defined in script.js → gameCards array.
+       Edit emoji and labels there.
+  ====================================================== -->
+  <section id="game" class="section section-ivory">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">A moment of fun</p>
+        <h2 class="section-title">Wedding Memory Game</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Match all 8 pairs before your champagne gets warm.</p>
+      </div>
+      <!-- Game is rendered by JavaScript. See gameCards in script.js to edit cards. -->
+      <div class="game-wrapper">
+        <div class="game-stats">
+          <span class="game-stat">Moves: <strong id="moveCount">0</strong></span>
+          <button class="btn btn-ghost" id="resetGame">↺ Restart</button>
+          <span class="game-stat">Pairs: <strong id="pairCount">0</strong> / 8</span>
+        </div>
+        <div class="memory-grid" id="memoryGrid">
+          <!-- Cards are dynamically rendered here -->
+        </div>
+        <div class="game-win-message" id="gameWinMsg" style="display:none;">
+          <div class="win-icon">🎉</div>
+          <h3>All pairs found!</h3>
+          <p>You completed the game in <strong id="finalMoves">0</strong> moves.</p>
+          <button class="btn btn-primary" id="resetGame2">Play Again</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       RSVP SECTION
+       Powered by Formspree — see comments inside the form.
+       HOW TO ACTIVATE:
+         1. Go to https://formspree.io — create a free account
+         2. Create a new form → copy your endpoint URL
+         3. Replace "YOUR_FORMSPREE_ENDPOINT" in the action attribute below
+         4. Formspree emails you each submission — no backend needed
+         5. Free tier allows up to 50 submissions/month
+  ====================================================== -->
+  <section id="rsvp" class="section section-dark">
+    <div class="container container--narrow">
+      <div class="section-header section-header--light">
+        <p class="section-eyebrow">We hope to see you there</p>
+        <h2 class="section-title">RSVP</h2>
+        <div class="section-divider section-divider--light"></div>
+        <!-- EDIT: RSVP deadline date -->
+        <p class="section-subtitle section-subtitle--light">Please confirm your attendance by <strong>July 1, 2025</strong>.</p>
+      </div>
+
+      <!--
+        ↓↓↓ IMPORTANT: Replace YOUR_FORMSPREE_ENDPOINT with your real Formspree endpoint ↓↓↓
+        Example: action="https://formspree.io/f/xpwzrqva"
+      -->
+      <form
+        class="rsvp-form"
+        id="rsvpForm"
+        action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+        method="POST">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" name="fullName" required placeholder="Your full name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="form-group form-group--radio">
+          <label>Will you attend? *</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="attending" value="Joyfully accepts" required>
+              <span>💚 Joyfully accepts</span>
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="attending" value="Regretfully declines">
+              <span>💔 Regretfully declines</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guestCount">Number of Guests</label>
+            <select id="guestCount" name="guestCount">
+              <option value="1">Just me (1 person)</option>
+              <option value="2">2 people</option>
+              <option value="3">3 people</option>
+              <option value="4">4 people</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="shuttle">Shuttle from Hotel Artemide?</label>
+            <select id="shuttle" name="shuttle">
+              <option value="Yes">Yes, please!</option>
+              <option value="No">No, I'll arrange my own transport</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary">Dietary Requirements</label>
+          <input type="text" id="dietary" name="dietary" placeholder="e.g. Vegetarian, Gluten-free, None">
+        </div>
+        <div class="form-group">
+          <label for="allergies">Allergies</label>
+          <input type="text" id="allergies" name="allergies" placeholder="e.g. Nuts, Shellfish, None">
+        </div>
+        <div class="form-group">
+          <label for="message">A message for us <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+          <textarea id="message" name="message" rows="4" placeholder="Share a kind word, a memory, or just say hello..."></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn btn-primary btn-large">Send My RSVP &nbsp;✦</button>
+        </div>
+      </form>
+
+      <!-- Success message shown after submission -->
+      <div id="formSuccess" class="form-success" style="display:none;">
+        <div class="form-success-icon">💌</div>
+        <p class="form-success-title">Thank you so much!</p>
+        <p class="form-success-sub">We've received your RSVP and can't wait to celebrate with you.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================
+       SEATING PLAN
+       Table data is in script.js → tablesData array.
+       Edit names, table names, and guest lists there.
+  ====================================================== -->
+  <section id="seating" class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Find your place</p>
+        <h2 class="section-title">Seating Plan</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Your table assignments for the dinner reception.</p>
+      </div>
+      <div class="seating-search-row">
+        <input
+          type="text"
+          id="seatSearch"
+          placeholder="Search your name or table..."
+          class="seat-search-input"
+          aria-label="Search guests by name or table">
+      </div>
+      <!-- Tables are dynamically rendered here by script.js → renderSeating() -->
+      <div class="seating-grid" id="seatingGrid"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FOOTER
+       Edit message, names, date, contact email.
+  ====================================================== -->
+  <footer class="footer">
+    <div class="footer-ornament" aria-hidden="true">✦</div>
+    <!-- EDIT: Couple names -->
+    <h2 class="footer-names">Kate &amp; Harry</h2>
+    <!-- EDIT: Date -->
+    <p class="footer-date">September 14, 2025</p>
+    <!-- EDIT: Thank you message -->
+    <p class="footer-message">Thank you for being part of our story.<br>We cannot wait to celebrate with you.</p>
+    <!-- EDIT: Contact email -->
+    <p class="footer-contact">Questions? <a href="mailto:Kate.Harry.wedding@gmail.com">Kate.Harry.wedding@gmail.com</a></p>
+    <div class="footer-divider" aria-hidden="true"></div>
+    <p class="footer-credit">Made with love &nbsp;·&nbsp; WeddingCoding</p>
+  </footer>
+
+  <!-- All interactive features are in script.js -->
+  <script>
+/* ============================================================
+   Kate & Harry — Wedding Website | script.js
+   ============================================================
+   HOW TO CUSTOMISE THIS FILE:
+   - Change the wedding date in weddingConfig.weddingDate
+   - Edit tablesData[] to update guest seating assignments
+   - Edit quizData[] to change quiz questions & answers
+   - Edit gameCards[] to change memory game card pairs
+   ============================================================ */
+
+'use strict';
+
+/* ============================================================
+   0. GLOBAL CONFIG
+   ============================================================ */
+
+const weddingConfig = {
+  // ⚙️ CHANGE THIS to your actual wedding date/time (ISO 8601)
+  weddingDate: 'September 14, 2025 15:00:00',
+  coupleNames: 'Kate & Harry',
+  venue: 'Villa della Rosa, Rome'
+};
+
+/* ============================================================
+   1. SEATING PLAN DATA
+   ============================================================
+   ⚙️ EDIT THIS ARRAY to update your guest seating plan.
+   Add / remove tables. Change names. It's all generated
+   automatically — no HTML editing required.
+   ============================================================ */
+
+const tablesData = [
+  {
+    name: 'Head Table',
+    emoji: '👑',
+    guests: ['Kate Rossi', 'Harry Carter', 'Sophie Williams (Maid of Honour)', 'Luca Bianchi (Best Man)', 'Margaret Carter (Mother of Groom)', 'Roberto Rossi (Father of Bride)']
+  },
+  {
+    name: 'Table Rose',
+    emoji: '🌹',
+    guests: ['Anna & Marco Conti', 'Claire & Thomas Hughes', 'Isabella Ferretti', 'Oliver Bennett', 'Giulia Moretti', 'Edward Walsh']
+  },
+  {
+    name: 'Table Jasmine',
+    emoji: '🌸',
+    guests: ['Valentina & Riccardo Longo', 'Sarah & David Thompson', 'Chiara Esposito', 'Henry Davies', 'Federica Galli', 'Jack Morrison']
+  },
+  {
+    name: 'Table Magnolia',
+    emoji: '🌺',
+    guests: ['Francesca & Andrea Russo', 'Emily & George Turner', 'Beatrice Costa', 'William Clarke', 'Martina Romano', 'Samuel Wright']
+  },
+  {
+    name: 'Table Lily',
+    emoji: '🌷',
+    guests: ['Paola & Giovanni Mancini', 'Charlotte & Robert Evans', 'Diana Vitale', 'Matthew Cooper', 'Alessia Ricci', 'Benjamin Hall']
+  },
+  {
+    name: 'Table Iris',
+    emoji: '💜',
+    guests: ['Serena & Fabrizio Amato', 'Victoria & Harry Phillips', 'Noemi Barbieri', 'Alexander Ward', 'Laura Fontana', 'Nathan Brooks']
+  },
+  {
+    name: 'Table Orchid',
+    emoji: '🪷',
+    guests: ['Silvia & Matteo De Luca', 'Isabelle & Charles Martin', 'Giorgia Pellegrini', 'Frederick Scott', 'Elena Ferrari', 'Daniel Price']
+  },
+  {
+    name: 'Table Peony',
+    emoji: '🌼',
+    guests: ['Cristina & Davide Lombardi', 'Eleanor & Andrew Watson', 'Marta Bruno', 'Patrick Kelly', 'Alessandra Villa', 'Timothy Hughes']
+  }
+];
+
+/* ============================================================
+   2. QUIZ DATA
+   ============================================================
+   ⚙️ EDIT THIS ARRAY to update your quiz.
+   - q: the question text
+   - options: array of answer choices
+   - correct: index of the correct answer (0-based)
+   ============================================================ */
+
+const quizData = [
+  {
+    q: 'Where did Kate and Harry first meet?',
+    options: ['Florence, Italy', 'Rome, Italy', 'Paris, France', 'London, England'],
+    correct: 0
+  },
+  {
+    q: 'How did Harry propose to Kate?',
+    options: ['On a beach at sunset', 'At their favourite restaurant', 'During a sunset hot-air balloon ride over Tuscany', 'At the top of the Eiffel Tower'],
+    correct: 2
+  },
+  {
+    q: 'What is the name of Kate\'s beloved rescue cat?',
+    options: ['Mozzarella', 'Biscotto', 'Tiramisu', 'Cannoli'],
+    correct: 1
+  },
+  {
+    q: 'What song will Kate & Harry have as their first dance?',
+    options: ['"Can\'t Help Falling in Love" — Elvis', '"Perfect" — Ed Sheeran', '"A Thousand Years" — Christina Perri', '"At Last" — Etta Harry'],
+    correct: 1
+  },
+  {
+    q: 'Which city did the couple visit for their very first holiday together?',
+    options: ['Barcelona', 'Amsterdam', 'Prague', 'Lisbon'],
+    correct: 3
+  },
+  {
+    q: 'What is Harry\'s signature dish that he always cooks on Sunday mornings?',
+    options: ['Pancakes with maple syrup', 'French toast with berries', 'Full English breakfast', 'Smashed avocado on sourdough'],
+    correct: 0
+  },
+  {
+    q: 'How many years have Kate & Harry been together when they say "I do"?',
+    options: ['2 years', '3 years', '4 years', '5 years'],
+    correct: 2
+  }
+];
+
+/* ============================================================
+   3. MEMORY GAME CARDS DATA
+   ============================================================
+   ⚙️ EDIT THIS ARRAY to update the memory game cards.
+   Each entry creates ONE pair of matching cards.
+   ============================================================ */
+
+const gameCards = [
+  { emoji: '💍', label: 'Rings' },
+  { emoji: '💐', label: 'Bouquet' },
+  { emoji: '🕊️', label: 'Doves' },
+  { emoji: '🥂', label: 'Champagne' },
+  { emoji: '💌', label: 'Letters' },
+  { emoji: '🎂', label: 'Cake' },
+  { emoji: '🌹', label: 'Roses' },
+  { emoji: '🎶', label: 'Music' }
+];
+
+/* ============================================================
+   INITIALISATION — runs after DOM is ready
+   ============================================================ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initNavbar();
+  initScrollReveal();
+  initCountdown();
+  renderSeating();
+  initSeatingSearch();
+  renderQuiz();
+  renderMemoryGame();
+  initRSVPForm();
+  initGallery();
+  initSmoothScroll();
+});
+
+/* ============================================================
+   NAVBAR — scroll effect & mobile menu
+   ============================================================ */
+
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+
+  if (!navbar) return;
+
+  // Add .scrolled class when page is scrolled past 80px
+  const handleScroll = () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 80);
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll(); // run once on load
+
+  // Mobile hamburger toggle
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      navToggle.classList.toggle('open');
+      // Animate hamburger lines
+      const spans = navToggle.querySelectorAll('span');
+      spans.forEach(s => s.classList.toggle('open'));
+    });
+
+    // Close menu when a nav link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.querySelectorAll('span').forEach(s => s.classList.remove('open'));
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navbar.contains(e.target)) {
+        navLinks.classList.remove('open');
+        navToggle.classList.remove('open');
+      }
+    });
+  }
+}
+
+/* ============================================================
+   SMOOTH SCROLL — for anchor links
+   ============================================================ */
+
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+
+      const target = document.querySelector(targetId);
+      if (!target) return;
+
+      e.preventDefault();
+
+      const navbarHeight = document.getElementById('navbar')?.offsetHeight || 80;
+      const targetTop = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 20;
+
+      window.scrollTo({ top: targetTop, behavior: 'smooth' });
+    });
+  });
+}
+
+      /* ============================================================
+         SCROLL REVEAL — IntersectionObserver for .reveal elements
+         ============================================================ */
+
+      function initScrollReveal() {
+          const revealEls = document.querySelectorAll('.reveal');
+          if (!revealEls.length) return;
+
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('revealed');
+                      observer.unobserve(entry.target); // animate once only
+                  }
+              });
+          }, {
+              threshold: 0.12,
+              rootMargin: '0px 0px -40px 0px'
+          });
+
+          revealEls.forEach(el => observer.observe(el));
+      }
+
+/* ============================================================
+   COUNTDOWN TIMER
+   ============================================================ */
+
+function initCountdown() {
+  const daysEl    = document.getElementById('cd-days');
+  const hoursEl   = document.getElementById('cd-hours');
+  const minsEl    = document.getElementById('cd-mins');
+  const secsEl    = document.getElementById('cd-secs');
+  const heroTimer = document.getElementById('countdownBlock');
+
+  if (!daysEl) return;
+
+  const weddingTime = new Date(weddingConfig.weddingDate).getTime();
+
+  function updateCountdown() {
+    const now  = Date.now();
+    const diff = weddingTime - now;
+
+    if (diff <= 0) {
+      // Wedding day has passed — show celebratory message
+      if (heroTimer) heroTimer.innerHTML = '<p class="countdown-over">The celebration has begun! 🎉</p>';
+      return;
+    }
+
+    const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const secs  = Math.floor((diff % (1000 * 60)) / 1000);
+
+    daysEl.textContent  = String(days).padStart(2, '0');
+    hoursEl.textContent = String(hours).padStart(2, '0');
+    minsEl.textContent  = String(mins).padStart(2, '0');
+    if (secsEl) secsEl.textContent = String(secs).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+}
+
+      /* ============================================================
+         SEATING PLAN — renders tablesData into #seatingGrid
+         ============================================================ */
+
+      function renderSeating() {
+          const grid = document.getElementById('seatingGrid');
+          if (!grid || !tablesData.length) return;
+
+          grid.innerHTML = tablesData.map(table => `
+    <div class="table-card" data-table="${table.name.toLowerCase()}">
+      <div class="table-header">
+        <span class="table-emoji">${table.emoji}</span>
+        <h3 class="table-name">${table.name}</h3>
+        <span class="table-count">${table.guests.length} guests</span>
+      </div>
+      <ul class="guest-list">
+        ${table.guests.map(guest => `
+          <li class="guest-item">
+            <span class="guest-icon">◇</span>
+            <span class="guest-name">${guest}</span>
+          </li>
+        `).join('')}
+      </ul>
+    </div>
+  `).join('');
+      }
+
+      /* ============================================================
+         SEATING SEARCH — filter tables & guests by name
+         ============================================================ */
+
+function initSeatingSearch() {
+  const searchInput = document.getElementById('seatSearch');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase().trim();
+    const cards  = document.querySelectorAll('.table-card');
+    const noResult = document.getElementById('noSeatResult');
+
+    let anyVisible = false;
+
+    cards.forEach(card => {
+      const tableName = card.querySelector('.table-name')?.textContent.toLowerCase() || '';
+      const guestItems = card.querySelectorAll('.guest-name');
+
+      if (!query) {
+        // Reset all — show everything, remove highlights
+        card.style.display = '';
+        card.classList.remove('highlight');
+        guestItems.forEach(g => {
+          g.innerHTML = g.textContent; // remove any <mark> wrappers
+        });
+        anyVisible = true;
+        return;
+      }
+
+      // Check if table name or any guest matches
+      const tableMatch = tableName.includes(query);
+      const guestMatches = Array.from(guestItems).filter(g =>
+        g.textContent.toLowerCase().includes(query)
+      );
+
+      const hasMatch = tableMatch || guestMatches.length > 0;
+      card.style.display = hasMatch ? '' : 'none';
+      card.classList.toggle('highlight', hasMatch);
+
+      if (hasMatch) {
+        anyVisible = true;
+        // Highlight matched text within guest names
+        guestItems.forEach(g => {
+          const original = g.textContent;
+          if (original.toLowerCase().includes(query)) {
+            const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+            g.innerHTML = original.replace(regex, '<mark>$1</mark>');
+          } else {
+            g.innerHTML = original;
+          }
+        });
+      }
+    });
+
+    if (noResult) {
+      noResult.style.display = (query && !anyVisible) ? 'block' : 'none';
+    }
+  });
+
+  // Clear button
+  const clearBtn = document.getElementById('clearSearch');
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.focus();
+    });
+  }
+}
+
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+/* ============================================================
+   COUPLE QUIZ — renders quizData into #quizBody
+   ============================================================ */
+
+let quizState = {
+  current:  0,
+  score:    0,
+  answered: false
+};
+
+function renderQuiz() {
+  const quizBody = document.getElementById('quizBody');
+  if (!quizBody) return;
+
+  quizState = { current: 0, score: 0, answered: false };
+  showQuestion();
+}
+
+function showQuestion() {
+  const quizBody   = document.getElementById('quizBody');
+  const progressFill = document.getElementById('quizProgressFill');
+  const progressLabel = document.getElementById('quizProgressLabel');
+  if (!quizBody) return;
+
+  const total   = quizData.length;
+  const current = quizState.current;
+  const progress = Math.round(((current) / total) * 100);
+
+  if (progressFill)  progressFill.style.width = progress + '%';
+  if (progressLabel) progressLabel.textContent = `Question ${current + 1} of ${total}`;
+
+  if (current >= total) {
+    showQuizResult();
+    return;
+  }
+
+  const q = quizData[current];
+  quizState.answered = false;
+
+  quizBody.innerHTML = `
+    <div class="quiz-question reveal visible">
+      <p class="quiz-q-text">${q.q}</p>
+      <div class="quiz-options">
+        ${q.options.map((opt, i) => `
+          <button class="quiz-option" data-index="${i}" onclick="selectQuizAnswer(this, ${i})">
+            <span class="option-letter">${String.fromCharCode(65 + i)}</span>
+            <span class="option-text">${opt}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="quiz-feedback" id="quizFeedback" style="display:none;"></div>
+      <button class="btn-quiz-next" id="quizNextBtn" style="display:none;" onclick="nextQuestion()">
+        ${current + 1 < total ? 'Next Question →' : 'See My Result ✦'}
+      </button>
+    </div>
+  `;
+}
+
+function selectQuizAnswer(btn, selectedIndex) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+
+  const correct   = quizData[quizState.current].correct;
+  const isCorrect = selectedIndex === correct;
+  const feedback  = document.getElementById('quizFeedback');
+  const nextBtn   = document.getElementById('quizNextBtn');
+  const options   = document.querySelectorAll('.quiz-option');
+
+  if (isCorrect) quizState.score++;
+
+  // Style all options
+  options.forEach((opt, i) => {
+    opt.disabled = true;
+    if (i === correct) opt.classList.add('correct');
+    if (i === selectedIndex && !isCorrect) opt.classList.add('wrong');
+  });
+
+  // Show feedback message
+  const messages = {
+    correct: [
+      '✦ Wonderful! You know them so well.',
+      '✦ Absolutely right — what a great memory!',
+      '✦ Spot on! They\'d be delighted.',
+      '✦ Correct! You\'ve been paying attention.',
+      '✦ Bravo! That\'s exactly right.'
+    ],
+    wrong: [
+      '✧ Not quite — but love is about learning!',
+      '✧ Almost there! The answer might surprise you.',
+      '✧ Not this time, but that\'s the fun of it.',
+      '✧ Oops! Better luck on the next one.',
+      '✧ That\'s okay — there\'s more to discover.'
+    ]
+  };
+
+  const pool = isCorrect ? messages.correct : messages.wrong;
+  const msg  = pool[Math.floor(Math.random() * pool.length)];
+
+  feedback.textContent = msg;
+  feedback.className   = 'quiz-feedback ' + (isCorrect ? 'correct' : 'wrong');
+  feedback.style.display = 'block';
+  nextBtn.style.display  = 'inline-flex';
+}
+
+function nextQuestion() {
+  quizState.current++;
+  showQuestion();
+}
+
+function showQuizResult() {
+  const quizBody      = document.getElementById('quizBody');
+  const progressFill  = document.getElementById('quizProgressFill');
+  const progressLabel = document.getElementById('quizProgressLabel');
+  const score         = quizState.score;
+  const total         = quizData.length;
+  const pct           = Math.round((score / total) * 100);
+
+  if (progressFill)  progressFill.style.width = '100%';
+  if (progressLabel) progressLabel.textContent = 'Complete!';
+
+  let resultClass, resultEmoji, resultTitle, resultMsg;
+
+  if (pct === 100) {
+    resultClass = 'perfect';
+    resultEmoji = '💍';
+    resultTitle = 'A Perfect Score!';
+    resultMsg   = 'You know Kate & Harry better than anyone. You must be one of their dearest people — and they are so lucky to have you here.';
+  } else if (pct >= 70) {
+    resultClass = 'great';
+    resultEmoji = '🌹';
+    resultTitle = 'You Know Them Well!';
+    resultMsg   = `${score} out of ${total} — wonderful! You\'ve clearly been listening closely to their love story. Thank you for caring so much.`;
+  } else if (pct >= 40) {
+    resultClass = 'good';
+    resultEmoji = '🥂';
+    resultTitle = 'A Good Effort!';
+    resultMsg   = `${score} out of ${total} — not bad at all! There\'s still so much to discover about this lovely couple. Tonight will help!`;
+  } else {
+    resultClass = 'try-again';
+    resultEmoji = '💌';
+    resultTitle = 'Room to Grow!';
+    resultMsg   = `${score} out of ${total} — you\'re here and that\'s what matters most. Spend the evening getting to know them better — they can\'t wait to celebrate with you.`;
+  }
+
+  quizBody.innerHTML = `
+    <div class="quiz-result ${resultClass} reveal visible">
+      <div class="result-emoji">${resultEmoji}</div>
+      <h3 class="result-title">${resultTitle}</h3>
+      <div class="result-score">
+        <span class="score-number">${score}</span>
+        <span class="score-divider">/</span>
+        <span class="score-total">${total}</span>
+      </div>
+      <p class="result-message">${resultMsg}</p>
+      <button class="btn-primary" onclick="renderQuiz()">Try Again ↺</button>
+    </div>
+  `;
+}
+
+/* ============================================================
+   MEMORY GAME — renders gameCards pairs into #memoryGrid
+   ============================================================ */
+
+let gameState = {
+  flipped:   [],
+  matched:   [],
+  moves:     0,
+  locked:    false
+};
+
+function renderMemoryGame() {
+  const grid = document.getElementById('memoryGrid');
+  if (!grid) return;
+
+  // Reset state
+  gameState = { flipped: [], matched: [], moves: 0, locked: false };
+
+  const moveCount  = document.getElementById('moveCount');
+  const pairCount  = document.getElementById('pairCount');
+  const winMsg     = document.getElementById('gameWinMsg');
+
+  if (moveCount) moveCount.textContent = '0';
+  if (pairCount) pairCount.textContent = `0 / ${gameCards.length}`;
+  if (winMsg)    winMsg.style.display  = 'none';
+
+  // Build shuffled pairs
+  const pairs = [...gameCards, ...gameCards].map((card, i) => ({
+    ...card,
+    uid: i
+  }));
+  shuffle(pairs);
+
+  grid.innerHTML = pairs.map((card, idx) => `
+    <div class="memory-card" data-index="${idx}" data-label="${card.label}" onclick="flipCard(this)">
+      <div class="card-inner">
+        <div class="card-face card-back">
+          <span class="card-back-icon">✦</span>
+        </div>
+        <div class="card-face card-front">
+          <span class="card-emoji">${card.emoji}</span>
+          <span class="card-label">${card.label}</span>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  // Wire up reset buttons
+  document.querySelectorAll('#resetGame, #resetGame2').forEach(btn => {
+    btn.onclick = renderMemoryGame;
+  });
+}
+
+function flipCard(card) {
+  if (gameState.locked) return;
+  if (card.classList.contains('flipped')) return;
+  if (card.classList.contains('matched')) return;
+
+  card.classList.add('flipped');
+  gameState.flipped.push(card);
+
+  if (gameState.flipped.length === 2) {
+    gameState.locked = true;
+    checkMatch();
+  }
+}
+
+function checkMatch() {
+  const [a, b]  = gameState.flipped;
+  const isMatch = a.dataset.label === b.dataset.label;
+
+  gameState.moves++;
+  const moveCount = document.getElementById('moveCount');
+  if (moveCount) moveCount.textContent = gameState.moves;
+
+  if (isMatch) {
+    a.classList.add('matched');
+    b.classList.add('matched');
+    gameState.matched.push(a.dataset.label);
+
+    const pairCount = document.getElementById('pairCount');
+    if (pairCount) pairCount.textContent = `${gameState.matched.length} / ${gameCards.length}`;
+
+    gameState.flipped = [];
+    gameState.locked  = false;
+
+    if (gameState.matched.length === gameCards.length) {
+      setTimeout(showGameWin, 400);
+    }
+  } else {
+    setTimeout(() => {
+      a.classList.remove('flipped');
+      b.classList.remove('flipped');
+      gameState.flipped = [];
+      gameState.locked  = false;
+    }, 1100);
+  }
+}
+
+function showGameWin() {
+  const winMsg    = document.getElementById('gameWinMsg');
+  const finalMoves = document.getElementById('finalMoves');
+
+  if (finalMoves) finalMoves.textContent = gameState.moves;
+
+  if (winMsg) {
+    winMsg.style.display = 'block';
+    winMsg.classList.add('visible');
+    winMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+/* ============================================================
+   RSVP FORM — handles Formspree submission
+   ============================================================ */
+
+function initRSVPForm() {
+  const form    = document.getElementById('rsvpForm');
+  const success = document.getElementById('formSuccess');
+
+  if (!form) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('.btn-submit');
+    const btnText   = submitBtn?.querySelector('.btn-text');
+    const spinner   = submitBtn?.querySelector('.btn-spinner');
+
+    // Show loading state
+    if (submitBtn) submitBtn.disabled = true;
+    if (btnText)   btnText.textContent = 'Sending…';
+    if (spinner)   spinner.style.display = 'inline-block';
+
+    try {
+      const response = await fetch(form.action, {
+        method:  'POST',
+        body:    new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        // Success — hide form, show thank-you message
+        form.style.display = 'none';
+        if (success) {
+          success.style.display = 'block';
+          success.classList.add('visible');
+        }
+      } else {
+        const data = await response.json();
+        if (data.errors) {
+          alert('Something went wrong: ' + data.errors.map(e => e.message).join(', '));
+        } else {
+          alert('Oops! There was a problem submitting your RSVP. Please try again.');
+        }
+        if (submitBtn) submitBtn.disabled = false;
+        if (btnText)   btnText.textContent = 'Send RSVP';
+        if (spinner)   spinner.style.display = 'none';
+      }
+    } catch (err) {
+      console.error('RSVP submission error:', err);
+      alert('Network error — please check your connection and try again.');
+      if (submitBtn) submitBtn.disabled = false;
+      if (btnText)   btnText.textContent = 'Send RSVP';
+      if (spinner)   spinner.style.display = 'none';
+    }
+  });
+
+  // Toggle guest count field visibility
+  const attendingRadios = form.querySelectorAll('input[name="attending"]');
+  const guestCountGroup = document.getElementById('guestCountGroup');
+
+  attendingRadios.forEach(radio => {
+    radio.addEventListener('change', function () {
+      if (guestCountGroup) {
+        guestCountGroup.style.display = (this.value === 'yes') ? 'block' : 'none';
+      }
+    });
+  });
+}
+
+/* ============================================================
+   GALLERY — lightbox / fullscreen preview on click
+   ============================================================ */
+
+function initGallery() {
+  const galleryItems = document.querySelectorAll('.gallery-item img');
+  if (!galleryItems.length) return;
+
+  // Create lightbox overlay
+  const lightbox = document.createElement('div');
+  lightbox.id = 'lightbox';
+  lightbox.innerHTML = `
+    <div class="lightbox-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Close">&times;</button>
+      <img class="lightbox-img" src="" alt="">
+      <button class="lightbox-prev" aria-label="Previous">&#8592;</button>
+      <button class="lightbox-next" aria-label="Next">&#8594;</button>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+
+  const lbImg   = lightbox.querySelector('.lightbox-img');
+  const lbClose = lightbox.querySelector('.lightbox-close');
+  const lbPrev  = lightbox.querySelector('.lightbox-prev');
+  const lbNext  = lightbox.querySelector('.lightbox-next');
+  const lbOverlay = lightbox.querySelector('.lightbox-overlay');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lbImg.src = galleryItems[currentIndex].src;
+    lbImg.alt = galleryItems[currentIndex].alt;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  galleryItems.forEach((img, i) => {
+    img.style.cursor = 'pointer';
+    img.addEventListener('click', () => openLightbox(i));
+  });
+
+  lbClose.addEventListener('click', closeLightbox);
+  lbOverlay.addEventListener('click', closeLightbox);
+
+  lbPrev.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    lbImg.src = galleryItems[currentIndex].src;
+  });
+
+  lbNext.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    lbImg.src = galleryItems[currentIndex].src;
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLightbox();
+    if (e.key === 'ArrowLeft')   lbPrev.click();
+    if (e.key === 'ArrowRight')  lbNext.click();
+  });
+}
+
+/* ============================================================
+   UTILITY — hero scroll hint fade-out
+   ============================================================ */
+
+window.addEventListener('scroll', () => {
+  const scrollHint = document.querySelector('.scroll-hint');
+  if (scrollHint) {
+    scrollHint.style.opacity = window.scrollY > 80 ? '0' : '1';
+  }
+}, { passive: true });
+
+
+/* === Compatibility fixes for single-file version === */
+document.addEventListener("DOMContentLoaded", () => {
+  const quizStart = document.getElementById("quizStart");
+  const quizBody = document.getElementById("quizBody");
+  const startQuizBtn = document.getElementById("startQuizBtn");
+  if (startQuizBtn && quizStart && quizBody) {
+    startQuizBtn.addEventListener("click", () => {
+      quizStart.style.display = "none";
+      quizBody.style.display = "block";
+      showQuestion();
+    });
+  }
+});
+
+window.addEventListener("scroll", () => {
+  const scrollHint = document.querySelector(".hero-scroll-hint");
+  if (scrollHint) scrollHint.style.opacity = window.scrollY > 80 ? "0" : "1";
+}, { passive: true });
+</script>
+</body>
+</html>
