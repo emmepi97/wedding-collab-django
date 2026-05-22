@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demo — WeddingCollab</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/site.css">
+
+<style>
+:root {
+  --nav-h: 60px;
+}
+
+/* evita che la navbar copra il contenuto */
+body {
+  padding-top: var(--nav-h);
+}
+
+/* NAVBAR glass moderna */
+.navbar-glass {
+  background: rgba(255,255,255,0.75) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all .3s ease;
+}
+
+/* navbar più compatta */
+.navbar {
+  min-height: var(--nav-h);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* MOBILE MENU MIGLIORATO */
+@media (max-width: 991px) {
+
+  .navbar-collapse {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    padding: 10px;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+
+  .nav-link {
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<main class="py-4">
+  <div class="container">
+    
+<div class="container">
+  <div class="d-flex align-items-end justify-content-between flex-wrap gap-2 mb-3">
+    <div>
+      <h1 class="h3 fw-bold mb-1">Demo siti matrimonio</h1>
+      <p class="text-muted mb-0">Clicca una demo per aprirla.</p>
+    </div>
+    <a class="btn btn-outline-primary" href="/contatti/">Richiedi collaborazione</a>
+  </div>
+
+  <div class="row g-4">
+    
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="/demo/romantico/">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">Demo Romantico</h2>
+            <p class="text-muted mb-0">Stile elegante, foto grandi, timeline della storia.</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="/demo/minimal/">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">Demo Minimal</h2>
+            <p class="text-muted mb-0">Pulito, moderno, perfetto per coppie essenziali.</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="/demo/boho/">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">Demo Boho Chic</h2>
+            <p class="text-muted mb-0">Palette calda, illustrazioni, vibe naturale.</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="/demo/luxury/">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">Demo Luxury</h2>
+            <p class="text-muted mb-0">Hero impact, dettagli premium, RSVP in evidenza.</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+    <div class="col-md-6 col-lg-4">
+      <a class="text-decoration-none" href="/demo/destination/">
+        <div class="card h-100 rounded-4 shadow-sm demo-card">
+          <div class="card-body">
+            <div class="demo-thumb mb-3"></div>
+            <h2 class="h5 fw-bold mb-1">Demo Destination Wedding</h2>
+            <p class="text-muted mb-0">Mappe, travel info, eventi su più giorni.</p>
+          </div>
+          <div class="card-footer bg-white border-0 pt-0 pb-3">
+            <span class="link-primary">Apri demo →</span>
+          </div>
+        </div>
+      </a>
+    </div>
+    
+  </div>
+</div>
+
+  </div>
+</main>
+
+<footer class="border-top py-4">
+  <div class="container small text-muted d-flex flex-column flex-md-row justify-content-between">
+    <div>© 2026 WeddingCollab</div>
+    <a class="text-muted" href="/contatti/">Contatti</a>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
