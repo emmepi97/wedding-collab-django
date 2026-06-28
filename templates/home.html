@@ -1,683 +1,672 @@
 <!doctype html>
 <html lang="it">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Siti web di matrimonio white‑label per Wedding Planner | Wedding Coding</title>
-<meta name="description" content="Creiamo siti di matrimonio white‑label per Wedding Planner: pacchetti Standard e Premium su misura, consegna in 7 giorni, margine libero per il Planner. Prenota una demo o scarica il Kit Partner.">
-<meta name="theme-color" content="#F8F5F0"/>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Siti web di matrimonio white‑label per Wedding Planner | Wedding Coding</title>
+  <meta name="description" content="Creiamo siti di matrimonio white‑label per Wedding Planner: template premium, add‑on professionali, consegna in 72h, prezzi all’ingrosso. Prenota una demo o scarica il Kit Partner.">
+  <meta name="theme-color" content="#FBF9F6"/>
+ 
+  <!-- Fonts -->
+  <link rel="preconnect" href=https://fonts.googleapis.com crossorigin>
+  <link rel="preconnect" href=https://fonts.gstatic.com crossorigin>
+  <link href=https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lora:ital,wght@0,400;0,500;0,700;1,400&family=Parisienne&family=Playfair+Display:wght@500;700;900&display=swap rel="stylesheet">
+ 
+  <style>
+    /* ========= Design system (cipria/oro romantico + professionale) ========= */
+    :root{
+      --bg:#FBF9F6; --paper:#fff; --ink:#4A4542; --muted:#7B726D;
+      --rose:#EBD7D3; --blush:#E6C2BE; --gold:#CDB58D; --gold-soft:#D9C6A3;
+      --radius-lg:16px; --radius-md:12px; --radius-sm:10px;
+      --shadow-sm:0 6px 18px rgba(0,0,0,.06); --shadow-md:0 12px 30px rgba(0,0,0,.10);
+      --ring:0 0 0 3px rgba(205,181,141,.28);
+      --ff-title:"Playfair Display",Georgia,serif; --ff-body:"Lora",Georgia,serif; --ff-ui:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; --ff-script:"Parisienne",cursive;
+      --container:1160px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ff-body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    .center{text-align:center}
 
-<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&family=Cormorant:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
 
-<style>
-/* =========================================================
-   DESIGN TOKENS
-   Palette: avorio caldo, inchiostro seppia, oro vecchio, terracotta velata
-   Type: Cormorant (display, alto contrasto) + Jost (UI, geometrico pulito)
-   ========================================================= */
-:root{
-  --ivory:#F7F4EE;
-  --paper:#FFFFFF;
-  --ink:#2E2A26;
-  --ink-soft:#5C564F;
-  --muted:#8C8479;
-  --line:#E4DDD1;
-  --gold:#A98A4E;
-  --gold-deep:#8A6F3C;
-  --terracotta:#B4806A;
-  --terracotta-soft:#E9D9CE;
 
-  --radius-lg:2px;
-  --radius-md:2px;
-  --shadow-sm:0 1px 2px rgba(46,42,38,.06);
-  --shadow-md:0 18px 40px rgba(46,42,38,.10);
-
-  --ff-display:"Cormorant Garamond", Georgia, serif;
-  --ff-script:"Cormorant", Georgia, serif;
-  --ff-ui:"Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-
-  --container:1160px;
+form label{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
 }
 
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  background:var(--ivory);
-  color:var(--ink);
-  font-family:var(--ff-ui);
-  font-size:16px;
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
-}
-img{max-width:100%;height:auto;display:block}
-.container{max-width:var(--container);margin:0 auto;padding:0 24px}
-.center{text-align:center}
-
-/* ---------- Typography rhythm ---------- */
-h1,h2,h3{font-family:var(--ff-display);font-weight:600;color:var(--ink);letter-spacing:.1px}
-h2{font-size:clamp(30px,3.6vw,42px);line-height:1.15}
-h3{font-size:20px;line-height:1.3;margin:0 0 6px}
-p{margin:0}
-.eyebrow{
-  font-family:var(--ff-ui);
-  font-size:11.5px;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--gold-deep);
-  font-weight:600;
-  margin:0 0 14px;
-}
-.section-intro{color:var(--ink-soft);margin:14px 0 36px;max-width:560px;font-size:16.5px}
-.lede{max-width:640px}
-
-/* thin rule divider used sparingly, not as decoration on every block */
-.rule{width:42px;height:1px;background:var(--gold);margin:18px 0 0}
-.rule.center-rule{margin:18px auto 0}
-
-/* ---------- Buttons ---------- */
-.btn{
-  display:inline-flex;align-items:center;gap:8px;
-  text-decoration:none;cursor:pointer;user-select:none;
-  background:var(--ink);color:var(--ivory);
-  padding:14px 26px;border-radius:var(--radius-md);
-  font-family:var(--ff-ui);font-weight:500;font-size:14px;letter-spacing:.04em;
-  box-shadow:var(--shadow-sm);
-  border:1px solid var(--ink);
-  transition:background .2s,color .2s,transform .15s;
-}
-.btn:hover{background:transparent;color:var(--ink);transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.btn.ghost:hover{border-color:var(--ink)}
-.btn.small{padding:10px 18px;font-size:13px}
-
-/* ---------- Nav ---------- */
-nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(247,244,238,.92);
-  backdrop-filter:blur(8px) saturate(140%);
-  border-bottom:1px solid var(--line);
-}
-nav .nav-inner{
-  max-width:1320px;margin:0 auto;
-  padding:18px clamp(20px,3vw,48px);
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-}
-nav .brand{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
-nav .brand-title{font-family:var(--ff-display);font-weight:600;font-size:21px;letter-spacing:.02em}
-nav .nav-links{list-style:none;display:flex;align-items:center;gap:30px;margin:0;padding:0}
-nav .nav-links a{
-  font-family:var(--ff-ui);font-weight:500;font-size:14px;
-  text-decoration:none;color:var(--ink-soft);
-  transition:color .15s;
-}
-nav .nav-links a:hover{color:var(--ink)}
-nav .nav-cta{display:flex;align-items:center;gap:10px}
-
-@media (max-width:860px){
-  nav .nav-inner{flex-wrap:wrap;justify-content:center;gap:12px;padding:16px 20px}
-  nav .nav-links{flex-wrap:wrap;justify-content:center}
+form input,
+form select,
+form textarea{
+  background:#fff;
 }
 
-/* ---------- Hero ---------- */
-header.hero{
-  position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;
-  background:
-    radial-gradient(ellipse 65% 60% at 50% 50%, rgba(8,7,6,.66) 0%, rgba(8,7,6,.38) 55%, rgba(8,7,6,.46) 100%),
-    linear-gradient(180deg, rgba(8,7,6,.32) 0%, rgba(8,7,6,.18) 32%, rgba(8,7,6,.50) 100%),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?w=2000&q=80') center/cover no-repeat;
-  overflow:hidden;
+.form-row{
+  display:grid;
+  gap:14px;
 }
-.hero-content{position:relative;z-index:1;color:#fff;padding:24px;max-width:780px}
-.hero-eyebrow{
-  font-family:var(--ff-ui);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
-  color:#F4E9D6;margin:0 0 18px;font-weight:600;
-  text-shadow:0 1px 3px rgba(0,0,0,.65), 0 2px 14px rgba(0,0,0,.55);
-}
-.hero h1{
-  font-family:var(--ff-display);
-  font-size:clamp(34px,5.6vw,60px);
-  line-height:1.12;margin:0 0 18px;color:#fff;font-weight:700;
-  text-shadow:0 1px 3px rgba(0,0,0,.6), 0 6px 28px rgba(0,0,0,.6), 0 16px 48px rgba(0,0,0,.4);
-}
-.hero h1 em{font-style:italic;font-weight:700;color:#F6E7C8}
-.hero-sub{max-width:540px;margin:0 auto 32px;color:rgba(255,255,255,.94);font-size:16.5px;line-height:1.7;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.5)}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.hero-meta{
-  margin-top:46px;display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
-  font-family:var(--ff-ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,255,255,.85);
-  text-shadow:0 1px 4px rgba(0,0,0,.6);
-}
-.hero-meta span{position:relative;padding-left:16px}
-.hero-meta span::before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;background:rgba(255,255,255,.5)}
 
-/* ---------- Sections ---------- */
-.section{padding:104px 0}
-.section.tight{padding-top:0}
-.section-head{margin-bottom:48px}
-
-.grid{display:grid;gap:28px}
 @media(min-width:760px){
-  .grid.cols-2{grid-template-columns:1fr 1fr}
-  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .form-row.cols-2{
+    grid-template-columns:1fr 1fr;
+  }
 }
 
-/* ---------- Process (numbered: real sequence, kept) ---------- */
-.process{display:grid;gap:0}
-@media(min-width:760px){.process{grid-template-columns:repeat(3,1fr)}}
-.process-step{
-  padding:0 32px;border-right:1px solid var(--line);
-}
-.process-step:first-child{padding-left:0}
-.process-step:last-child{border-right:none;padding-right:0}
-@media(max-width:759px){
-  .process-step{border-right:none;border-bottom:1px solid var(--line);padding:0 0 32px 0 !important;margin-bottom:32px}
-  .process-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0 !important}
-}
-.process-num{
-  font-family:var(--ff-display);font-size:15px;color:var(--gold-deep);
-  letter-spacing:.05em;margin-bottom:14px;font-weight:600;
-}
-.process-step p{color:var(--ink-soft);font-size:15px;margin-top:10px}
-.process-list{margin:16px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink-soft)}
-.process-list li{padding:6px 0;border-top:1px solid var(--line)}
-.process-list li:first-child{border-top:none}
-
-/* ---------- Feature cards ---------- */
-.feature-card{
-  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:30px 26px;
-}
-.feature-card .mark{
-  font-family:var(--ff-display);font-size:26px;color:var(--terracotta);margin-bottom:14px;display:block;
-}
-.feature-card p{color:var(--ink-soft);font-size:14.5px;margin-top:8px}
-
-/* ---------- Template gallery ---------- */
-.tpl{
-  position:relative;overflow:hidden;border-radius:var(--radius-lg);
-  border:1px solid var(--line);background:var(--paper);
-}
-.tpl a{display:block}
-.tpl img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.tpl:hover img{transform:scale(1.045)}
-.tpl-meta{
-  padding:18px 20px;border-top:1px solid var(--line);
-  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
-}
-.tpl-meta .name{font-family:var(--ff-display);font-size:18px;font-weight:600}
-.tpl-meta .style{font-size:12px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-
-/* ---------- Demo-style template cards ---------- */
-.demo-card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  overflow:hidden;
-  text-decoration:none;
-  display:block;
-  transition:border-color .3s, transform .3s, box-shadow .3s;
-  position:relative;
-  border-radius:var(--radius-lg);
-}
-.demo-card:hover{
-  border-color:var(--gold);
-  transform:translateY(-6px);
-  box-shadow:var(--shadow-md);
-}
-.demo-thumb{
-  height:220px;position:relative;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
-}
-.demo-thumb-bg{position:absolute;inset:0;transition:transform .5s ease}
-.demo-card:hover .demo-thumb-bg{transform:scale(1.05)}
-
-.demo-card:nth-child(1) .demo-thumb-bg{background:linear-gradient(135deg,#EFE3D6 0%,#E3D2BC 50%,#EFE3D6 100%)}
-.demo-card:nth-child(2) .demo-thumb-bg{background:linear-gradient(135deg,#E9E2D8 0%,#DCD0BE 50%,#E9E2D8 100%)}
-.demo-card:nth-child(3) .demo-thumb-bg{background:linear-gradient(135deg,#EAD9CE 0%,#DCC2AE 50%,#EAD9CE 100%)}
-.demo-card:nth-child(4) .demo-thumb-bg{background:linear-gradient(135deg,#E6E6DC 0%,#D8D6C6 50%,#E6E6DC 100%)}
-.demo-card:nth-child(5) .demo-thumb-bg{background:linear-gradient(135deg,#EDE0DD 0%,#E0C9C2 50%,#EDE0DD 100%)}
-.demo-card:nth-child(6) .demo-thumb-bg{background:linear-gradient(135deg,#E8E4DD 0%,#D9D2C4 50%,#E8E4DD 100%)}
-
-.demo-thumb-content{position:relative;z-index:2;text-align:center;padding:24px}
-.demo-names{
-  font-family:var(--ff-display);font-size:30px;font-weight:600;font-style:italic;
-  color:var(--ink);line-height:1.1;margin-bottom:10px;
-}
-.demo-amp{color:var(--gold-deep);font-size:22px}
-.demo-date-line{
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);
-  font-family:var(--ff-ui);
-}
-.demo-ornament{width:36px;height:1px;background:var(--gold);margin:12px auto}
-
-.demo-overlay{
-  position:absolute;inset:0;background:rgba(46,42,38,.55);
-  display:flex;align-items:center;justify-content:center;
-  opacity:0;transition:opacity .3s;z-index:10;
-}
-.demo-card:hover .demo-overlay{opacity:1}
-.demo-overlay-text{
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
-  border:1px solid rgba(255,255,255,.6);padding:11px 22px;font-family:var(--ff-ui);font-weight:500;
+.checkbox-row{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
 }
 
-.demo-info{padding:18px 20px;border-top:1px solid var(--line)}
-.demo-title{font-family:var(--ff-display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.demo-style{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-family:var(--ff-ui)}
+ 
 
-/* ---------- Add-on list (no card-soup: simple table-like rows) ---------- */
-.addon-rows{border-top:1px solid var(--line)}
-.addon-row{
-  display:grid;grid-template-columns:1fr 1.6fr;gap:24px;
-  padding:24px 0;border-bottom:1px solid var(--line);
+
+    /* Buttons */
+    .btn{display:inline-block;text-decoration:none;cursor:pointer;user-select:none;background:linear-gradient(135deg,var(--gold),var(--gold-soft));color:#3a2f1b;padding:12px 18px;border-radius:999px;font-weight:800;box-shadow:var(--shadow-sm);border:.5px solid rgba(58,47,27,.15);transition:transform .15s,box-shadow .15s,filter .2s}
+    .btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-md);filter:saturate(110%)}
+    .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(230,194,190,.65)}
+    .btn.small{padding:8px 12px;font-weight:700}
+ 
+    /* Hero */
+    header.hero{position:relative;min-height:82vh;display:grid;place-items:center;text-align:center;background:url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;overflow:hidden}
+    header.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(230,194,190,.25),rgba(217,198,163,.16)),linear-gradient(to bottom,rgba(0,0,0,.20),rgba(0,0,0,.22));mix-blend-mode:multiply}
+    .hero-content{position:relative;z-index:1;color:#fff;padding:24px}
+    .hero-script{font-family:var(--ff-script);font-size:clamp(18px,3vw,30px);opacity:.95}
+    .hero h1{font-family:var(--ff-title);font-size:clamp(36px,5.5vw,68px);line-height:1.06;margin:8px 0}
+    .hero-sub{max-width:760px;margin:0 auto 16px;color:#fff;opacity:.95;font-family:var(--ff-ui)}
+    .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+    .badges{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:14px}
+    .badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:#fff;padding:6px 10px;border-radius:999px;font-family:var(--ff-ui);font-weight:700;font-size:13px}
+ 
+    /* Sections */
+    .section{padding:90px 0}
+    .kicker{margin:0 0 6px;color:var(--ink)}
+    .kicker.script{font-family:var(--ff-script);color:#AF8D85}
+    h2{margin:0;font-family:var(--ff-title);font-size:clamp(28px,4.2vw,44px);font-weight:900;letter-spacing:.2px}
+    .section-intro{color:var(--muted);margin:10px 0 28px;font-family:var(--ff-ui)}
+    .decor{display:flex;align-items:center;gap:10px;margin:14px 0 22px}
+    .decor::before,.decor::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(230,194,190,.55),transparent)}
+    .decor .dot{width:10px;height:10px;border-radius:999px;background:var(--gold);box-shadow:0 0 0 6px rgba(205,181,141,.20)}
+    .grid{display:grid;gap:18px}
+    @media(min-width:760px){.grid.cols-2{grid-template-columns:1fr 1fr}.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
+    .card{background:var(--paper);border:1px solid rgba(230,194,190,.35);border-radius:16px;padding:22px;box-shadow:var(--shadow-sm)}
+    .rose{background:linear-gradient(180deg,#fff,#fff) padding-box,linear-gradient(180deg,#f3e7e4,#ead9d6) border-box;border:1px solid transparent;box-shadow:0 12px 28px rgba(230,194,190,.28)}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#f6eeed;color:#7b5a56;font-weight:800;font-size:12px}
+ 
+    /* Feature list */
+    .features{display:grid;gap:12px}
+    .feature{display:flex;gap:12px;align-items:flex-start}
+    .feature .icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:#fff;border:1px solid rgba(230,194,190,.55);color:#9d6e63;font-weight:800;flex:0 0 36px}
+ 
+    /* Templates gallery (cards) */
+    .tpl{overflow:hidden;border-radius:14px;border:8px solid #fff;outline:1px solid rgba(230,194,190,.55);box-shadow:var(--shadow-sm)}
+    .tpl img{transition:transform .35s ease, filter .35s ease}
+    .tpl:hover img{transform:scale(1.03);filter:contrast(1.04) saturate(1.04)}
+    .tpl-meta{padding:12px 14px;background:#fff;border-top:1px solid rgba(230,194,190,.35)}
+ 
+    /* Pricing */
+    .price{font-family:var(--ff-ui);font-weight:900;font-size:28px}
+    .unit{font-weight:600;font-size:14px;color:var(--muted)}
+    .list{padding-left:18px;margin:8px 0}
+    .list li{margin:6px 0}
+ 
+    /* FAQ */
+    .accordion details{background:var(--paper);border:1px solid rgba(230,194,190,.45);border-radius:12px;padding:14px 16px}
+    .accordion details+details{margin-top:10px}
+    .accordion summary{cursor:pointer;font-weight:700;list-style:none}
+    .accordion summary::marker,.accordion summary::-webkit-details-marker{display:none}
+    .accordion summary:after{content:"+";float:right}
+    .accordion details[open] summary:after{content:"–"}
+
+
+/* =========================
+   NAVBAR (pulita e responsive)
+   ========================= */
+
+nav{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px) saturate(140%);
+  background: rgba(251,249,246,.78);
+  border-bottom: 1px solid rgba(230,194,190,.35);
 }
-@media(max-width:640px){.addon-row{grid-template-columns:1fr}}
-.addon-row .name{font-family:var(--ff-display);font-size:19px;font-weight:600}
-.addon-row .desc{color:var(--ink-soft);font-size:14.5px}
 
-/* ---------- Why us ---------- */
-.why-grid{display:grid;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
-@media(min-width:760px){.why-grid{grid-template-columns:repeat(3,1fr)}}
-.why-item{padding:30px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.why-item h3{font-size:17px;margin-bottom:6px}
-.why-item p{color:var(--ink-soft);font-size:14px}
-
-/* ---------- FAQ ---------- */
-.accordion details{
-  border-bottom:1px solid var(--line);padding:20px 0;
-}
-.accordion details:first-child{border-top:1px solid var(--line)}
-.accordion summary{
-  cursor:pointer;list-style:none;font-family:var(--ff-display);font-weight:600;font-size:18px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;
-}
-.accordion summary::marker,.accordion summary::-webkit-details-marker{display:none}
-.accordion summary .ico{font-family:var(--ff-ui);font-size:18px;color:var(--gold-deep);flex:0 0 auto;transition:transform .2s}
-.accordion details[open] summary .ico{transform:rotate(45deg)}
-.accordion details p{color:var(--ink-soft);margin-top:14px;font-size:15px;max-width:680px}
-
-/* ---------- Form ---------- */
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px}
-form{display:grid;gap:18px}
-label{display:flex;flex-direction:column;gap:7px;font-family:var(--ff-ui);font-weight:500;font-size:13px;color:var(--ink-soft);letter-spacing:.02em}
-input,select,textarea{
-  width:100%;padding:13px 14px;font-family:var(--ff-ui);font-size:15px;color:var(--ink);
-  background:var(--ivory);border:1px solid var(--line);border-radius:2px;outline:none;
-  transition:border-color .15s,background .15s;
-}
-input:focus,select:focus,textarea:focus{border-color:var(--gold);background:#fff}
-.form-row{display:grid;gap:18px}
-@media(min-width:600px){.form-row.cols-2{grid-template-columns:1fr 1fr}}
-.checkbox-row{display:flex;gap:10px;align-items:flex-start;flex-direction:row}
-.checkbox-row input{width:auto;margin-top:3px}
-.help{font-size:12.5px;color:var(--muted);line-height:1.6}
-
-.panel.dark{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
-.panel.dark h3{color:var(--ivory)}
-.panel.dark ul{padding-left:0;list-style:none;margin:18px 0 0;display:grid;gap:14px}
-.panel.dark ul li{
-  padding-left:20px;position:relative;font-size:15px;color:rgba(247,244,238,.85);
-}
-.panel.dark ul li::before{content:"—";position:absolute;left:0;color:var(--gold)}
-
-/* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){
-  .reveal{opacity:1;transform:none;transition:none}
+/* contenitore interno: largo ma con “aria” ai lati */
+nav .nav-inner{
+  max-width: 1600px;                 /* <-- cambia qui: 1400 / 1600 / 1900 */
+  margin: 0 auto;
+  padding: 10px clamp(16px, 3vw, 64px); /* padding laterale dinamico */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-/* ---------- Footer ---------- */
-footer{border-top:1px solid var(--line);padding:48px 0}
-footer .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:baseline}
-footer .brand-title{font-family:var(--ff-display);font-weight:600;font-size:18px}
-footer .help{margin-top:4px}
-footer .foot-links{display:flex;gap:18px;font-size:13px}
-footer .foot-links a{color:var(--ink-soft);text-decoration:none}
-footer .foot-links a:hover{color:var(--ink)}
-
-/* visible keyboard focus */
-a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
-  outline:2px solid var(--gold-deep);outline-offset:2px;
+/* brand */
+nav .brand{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--ink);
 }
-</style>
+nav .brand-title{
+  font-family: var(--ff-title);
+  font-weight: 900;
+  letter-spacing: .3px;
+}
+
+/* links */
+nav .nav-links{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+}
+nav .nav-links a{
+  font-family: var(--ff-ui);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 8px 12px;
+  border-radius: 999px;
+}
+nav .nav-links a:hover{
+  background: rgba(230,194,190,.18);
+}
+
+/* CTA */
+nav .nav-cta{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* =========================
+   Responsive
+   ========================= */
+@media (max-width: 900px){
+  nav .nav-inner{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  nav .brand{
+    width: 100%;
+    justify-content: center;
+  }
+
+  nav .nav-links{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  nav .nav-cta{
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 6px;
+    flex-wrap: wrap;
+  }
+}
+
+
+    /* Form */
+    form{display:grid;gap:14px}
+    label{display:block;font-family:var(--ff-ui);font-weight:700;font-size:14px;color:#4A4542}
+    input,select,textarea{width:100%;padding:12px;margin-top:6px;font-family:var(--ff-ui);font-size:15px;color:var(--ink);background:#fff;border:1px solid rgba(230,194,190,.65);border-radius:12px;outline:none;transition:box-shadow .15s,border-color .15s,background .2s}
+    input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:var(--ring)}
+    .help{font-size:12px;color:var(--muted)}
+ 
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+ 
+    /* Footer */
+    footer{border-top:1px solid rgba(230,194,190,.45);padding:40px 0;color:#7c7773}
+  </style>
 </head>
 
-<body>
 
+
+<body>
+ 
+  <!-- NAV -->
 <nav aria-label="Navigazione principale">
   <div class="nav-inner">
     <a href="#home" class="brand" aria-label="Vai alla home">
-      <span class="brand-title">Wedding Coding</span>
+      <div class="brand-title">Wedding Coding</div>
     </a>
+
     <ul class="nav-links">
       <li><a href="#servizio">Servizio</a></li>
       <li><a href="#template">Template</a></li>
       <li><a href="#demo">Contatti</a></li>
     </ul>
+
     <div class="nav-cta">
-      <a href="#partner" class="btn ghost small">Diventa Partner</a>
+      <a href="#partner" class="btn ghost">Diventa Partner</a>
+
     </div>
   </div>
 </nav>
 
-<header id="home" class="hero" role="banner" aria-label="Sezione di benvenuto">
-  <div class="hero-content container">
-    <p class="hero-eyebrow">Il sito del vostro matrimonio</p>
-    <h1>Siti di matrimonio curati come<br><em>il giorno che raccontano.</em></h1>
-    <p class="hero-sub">Sito completo e personalizzabile — programma, location, gallery, RSVP avanzata, lista regali. Per chi si sposa e per chi organizza matrimoni.</p>
-    <div class="hero-cta">
-      <a href="#demo" class="btn">Sei una coppia di sposi</a>
-      <a href="#partner" class="btn ghost" style="border-color:rgba(255,255,255,.4);color:#fff">Sei un Wedding Planner</a>
-    </div>
-    <div class="hero-meta">
-      <span>Consegna in 7 giorni</span>
-      <span>Revisioni illimitate</span>
-      <span>Assistenza WhatsApp 24h</span>
-    </div>
-  </div>
-</header>
 
-<main>
+ 
+  <!-- HERO -->
+  <header id="home" class="hero" role="banner" aria-label="Sezione di benvenuto">
+    <div class="hero-content container">
+      <p class="hero-script">White‑label per Wedding Planner</p>
+      <h1>Siti di matrimonio premium per il sogno d'amore dei tuoi clienti.</h1>
+      <p class="hero-sub">Template eleganti e su misura, add‑on professionali (RSVP, gallery, QR kit, guestbook). Tu gestisci il cliente, noi realizziamo il sito per il loro sogno d'amore.</p>
+      <div class="hero-cta">
 
-  <!-- SERVIZIO / COME FUNZIONA -->
-  <section id="servizio" class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Per sposi e Wedding Planner</p>
+        <a href="#demo" class="btn">Contattaci subito</a>
+      </div>
+      <div class="badges">
+        <span class="badge">White‑label</span>
+        <span class="badge">7day delivery</span>
+        <span class="badge">GDPR‑ready</span>
+        <span class="badge">Supporto Priority</span>
+      </div>
+    </div>
+  </header>
+ 
+  <main>
+    <!-- SERVIZIO / COME FUNZIONA -->
+    <section id="servizio" class="section">
+      <div class="container">
+        <p class="kicker script">Pensato per i Wedding Planner</p>
         <h2>Come funziona</h2>
-        <div class="rule"></div>
+        <div class="decor"><span class="dot"></span></div>
+        <p class="section-intro">Un flusso semplice per massimizzare il tuo tempo e il valore percepito dai tuoi clienti.</p>
+ 
+        <div class="grid cols-3">
+          <div class="card reveal">
+            <span class="pill">1 · Brief</span>
+            <h3>Brief & Template</h3>
+            <p>Ci invii informazioni, palette, foto e scegli un design. Noi sviluppiamo il sito, copy e struttura.</p>
+            <div class="features">
+              <div class="feature"><div class="icon">🎨</div><div>Branding del Planner e del cliente</div></div>
+              <div class="feature"><div class="icon">🧩</div><div>Sezioni modulari su misura</div></div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <span class="pill">2 · Produzione</span>
+            <h3>Realizzazione in 72h</h3>
+            <p>Sviluppo, ottimizzazione immagini, form RSVP, embed mappa e gallery.</p>
+            <div class="features">
+              <div class="feature"><div class="icon">⚡</div><div>Performance e SEO base</div></div>
+              <div class="feature"><div class="icon">🔒</div><div>GDPR & cookie banner pronti</div></div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <span class="pill">3 · Consegna</span>
+            <h3>Consegna & supporto</h3>
+            <p>Pubblicazione su dominio del cliente o hosting dedicato. Materiali rivendita inclusi.</p>
+            <div class="features">
+              <div class="feature"><div class="icon">📦</div><div>Kit partner: mockup, schede, preventivi</div></div>
+              <div class="feature"><div class="icon">🤝</div><div>Assistenza prioritaria pre‑evento</div></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <div class="process">
-        <div class="process-step reveal">
-          <div class="process-num">01 — Contatto</div>
-          <h3>Ci raccontate il matrimonio</h3>
-          <p>Direttamente o tramite il tuo Wedding Planner: data, stile, location e cosa vi serve davvero.</p>
-          <ul class="process-list">
-            <li>Demo reali da consultare subito</li>
-            <li>Nessuna competenza tecnica richiesta</li>
-          </ul>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">02 — Preventivo</div>
-          <h3>Individuiamo la soluzione giusta</h3>
-          <p>Capiamo l'esigenza della coppia e proponiamo il pacchetto più adatto: Standard o Premium su misura.</p>
-          <ul class="process-list">
-            <li>Preventivo chiaro, senza sorprese</li>
-            <li>Per il Planner: margine libero, gestito da te</li>
-          </ul>
-        </div>
-        <div class="process-step reveal">
-          <div class="process-num">03 — Produzione</div>
-          <h3>Raccolta materiali e pubblicazione</h3>
-          <p>Dopo la caparra, raccogliamo i materiali della coppia e pubblichiamo il sito Standard entro 7 giorni.</p>
-          <ul class="process-list">
-            <li>Revisioni illimitate fino al matrimonio</li>
-            <li>Assistenza WhatsApp 24h</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FUNZIONALITÀ CHIAVE -->
-  <section class="section" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Cosa includiamo</p>
+    </section>
+ 
+    <!-- FUNZIONALITÀ CHIAVE -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker script">Cosa includiamo</p>
         <h2>Funzionalità chiave</h2>
-        <div class="rule"></div>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="grid cols-3">
+          <div class="card feature reveal"><div class="icon">💍</div><div><strong>Template premium</strong><br/>Stili romantici, moderni, minimal‑lusso</div></div>
+          <div class="card feature reveal"><div class="icon">💌</div><div><strong>RSVP avanzato</strong><br/>Allergie, menù, bambini, export CSV</div></div>
+          <div class="card feature reveal"><div class="icon">📸</div><div><strong>Gallery & upload</strong><br/>Masonry, slideshow, upload invitati</div></div>
+          <div class="card feature reveal"><div class="icon">🗺️</div><div><strong>Mappe & planner</strong><br/>Come arrivare, alloggi, itinerari</div></div>
+          <div class="card feature reveal"><div class="icon">🎧</div><div><strong>Playlist & media</strong><br/>Spotify, video intro, photobooth QR</div></div>
+          <div class="card feature reveal"><div class="icon">📈</div><div><strong>Analytics</strong><br/>Pixel/GA, lead tracking</div></div>
+        </div>
       </div>
+    </section>
+ 
 
-      <div class="grid cols-3">
-        <div class="feature-card reveal">
-          <span class="mark">I.</span>
-          <h3>Contenuti & sezioni</h3>
-          <p>Pagine informative, countdown, programma della giornata, storia della coppia, dress code.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="mark">II.</span>
-          <h3>RSVP avanzata</h3>
-          <p>Conferma presenza, preferenze menù, allergie e intolleranze, presenza bambini, richieste particolari.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="mark">III.</span>
-          <h3>Gallery fotografica</h3>
-          <p>Galleria curata delle foto della coppia, da riempire man mano fino al giorno del sì.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="mark">IV.</span>
-          <h3>Location & travel</h3>
-          <p>Mappe e indicazioni per raggiungere chiesa e location, alloggi e info travel per chi arriva da fuori.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="mark">V.</span>
-          <h3>Dominio personalizzato</h3>
-          <p>Un indirizzo web su misura per la coppia, incluso in entrambi i pacchetti.</p>
-        </div>
-        <div class="feature-card reveal">
-          <span class="mark">VI.</span>
-          <h3>Personalizzazione completa</h3>
-          <p>Contenuti su misura, organizzazione tavoli e lista regali integrate nel sito.</p>
-        </div>
-      </div>
+
+    {% load static %}
+
+<!-- TEMPLATE GALLERY -->
+<section id="template" class="section">
+  <div class="container">
+
+    <p class="kicker script">Selezione</p>
+
+    <h2>Template pronti per l’uso</h2>
+
+    <div class="decor">
+      <span class="dot"></span>
     </div>
-  </section>
 
-  <!-- TEMPLATE GALLERY -->
-  <section id="template" class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Selezione</p>
-        <h2>Template pronti per l'uso</h2>
-        <div class="rule"></div>
-        <p class="section-intro">Ogni template è personalizzabile su colori, font, sezioni e immagini. Possiamo anche partire da zero.</p>
+    <p class="section-intro">
+      Ogni template è personalizzabile su colori, font, sezioni e immagini.
+      Possiamo anche partire da zero.
+    </p>
+
+    <div class="grid cols-3">
+
+      <div class="tpl reveal"> <a href="{% url 'demo_romantico' %}"> <img src="{% static 'img/demositoromantico.png' %}" alt="Template matrimonio elegante" class="img-fluid" > </a>
+        <div class="tpl-meta"> <strong>Cipria Oro</strong> · elegante & romantico </div>
       </div>
 
-      <div class="grid cols-2">
-
-        <a href="https://www.weddingcoding.it/emma&james" target="_blank" class="demo-card reveal">
-          <div class="demo-thumb">
-            <div class="demo-thumb-bg"></div>
-            <div class="demo-thumb-content">
-              <div class="demo-names">Emma <span class="demo-amp">&</span> James</div>
-              <div class="demo-ornament"></div>
-              <div class="demo-date-line">06 · 09 · 2025 — Cannes</div>
-            </div>
-            <div class="demo-overlay">
-              <div class="demo-overlay-text">Visualizza demo</div>
-            </div>
-          </div>
-          <div class="demo-info">
-            <div class="demo-title">Emma & James</div>
-            <div class="demo-style">Luxury · Lacustre · Classico</div>
-          </div>
-        </a>
-
-        <a href="https://www.weddingcoding.it/harry&kate/" target="_blank" class="demo-card reveal">
-          <div class="demo-thumb">
-            <div class="demo-thumb-bg"></div>
-            <div class="demo-thumb-content">
-              <div class="demo-names">Harry <span class="demo-amp">&</span> Kate</div>
-              <div class="demo-ornament"></div>
-              <div class="demo-date-line">14 · 09 · 2025 — Roma</div>
-            </div>
-            <div class="demo-overlay">
-              <div class="demo-overlay-text">Visualizza demo</div>
-            </div>
-          </div>
-          <div class="demo-info">
-            <div class="demo-title">Harry & Kate</div>
-            <div class="demo-style">Elegante · Divertente · Chic</div>
-          </div>
-        </a>
-
+            <div class="tpl reveal"> <a href="{% url 'demo3' %}"> <img src="{% static 'img/demosito3.png' %}" alt="Template matrimonio elegante" class="img-fluid" > </a>
+        <div class="tpl-meta"> <strong>Cipria Oro</strong> · elegante & romantico </div>
       </div>
+
+            <div class="tpl reveal"> <a href="{% url 'demo7' %}"> <img src="{% static 'img/demosito7.png' %}" alt="Template matrimonio elegante" class="img-fluid" > </a>
+        <div class="tpl-meta"> <strong>Cipria Oro</strong> · elegante & romantico </div>
+      </div>
+
+
+
+
     </div>
-  </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="section" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="container" style="max-width:780px">
-      <div class="section-head">
-        <p class="eyebrow">Domande frequenti</p>
+
+
+
+
+
+    <div class="center" style="margin-top:16px">
+  
+    </div>
+
+  </div>
+</section>
+
+
+
+ 
+    <!-- ADD-ON PREMIUM -->
+    <section id="addon" class="section">
+      <div class="container">
+        <p class="kicker script">Valore aggiunto</p>
+        <h2>Add‑on premium per un effetto “wow”</h2>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="grid cols-3">
+          <div class="card reveal"><strong>Video intro cinematografico</strong><br/><span class="muted">5–10s, impatto emozionale</span></div>
+          <div class="card reveal"><strong>Guestbook audio/video</strong><br/><span class="muted">Messaggi dagli invitati</span></div>
+          <div class="card reveal"><strong>Photo uploader + QR</strong><br/><span class="muted">Raccolta foto in tempo reale</span></div>
+          <div class="card reveal"><strong>Heatmap tavoli</strong><br/><span class="muted">Posti & tavoli interattivi</span></div>
+          <div class="card reveal"><strong>Countdown con petali</strong><br/><span class="muted">Animazioni delicate</span></div>
+          <div class="card reveal"><strong>After‑wedding mode</strong><br/><span class="muted">Gallery ufficiale, grazie</span></div>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- PORTFOLIO / CASE STUDY 
+    <section class="section">
+      <div class="container">
+        <p class="kicker script">Portfolio</p>
+        <h2>Progetti recenti</h2>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="grid cols-3">
+          <div class="card reveal">
+            <img src=https://images.unsplash.com/photo-1489619447080-2c6e0b50b4eb?q=80&w=1400&auto=format&fit=crop alt="">
+            <p><strong>Federica & Luca</strong> · Template Cipria Oro · Add‑on: guestbook, countdown</p>
+          </div>
+          <div class="card reveal">
+            <img src=https://images.unsplash.com/photo-1542596594-f611d33a2868?q=80&w=1400&auto=format&fit=crop alt="">
+            <p><strong>Elena & Marco</strong> · Template Minimal Lusso · Add‑on: uploader foto</p>
+          </div>
+          <div class="card reveal">
+            <img src=https://images.unsplash.com/photo-1514919130535-3012628045dc?q=80&w=1400&auto=format&fit=crop alt="">
+            <p><strong>Chiara & Davide</strong> · Custom botanico · Add‑on: heatmap tavoli</p>
+          </div>
+        </div>
+ 
+        <div class="center" style="margin-top:16px">
+          <a href="#demo" class="btn">Prenota una demo guidata</a>
+        </div>
+      </div>
+    </section>
+ 
+    -->
+    <!-- PERCHÉ NOI -->
+    <section class="section">
+      <div class="container">
+        <p class="kicker script">Perché sceglierci</p>
+        <h2>Un partner tecnico, non solo un fornitore</h2>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="grid cols-3">
+          <div class="card reveal"><strong>White‑label totale</strong><br/><span class="muted">Brand Planner in ogni touchpoint</span></div>
+          <div class="card reveal"><strong>Time‑to‑market</strong><br/><span class="muted">Consegna in 7 giorni</span></div>
+          <div class="card reveal"><strong>Kit rivendita</strong><br/><span class="muted">Mockup, listini, schede</span></div>
+          <div class="card reveal"><strong>Prezzi all’ingrosso</strong><br/><span class="muted">Margine per il Planner</span></div>
+          <div class="card reveal"><strong>Supporto evento</strong><br/><span class="muted">Prioritario prima/dopo</span></div>
+          <div class="card reveal"><strong>GDPR‑ready</strong><br/><span class="muted">Cookie, informativa, hosting EU*</span></div>
+        </div>
+        <p class="help">*Hosting e trattamento dati configurabili secondo esigenze del Planner/cliente.</p>
+      </div>
+    </section>
+ 
+
+<!--
+ PRICING PER PLANNER
+    <section id="pricing" class="section">
+      <div class="container">
+        <p class="kicker script">Listino partner</p>
+        <h2>Prezzi per Wedding Planner</h2>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="grid cols-3">
+          <div class="card reveal">
+            <h3>Starter</h3>
+            <p class="price">€ 290 <span class="unit">/ sito</span></p>
+            <ul class="list">
+              <li>1 template personalizzato</li>
+              <li>RSVP + mappa + gallery</li>
+              <li>Consegna 5 giorni</li>
+            </ul>
+            <a href="#partner" class="btn small">Attiva</a>
+          </div>
+          <div class="card rose reveal">
+            <h3>Pro</h3>
+            <p class="price">€ 490 <span class="unit">/ sito</span></p>
+            <ul class="list">
+              <li>Tutti i template + 1 add‑on</li>
+              <li>Copy base + ottimizzazione immagini</li>
+              <li>Consegna 72h</li>
+            </ul>
+            <a href="#partner" class="btn small">Attiva</a>
+          </div>
+          <div class="card reveal">
+            <h3>Agency</h3>
+            <p class="price">su preventivo</p>
+            <ul class="list">
+              <li>White‑label avanzato</li>
+              <li>Pacchetti 10–50 siti</li>
+              <li>SLA & supporto evento</li>
+            </ul>
+            <a href="#partner" class="btn small">Parla con noi</a>
+          </div>
+        </div>
+        <p class="help">Le tariffe sono per la produzione del sito; hosting/domino/add‑on opzionali a parte o inclusi in pacchetto.</p>
+      </div>
+    </section>
+
+-->
+ 
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <p class="kicker script">Domande frequenti</p>
         <h2>FAQ</h2>
-        <div class="rule"></div>
+        <div class="decor"><span class="dot"></span></div>
+ 
+        <div class="accordion">
+          <details class="reveal">
+            <summary>Come funziona la rivendita white‑label?</summary>
+            <p class="muted">Lavoriamo sotto il tuo brand: nessun logo nostro, materiali di presentazione con il tuo marchio, comunicazione diretta con te.</p>
+          </details>
+          <details class="reveal">
+            <summary>Possiamo usare il dominio del cliente?</summary>
+            <p class="muted">Certo. Possiamo supportarti nella configurazione DNS/SSL e nell’hosting (EU o globale).</p>
+          </details>
+          <details class="reveal">
+            <summary>Possiamo modificare i contenuti dopo la consegna?</summary>
+            <p class="muted">Sì. Offriamo versioni statiche semplici o CMS (es. WordPress/Webflow) a seconda delle esigenze.</p>
+          </details>
+          <details class="reveal">
+            <summary>Come gestite GDPR e privacy?</summary>
+            <p class="muted">Forniamo cookie banner, informative standard e integrazioni form con provider conformi. Possiamo adeguare i testi con il tuo legale.</p>
+          </details>
+        </div>
       </div>
-
-      <div class="accordion">
-        <details class="reveal">
-          <summary>Posso contattarvi direttamente o solo tramite un Wedding Planner?<span class="ico">+</span></summary>
-          <p>Entrambe le strade sono possibili. Se siete una coppia di sposi potete scriverci direttamente; se il vostro Wedding Planner offre già il servizio, potete passare anche da lui, che gestirà il contatto con noi.</p>
-        </details>
-        <details class="reveal">
-          <summary>Cosa può includere il sito del nostro matrimonio?<span class="ico">+</span></summary>
-          <p>Pagine informative, countdown, programma della giornata, location con mappe, gallery fotografica, storia della coppia, lista regali, organizzazione dei tavoli, dress code e info su alloggi e travel per gli invitati.</p>
-        </details>
-        <details class="reveal">
-          <summary>Qual è la differenza tra pacchetto Standard e Premium?<span class="ico">+</span></summary>
-          <p>Lo Standard include il sito completo con tutti i contenuti base e RSVP avanzata, pubblicato entro 7 giorni. Il Premium aggiunge funzionalità avanzate su richiesta — multilingua, funzioni di intrattenimento e altre personalizzazioni — con preventivo dedicato.</p>
-        </details>
-        <details class="reveal">
-          <summary>Quanto tempo serve per pubblicare il sito?<span class="ico">+</span></summary>
-          <p>Il pacchetto Standard viene pubblicato entro 7 giorni dalla ricezione di tutti i materiali. Per il pacchetto Premium, su misura, i tempi variano in base alle funzionalità richieste, comunque non oltre 20 giorni.</p>
-        </details>
-        <details class="reveal">
-          <summary>Quante revisioni sono incluse?<span class="ico">+</span></summary>
-          <p>Revisioni illimitate fino al giorno del matrimonio. Dopo l'evento è inclusa una revisione post‑matrimonio; in seguito è possibile trasformare il sito in un ricordo digitale con le foto del giorno con un piccolo costo di rinnovo.</p>
-        </details>
-        <details class="reveal">
-          <summary>Cosa succede al sito dopo il matrimonio?<span class="ico">+</span></summary>
-          <p>Il sito resta online. Su richiesta lo trasformiamo in una memory page permanente, arricchita con le foto del giorno, come ricordo digitale del vostro matrimonio.</p>
-        </details>
-        <details class="reveal">
-          <summary>Il dominio personalizzato è incluso?<span class="ico">+</span></summary>
-          <p>Sì, in entrambi i pacchetti, Standard e Premium, il dominio personalizzato è incluso.</p>
-        </details>
-        <details class="reveal">
-          <summary>Possiamo gestire tavoli e lista regali dal sito?<span class="ico">+</span></summary>
-          <p>Sì, entrambe le sezioni sono incluse nel pacchetto Standard: l'organizzazione dei tavoli e la lista regali sono parte dei contenuti che possiamo integrare nel vostro sito.</p>
-        </details>
-        <details class="reveal">
-          <summary>Come funziona la collaborazione con i Wedding Planner?<span class="ico">+</span></summary>
-          <p>Presenti il servizio ai tuoi sposi come parte del tuo pacchetto. Noi ci occupiamo della progettazione e pubblicazione del sito, tu continui a seguire la coppia: il margine sul prezzo finale resta libero e gestito da te.</p>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- LEAD FORM: DIVENTA PARTNER -->
-  <section id="partner" class="section">
-    <div class="container">
-      <div class="section-head">
-        <p class="eyebrow">Lavora con noi</p>
+    </section>
+ 
+    <!-- LEAD FORM: DIVENTA PARTNER -->
+    <section id="partner" class="section">
+      <div class="container">
+        <p class="kicker script">Lavora con noi</p>
         <h2>Diventa Partner</h2>
-        <div class="rule"></div>
+        <div class="decor"><span class="dot"></span></div>
         <p class="section-intro">Richiedi il Kit Partner o una call conoscitiva. Ti invieremo listini, template e casi studio.</p>
-      </div>
+ 
+        <div class="grid cols-2">
+          <div class="card reveal">
+            <!-- Collega l'action a Tally/Formspree/HubSpot -->
 
-      <div class="grid cols-2">
-        <div class="panel reveal">
-          <form id="leadForm" action="https://formspree.io/f/xaqdqoey" method="POST">
-            <div class="form-row cols-2">
-              <label>Nome e cognome
-                <input name="name" required placeholder="Es. Maria Rossi">
-              </label>
-              <label>Agenzia
-                <input name="company" required placeholder="Nome studio o agenzia">
-              </label>
-            </div>
 
-            <div class="form-row cols-2">
-              <label>Email
-                <input type="email" name="email" required placeholder="nome@email.it">
-              </label>
-              <label>Telefono
-                <input name="phone" placeholder="+39 333 1234567">
-              </label>
-            </div>
 
-            <label>Quanti matrimoni gestisci all'anno?
-              <select name="volume" required>
-                <option value="">Seleziona</option>
-                <option>1–5</option>
-                <option>6–15</option>
-                <option>16–30</option>
-                <option>30+</option>
-              </select>
-            </label>
+                <form id="leadForm" action="https://formspree.io/f/xaqdqoey" method="POST">
 
-            <label>Messaggio (opzionale)
-              <textarea name="message" rows="4" placeholder="Raccontaci il tuo servizio e cosa ti serve"></textarea>
-            </label>
+ 
 
-            <label class="checkbox-row">
-              <input type="checkbox" name="consent" required>
-              <span class="help">Acconsento al trattamento dei dati per contatto commerciale e invio del Kit Partner.</span>
-            </label>
+  <div class="form-row cols-2">
+    <label>
+      Nome e cognome
+      <input name="name" required placeholder="Es. Maria Rossi">
+    </label>
 
-            <button class="btn" type="submit">Richiedi Kit & call</button>
+    <label>
+      Agenzia
+      <input name="company" required placeholder="Nome studio o agenzia">
+    </label>
+  </div>
 
-            <p class="help">Trattiamo i dati nel rispetto del GDPR. Informativa privacy disponibile su richiesta.</p>
-          </form>
+  <div class="form-row cols-2">
+    <label>
+      Email
+      <input type="email" name="email" required placeholder="nome@email.it">
+    </label>
+
+    <label>
+      Telefono
+      <input name="phone" placeholder="+39 333 1234567">
+    </label>
+  </div>
+
+  <label>
+    Quanti matrimoni gestisci all’anno?
+    <select name="volume" required>
+      <option value="">Seleziona</option>
+      <option>1–5</option>
+      <option>6–15</option>
+      <option>16–30</option>
+      <option>30+</option>
+    </select>
+  </label>
+
+  <label>
+    Messaggio (opzionale)
+    <textarea name="message" rows="4"
+      placeholder="Raccontaci il tuo servizio e cosa ti serve"></textarea>
+  </label>
+
+  <label class="checkbox-row">
+    <input type="checkbox" name="consent" required>
+    <span class="help">
+      Acconsento al trattamento dei dati per contatto commerciale e invio del Kit Partner.
+    </span>
+  </label>
+
+  <button class="btn" type="submit">Richiedi Kit & call</button>
+
+  <p class="help">
+    Trattiamo i dati nel rispetto del GDPR. Informativa privacy disponibile su richiesta.
+  </p>
+
+</form>
+
+
+
+          </div>
+          <div class="card rose reveal">
+            <h3>Cosa ricevi</h3>
+            <ul class="list">
+              <li>Catalogo template + demo link</li>
+              <li>Checklist di brief e onboarding</li>
+              <li>Mockup per presentare ai clienti</li>
+              <li>Schema di rivendita e margini</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="panel dark reveal">
-          <h3>Cosa ricevi</h3>
-          <ul>
-            <li>Kit Partner con demo e materiali di presentazione</li>
-            <li>Preventivo personalizzato per ogni cliente</li>
-            <li>Margine libero sul prezzo finale alla coppia</li>
-            <li>Assistenza WhatsApp 24h durante tutto il percorso</li>
-          </ul>
-        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- DEMO / CONTATTI RAPIDI -->
-  <section id="demo" class="section" style="border-top:1px solid var(--line)">
+    </section>
+ 
+    <!-- DEMO / CONTATTI RAPIDI -->
+    <section id="demo" class="section">
+      <div class="container center">
+        <p class="kicker script">Pronti a partire</p>
+        <h2>Parliamone oggi</h2>
+        <div class="decor"><span class="dot"></span></div>
+        <p class="section-intro">Scrivici su <strong>staff@weddingcoding.it</strong> ed iniziamo a creare siti per matrimoni insieme.</p>
+        <a href=mailto: staff@weddingcoding.it  class="btn">Scrivi ora</a>
+      </div>
+    </section>
+  </main>
+ 
+  <footer>
     <div class="container center">
-      <p class="eyebrow">Pronti a partire</p>
-      <h2>Parliamone oggi</h2>
-      <div class="rule center-rule"></div>
-      <p class="section-intro" style="margin-left:auto;margin-right:auto">Sposi o Wedding Planner, scriveteci su <strong>staff@weddingcoding.it</strong> e iniziamo a creare il vostro sito.</p>
-      <a href="mailto:staff@weddingcoding.it" class="btn">Scrivi ora</a>
+      <p><strong>Wedding Coding</strong> · Siti web di matrimonio white‑label per Wedding Planner</p>
+      <p class="help">© 2026 · staff@weddingcoding.it · Privacy · Cookie · Terms</p>
     </div>
-  </section>
+  </footer>
+ 
+  <script>
+    // Reveals on scroll
+    const io = new IntersectionObserver((entries)=>entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+    }), {threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+ 
+    // Lead form (placeholder)
+     // document.getElementById('leadForm')?.addEventListener('submit', (e)=>{
+      //  if(!e.target.checkValidity()){ return; }
+      //  e.preventDefault();
+      //  alert('Grazie! Ti invieremo il Kit Partner entro 24 ore.');
+      //  e.target.reset();
+    //  });
 
-</main>
-
-<footer>
-  <div class="container foot-inner">
-    <div>
-      <div class="brand-title">Wedding Coding</div>
-      <p class="help">Siti web di matrimonio white‑label per Wedding Planner.</p>
-    </div>
-    <div class="foot-links">
-      <a href="#">Privacy</a>
-      <a href="#">Cookie</a>
-      <a href="#">Terms</a>
-    </div>
-  </div>
-  <div class="container" style="margin-top:18px">
-    <p class="help">©️ 2026 Wedding Coding · staff@weddingcoding.it</p>
-  </div>
-</footer>
-
+  </script>
+</body>
 <script>
-  const io = new IntersectionObserver((entries)=>entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  }), {threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // 1) evita che il browser ripristini lo scroll automaticamente
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
 
-  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-
+  // 2) se l'URL arriva con #qualcosa, lo rimuove e torna in alto
   window.addEventListener('load', () => {
     if (window.location.hash) {
       history.replaceState(null, '', window.location.pathname + window.location.search);
@@ -685,19 +674,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     }
   });
 
+  // 3) intercetta click sui link #... e poi pulisce l'URL (così al refresh riparti dall'alto)
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href');
         if (!id || id === '#') return;
+
         e.preventDefault();
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
+
+        // rimuove #... dalla barra
         history.replaceState(null, '', window.location.pathname + window.location.search);
       });
     });
   });
 </script>
 
-</body>
 </html>
