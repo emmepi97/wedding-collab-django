@@ -9,355 +9,549 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@400;500;600&family=Cormorant:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&family=Cormorant:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
 
 <style>
-/* =========================================================
-   DESIGN TOKENS
-   Palette: avorio caldo, inchiostro seppia, oro vecchio, terracotta velata
-   Type: Cormorant (display, alto contrasto) + Jost (UI, geometrico pulito)
-   ========================================================= */
 :root{
   --ivory:#F7F4EE;
+  --ivory-deep:#EDE8DF;
   --paper:#FFFFFF;
   --ink:#2E2A26;
   --ink-soft:#5C564F;
   --muted:#8C8479;
   --line:#E4DDD1;
+  --line-soft:#EDE8DF;
   --gold:#A98A4E;
   --gold-deep:#8A6F3C;
+  --gold-light:#D4B97A;
   --terracotta:#B4806A;
   --terracotta-soft:#E9D9CE;
 
-  --radius-lg:2px;
+  --radius-lg:3px;
   --radius-md:2px;
-  --shadow-sm:0 1px 2px rgba(46,42,38,.06);
-  --shadow-md:0 18px 40px rgba(46,42,38,.10);
+  --shadow-sm:0 1px 3px rgba(46,42,38,.07);
+  --shadow-md:0 20px 48px rgba(46,42,38,.12);
+  --shadow-lg:0 32px 72px rgba(46,42,38,.16);
 
   --ff-display:"Cormorant Garamond", Georgia, serif;
   --ff-script:"Cormorant", Georgia, serif;
   --ff-ui:"Jost", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --container:1160px;
+  --section-v:112px;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
   background:var(--ivory);
   color:var(--ink);
   font-family:var(--ff-ui);
   font-size:16px;
-  line-height:1.7;
+  line-height:1.75;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
 }
 img{max-width:100%;height:auto;display:block}
-.container{max-width:var(--container);margin:0 auto;padding:0 24px}
+.container{max-width:var(--container);margin:0 auto;padding:0 clamp(20px,4vw,48px)}
 .center{text-align:center}
 
-/* ---------- Typography rhythm ---------- */
-h1,h2,h3{font-family:var(--ff-display);font-weight:600;color:var(--ink);letter-spacing:.1px}
-h2{font-size:clamp(30px,3.6vw,42px);line-height:1.15}
-h3{font-size:20px;line-height:1.3;margin:0 0 6px}
+/* ── Typography ── */
+h1,h2,h3{font-family:var(--ff-display);font-weight:600;color:var(--ink);letter-spacing:.01em}
+h2{font-size:clamp(32px,3.8vw,46px);line-height:1.12}
+h3{font-size:21px;line-height:1.3;margin:0 0 8px}
 p{margin:0}
+
 .eyebrow{
   font-family:var(--ff-ui);
-  font-size:11.5px;
-  letter-spacing:.22em;
+  font-size:11px;
+  letter-spacing:.26em;
   text-transform:uppercase;
   color:var(--gold-deep);
   font-weight:600;
-  margin:0 0 14px;
+  margin:0 0 16px;
+  display:block;
 }
-.section-intro{color:var(--ink-soft);margin:14px 0 36px;max-width:560px;font-size:16.5px}
+.section-intro{color:var(--ink-soft);margin:16px 0 44px;max-width:560px;font-size:16.5px;line-height:1.75}
 .lede{max-width:640px}
 
-/* thin rule divider used sparingly, not as decoration on every block */
-.rule{width:42px;height:1px;background:var(--gold);margin:18px 0 0}
-.rule.center-rule{margin:18px auto 0}
+.rule{width:38px;height:1.5px;background:linear-gradient(90deg,var(--gold),var(--gold-light));margin:20px 0 0;border:none}
+.rule.center-rule{margin:20px auto 0}
 
-/* ---------- Buttons ---------- */
+/* ── Decorative ornament ── */
+.ornament{
+  display:flex;align-items:center;gap:16px;
+  font-family:var(--ff-display);font-size:13px;color:var(--gold);letter-spacing:.2em;
+  margin:0 0 20px;
+}
+.ornament::before,.ornament::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light))}
+.ornament::after{background:linear-gradient(270deg,transparent,var(--gold-light))}
+.ornament.center{justify-content:center}
+
+/* ── Buttons ── */
 .btn{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;gap:9px;
   text-decoration:none;cursor:pointer;user-select:none;
   background:var(--ink);color:var(--ivory);
-  padding:14px 26px;border-radius:var(--radius-md);
-  font-family:var(--ff-ui);font-weight:500;font-size:14px;letter-spacing:.04em;
+  padding:15px 30px;border-radius:var(--radius-md);
+  font-family:var(--ff-ui);font-weight:500;font-size:13.5px;letter-spacing:.06em;text-transform:uppercase;
   box-shadow:var(--shadow-sm);
-  border:1px solid var(--ink);
-  transition:background .2s,color .2s,transform .15s;
+  border:1.5px solid var(--ink);
+  transition:background .22s,color .22s,transform .16s,box-shadow .22s;
 }
-.btn:hover{background:transparent;color:var(--ink);transform:translateY(-1px)}
-.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:hover{background:transparent;color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
 .btn.ghost:hover{border-color:var(--ink)}
-.btn.small{padding:10px 18px;font-size:13px}
+.btn.small{padding:11px 20px;font-size:12.5px}
+.btn.gold{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+.btn.gold:hover{background:transparent;color:var(--gold-deep)}
 
-/* ---------- Nav ---------- */
+/* ── Nav ── */
 nav{
   position:sticky;top:0;z-index:100;
-  background:rgba(247,244,238,.92);
-  backdrop-filter:blur(8px) saturate(140%);
+  background:rgba(247,244,238,.94);
+  backdrop-filter:blur(12px) saturate(160%);
   border-bottom:1px solid var(--line);
 }
-nav .nav-inner{
+.nav-inner{
   max-width:1320px;margin:0 auto;
-  padding:18px clamp(20px,3vw,48px);
+  padding:16px clamp(20px,3vw,48px);
   display:flex;align-items:center;justify-content:space-between;gap:16px;
 }
-nav .brand{display:flex;align-items:center;text-decoration:none;color:var(--ink)}
-nav .brand-title{font-family:var(--ff-display);font-weight:600;font-size:21px;letter-spacing:.02em}
-nav .nav-links{list-style:none;display:flex;align-items:center;gap:30px;margin:0;padding:0}
-nav .nav-links a{
-  font-family:var(--ff-ui);font-weight:500;font-size:14px;
+.brand{display:flex;align-items:center;text-decoration:none;color:var(--ink);gap:10px}
+.brand-monogram{
+  width:34px;height:34px;border:1.5px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-display);font-size:15px;color:var(--gold-deep);font-weight:600;
+  flex-shrink:0;
+}
+.brand-title{font-family:var(--ff-display);font-weight:600;font-size:20px;letter-spacing:.02em}
+.nav-links{list-style:none;display:flex;align-items:center;gap:28px}
+.nav-links a{
+  font-family:var(--ff-ui);font-weight:500;font-size:13.5px;letter-spacing:.03em;
   text-decoration:none;color:var(--ink-soft);
   transition:color .15s;
+  position:relative;padding-bottom:2px;
 }
-nav .nav-links a:hover{color:var(--ink)}
-nav .nav-cta{display:flex;align-items:center;gap:10px}
+.nav-links a::after{
+  content:"";position:absolute;bottom:0;left:0;right:100%;height:1px;
+  background:var(--gold);transition:right .22s ease;
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+.nav-cta{display:flex;align-items:center;gap:10px}
 
-@media (max-width:860px){
-  nav .nav-inner{flex-wrap:wrap;justify-content:center;gap:12px;padding:16px 20px}
-  nav .nav-links{flex-wrap:wrap;justify-content:center}
+/* Mobile hamburger */
+.nav-toggle{
+  display:none;background:none;border:none;cursor:pointer;
+  padding:6px;flex-direction:column;gap:5px;
+}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--ink);transition:transform .2s,opacity .2s}
+
+@media(max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-links,.nav-cta{
+    display:none;
+    flex-direction:column;width:100%;text-align:center;gap:16px;padding:16px 0;
+  }
+  nav.open .nav-links,nav.open .nav-cta{display:flex}
+  .nav-inner{flex-wrap:wrap}
+  .nav-top{display:flex;align-items:center;justify-content:space-between;width:100%}
+  nav.open .nav-toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  nav.open .nav-toggle span:nth-child(2){opacity:0}
+  nav.open .nav-toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 }
 
-/* ---------- Hero ---------- */
+/* ── Hero ── */
 header.hero{
-  position:relative;min-height:88vh;display:grid;place-items:center;text-align:center;
+  position:relative;min-height:92vh;display:grid;place-items:center;text-align:center;
   background:
-    radial-gradient(ellipse 65% 60% at 50% 50%, rgba(8,7,6,.66) 0%, rgba(8,7,6,.38) 55%, rgba(8,7,6,.46) 100%),
-    linear-gradient(180deg, rgba(8,7,6,.32) 0%, rgba(8,7,6,.18) 32%, rgba(8,7,6,.50) 100%),
+    radial-gradient(ellipse 70% 65% at 50% 50%, rgba(6,5,4,.68) 0%, rgba(6,5,4,.35) 55%, rgba(6,5,4,.50) 100%),
+    linear-gradient(180deg, rgba(6,5,4,.28) 0%, rgba(6,5,4,.15) 35%, rgba(6,5,4,.55) 100%),
     url('https://images.unsplash.com/photo-1519741497674-611481863552?w=2000&q=80') center/cover no-repeat;
   overflow:hidden;
 }
-.hero-content{position:relative;z-index:1;color:#fff;padding:24px;max-width:780px}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(6,5,4,.6) 0%,transparent 40%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;color:#fff;padding:32px;max-width:820px}
 .hero-eyebrow{
-  font-family:var(--ff-ui);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
-  color:#F4E9D6;margin:0 0 18px;font-weight:600;
-  text-shadow:0 1px 3px rgba(0,0,0,.65), 0 2px 14px rgba(0,0,0,.55);
+  font-family:var(--ff-ui);font-size:11px;letter-spacing:.32em;text-transform:uppercase;
+  color:rgba(244,233,214,.95);margin:0 0 24px;font-weight:600;
+  text-shadow:0 1px 3px rgba(0,0,0,.7);display:block;
 }
 .hero h1{
   font-family:var(--ff-display);
-  font-size:clamp(34px,5.6vw,60px);
-  line-height:1.12;margin:0 0 18px;color:#fff;font-weight:700;
-  text-shadow:0 1px 3px rgba(0,0,0,.6), 0 6px 28px rgba(0,0,0,.6), 0 16px 48px rgba(0,0,0,.4);
+  font-size:clamp(36px,5.8vw,64px);
+  line-height:1.1;margin:0 0 24px;color:#fff;font-weight:700;
+  text-shadow:0 2px 4px rgba(0,0,0,.6), 0 8px 32px rgba(0,0,0,.55), 0 18px 56px rgba(0,0,0,.38);
 }
-.hero h1 em{font-style:italic;font-weight:700;color:#F6E7C8}
-.hero-sub{max-width:540px;margin:0 auto 32px;color:rgba(255,255,255,.94);font-size:16.5px;line-height:1.7;font-weight:500;text-shadow:0 1px 3px rgba(0,0,0,.6), 0 4px 16px rgba(0,0,0,.5)}
-.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.hero h1 em{font-style:italic;color:#F6E7C8}
+.hero-sub{
+  max-width:560px;margin:0 auto 38px;color:rgba(255,255,255,.93);
+  font-size:17px;line-height:1.72;font-weight:400;
+  text-shadow:0 1px 4px rgba(0,0,0,.6), 0 4px 18px rgba(0,0,0,.45);
+}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:52px}
+.hero .btn{padding:16px 32px;font-size:13px}
+.hero .btn.hero-main{background:var(--gold-deep);border-color:var(--gold-deep);color:#fff}
+.hero .btn.hero-main:hover{background:transparent;color:var(--gold-light);border-color:rgba(255,255,255,.5)}
+.hero .btn.hero-sec{background:transparent;border-color:rgba(255,255,255,.45);color:#fff}
+.hero .btn.hero-sec:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.7)}
+
+.hero-divider{
+  display:flex;align-items:center;gap:0;justify-content:center;
+  margin-bottom:32px;
+}
+.hero-divider span{display:block;width:40px;height:1px;background:rgba(255,255,255,.3)}
+.hero-divider .ico{margin:0 12px;color:var(--gold-light);font-size:14px}
+
 .hero-meta{
-  margin-top:46px;display:flex;gap:34px;justify-content:center;flex-wrap:wrap;
-  font-family:var(--ff-ui);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
-  color:rgba(255,255,255,.85);
-  text-shadow:0 1px 4px rgba(0,0,0,.6);
+  display:flex;gap:0;justify-content:center;flex-wrap:wrap;
 }
-.hero-meta span{position:relative;padding-left:16px}
-.hero-meta span::before{content:"";position:absolute;left:0;top:50%;width:6px;height:1px;background:rgba(255,255,255,.5)}
+.hero-meta-item{
+  padding:0 28px;
+  font-family:var(--ff-ui);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.8);text-shadow:0 1px 4px rgba(0,0,0,.6);
+  border-right:1px solid rgba(255,255,255,.22);
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+.hero-meta-item:first-child{padding-left:0}
+.hero-meta-item:last-child{border-right:none;padding-right:0}
+.hero-meta-item strong{font-weight:600;color:#fff;font-size:13px}
+@media(max-width:600px){
+  .hero-meta-item{border-right:none;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.15)}
+  .hero-meta-item:last-child{border-bottom:none}
+  .hero-meta{flex-direction:column;gap:0;width:100%}
+}
 
-/* ---------- Sections ---------- */
-.section{padding:104px 0}
-.section.tight{padding-top:0}
-.section-head{margin-bottom:48px}
+/* ── Sections ── */
+.section{padding:var(--section-v) 0}
+.section.alt{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.section.dark-alt{background:var(--ink);color:var(--ivory)}
+.section-head{margin-bottom:52px}
 
-.grid{display:grid;gap:28px}
+.grid{display:grid;gap:24px}
 @media(min-width:760px){
   .grid.cols-2{grid-template-columns:1fr 1fr}
   .grid.cols-3{grid-template-columns:repeat(3,1fr)}
 }
 
-/* ---------- Process (numbered: real sequence, kept) ---------- */
+/* ── Process ── */
 .process{display:grid;gap:0}
 @media(min-width:760px){.process{grid-template-columns:repeat(3,1fr)}}
 .process-step{
-  padding:0 32px;border-right:1px solid var(--line);
+  padding:0 40px;
+  border-right:1px solid var(--line);
+  position:relative;
 }
 .process-step:first-child{padding-left:0}
 .process-step:last-child{border-right:none;padding-right:0}
 @media(max-width:759px){
-  .process-step{border-right:none;border-bottom:1px solid var(--line);padding:0 0 32px 0 !important;margin-bottom:32px}
+  .process-step{
+    border-right:none;border-bottom:1px solid var(--line);
+    padding:0 0 36px !important;margin-bottom:36px;
+  }
   .process-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0 !important}
 }
-.process-num{
-  font-family:var(--ff-display);font-size:15px;color:var(--gold-deep);
-  letter-spacing:.05em;margin-bottom:14px;font-weight:600;
+.process-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:40px;height:40px;border:1.5px solid var(--gold);
+  font-family:var(--ff-display);font-size:17px;color:var(--gold-deep);
+  font-weight:700;margin-bottom:18px;
 }
-.process-step p{color:var(--ink-soft);font-size:15px;margin-top:10px}
-.process-list{margin:16px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink-soft)}
-.process-list li{padding:6px 0;border-top:1px solid var(--line)}
+.process-step h3{font-size:20px;margin-bottom:10px}
+.process-step > p{color:var(--ink-soft);font-size:15px}
+.process-list{margin:20px 0 0;padding:0;list-style:none;font-size:14px;color:var(--ink-soft)}
+.process-list li{
+  padding:9px 0 9px 18px;
+  border-top:1px solid var(--line);
+  position:relative;
+}
+.process-list li::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:6px;height:1px;background:var(--gold);
+}
 .process-list li:first-child{border-top:none}
 
-/* ---------- Feature cards ---------- */
+/* ── Feature cards ── */
 .feature-card{
-  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);
-  padding:30px 26px;
+  background:var(--paper);border:1px solid var(--line);
+  padding:32px 28px;
+  position:relative;overflow:hidden;
+  transition:border-color .25s,transform .25s,box-shadow .25s;
 }
+.feature-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .3s ease;
+}
+.feature-card:hover{border-color:var(--gold-light);transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.feature-card:hover::before{transform:scaleX(1)}
 .feature-card .mark{
-  font-family:var(--ff-display);font-size:26px;color:var(--terracotta);margin-bottom:14px;display:block;
+  font-family:var(--ff-display);font-size:13px;color:var(--gold-deep);
+  margin-bottom:16px;display:block;letter-spacing:.12em;font-weight:600;
 }
-.feature-card p{color:var(--ink-soft);font-size:14.5px;margin-top:8px}
+.feature-card h3{font-size:19px;margin-bottom:0}
+.feature-card p{color:var(--ink-soft);font-size:14.5px;margin-top:10px;line-height:1.7}
 
-/* ---------- Template gallery ---------- */
-.tpl{
-  position:relative;overflow:hidden;border-radius:var(--radius-lg);
-  border:1px solid var(--line);background:var(--paper);
-}
-.tpl a{display:block}
-.tpl img{transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.tpl:hover img{transform:scale(1.045)}
-.tpl-meta{
-  padding:18px 20px;border-top:1px solid var(--line);
-  display:flex;align-items:baseline;justify-content:space-between;gap:10px;
-}
-.tpl-meta .name{font-family:var(--ff-display);font-size:18px;font-weight:600}
-.tpl-meta .style{font-size:12px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
-
-/* ---------- Demo-style template cards ---------- */
+/* ── Demo cards ── */
 .demo-card{
-  background:var(--paper);
-  border:1px solid var(--line);
-  overflow:hidden;
-  text-decoration:none;
-  display:block;
+  background:var(--paper);border:1px solid var(--line);
+  overflow:hidden;text-decoration:none;display:block;
   transition:border-color .3s, transform .3s, box-shadow .3s;
   position:relative;
-  border-radius:var(--radius-lg);
 }
 .demo-card:hover{
-  border-color:var(--gold);
-  transform:translateY(-6px);
-  box-shadow:var(--shadow-md);
+  border-color:var(--gold);transform:translateY(-6px);box-shadow:var(--shadow-lg);
 }
 .demo-thumb{
-  height:220px;position:relative;overflow:hidden;
+  height:240px;position:relative;overflow:hidden;
   display:flex;align-items:center;justify-content:center;
 }
-.demo-thumb-bg{position:absolute;inset:0;transition:transform .5s ease}
-.demo-card:hover .demo-thumb-bg{transform:scale(1.05)}
+.demo-thumb-bg{position:absolute;inset:0;transition:transform .55s cubic-bezier(.2,.7,.2,1)}
+.demo-card:hover .demo-thumb-bg{transform:scale(1.06)}
 
-.demo-card:nth-child(1) .demo-thumb-bg{background:linear-gradient(135deg,#EFE3D6 0%,#E3D2BC 50%,#EFE3D6 100%)}
-.demo-card:nth-child(2) .demo-thumb-bg{background:linear-gradient(135deg,#E9E2D8 0%,#DCD0BE 50%,#E9E2D8 100%)}
-.demo-card:nth-child(3) .demo-thumb-bg{background:linear-gradient(135deg,#EAD9CE 0%,#DCC2AE 50%,#EAD9CE 100%)}
-.demo-card:nth-child(4) .demo-thumb-bg{background:linear-gradient(135deg,#E6E6DC 0%,#D8D6C6 50%,#E6E6DC 100%)}
-.demo-card:nth-child(5) .demo-thumb-bg{background:linear-gradient(135deg,#EDE0DD 0%,#E0C9C2 50%,#EDE0DD 100%)}
-.demo-card:nth-child(6) .demo-thumb-bg{background:linear-gradient(135deg,#E8E4DD 0%,#D9D2C4 50%,#E8E4DD 100%)}
+.demo-card:nth-child(1) .demo-thumb-bg{background:linear-gradient(145deg,#EFE3D6 0%,#E3D2BC 50%,#EFE3D6 100%)}
+.demo-card:nth-child(2) .demo-thumb-bg{background:linear-gradient(145deg,#E9E2D8 0%,#DCD0BE 50%,#E9E2D8 100%)}
 
-.demo-thumb-content{position:relative;z-index:2;text-align:center;padding:24px}
+.demo-thumb-content{position:relative;z-index:2;text-align:center;padding:28px}
 .demo-names{
-  font-family:var(--ff-display);font-size:30px;font-weight:600;font-style:italic;
-  color:var(--ink);line-height:1.1;margin-bottom:10px;
+  font-family:var(--ff-display);font-size:32px;font-weight:600;font-style:italic;
+  color:var(--ink);line-height:1.1;margin-bottom:12px;
 }
-.demo-amp{color:var(--gold-deep);font-size:22px}
+.demo-amp{color:var(--gold-deep);font-size:24px}
 .demo-date-line{
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);
   font-family:var(--ff-ui);
 }
-.demo-ornament{width:36px;height:1px;background:var(--gold);margin:12px auto}
+.demo-ornament{width:32px;height:1px;background:var(--gold);margin:14px auto}
 
 .demo-overlay{
-  position:absolute;inset:0;background:rgba(46,42,38,.55);
+  position:absolute;inset:0;background:rgba(46,42,38,.6);
   display:flex;align-items:center;justify-content:center;
   opacity:0;transition:opacity .3s;z-index:10;
 }
 .demo-card:hover .demo-overlay{opacity:1}
 .demo-overlay-text{
-  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#fff;
-  border:1px solid rgba(255,255,255,.6);padding:11px 22px;font-family:var(--ff-ui);font-weight:500;
+  font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  border:1px solid rgba(255,255,255,.7);padding:12px 24px;font-family:var(--ff-ui);font-weight:500;
 }
+.demo-info{
+  padding:20px 22px;border-top:1px solid var(--line);
+  display:flex;align-items:baseline;justify-content:space-between;
+}
+.demo-title{font-family:var(--ff-display);font-size:19px;font-weight:600;color:var(--ink)}
+.demo-style{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-family:var(--ff-ui)}
 
-.demo-info{padding:18px 20px;border-top:1px solid var(--line)}
-.demo-title{font-family:var(--ff-display);font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px}
-.demo-style{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-family:var(--ff-ui)}
-
-/* ---------- Add-on list (no card-soup: simple table-like rows) ---------- */
+/* ── Add-ons ── */
 .addon-rows{border-top:1px solid var(--line)}
 .addon-row{
   display:grid;grid-template-columns:1fr 1.6fr;gap:24px;
-  padding:24px 0;border-bottom:1px solid var(--line);
+  padding:26px 0;border-bottom:1px solid var(--line);
+  align-items:start;
 }
 @media(max-width:640px){.addon-row{grid-template-columns:1fr}}
-.addon-row .name{font-family:var(--ff-display);font-size:19px;font-weight:600}
+.addon-row .name{font-family:var(--ff-display);font-size:20px;font-weight:600}
 .addon-row .desc{color:var(--ink-soft);font-size:14.5px}
 
-/* ---------- Why us ---------- */
-.why-grid{display:grid;gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+/* ── Why us: borderless grid ── */
+.why-grid{
+  display:grid;gap:0;
+}
 @media(min-width:760px){.why-grid{grid-template-columns:repeat(3,1fr)}}
-.why-item{padding:30px 28px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.why-item h3{font-size:17px;margin-bottom:6px}
-.why-item p{color:var(--ink-soft);font-size:14px}
+.why-item{
+  padding:34px 32px;
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  border-top:1px solid var(--line);
+  position:relative;
+  transition:background .2s;
+}
+.why-item:nth-child(3n){border-right:none}
+@media(max-width:759px){
+  .why-item{border-right:none}
+}
+.why-item:hover{background:var(--ivory-deep)}
+.why-icon{
+  width:36px;height:36px;margin-bottom:18px;
+  border:1px solid var(--gold-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;
+}
+.why-item h3{font-size:17px;margin-bottom:8px}
+.why-item p{color:var(--ink-soft);font-size:14px;line-height:1.7}
 
-/* ---------- FAQ ---------- */
+/* ── Stats band ── */
+.stats-band{
+  background:var(--ink);color:var(--ivory);
+  padding:56px 0;border-top:1px solid rgba(255,255,255,.06);
+}
+.stats-grid{
+  display:grid;gap:0;
+}
+@media(min-width:600px){.stats-grid{grid-template-columns:repeat(3,1fr)}}
+.stat-item{
+  padding:0 40px;border-right:1px solid rgba(255,255,255,.1);
+  text-align:center;
+}
+.stat-item:first-child{padding-left:0;text-align:left}
+.stat-item:last-child{border-right:none;padding-right:0;text-align:right}
+@media(max-width:599px){
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);padding:24px 0;text-align:center}
+  .stat-item:first-child,.stat-item:last-child{text-align:center;padding-left:0;padding-right:0}
+  .stat-item:last-child{border-bottom:none}
+}
+.stat-num{
+  font-family:var(--ff-display);font-size:52px;font-weight:700;
+  color:var(--gold-light);line-height:1;margin-bottom:8px;
+  display:block;
+}
+.stat-label{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:rgba(247,244,238,.6);font-family:var(--ff-ui)}
+
+/* ── FAQ ── */
 .accordion details{
-  border-bottom:1px solid var(--line);padding:20px 0;
+  border-bottom:1px solid var(--line);
 }
 .accordion details:first-child{border-top:1px solid var(--line)}
 .accordion summary{
-  cursor:pointer;list-style:none;font-family:var(--ff-display);font-weight:600;font-size:18px;
+  cursor:pointer;list-style:none;
+  font-family:var(--ff-display);font-weight:600;font-size:19px;
   display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:22px 0;
+  user-select:none;
 }
 .accordion summary::marker,.accordion summary::-webkit-details-marker{display:none}
-.accordion summary .ico{font-family:var(--ff-ui);font-size:18px;color:var(--gold-deep);flex:0 0 auto;transition:transform .2s}
-.accordion details[open] summary .ico{transform:rotate(45deg)}
-.accordion details p{color:var(--ink-soft);margin-top:14px;font-size:15px;max-width:680px}
+.accordion summary .ico{
+  width:28px;height:28px;border:1px solid var(--line);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--ff-ui);font-size:16px;color:var(--gold-deep);
+  transition:transform .22s, background .2s;
+}
+.accordion details[open] summary .ico{transform:rotate(45deg);background:var(--ivory-deep)}
+.accordion details p{color:var(--ink-soft);padding:0 0 22px;font-size:15.5px;max-width:680px;line-height:1.75}
 
-/* ---------- Form ---------- */
-.panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-lg);padding:36px}
-form{display:grid;gap:18px}
-label{display:flex;flex-direction:column;gap:7px;font-family:var(--ff-ui);font-weight:500;font-size:13px;color:var(--ink-soft);letter-spacing:.02em}
+/* ── Form ── */
+.panel{background:var(--paper);border:1px solid var(--line);padding:38px;position:relative}
+.panel.elevated{box-shadow:var(--shadow-md)}
+
+form{display:grid;gap:20px}
+label{
+  display:flex;flex-direction:column;gap:8px;
+  font-family:var(--ff-ui);font-weight:500;font-size:12.5px;
+  color:var(--ink-soft);letter-spacing:.04em;text-transform:uppercase;
+}
 input,select,textarea{
-  width:100%;padding:13px 14px;font-family:var(--ff-ui);font-size:15px;color:var(--ink);
-  background:var(--ivory);border:1px solid var(--line);border-radius:2px;outline:none;
+  width:100%;padding:13px 14px;
+  font-family:var(--ff-ui);font-size:15px;color:var(--ink);
+  background:var(--ivory);border:1px solid var(--line);outline:none;
   transition:border-color .15s,background .15s;
+  border-radius:2px;
+  letter-spacing:0;text-transform:none;
 }
+input::placeholder,textarea::placeholder{color:var(--muted);font-size:14px}
 input:focus,select:focus,textarea:focus{border-color:var(--gold);background:#fff}
-.form-row{display:grid;gap:18px}
+.form-row{display:grid;gap:20px}
 @media(min-width:600px){.form-row.cols-2{grid-template-columns:1fr 1fr}}
-.checkbox-row{display:flex;gap:10px;align-items:flex-start;flex-direction:row}
-.checkbox-row input{width:auto;margin-top:3px}
-.help{font-size:12.5px;color:var(--muted);line-height:1.6}
+.checkbox-row{display:flex;gap:12px;align-items:flex-start;flex-direction:row}
+.checkbox-row input{width:auto;margin-top:4px;flex-shrink:0;accent-color:var(--gold-deep)}
+.help{font-size:12.5px;color:var(--muted);line-height:1.65;font-family:var(--ff-ui);letter-spacing:0;text-transform:none;font-weight:400}
 
-.panel.dark{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
-.panel.dark h3{color:var(--ivory)}
-.panel.dark ul{padding-left:0;list-style:none;margin:18px 0 0;display:grid;gap:14px}
-.panel.dark ul li{
-  padding-left:20px;position:relative;font-size:15px;color:rgba(247,244,238,.85);
+.panel.dark{
+  background:var(--ink);color:var(--ivory);border-color:var(--ink);
+  position:relative;overflow:hidden;
 }
-.panel.dark ul li::before{content:"—";position:absolute;left:0;color:var(--gold)}
+.panel.dark::before{
+  content:"WC";
+  position:absolute;right:-20px;bottom:-20px;
+  font-family:var(--ff-display);font-size:160px;font-weight:700;color:rgba(255,255,255,.03);
+  line-height:1;letter-spacing:-4px;
+  pointer-events:none;user-select:none;
+}
+.panel.dark h3{color:var(--ivory);font-size:24px;margin-bottom:6px}
+.panel.dark .panel-sub{color:rgba(247,244,238,.6);font-size:14.5px;margin-bottom:24px}
+.panel.dark ul{padding-left:0;list-style:none;margin:0;display:grid;gap:0}
+.panel.dark ul li{
+  padding:16px 0 16px 24px;position:relative;
+  font-size:15px;color:rgba(247,244,238,.85);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+.panel.dark ul li:last-child{border-bottom:none}
+.panel.dark ul li::before{
+  content:"";position:absolute;left:0;top:50%;
+  width:10px;height:1.5px;background:var(--gold);
+}
 
-/* ---------- Reveal ---------- */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .7s ease, transform .7s ease}
+/* ── CTA band ── */
+.cta-band{
+  background:var(--ink);
+  padding:96px 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(169,138,78,.15) 0%,transparent 70%);
+  pointer-events:none;
+}
+.cta-band h2{color:var(--ivory)}
+.cta-band .section-intro{color:rgba(247,244,238,.65);margin:16px auto 38px}
+.cta-band .eyebrow{color:var(--gold-light)}
+
+/* ── Reveal ── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .72s ease, transform .72s ease}
 .reveal.visible{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){
   .reveal{opacity:1;transform:none;transition:none}
 }
 
-/* ---------- Footer ---------- */
-footer{border-top:1px solid var(--line);padding:48px 0}
-footer .foot-inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:baseline}
-footer .brand-title{font-family:var(--ff-display);font-weight:600;font-size:18px}
-footer .help{margin-top:4px}
-footer .foot-links{display:flex;gap:18px;font-size:13px}
-footer .foot-links a{color:var(--ink-soft);text-decoration:none}
-footer .foot-links a:hover{color:var(--ink)}
+/* ── Footer ── */
+footer{
+  border-top:1px solid var(--line);
+  padding:52px 0 36px;
+}
+.foot-inner{
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:28px;align-items:flex-start;
+  margin-bottom:36px;
+}
+.foot-brand .brand-title{font-family:var(--ff-display);font-weight:600;font-size:20px}
+.foot-brand .help{margin-top:6px;max-width:280px}
+.foot-links{display:flex;gap:22px;font-size:13px;align-items:center}
+.foot-links a{color:var(--ink-soft);text-decoration:none;transition:color .15s}
+.foot-links a:hover{color:var(--ink)}
+.foot-bottom{
+  padding-top:24px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:center;
+}
+.foot-bottom .help{font-size:12px}
 
-/* visible keyboard focus */
+/* ── Focus ── */
 a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
-  outline:2px solid var(--gold-deep);outline-offset:2px;
+  outline:2px solid var(--gold-deep);outline-offset:3px;border-radius:1px;
 }
 </style>
 </head>
 
 <body>
 
-<nav aria-label="Navigazione principale">
+<!-- ── NAV ── -->
+<nav id="topnav" aria-label="Navigazione principale">
   <div class="nav-inner">
-    <a href="#home" class="brand" aria-label="Vai alla home">
-      <span class="brand-title">Wedding Coding</span>
-    </a>
+    <div class="nav-top">
+      <a href="#home" class="brand" aria-label="Vai alla home">
+        <div class="brand-monogram">W</div>
+        <span class="brand-title">Wedding Coding</span>
+      </a>
+      <button class="nav-toggle" aria-label="Menu" aria-expanded="false" id="navToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
     <ul class="nav-links">
-      <li><a href="#servizio">Servizio</a></li>
+      <li><a href="#servizio">Come funziona</a></li>
       <li><a href="#template">Template</a></li>
-      <li><a href="#demo">Contatti</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
     <div class="nav-cta">
       <a href="#partner" class="btn ghost small">Diventa Partner</a>
@@ -365,37 +559,72 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   </div>
 </nav>
 
+<!-- ── HERO ── -->
 <header id="home" class="hero" role="banner" aria-label="Sezione di benvenuto">
   <div class="hero-content container">
-    <p class="hero-eyebrow">Il sito del vostro matrimonio</p>
+    <span class="hero-eyebrow">Il sito del vostro matrimonio</span>
     <h1>Siti di matrimonio curati come<br><em>il giorno che raccontano.</em></h1>
     <p class="hero-sub">Sito completo e personalizzabile — programma, location, gallery, RSVP avanzata, lista regali. Per chi si sposa e per chi organizza matrimoni.</p>
     <div class="hero-cta">
-      <a href="#demo" class="btn">Sei una coppia di sposi</a>
-      <a href="#partner" class="btn ghost" style="border-color:rgba(255,255,255,.4);color:#fff">Sei un Wedding Planner</a>
+      <a href="#demo" class="btn hero-main">Sei una coppia di sposi</a>
+      <a href="#partner" class="btn hero-sec">Sei un Wedding Planner</a>
+    </div>
+    <div class="hero-divider">
+      <span></span>
+      <span class="ico" aria-hidden="true">✦</span>
+      <span></span>
     </div>
     <div class="hero-meta">
-      <span>Consegna in 7 giorni</span>
-      <span>Revisioni illimitate</span>
-      <span>Assistenza WhatsApp 24h</span>
+      <div class="hero-meta-item">
+        <strong>7 giorni</strong>
+        <span>Consegna</span>
+      </div>
+      <div class="hero-meta-item">
+        <strong>Illimitate</strong>
+        <span>Revisioni</span>
+      </div>
+      <div class="hero-meta-item">
+        <strong>24h</strong>
+        <span>Assistenza WhatsApp</span>
+      </div>
     </div>
   </div>
 </header>
 
 <main>
 
-  <!-- SERVIZIO / COME FUNZIONA -->
+  <!-- ── STATS BAND ── -->
+  <div class="stats-band">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <span class="stat-num">7</span>
+          <span class="stat-label">Giorni alla pubblicazione</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num">∞</span>
+          <span class="stat-label">Revisioni fino al matrimonio</span>
+        </div>
+        <div class="stat-item reveal">
+          <span class="stat-num">2</span>
+          <span class="stat-label">Pacchetti su misura</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COME FUNZIONA ── -->
   <section id="servizio" class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Per sposi e Wedding Planner</p>
+        <span class="eyebrow">Per sposi e Wedding Planner</span>
         <h2>Come funziona</h2>
-        <div class="rule"></div>
+        <hr class="rule">
       </div>
 
       <div class="process">
         <div class="process-step reveal">
-          <div class="process-num">01 — Contatto</div>
+          <div class="process-badge">01</div>
           <h3>Ci raccontate il matrimonio</h3>
           <p>Direttamente o tramite il tuo Wedding Planner: data, stile, location e cosa vi serve davvero.</p>
           <ul class="process-list">
@@ -404,7 +633,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           </ul>
         </div>
         <div class="process-step reveal">
-          <div class="process-num">02 — Preventivo</div>
+          <div class="process-badge">02</div>
           <h3>Individuiamo la soluzione giusta</h3>
           <p>Capiamo l'esigenza della coppia e proponiamo il pacchetto più adatto: Standard o Premium su misura.</p>
           <ul class="process-list">
@@ -413,7 +642,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           </ul>
         </div>
         <div class="process-step reveal">
-          <div class="process-num">03 — Produzione</div>
+          <div class="process-badge">03</div>
           <h3>Raccolta materiali e pubblicazione</h3>
           <p>Dopo la caparra, raccogliamo i materiali della coppia e pubblichiamo il sito Standard entro 7 giorni.</p>
           <ul class="process-list">
@@ -425,63 +654,62 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
-  <!-- FUNZIONALITÀ CHIAVE -->
-  <section class="section" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <!-- ── FUNZIONALITÀ ── -->
+  <section class="section alt">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Cosa includiamo</p>
+        <span class="eyebrow">Cosa includiamo</span>
         <h2>Funzionalità chiave</h2>
-        <div class="rule"></div>
+        <hr class="rule">
       </div>
 
       <div class="grid cols-3">
         <div class="feature-card reveal">
-          <span class="mark">I.</span>
-          <h3>Contenuti & sezioni</h3>
+          <span class="mark">I. &nbsp;Contenuti & sezioni</span>
+          <h3>Tutto il giorno, raccontato</h3>
           <p>Pagine informative, countdown, programma della giornata, storia della coppia, dress code.</p>
         </div>
         <div class="feature-card reveal">
-          <span class="mark">II.</span>
-          <h3>RSVP avanzata</h3>
+          <span class="mark">II. &nbsp;RSVP avanzata</span>
+          <h3>Conferme senza pensieri</h3>
           <p>Conferma presenza, preferenze menù, allergie e intolleranze, presenza bambini, richieste particolari.</p>
         </div>
         <div class="feature-card reveal">
-          <span class="mark">III.</span>
-          <h3>Gallery fotografica</h3>
+          <span class="mark">III. &nbsp;Gallery fotografica</span>
+          <h3>Le vostre foto, sempre</h3>
           <p>Galleria curata delle foto della coppia, da riempire man mano fino al giorno del sì.</p>
         </div>
         <div class="feature-card reveal">
-          <span class="mark">IV.</span>
-          <h3>Location & travel</h3>
+          <span class="mark">IV. &nbsp;Location & travel</span>
+          <h3>Indicazioni precise</h3>
           <p>Mappe e indicazioni per raggiungere chiesa e location, alloggi e info travel per chi arriva da fuori.</p>
         </div>
         <div class="feature-card reveal">
-          <span class="mark">V.</span>
-          <h3>Dominio personalizzato</h3>
+          <span class="mark">V. &nbsp;Dominio personalizzato</span>
+          <h3>Un indirizzo tutto vostro</h3>
           <p>Un indirizzo web su misura per la coppia, incluso in entrambi i pacchetti.</p>
         </div>
         <div class="feature-card reveal">
-          <span class="mark">VI.</span>
-          <h3>Personalizzazione completa</h3>
+          <span class="mark">VI. &nbsp;Personalizzazione completa</span>
+          <h3>Su misura, davvero</h3>
           <p>Contenuti su misura, organizzazione tavoli e lista regali integrate nel sito.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TEMPLATE GALLERY -->
+  <!-- ── TEMPLATE GALLERY ── -->
   <section id="template" class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Selezione</p>
+        <span class="eyebrow">Selezione</span>
         <h2>Template pronti per l'uso</h2>
-        <div class="rule"></div>
+        <hr class="rule">
         <p class="section-intro">Ogni template è personalizzabile su colori, font, sezioni e immagini. Possiamo anche partire da zero.</p>
       </div>
 
       <div class="grid cols-2">
-
-        <a href="https://www.weddingcoding.it/emma&james" target="_blank" class="demo-card reveal">
+        <a href="https://www.weddingcoding.it/emma&james" target="_blank" class="demo-card reveal" rel="noopener">
           <div class="demo-thumb">
             <div class="demo-thumb-bg"></div>
             <div class="demo-thumb-content">
@@ -499,7 +727,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           </div>
         </a>
 
-        <a href="https://www.weddingcoding.it/harry&kate/" target="_blank" class="demo-card reveal">
+        <a href="https://www.weddingcoding.it/harry&kate/" target="_blank" class="demo-card reveal" rel="noopener">
           <div class="demo-thumb">
             <div class="demo-thumb-bg"></div>
             <div class="demo-thumb-content">
@@ -516,73 +744,72 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
             <div class="demo-style">Elegante · Divertente · Chic</div>
           </div>
         </a>
-
       </div>
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" class="section" style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="container" style="max-width:780px">
+  <!-- ── FAQ ── -->
+  <section id="faq" class="section alt">
+    <div class="container" style="max-width:820px">
       <div class="section-head">
-        <p class="eyebrow">Domande frequenti</p>
+        <span class="eyebrow">Domande frequenti</span>
         <h2>FAQ</h2>
-        <div class="rule"></div>
+        <hr class="rule">
       </div>
 
       <div class="accordion">
         <details class="reveal">
-          <summary>Posso contattarvi direttamente o solo tramite un Wedding Planner?<span class="ico">+</span></summary>
+          <summary>Posso contattarvi direttamente o solo tramite un Wedding Planner? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Entrambe le strade sono possibili. Se siete una coppia di sposi potete scriverci direttamente; se il vostro Wedding Planner offre già il servizio, potete passare anche da lui, che gestirà il contatto con noi.</p>
         </details>
         <details class="reveal">
-          <summary>Cosa può includere il sito del nostro matrimonio?<span class="ico">+</span></summary>
+          <summary>Cosa può includere il sito del nostro matrimonio? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Pagine informative, countdown, programma della giornata, location con mappe, gallery fotografica, storia della coppia, lista regali, organizzazione dei tavoli, dress code e info su alloggi e travel per gli invitati.</p>
         </details>
         <details class="reveal">
-          <summary>Qual è la differenza tra pacchetto Standard e Premium?<span class="ico">+</span></summary>
+          <summary>Qual è la differenza tra pacchetto Standard e Premium? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Lo Standard include il sito completo con tutti i contenuti base e RSVP avanzata, pubblicato entro 7 giorni. Il Premium aggiunge funzionalità avanzate su richiesta — multilingua, funzioni di intrattenimento e altre personalizzazioni — con preventivo dedicato.</p>
         </details>
         <details class="reveal">
-          <summary>Quanto tempo serve per pubblicare il sito?<span class="ico">+</span></summary>
+          <summary>Quanto tempo serve per pubblicare il sito? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Il pacchetto Standard viene pubblicato entro 7 giorni dalla ricezione di tutti i materiali. Per il pacchetto Premium, su misura, i tempi variano in base alle funzionalità richieste, comunque non oltre 20 giorni.</p>
         </details>
         <details class="reveal">
-          <summary>Quante revisioni sono incluse?<span class="ico">+</span></summary>
+          <summary>Quante revisioni sono incluse? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Revisioni illimitate fino al giorno del matrimonio. Dopo l'evento è inclusa una revisione post‑matrimonio; in seguito è possibile trasformare il sito in un ricordo digitale con le foto del giorno con un piccolo costo di rinnovo.</p>
         </details>
         <details class="reveal">
-          <summary>Cosa succede al sito dopo il matrimonio?<span class="ico">+</span></summary>
+          <summary>Cosa succede al sito dopo il matrimonio? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Il sito resta online. Su richiesta lo trasformiamo in una memory page permanente, arricchita con le foto del giorno, come ricordo digitale del vostro matrimonio.</p>
         </details>
         <details class="reveal">
-          <summary>Il dominio personalizzato è incluso?<span class="ico">+</span></summary>
+          <summary>Il dominio personalizzato è incluso? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Sì, in entrambi i pacchetti, Standard e Premium, il dominio personalizzato è incluso.</p>
         </details>
         <details class="reveal">
-          <summary>Possiamo gestire tavoli e lista regali dal sito?<span class="ico">+</span></summary>
+          <summary>Possiamo gestire tavoli e lista regali dal sito? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Sì, entrambe le sezioni sono incluse nel pacchetto Standard: l'organizzazione dei tavoli e la lista regali sono parte dei contenuti che possiamo integrare nel vostro sito.</p>
         </details>
         <details class="reveal">
-          <summary>Come funziona la collaborazione con i Wedding Planner?<span class="ico">+</span></summary>
+          <summary>Come funziona la collaborazione con i Wedding Planner? <span class="ico" aria-hidden="true">+</span></summary>
           <p>Presenti il servizio ai tuoi sposi come parte del tuo pacchetto. Noi ci occupiamo della progettazione e pubblicazione del sito, tu continui a seguire la coppia: il margine sul prezzo finale resta libero e gestito da te.</p>
         </details>
       </div>
     </div>
   </section>
 
-  <!-- LEAD FORM: DIVENTA PARTNER -->
+  <!-- ── PARTNER FORM ── -->
   <section id="partner" class="section">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Lavora con noi</p>
+        <span class="eyebrow">Lavora con noi</span>
         <h2>Diventa Partner</h2>
-        <div class="rule"></div>
+        <hr class="rule">
         <p class="section-intro">Richiedi il Kit Partner o una call conoscitiva. Ti invieremo listini, template e casi studio.</p>
       </div>
 
       <div class="grid cols-2">
-        <div class="panel reveal">
+        <div class="panel elevated reveal">
           <form id="leadForm" action="https://formspree.io/f/xaqdqoey" method="POST">
             <div class="form-row cols-2">
               <label>Nome e cognome
@@ -616,7 +843,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
               <textarea name="message" rows="4" placeholder="Raccontaci il tuo servizio e cosa ti serve"></textarea>
             </label>
 
-            <label class="checkbox-row">
+            <label class="checkbox-row" style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--ink-soft)">
               <input type="checkbox" name="consent" required>
               <span class="help">Acconsento al trattamento dei dati per contatto commerciale e invio del Kit Partner.</span>
             </label>
@@ -629,6 +856,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
         <div class="panel dark reveal">
           <h3>Cosa ricevi</h3>
+          <p class="panel-sub">Tutto il necessario per offrire siti di matrimonio come servizio aggiuntivo.</p>
           <ul>
             <li>Kit Partner con demo e materiali di presentazione</li>
             <li>Preventivo personalizzato per ogni cliente</li>
@@ -640,51 +868,64 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
-  <!-- DEMO / CONTATTI RAPIDI -->
-  <section id="demo" class="section" style="border-top:1px solid var(--line)">
-    <div class="container center">
-      <p class="eyebrow">Pronti a partire</p>
+  <!-- ── CTA BAND ── -->
+  <section id="demo" class="cta-band">
+    <div class="container">
+      <span class="eyebrow">Pronti a partire</span>
       <h2>Parliamone oggi</h2>
-      <div class="rule center-rule"></div>
-      <p class="section-intro" style="margin-left:auto;margin-right:auto">Sposi o Wedding Planner, scriveteci su <strong>staff@weddingcoding.it</strong> e iniziamo a creare il vostro sito.</p>
-      <a href="mailto:staff@weddingcoding.it" class="btn">Scrivi ora</a>
+      <p class="section-intro lede">Sposi o Wedding Planner, scriveteci su <strong style="color:var(--gold-light)">staff@weddingcoding.it</strong> e iniziamo a creare il vostro sito.</p>
+      <a href="mailto:staff@weddingcoding.it" class="btn gold">Scrivi ora</a>
     </div>
   </section>
 
 </main>
 
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="container foot-inner">
-    <div>
-      <div class="brand-title">Wedding Coding</div>
-      <p class="help">Siti web di matrimonio white‑label per Wedding Planner.</p>
+  <div class="container">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="brand-title">Wedding Coding</div>
+        <p class="help">Siti web di matrimonio white‑label per Wedding Planner.</p>
+      </div>
+      <div class="foot-links">
+        <a href="#">Privacy</a>
+        <a href="#">Cookie</a>
+        <a href="#">Terms</a>
+      </div>
     </div>
-    <div class="foot-links">
-      <a href="#">Privacy</a>
-      <a href="#">Cookie</a>
-      <a href="#">Terms</a>
+    <div class="foot-bottom">
+      <p class="help">©️ 2026 Wedding Coding · staff@weddingcoding.it</p>
+      <p class="help" style="color:var(--line)">✦</p>
     </div>
-  </div>
-  <div class="container" style="margin-top:18px">
-    <p class="help">©️ 2026 Wedding Coding · staff@weddingcoding.it</p>
   </div>
 </footer>
 
 <script>
+  /* Scroll reveal */
   const io = new IntersectionObserver((entries)=>entries.forEach(e=>{
     if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  }), {threshold:.12});
+  }), {threshold:.1, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  /* Mobile nav toggle */
+  const navToggle = document.getElementById('navToggle');
+  const topnav = document.getElementById('topnav');
+  if(navToggle){
+    navToggle.addEventListener('click',()=>{
+      const open = topnav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open);
+    });
+  }
 
+  /* Smooth scroll + hash clean */
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
   window.addEventListener('load', () => {
     if (window.location.hash) {
       history.replaceState(null, '', window.location.pathname + window.location.search);
       window.scrollTo(0, 0);
     }
   });
-
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
@@ -694,6 +935,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
         history.replaceState(null, '', window.location.pathname + window.location.search);
+        if(topnav.classList.contains('open')){
+          topnav.classList.remove('open');
+          navToggle.setAttribute('aria-expanded','false');
+        }
       });
     });
   });
